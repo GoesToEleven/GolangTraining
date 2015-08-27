@@ -6,6 +6,6 @@ import (
 )
 
 func main() {
-	i, _ := strconv.Atoi("-42")
-	fmt.Println(i)
+	i, _ := strconv.Atoi("32")
+	fmt.Println(i+10)
 }
