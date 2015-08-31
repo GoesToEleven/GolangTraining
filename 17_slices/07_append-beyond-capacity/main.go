@@ -7,7 +7,6 @@ func main() {
 	greeting := make([]string, 3, 5)
 	// 3 is length - number of elements referred to by the slice
 	// 5 is capacity - number of elements in the underlying array
-	// you could also do it like this
 
 	greeting[0] = "Good morning!"
 	greeting[1] = "Bonjour!"
@@ -18,4 +17,6 @@ func main() {
 	greeting = append(greeting, "gidday")
 
 	fmt.Println(greeting[6])
+	fmt.Println(len(greeting))
+	fmt.Println(cap(greeting))
 }
