@@ -1,6 +1,8 @@
 package main
 
-import "fmt"
+import (
+	"fmt"
+)
 
 func main() {
 
@@ -8,6 +10,7 @@ func main() {
 
 	fmt.Println(a)
 	fmt.Println(&a)
+
 
 	var b *int = &a
 
