@@ -7,11 +7,11 @@ import "fmt"
   -- if no expression provided, go checks for the first case that evals to true
   -- makes the switch operate like if/if else/else
   cases can be expressions
- */
+*/
 
 func main() {
 
-	myFriendsName := "Medhi"
+	myFriendsName := "Mar"
 
 	switch {
 	case len(myFriendsName) == 2:
@@ -21,10 +21,12 @@ func main() {
 	case myFriendsName == "Jenny":
 		fmt.Println("Wassup Jenny")
 	case myFriendsName == "Marcus", myFriendsName == "Medhi":
-		fmt.Println("Both of your names start with M")
+		fmt.Println("Your name is either Marcus or Medhi")
 	case myFriendsName == "Julian":
 		fmt.Println("Wassup Julian")
 	case myFriendsName == "Sushant":
 		fmt.Println("Wassup Sushant")
+	default:
+		fmt.Println("nothing matched; this is the default")
 	}
 }

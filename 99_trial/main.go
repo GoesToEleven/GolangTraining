@@ -1,10 +1,16 @@
 package main
 
-import "fmt"
+import (
+	"fmt"
+)
 
 func main() {
-	var name int
-	fmt.Print("Enter your name: ")
-	fmt.Scan(&name)
-	fmt.Println("Hello ", name)
+	myPhrase := "What is a good phrase?"
+//	for key, value := range myPhrase {
+//		fmt.Println(key, " - ", value, " - ", string(value))
+//	}
+
+	for i := 0; i < len(myPhrase); i++ {
+		fmt.Printf("%d - %d - %q - %b\n", i, myPhrase[i], myPhrase[i], myPhrase[i])
+	}
 }
