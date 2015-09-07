@@ -16,10 +16,12 @@ func main() {
 	defer src.Close()
 
 	scanner := bufio.NewScanner(src)
+	scanner.Split(bufio.ScanWords)
 	for scanner.Scan() {
-		line := scanner.Text()
-		if len(line) > 0 {
-			fmt.Println(">>>", strings.ToUpper(line[0:1])+line[1:], "\n")
+		word := scanner.Text()
+		if len(word) > 0 {
+			fmt.Print(strings.ToUpper(word[0:1])+word[1:], " ")
 		}
 	}
+	fmt.Println()
 }
