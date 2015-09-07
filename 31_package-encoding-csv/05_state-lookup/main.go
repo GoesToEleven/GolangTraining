@@ -79,34 +79,19 @@ func main() {
 	if !ok {
 		log.Fatalln("invalid state abbreviation")
 	}
-	fmt.Println(`
-<html>
-    <head></head>
-    <body>
-      <table>
-        <tr>
-          <th>Abbreviation</th>
-          <th>Name</th>
-        </tr>`)
-
-	fmt.Println(`
-        <tr>
-          <td>` + state.abbreviation + `</td>
-          <td>` + state.name + `</td>
-        </tr>
-    `)
-
-	fmt.Println(`
-      </table>
-    </body>
-</html>
-    `)
+	fmt.Println(state)
 }
 /*
 at terminal:
 go install
 
 at terminal:
-programName <state abbreviation> > index.html
+programName <state abbreviation>
+
+for example:
+step05_state-lookup CA
+
+will show this:
+&{5 California CA West}
 
 */

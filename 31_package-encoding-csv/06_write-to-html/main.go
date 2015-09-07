@@ -9,10 +9,6 @@ import (
 	"strconv"
 )
 
-type stateInformation struct {
-	columns map[string]int
-}
-
 type state struct {
 	id               int
 	name             string
@@ -20,21 +16,14 @@ type state struct {
 	censusRegionName string
 }
 
-func (info *stateInformation) setColumns(record []string) {
-	for idx, column := range record {
-		info.columns[column] = idx
-	}
-}
-
-func (info *stateInformation) parseState(record []string) (*state, error) {
-	column := info.columns["id"]
-	id, err := strconv.Atoi(record[column])
+func parseState(columns map[string]int, record []string) (*state, error) {
+	id, err := strconv.Atoi(record[columns["id"]])
+	name := record[columns["name"]]
+	abbreviation := record[columns["abbreviation"]]
+	censusRegionName := record[columns["census_region_name"]]
 	if err != nil {
 		return nil, err
 	}
-	name := record[info.columns["name"]]
-	abbreviation := record[info.columns["abbreviation"]]
-	censusRegionName := record[info.columns["census_region_name"]]
 	return &state{
 		id:               id,
 		name:             name,
@@ -45,20 +34,21 @@ func (info *stateInformation) parseState(record []string) (*state, error) {
 
 func main() {
 	// #1 open a file
-	f, err := os.Open("state_table.csv")
+	f, err := os.Open("../state_table.csv")
 	if err != nil {
 		log.Fatalln(err)
 	}
 	defer f.Close()
 
-	stateLookup := map[string]*state{}
-
-	info := &stateInformation{}
-
 	// #2 parse a csv file
 	csvReader := csv.NewReader(f)
+	columns := make(map[string]int)
+
+	stateLookup := map[string]*state{}
+
 	for rowCount := 0; ; rowCount++ {
 		record, err := csvReader.Read()
+
 		if err == io.EOF {
 			break
 		} else if err != nil {
@@ -66,17 +56,21 @@ func main() {
 		}
 
 		if rowCount == 0 {
-			info.setColumns(record)
+			for idx, column := range record {
+				columns[column] = idx
+			}
 		} else {
-			state, err := info.parseState(record)
+			// #3 do stuff for each row
+			state, err := parseState(columns, record)
 			if err != nil {
 				log.Fatalln(err)
 			}
+			// #4 add each row to stateLookup map
 			stateLookup[state.abbreviation] = state
 		}
 	}
 
-	// state-information AL
+	// #5 lookup the state
 	if len(os.Args) < 2 {
 		log.Fatalln("expected state abbreviation")
 	}
@@ -85,7 +79,6 @@ func main() {
 	if !ok {
 		log.Fatalln("invalid state abbreviation")
 	}
-
 	fmt.Println(`
 <html>
     <head></head>
@@ -109,5 +102,11 @@ func main() {
 </html>
     `)
 }
+/*
+at terminal:
+go install
 
+at terminal:
+programName <state abbreviation> > index.html
 
+*/
