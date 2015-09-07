@@ -18,13 +18,25 @@ func main() {
 
 	// #2 parse a csv file
 	csvReader := csv.NewReader(f)
-	for {
+	for rowCount := 0; ; rowCount++ {
 		record, err := csvReader.Read()
+
 		if err == io.EOF {
 			break
 		} else if err != nil {
 			log.Fatalln(err)
 		}
-		fmt.Println(record)
+
+		columns := make(map[string]int)
+		if rowCount == 0 {
+			for idx, column := range record {
+				columns[column] = idx
+			}
+		}
+
+		fmt.Println(columns)
+		break
 	}
+	// #3 do stuff for each row
+	// #4 print out a table of information
 }
