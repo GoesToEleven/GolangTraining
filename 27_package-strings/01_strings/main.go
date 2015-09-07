@@ -39,6 +39,9 @@ func main() {
 
 		// "TEST"
 		strings.ToUpper("test"),
+
+		// "test"
+		strings.TrimSpace("  test      "),
 	)
 
 	arr := []byte("test")

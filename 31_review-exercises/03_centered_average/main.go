@@ -2,7 +2,7 @@ package main
 
 import (
 	"fmt"
-"sort"
+	"sort"
 )
 
 func main() {
@@ -22,7 +22,7 @@ func main() {
 	x = x[1:]
 	fmt.Println(x)
 
-	x = x[:(len(x)-1)]
+	x = x[:(len(x) - 1)]
 	fmt.Println(x)
 
 	total := 0
@@ -32,7 +32,7 @@ func main() {
 	}
 
 	fmt.Println(total)
-	fmt.Println(total/len(x))
+	fmt.Println(total / len(x))
 }
 
 /*
