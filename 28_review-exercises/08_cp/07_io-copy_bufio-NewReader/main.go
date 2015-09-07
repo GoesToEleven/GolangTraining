@@ -3,32 +3,30 @@ package main
 import (
 	"os"
 	"log"
-	"io/ioutil"
 	"fmt"
+	"io"
+	"bufio"
 )
 
 func cp(srcName, dstName string) error {
 
 	src, err := os.Open(srcName)
 	if err != nil {
-		return fmt.Errorf("my program broke opening: %v", err)
+		return fmt.Errorf("error opening source file: %v", err)
 	}
 	defer src.Close()
 
 	dst, err := os.Create(dstName)
 	if err != nil {
-		return fmt.Errorf("my program broke creating:%v ", err)
+		return fmt.Errorf("error creating destination file:%v ", err)
 	}
 	defer dst.Close()
 
-	bs, err := ioutil.ReadAll(src)
-	if err != nil {
-		return fmt.Errorf("my program broke reading: %v", err)
-	}
+	br := bufio.NewReader(src)
 
-	_, err = dst.Write(bs)
+	_, err = io.Copy(dst, br)
 	if err != nil {
-		return fmt.Errorf("my program broke writing: %v", err)
+		return fmt.Errorf("error writing to destination file: %v ", err)
 	}
 
 	return nil
@@ -37,7 +35,7 @@ func cp(srcName, dstName string) error {
 func main() {
 
 	if len(os.Args) < 3 {
-		log.Fatalln("Usage: 03 <SRC> <DST>")
+		log.Fatalln("Usage: 07_bufio_io-copy <SRC> <DST>")
 	}
 
 	srcName := os.Args[1]
@@ -50,16 +48,12 @@ func main() {
 
 }
 
-// THE PROBLEM WITH THIS PROGRAM:
-// it reads the entire file into memory
-// not good if you're copying a multi-gigabyte file
-
 /*
 
 step 1 - at command line enter:
 go install
 
 step 2 - at command line enter:
-03 initial.txt second.txt
+programName initial.txt second.txt
 
 */

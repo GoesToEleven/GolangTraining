@@ -20,6 +20,7 @@ func main() {
 	if err != nil {
 		log.Fatalln("my program broke creating: ", err.Error())
 	}
+	defer dst.Close()
 
 	bs, err := ioutil.ReadAll(src)
 	if err != nil {
