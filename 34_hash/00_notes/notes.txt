@@ -1,0 +1,11 @@
+md5 not secure
+
+sha-1 not secure
+
+sha-256 still fine
+
+fnv not cryptographic, but super fast!
+
+for passwords / confidential data:
+bcrypt
+scrypt
