@@ -1,0 +1,6 @@
+on windows you can install telnet
+on Mac, should be there
+
+start main.go (go run main.go) then ...
+telnet localhost 9000
+

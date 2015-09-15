@@ -1,0 +1,3 @@
+start the file in 02_listen (go run main.go)
+
+then run the main.go file in this folder

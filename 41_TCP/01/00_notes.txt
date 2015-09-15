@@ -1,0 +1,39 @@
+at terminal:
+dig www.google.com
+
+
+at terminal:
+dig google.com
+
+
+(1) buy domain
+for example: namecheap
+for example: google domains
+
+domains come from ICANN originally
+
+(2) associate domain with nameserver
+add your "A" record
+eg, cloudflare
+
+(3) other stuff
+
+
+you can use google chrome dev tools / network
+you can use CURL at the command line
+eg, at terminal:
+	curl -v golang.org
+
+
+TCP
+wireshark
+traceroute
+
+STACKS
+- reverse proxies / load balancers (nginx, haproxy)
+- web servers (nginx, apache, IIS, ...)
+- backend servers (databases, mail servers, ...)
+- cloud services
+- queues
+
+
