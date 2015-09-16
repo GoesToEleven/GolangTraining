@@ -1,0 +1,10 @@
+on windows you can install telnet
+on Mac, should be there
+
+start main.go (go run main.go) then ...
+telnet localhost 9000
+
+you should be able to test your case logic
+
+when you enter GET or SET or DEL, nothing will happen
+anything else entered will return "INVALID COMMAND"
