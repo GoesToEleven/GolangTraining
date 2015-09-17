@@ -1,0 +1,4 @@
+
+start main.go (go run main.go) then ...
+go to your browser and go to localhost:9000
+
