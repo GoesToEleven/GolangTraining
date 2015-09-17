@@ -1,0 +1,19 @@
+on windows you can install telnet
+on Mac, should be there
+
+start main.go (go run main.go) then ...
+telnet localhost 9000
+
+you should be able to test your case logic
+
+
+you can now SET and GET and DEL
+
+~ $ telnet localhost 9000
+
+SET fav pop
+GET fav
+pop
+DEL fav
+GET fav
+

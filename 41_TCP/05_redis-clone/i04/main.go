@@ -37,6 +37,8 @@ func handle(conn net.Conn) {
 			value := fs[2]
 			data[key] = value
 		case "DEL":
+			key := fs[1]
+			delete(data, key)
 		default:
 			io.WriteString(conn, "INVALID COMMAND "+fs[0]+"\n")
 		}

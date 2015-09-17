@@ -6,5 +6,12 @@ telnet localhost 9000
 
 you should be able to test your case logic
 
-when you enter GET or SET or DEL, nothing will happen
-anything else entered will return "INVALID COMMAND"
+
+you can now SET and GET
+
+~ $ telnet localhost 9000
+
+SET key val
+GET key
+val
+
