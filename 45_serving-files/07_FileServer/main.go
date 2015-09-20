@@ -4,8 +4,6 @@ import (
 	"io"
 	"net/http"
 	"strings"
-	"fmt"
-	"os"
 )
 
 func upTown(res http.ResponseWriter, req *http.Request) {
@@ -22,28 +20,8 @@ func upTown(res http.ResponseWriter, req *http.Request) {
 	`)
 }
 
-func dogPic(res http.ResponseWriter, req *http.Request) {
-	f, err := os.Open("toby.jpg")
-	if err != nil {
-		http.Error(res, "file not found", 404)
-		return
-	}
-	defer f.Close()
-
-	fi, err := f.Stat()
-	if err != nil {
-		http.Error(res, "file not found", 404)
-		return
-	}
-
-	http.ServeContent(res, req, f.Name(), fi.ModTime(), f)
-}
-
 func main() {
-	http.HandleFunc("/", func(res http.ResponseWriter, req *http.Request){
-		fmt.Println(req.URL)
-	})
-	http.HandleFunc("/toby.jpg", dogPic)
+	http.Handle("/", http.FileServer(http.Dir(".")))
 	http.HandleFunc("/dog/", upTown)
 	http.ListenAndServe(":9000", nil)
 }

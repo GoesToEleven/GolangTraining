@@ -4,7 +4,6 @@ import (
 	"io"
 	"net/http"
 	"strings"
-	"fmt"
 )
 
 func upTown(res http.ResponseWriter, req *http.Request) {
@@ -26,9 +25,6 @@ func dogPic(res http.ResponseWriter, req *http.Request) {
 }
 
 func main() {
-	http.HandleFunc("/", func(res http.ResponseWriter, req *http.Request){
-		fmt.Println(req.URL)
-	})
 	http.HandleFunc("/toby.jpg", dogPic)
 	http.HandleFunc("/dog/", upTown)
 	http.ListenAndServe(":9000", nil)
