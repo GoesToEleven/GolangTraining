@@ -1,0 +1,16 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+<body>
+<ul>
+    {{ range . }}
+    <li>{{ . }}</li>
+    {{ else }}
+    <li>NO ITEMS</li>
+    {{ end }}
+</ul>
+</body>
+</html>

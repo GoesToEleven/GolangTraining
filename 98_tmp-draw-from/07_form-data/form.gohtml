@@ -1,0 +1,21 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+<body>
+
+<form method="POST">
+    <label for="firstName">First Name</label>
+    <input type="text" id="firstName" name="first">
+    <br>
+    <label for="lastName">Last Name</label>
+    <input type="text" id="lastName" name="last">
+    <br>
+    <input type="submit">
+</form>
+
+<h1>{{ .FirstName }} {{ .LastName }}</h1>
+</body>
+</html>

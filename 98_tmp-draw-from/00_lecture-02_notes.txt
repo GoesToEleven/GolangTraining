@@ -1,0 +1,1 @@
+TEMPLATES in golang, how to do templates in golang, golang templates, two template libraries, text/template, html/template, extension can be anything you want, eg tpl.gohtml,

@@ -1,0 +1,1 @@
+Request.URL.Query().Get(KEY), Request.FormValue(KEY), Request.FormFile(KEY)
