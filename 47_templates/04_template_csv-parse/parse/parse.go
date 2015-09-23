@@ -12,8 +12,6 @@ type Record struct {
 	Open float64
 }
 
-// ../../../../resources/table.csv
-
 func Parse(filePath string) []Record {
 	src, err := os.Open(filePath)
 	if err != nil {

@@ -4,15 +4,12 @@ import (
 	"html/template"
 	"log"
 	"net/http"
-	"github.com/goestoeleven/SummerBootCamp/05_golang/02/03/04_template_csv-parse/parse"
+	"github.com/goestoeleven/GolangTraining/47_templates/04_template_csv-parse/parse"
 )
 
 func main() {
-	log.Flags()
-	log.SetFlags(0)
-
 	// parse csv
-	records := parse.Parse("../../../resources/table.csv")
+	records := parse.Parse("table.csv")
 
 	// parse template
 	tpl, err := template.ParseFiles("hw.gohtml")

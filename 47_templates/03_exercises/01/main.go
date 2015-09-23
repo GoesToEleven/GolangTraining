@@ -7,8 +7,8 @@ import (
 )
 
 func main() {
-	log.Flags()
-	log.SetFlags(0)
+
+	name := "Todd"
 
 	// parse template
 	tpl, err := template.ParseFiles("hw.gohtml")
@@ -17,7 +17,7 @@ func main() {
 	}
 
 	// execute template
-	err = tpl.Execute(os.Stdout, "Hello World")
+	err = tpl.Execute(os.Stdout, name)
 	if err != nil {
 		log.Fatalln(err)
 	}

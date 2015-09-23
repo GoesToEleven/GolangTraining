@@ -7,9 +7,6 @@ import (
 )
 
 func main() {
-	log.Flags()
-	log.SetFlags(0)
-
 	// parse template
 	tpl, err := template.ParseFiles("hw.gohtml")
 	if err != nil {
@@ -19,7 +16,7 @@ func main() {
 	// function
 	http.HandleFunc("/", func(res http.ResponseWriter, req *http.Request) {
 		// execute template
-		err = tpl.Execute(res, req.URL.Path)
+		err = tpl.Execute(res, req.RequestURI)
 		if err != nil {
 			log.Fatalln(err)
 		}
