@@ -25,7 +25,7 @@ func main() {
 	mux.Handle("/dog/", dog)
 	mux.Handle("/cat/", cat)
 
-	http.ListenAndServe(":9000", dog)
+	http.ListenAndServe(":9000", mux)
 }
 
 /*
