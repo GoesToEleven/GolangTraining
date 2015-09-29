@@ -17,7 +17,7 @@ func main() {
 		 <input type="text" name="q">
 		 <input type="submit">
 
-		</form>` + val)
+		</form>`)
 	})
 	http.ListenAndServe(":9000", nil)
 }

@@ -2,7 +2,6 @@ package main
 
 
 import (
-
 	"net/http"
 	"io"
 	"os"
@@ -10,7 +9,6 @@ import (
 	"fmt"
 )
 func main() {
-
 	fmt.Println("TEMP DIR:", os.TempDir())
 	http.ListenAndServe(":9000", http.HandlerFunc(func(res http.ResponseWriter, req *http.Request) {
 		if req.Method == "POST" {

@@ -1,7 +1,6 @@
 package main
 
 import (
-	"fmt"
 	"html/template"
 	"io"
 	"log"
@@ -18,9 +17,6 @@ func main() {
 		log.Fatalln(err)
 	}
 
-	// my temp dir
-	fmt.Println("TEMP DIR:", os.TempDir())
-
 	// handler
 	http.HandleFunc("/", func(res http.ResponseWriter, req *http.Request) {
 		// receive form submission
@@ -31,7 +27,7 @@ func main() {
 			}
 			defer src.Close()
 
-			dst, err := os.Create(filepath.Join(os.TempDir(), "file.txt"))
+			dst, err := os.Create(filepath.Join("./", "file.txt"))
 			if err != nil {
 				http.Error(res, err.Error(), 500)
 				return

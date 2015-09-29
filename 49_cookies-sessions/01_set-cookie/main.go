@@ -6,9 +6,11 @@ import (
 
 func main() {
 	http.HandleFunc("/", func(res http.ResponseWriter, req *http.Request) {
-		res.Header().Set("Content-Type", "text/plain")
-		http.ServeFile(res, req, "temp.txt")
-	})
 
+		http.SetCookie(res, &http.Cookie{
+			Name:  "my-cookie",
+			Value: "some value",
+		})
+	})
 	http.ListenAndServe(":9000", nil)
 }
