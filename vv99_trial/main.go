@@ -2,13 +2,19 @@ package main
 
 import "fmt"
 
-type person struct {
-	naem string
-	aeg int
+func main () {
+	str := greet()
+	fmt.Println(str)
 }
 
-func main() {
-	p1 := new(person)
-	p1.naem = "kai"
-	fmt.Println(p1)
+func greet() string {
+	fmt.Print("What is your name: ")
+	var name string
+	fmt.Scanln(&name)
+
+	fmt.Print("How old are you? ")
+	var age int
+	fmt.Scanln(&age)
+
+	return fmt.Sprint(name, " is ", age, " years old")
 }
