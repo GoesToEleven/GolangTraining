@@ -1,0 +1,22 @@
+package main
+
+
+import (
+	"net/http"
+	"io"
+	"os"
+	"path/filepath"
+)
+func main() {
+	http.ListenAndServe(":9000", http.HandlerFunc(func(res http.ResponseWriter, req *http.Request) {
+		if req.Method == "POST" {
+			file, _, err := req.FormFile("my-file")
+			if err != nil {
+				http.Error(res, err.Error(), 500)
+				return
+			}
+			defer file.Close()
+
+			src := io.LimitReader(file, 400)
+
+			dst, err := os
