@@ -1,8 +1,0 @@
-https://www.startssl.com/
-signs certs for free
-
-don't give KEY
-only CERT
-KEY is key to kingdom!
-
-

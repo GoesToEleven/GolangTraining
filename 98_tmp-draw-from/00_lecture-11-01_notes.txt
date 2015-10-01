@@ -1,4 +1,0 @@
-HMAC
-hash based message authentication code
-http://godoc.org/crypto/hmac
-http://godoc.org/crypto/sha256
