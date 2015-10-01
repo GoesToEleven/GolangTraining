@@ -1,0 +1,25 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+<body>
+{{ if . }}
+<a href="/admin/logout">Log Out</a>
+{{ . }}
+{{ else }}
+{{ . }}
+<p>We are in the else</p>
+{{ end }}
+
+
+<form method="POST" enctype="multipart/form-data">
+    <label for="file">Choose File To Upload</label>
+    <input type="file" id="file" name="file">
+    <br>
+    <input type="submit">
+
+</form>
+</body>
+</html>

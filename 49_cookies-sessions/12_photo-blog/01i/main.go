@@ -43,7 +43,6 @@ func main() {
 }
 
 func index(res http.ResponseWriter, req *http.Request) {
-	session, _ := store.Get(req, "session")
 	tpl.ExecuteTemplate(res, "index.gohtml", Data)
 }
 
