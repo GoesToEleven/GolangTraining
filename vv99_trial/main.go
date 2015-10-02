@@ -1,20 +1,50 @@
 package main
 
-import "fmt"
+import (
+	"html/template"
+	"log"
+	"net/http"
+)
 
-func main () {
-	str := greet()
-	fmt.Println(str)
+var err error
+var tpl *template.Template
+
+type user struct {
+	name     string
+	password string
 }
 
-func greet() string {
-	fmt.Print("What is your name: ")
-	var name string
-	fmt.Scanln(&name)
+var u1 user
 
-	fmt.Print("How old are you? ")
-	var age int
-	fmt.Scanln(&age)
+func main() {
+	tpl, err = tpl.ParseGlob("assets/templates/*.gohtml")
+	if err != nil {
+		log.Fatalln(err)
+	}
 
-	return fmt.Sprint(name, " is ", age, " years old")
+	http.HandleFunc("/", index)
+	http.HandleFunc("/login", login)
+	http.Handle("/favicon.ico", http.NotFoundHandler())
+
+	http.ListenAndServe(":8080", nil)
+}
+
+func index(res http.ResponseWriter, req *http.Request) {
+	tpl.ExecuteTemplate(res, "index.gohtml", u1)
+}
+
+func login(res http.ResponseWriter, req *http.Request) {
+
+	// PROCESS FORM SUBMISSION
+	if req.Method == "POST" {
+		password := req.FormValue("password")
+		username := req.FormValue("userName")
+		u1 = user{name: username, password: password}
+		log.Println(u1)
+		// redirect to main page
+		http.Redirect(res, req, "/", 302)
+	}
+
+	// Execute template
+	tpl.ExecuteTemplate(res, "login.gohtml", nil)
 }
