@@ -22,7 +22,7 @@ func main() {
 			Name: "James Bond",
 			Age:  23,
 		},
-		LicenseToKill: false,
+		LicenseToKill: true,
 	}
 
 	tpl, err := template.ParseFiles("tpl.gohtml")
