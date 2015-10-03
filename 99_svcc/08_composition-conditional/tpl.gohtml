@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Composition</title>
+</head>
+<body>
+
+<h1>{{ .Name }}</h1>
+<h2>{{ .Age }}</h2>
+{{ if .LicenseToKill}}
+<h3>License To Kill</h3>
+{{else}}
+<h3>License To Ill</h3>
+{{end}}
+</body>
+</html>
