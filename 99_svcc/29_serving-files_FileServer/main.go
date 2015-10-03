@@ -15,12 +15,14 @@ func upTown(res http.ResponseWriter, req *http.Request) {
 	}
 	// the image doesn't serve
 	io.WriteString(res, `
-	Dog Name: <strong>`+dogName+`</strong><br>
+	<h1>Dog Name: `+dogName+`</h1><br>
 	<img src="/toby.jpg">
 	`)
 }
 
 func main() {
+	// FileServer returns a handler that serves HTTP requests
+	// with the contents of the file system rooted at root.
 	http.Handle("/", http.FileServer(http.Dir(".")))
 	http.HandleFunc("/dog/", upTown)
 	http.ListenAndServe(":9000", nil)
