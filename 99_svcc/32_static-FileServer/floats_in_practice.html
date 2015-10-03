@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>Floats in Practice</title>
+    <style>
+        header, section, aside, footer {
+            background-color: lightgray;
+            color: #666666;
+
+        }
+
+        .group:before,
+        .group:after {
+            content: "";
+            display: table;
+        }
+
+        .group:after {
+            clear: both;
+        }
+
+        .group {
+            clear: both;
+            *zoom: 1;
+        }
+
+        section {
+           float: left;
+            margin: 0 1.5%;
+            width: 63%;
+        }
+
+        aside {
+            float: right;
+            margin: 0 21.5%;
+            width: 30%;
+        }
+
+    </style>
+</head>
+
+<body>
+    <header>&lt;Header&gt;</header>
+    <div class="group">
+    <section>&lt;Section&gt;</section>
+    <aside>&lt;Section&gt;</aside>
+    </div>
+    <footer>&lt;Footer&gt;</footer>
+</body>
+</html>

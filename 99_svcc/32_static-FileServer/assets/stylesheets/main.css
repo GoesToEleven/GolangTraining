@@ -1,0 +1,600 @@
+/* http://meyerweb.com/eric/tools/css/reset/
+   v2.0 | 20110126
+   License: none (public domain)
+*/
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed,
+figure, figcaption, footer, header, hgroup,
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+    margin: 0;
+    padding: 0;
+    border: 0;
+    font-size: 100%;
+    font: inherit;
+    vertical-align: baseline;
+}
+
+/* HTML5 display-role reset for older browsers */
+article, aside, details, figcaption, figure,
+footer, header, hgroup, menu, nav, section {
+    display: block;
+}
+body {
+    line-height: 1;
+}
+ol, ul {
+    list-style: none;
+}
+blockquote, q {
+    quotes: none;
+}
+blockquote:before, blockquote:after,
+q:before, q:after {
+    content: '';
+    content: none;
+}
+table {
+    border-collapse: collapse;
+    border-spacing: 0;
+}
+
+/*
+=================================================
+Custom Styles
+=================================================
+*/
+
+body {
+    background: #C0953D;
+    color: #888;
+    font: 300 16px/22px "Lato", "Open Sana", "Helvetica Neue", Helvetica, Arial, sans-serif;
+}
+
+/*
+=================================================
+Grid
+=================================================
+*/
+
+*,
+*:before,
+*:after {
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+}
+
+.container {
+    margin: 0 auto;
+    padding-left: 30px;
+    padding-right: 30px;
+    width:960px;
+}
+
+/*
+=================================================
+Typography
+=================================================
+*/
+
+h1, h3, h4, h5, p {
+    margin-bottom: 22px;
+}
+
+h1, h2, h3, h4 {
+    color: #20425D;
+}
+
+h1 {
+    font-size: 36px;
+    line-height: 44px;
+}
+
+h2 {
+    font-size: 24px;
+    line-height: 44px;
+}
+
+h3 {
+    font-size: 21px;
+}
+
+h4 {
+    font-size: 18px;
+}
+
+h5 {
+    color: #575652;
+    font-size: 14px;
+    font-weight: 400;
+    text-transform: uppercase;
+}
+
+strong {
+    font-weight: 400;
+}
+
+cite,
+em {
+    font-style: italic;
+}
+
+/*
+==================================================
+Leads
+==================================================
+*/
+
+.lead {
+    text-align: center;
+}
+
+.lead p {
+    font-size: 21px;
+    line-height: 33px;
+}
+
+
+/*
+==================================================
+Links
+==================================================
+*/
+
+a {
+    color: #20425D;
+    text-decoration: none;
+}
+
+a:hover {
+    color: #a9b2b9;
+}
+
+p a {
+    border-bottom: 1px solid #dfe2e5;
+}
+
+.teaser a:hover h3 {
+    color: #a9b2b9;
+}
+
+.primary-header a,
+.primary-footer a {
+    color: #fff;
+}
+
+.primary-header a:hover,
+.primary-footer a:hover {
+    color:#20425D;
+}
+
+/*
+==================================================
+Buttons
+==================================================
+*/
+
+.btn{
+    border-radius: 5px;
+    color: #fff;
+    cursor: pointer;
+    display: inline-block;
+    font-weight: 400;
+    margin: 0;
+    text-transform: uppercase;
+}
+
+.btn-alt {
+    border: 1px solid #fff;
+    padding: 20px 30px;
+}
+
+.btn-alt:hover {
+    background: #fff;
+    color: #F55837;
+}
+
+.btn-default {
+    border: 0;
+    background: 5D#2042;
+    padding: 11px 30px;
+    font-size: 14px;
+}
+.btn-default:hover {
+    background: #F55837;
+}
+
+a.btn {
+    width: 300px;
+    border-radius: 5px;
+    background-color: lightgray;
+    text-transform: uppercase;
+    color: #20425D;
+    padding: 11px 30px;
+    margin-bottom: 1em;
+}
+
+a.btn:hover {
+    color:#F55837;
+    background-color: lightgray;
+}
+
+/*
+===================================================
+Home
+===================================================
+*/
+
+.hero {
+    color: #fff;
+    line-height: 44px;
+    padding: 22px 80px 66px 80px;
+    text-align: center;
+}
+
+.hero h2 {
+    font-size: 36px;
+}
+.hero p {
+    font-size: 24px;
+    font-weight: 100;
+ }
+
+.teaser img {
+    border-radius: 5px;
+    display: block;
+    margin-bottom: 22px;
+    max-width: 100%;
+}
+
+/*
+===================================================
+Clearfix
+===================================================
+*/
+
+.group:before,
+.group:after {
+    content: "";
+    display: table;
+}
+
+.group:after {
+    clear: both;
+    *zoom: 1;
+}
+
+.group {
+    clear: both;
+    *zoom: 1;
+}
+
+/*
+===================================================
+Rows
+===================================================
+*/
+
+.row,
+.row-alt {
+    min-width: 960px;
+}
+
+.row {
+    background: #fff;
+    padding: 66px 0 44px 0;
+}
+
+.row-alt {
+    background: #cbe2c1;
+    background: -webkit-linear-gradient(to right, #D2D0D1, #f6f1d3);
+    background: -moz-linear-gradient(to right, #D2D0D1, #f6f1d3);
+    background: linear-gradient(to right, #D2D0D1, #f6f1d3);
+    padding: 44px 0 22px 0;
+}
+
+
+/*
+===================================================
+Primary Header
+===================================================
+*/
+
+.logo {
+    border-top: 4px solid #20425D;
+    float:left;
+    font-size: 48px;
+    font-weight: 100;
+    letter-spacing: .5px;
+    line-height: 44px;
+    padding: 40px 0 22px 0;
+    text-transform: uppercase;
+
+}
+
+.tagline {
+    margin: 66px 0 22px 0;
+    text-align: right;
+}
+
+.primary-nav {
+    font-size: 14px;
+    font-weight: 400;
+    letter-spacing: .5px;
+    text-transform: uppercase;
+}
+
+/*
+===================================================
+Primary Footer
+===================================================
+*/
+
+.primary-footer small {
+    float: left;
+    font-weight: 400;
+}
+
+.primary-footer {
+    color: #20425D;
+    font-size: 14px;
+    padding-bottom: 44px;
+    padding-top: 44px;
+}
+
+a.shay {
+    color:darkgrey;
+}
+
+a:hover.shay {
+    color:#20425D;
+}
+
+a.shay_light {
+    color:#ffffff;
+}
+
+
+/*
+===================================================
+Reusable Layout
+===================================================
+*/
+
+.col-1-3 {
+    width: 33.33%;
+}
+
+.col-2-3 {
+    width: 66.66%;
+}
+
+.col-1-3,
+.col-2-3 {
+    display: inline-block;
+    vertical-align: top;
+}
+
+.grid,
+.col-2-3,
+.col-1-3 {
+    padding-left: 15px;
+    padding-right: 15px;
+}
+
+.container,
+.grid {
+    margin: 0 auto;
+    width: 960px;
+}
+
+.container {
+    padding-left: 30px;
+    padding-right: 30px;
+}
+
+/*
+===================================================
+Navigation
+===================================================
+*/
+
+.nav {
+    text-align: right;
+}
+
+.nav li {
+    display: inline-block;
+    margin: 0 10px;
+    vertical-align: top;
+}
+
+.nav li:last-child {
+    margin-right: 0;
+}
+
+
+/*
+===================================================
+Speakers
+===================================================
+*/
+
+.speaker-info {
+    border: 1px solid #dfe2e5;
+    border-radius: 5px;
+    margin-top: 88px;
+    padding-bottom: 22px;
+    text-align: center;
+}
+
+.speaker {
+    margin-bottom: 44px;
+}
+
+.speaker-info img {
+    border-radius: 50%;
+    height: 130px;
+    margin: -66px 0 22px 0;
+    vertical-align: top;
+}
+
+/*
+  ========================================
+  Schedule
+  ========================================
+*/
+
+table {
+    margin-bottom: 44px;
+    width: 100%;
+}
+table:last-child {
+    margin-bottom: 0;
+}
+
+th,
+td {
+    padding-bottom: 22px;
+    vertical-align: top;
+}
+th {
+    padding-right: 45px;
+    text-align: right;
+    width: 20%;
+}
+td {
+    width: 40%;
+}
+
+thead {
+    line-height: 44px;
+}
+thead th {
+    color: #20425D;
+    font-size: 24px;
+}
+tbody th {
+    color: #a9b2b9;
+    font-size: 14px;
+    font-weight: 400;
+    padding-top: 22px;
+    text-transform: uppercase;
+}
+
+tbody td {
+    border-top: 1px solid #dfe2e5;
+    padding-top: 21px;
+}
+tbody td:first-of-type {
+    padding-right: 15px;
+}
+tbody td:last-of-type {
+    padding-left: 15px;
+}
+tbody td:only-of-type {
+    padding-left: 0;
+    padding-right: 0;
+}
+
+table a {
+    color: #888;
+}
+table h4 {
+    margin-bottom: 0;
+}
+
+.schedule-offset {
+    color: #a9b2b9;
+}
+
+/*
+  ========================================
+  Venue
+  ========================================
+*/
+
+.venue-theatre {
+    margin-bottom: 66px;
+}
+.venue-hotel {
+    margin-bottom: 22px;
+}
+
+.venue-map {
+    height: 264px;
+}
+
+/*
+  ========================================
+  Register
+  ========================================
+*/
+
+.why-attend {
+    list-style: square;
+    margin: 0 0 22px 30px;
+}
+
+form {
+    margin-bottom: 22px;
+}
+input,
+select,
+textarea {
+    font: 300 16px/22px "Lato", "Open Sans", "Helvetica Neue", Helvetica, Arial, sans-serif;
+}
+
+.register-group label {
+    color: #20425D;
+    cursor: pointer;
+    font-weight: 400;
+}
+.register-group input,
+.register-group select,
+.register-group textarea {
+    border: 1px solid #c6c9cc;
+    border-radius: 5px;
+    color: #888;
+    display: block;
+    margin: 5px 0 27px 0;
+    padding: 5px 8px;
+}
+.register-group input,
+.register-group textarea {
+    width: 100%;
+}
+.register-group select {
+    height: 34px;
+    width: 60px;
+}
+.register-group textarea {
+    height: 78px;
+}
+
+aside ul {
+    margin-top: 2.5em;
+}
+
+.register {
+    width: 500px;
+    margin: auto;
+}
+
+.flex {
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: space-around;
+}
+
+
+
