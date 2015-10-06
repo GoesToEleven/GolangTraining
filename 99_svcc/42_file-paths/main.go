@@ -7,8 +7,7 @@ import (
 
 func main() {
 	wd, _ := os.Getwd()
-	imgDir := "assets/imgs"
 	filename := "01.jpg"
-	path := filepath.Join(wd, imgDir, filename)
+	path := filepath.Join(wd, "assets", "imgs", filename)
 	fmt.Println(path)
 }

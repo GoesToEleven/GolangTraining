@@ -9,12 +9,8 @@ import (
 	"strings"
 )
 
-type Model struct {
-	Photos []string
-	loggedin bool
-}
+var everyonesPoohRaceConditionSometimes []string
 
-var state Model
 var tpl *template.Template
 
 func init() {
@@ -38,7 +34,14 @@ func main() {
 }
 
 func home(res http.ResponseWriter, req *http.Request) {
-	tpl.ExecuteTemplate(res, "index.gohtml", state)
+	passin := struct{
+		photos []string
+		loggedin bool
+	}{
+		photos: everyonesPoohRaceConditionSometimes,
+		loggedin: looked-up-from cookie,
+	}
+	tpl.ExecuteTemplate(res, "index.gohtml", passin)
 }
 
 func admin(res http.ResponseWriter, req *http.Request) {

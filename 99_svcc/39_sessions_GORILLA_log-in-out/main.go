@@ -4,7 +4,6 @@ import (
 	"github.com/gorilla/sessions"
 	"io"
 	"net/http"
-	"fmt"
 )
 
 var store = sessions.NewCookieStore([]byte("secret-password"))
@@ -29,7 +28,8 @@ func authenticate(res http.ResponseWriter, req *http.Request) {
 	var html string
 
 	// not logged in
-	if session.Values["loggedin"] == "false" {
+	if session.Values["loggedin"] == "false" ||
+	session.Values["loggedin"] == nil {
 		html = `
 			<!DOCTYPE html>
 			<html lang="en">

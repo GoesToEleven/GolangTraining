@@ -25,21 +25,17 @@ func authenticate(res http.ResponseWriter, req *http.Request) {
 		}
 	}
 
-
 	// add data
-	if req.Method == "POST" &&
-	req.FormValue("data") != "" {
+	src, hdr, err := req.FormFile("data")
+	if req.Method == "POST" && err == nil {
 		fmt.Println("UPLOAD")
-		src, hdr, err := req.FormFile("data")
-		if err != nil {
-			http.Error(res, err.Error(), 500)
-			return
-		}
 		defer src.Close()
 		// create a new file
 		wd, _ := os.Getwd()
-		imgDir := "assets/imgs/"
-		path := filepath.Join(wd, imgDir, hdr.Filename)
+		// instead of hdr.Filename, for security and to prevent users overwriting
+		// each other's files, consider hashing the file contents
+		// and using that hash as the name
+		path := filepath.Join(wd, "assets", "imgs", hdr.Filename)
 		dst, err := os.Create(path)
 		fmt.Println(dst)
 		if err != nil {

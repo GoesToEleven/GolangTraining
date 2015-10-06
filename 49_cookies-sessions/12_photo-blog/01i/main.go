@@ -62,6 +62,7 @@ func login(res http.ResponseWriter, req *http.Request) {
 		session.Save(req, res)
 		// redirect to main page
 		http.Redirect(res, req, "/", 302)
+		return
 		}
 
 	// Execute template
@@ -81,6 +82,7 @@ func upload(res http.ResponseWriter, req *http.Request) {
 	if session.Values["logged_in"] == false ||
 		session.Values["logged_in"] == nil {
 		http.Redirect(res, req, "https://localhost:8080/login", 302)
+		return
 	}
 
 	if req.Method == "POST" {
@@ -105,8 +107,8 @@ func upload(res http.ResponseWriter, req *http.Request) {
 		io.Copy(dst, src)
 		Data = getPicturePaths()
 		http.Redirect(res, req, "/", 302)
+		return
 	}
-
 	// Execute template
 	tpl.ExecuteTemplate(res, "upload-file.gohtml", nil)
 }
