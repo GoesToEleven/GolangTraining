@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+<h1><a href="https://localhost:8080/login">LOG IN</a></h1>
+<h1><a href="https://localhost:8080/upload">UPLOAD (only when logged in)</a></h1>
+<h1><a href="https://localhost:8080/logout">LOG OUT</a></h1>
+    {{range .Pictures}}
+        <img src="{{.}}">
+    {{else}}
+        <h1>NO PICTURES</h1>
+    {{end}}
+</body>
+</html>
