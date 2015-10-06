@@ -19,4 +19,6 @@ func main() {
 		panic(err)
 	}
 	fmt.Println(obj)
+	fmt.Println(obj["name"])
+	fmt.Printf("%T\n",obj["name"])
 }

@@ -4,6 +4,7 @@ import (
 	"github.com/gorilla/sessions"
 	"io"
 	"net/http"
+	"fmt"
 )
 
 var store = sessions.NewCookieStore([]byte("secret-password"))
@@ -19,7 +20,7 @@ func setSession(res http.ResponseWriter, req *http.Request) {
 <html>
   <body>
     <form method="POST">
-    <p>`+session.Values["email"].(string)+`</p>
+    <p>`+fmt.Sprint(session.Values["email"])+`</p>
     <p>Enter Your Email:</p>
       <input type="email" name="email">
       <input type="submit">
