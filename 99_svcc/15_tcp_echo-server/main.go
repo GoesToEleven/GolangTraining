@@ -20,6 +20,7 @@ func handle(conn net.Conn) {
 		// as a newly allocated string holding its bytes.
 		ln := scanner.Text()
 		fmt.Println(ln)
+		fmt.Printf("TYPE: %T\n",ln)
 		ln = fmt.Sprint("FROM SERVER: " + ln)
 		fmt.Fprintln(conn, ln)
 	}

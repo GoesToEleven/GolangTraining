@@ -26,7 +26,7 @@ func handle(conn net.Conn) {
 		// empty list if s contains only white space.
 		fs := strings.Fields(ln)
 		// skip blank lines
-		if len(fs) < 1 {
+		if len(fs) == 0 {
 			continue
 		}
 		switch fs[0] {

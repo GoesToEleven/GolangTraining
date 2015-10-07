@@ -33,9 +33,16 @@ func main() {
 			Name: "James Bond",
 			Age:  23,
 		},
-		LicenseToKill: false,
+		LicenseToKill: true,
 	}
-
 	p1.Greeting()
 	p2.Greeting()
 }
+
+/*
+	p1.Greeting()
+	p2.Person.Greeting()
+	fmt.Println(p2.Name)
+	fmt.Println(p2.Person.Name)
+
+*/

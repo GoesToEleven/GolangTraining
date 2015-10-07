@@ -19,10 +19,10 @@ type DoubleZero struct {
 func main() {
 	p1 := DoubleZero{
 		Person: Person{
-			Name: "James Bond",
-			Age:  23,
+			Name: "Miss MoneyPenny",
+			Age:  19,
 		},
-		LicenseToKill: true,
+		LicenseToKill: false,
 	}
 
 	tpl, err := template.ParseFiles("tpl.gohtml")
