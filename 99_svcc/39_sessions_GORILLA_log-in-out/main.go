@@ -4,6 +4,7 @@ import (
 	"github.com/gorilla/sessions"
 	"io"
 	"net/http"
+	"github.com/gorilla/context"
 )
 
 var store = sessions.NewCookieStore([]byte("secret-password"))
@@ -69,5 +70,5 @@ func authenticate(res http.ResponseWriter, req *http.Request) {
 
 func main() {
 	http.HandleFunc("/", authenticate)
-	http.ListenAndServe(":9000", nil)
+	http.ListenAndServe(":8080", context.ClearHandler(http.DefaultServeMux))
 }

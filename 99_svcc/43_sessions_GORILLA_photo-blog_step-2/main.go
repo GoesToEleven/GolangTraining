@@ -11,6 +11,7 @@ import (
 	"net/http"
 	"os"
 	"path/filepath"
+	"github.com/gorilla/context"
 )
 
 var tpl *template.Template
@@ -26,7 +27,7 @@ func main() {
 	http.HandleFunc("/logout", logout)
 	http.Handle("/assets/imgs/", http.StripPrefix("/assets/imgs", http.FileServer(http.Dir("./assets/imgs"))))
 	http.Handle("/favicon.ico", http.NotFoundHandler())
-	http.ListenAndServe(":8080", nil)
+	http.ListenAndServe(":8080", context.ClearHandler(http.DefaultServeMux))
 }
 
 func index(res http.ResponseWriter, req *http.Request) {
