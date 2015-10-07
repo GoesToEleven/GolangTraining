@@ -76,6 +76,7 @@ func uploadPhoto(src multipart.File, hdr *multipart.FileHeader, session *session
 	path := filepath.Join(wd, "assets", "imgs", fName)
 	dst, _ := os.Create(path)
 	defer dst.Close()
+	src.Seek(0, 0)
 	io.Copy(dst, src)
 	addPhoto(fName, session)
 }

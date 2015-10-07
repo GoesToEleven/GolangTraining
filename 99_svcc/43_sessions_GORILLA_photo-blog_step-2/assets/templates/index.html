@@ -6,13 +6,16 @@
 </head>
 <body>
 <h1><a href="http://localhost:8080/logout">LOG OUT</a></h1>
+<p><img src="/assets/imgs/01.jpg"></p>
 <h1>ADD PHOTO</h1>
 <form method="POST" action="http://localhost:8080/" enctype="multipart/form-data">
     <input type="file" name="data" id="data">
     <input type="submit">
 </form>
+<p>
     {{range .}}
-    <p><img src="/assets/imgs/{{.}}"></p>
+    <img src="/assets/imgs/{{.}}">
     {{end}}
+</p>
 </body>
 </html>
