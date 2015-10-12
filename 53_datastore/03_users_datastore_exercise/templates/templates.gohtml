@@ -1,0 +1,69 @@
+{{define "edit-form"}}<!DOCTYPE html>
+<html>
+  <head>
+    <title>User Profile</title>
+    <style>
+      html, body {
+        padding: 0;
+        margin: 0;
+        font-size: 18px;
+      }
+      body {
+        background-color: #EAEAEA;
+      }
+      * {
+        box-sizing: border-box;
+      }
+      form {
+        border-radius: 8px;
+        padding: 16px;
+        border: 2px solid #AAA;
+        background: white;
+        width: 400px;
+        margin: 32px auto;
+
+      }
+    </style>
+  </head>
+  <body>
+    <form method="POST">
+      <table>
+        <tr>
+          <td><label for="email">Email</label></td>
+          <td><input type="email"
+                     readonly="readonly"
+                     id="email"
+                     name="email"
+                     value="{{.Email}}"></td>
+        </tr>
+        <tr>
+          <td><label for="firstname">First Name</label></td>
+          <td><input type="text"
+                     name="firstname"
+                     id="firstname"
+                     value="{{.FirstName}}"></td>
+        </tr>
+        <tr>
+          <td><label for="lastname">Last Name</label></td>
+          <td><input type="text"
+                     name="lastname"
+                     id="lastname"
+                     value="{{.LastName}}"></td>
+        </tr>
+        <tr>
+          <td><label for="age">Age</label></td>
+          <td><input type="text"
+                     name="age"
+                     id="age"
+                     value="{{.Age}}"></td>
+        </tr>
+        <tr>
+          <td colspan="2">
+            <input type="submit" value="Update">
+          </td>
+        </tr>
+      </table>
+    </form>
+  </body>
+</html>
+{{end}}
