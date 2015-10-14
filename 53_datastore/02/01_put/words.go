@@ -25,12 +25,12 @@ func handleIndex(res http.ResponseWriter, req *http.Request) {
 		ctx := appengine.NewContext(req)
 		key := datastore.NewIncompleteKey(ctx, "Word", nil)
 
-		entity := &Word{
+		entity := Word{
 			Term:       term,
 			Definition: definition,
 		}
 
-		_, err := datastore.Put(ctx, key, entity)
+		_, err := datastore.Put(ctx, key, &entity)
 		if err != nil {
 			http.Error(res, err.Error(), 500)
 			return

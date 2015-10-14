@@ -94,12 +94,12 @@ func saveWord(res http.ResponseWriter, req *http.Request) {
 	definition := req.FormValue("definition")
 	ctx := appengine.NewContext(req)
 	key := datastore.NewKey(ctx, "Word", term, 0, nil)
-	entity := &Word{
+	entity := Word{
 		Term:       term,
 		Definition: definition,
 	}
 
-	_, err := datastore.Put(ctx, key, entity)
+	_, err := datastore.Put(ctx, key, &entity)
 	if err != nil {
 		http.Error(res, err.Error(), 500)
 		return

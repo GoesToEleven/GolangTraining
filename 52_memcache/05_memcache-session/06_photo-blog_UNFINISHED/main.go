@@ -51,10 +51,14 @@ func index(res http.ResponseWriter, req *http.Request) {
 		return
 	}
 	// upload photo
-	src, hdr, err := req.FormFile("data")
-	if req.Method == "POST" && err == nil {
-		uploadPhoto(src, hdr, m)
+	if req.Method == "POST" {
+		src, hdr, err := req.FormFile("data")
+		if err == nil {
+			m = uploadPhoto(m, src, hdr)
+		}
 	}
+
+
 	// save session
 	session.Save(req, res)
 	// get photos
@@ -102,7 +106,6 @@ func setMemcache(res http.ResponseWriter, req *http.Request) {
 		"photos": []string{},
 	}
 	bs, _ := json.Marshal(m)
-
 	item := &memcache.Item{
 		Key:   cookie.Value,
 		Value: bs,
@@ -110,7 +113,7 @@ func setMemcache(res http.ResponseWriter, req *http.Request) {
 	memcache.Set(ctx, item)
 }
 
-func uploadPhoto(src multipart.File, hdr *multipart.FileHeader, m map[string]string) {
+func uploadPhoto(m map[string]string, src multipart.File, hdr *multipart.FileHeader) map[string]string {
 	defer src.Close()
 	fName := getSha(src) + ".jpg"
 	wd, _ := os.Getwd()
@@ -119,7 +122,8 @@ func uploadPhoto(src multipart.File, hdr *multipart.FileHeader, m map[string]str
 	defer dst.Close()
 	src.Seek(0, 0)
 	io.Copy(dst, src)
-	addPhoto(fName, m)
+	addPhoto(m, fName)
+	return m
 }
 
 func getSha(src multipart.File) string {
@@ -128,11 +132,11 @@ func getSha(src multipart.File) string {
 	return fmt.Sprintf("%x", h.Sum(nil))
 }
 
-func addPhoto(fName string, m map[string]string) {
-	data := getPhotos(session)
+func addPhoto(m map[string]string, fName string) {
+	data := getPhotos(m)
 	data = append(data, fName)
 	bs, _ := json.Marshal(data)
-	session.Values["data"] = string(bs)
+	m["data"] = string(bs)
 }
 
 func getPhotos(m map[string]string) []string {

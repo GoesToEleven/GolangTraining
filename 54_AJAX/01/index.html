@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+
+<span id="ajaxButton" style="cursor: pointer; text-decoration: underline">
+  Make a request
+</span>
+
+<script>
+    document.querySelector('#ajaxButton').onclick = function () {
+        makeRequest('test.html');
+    };
+
+    var httpRequest = new XMLHttpRequest();
+
+    function makeRequest(url) {
+        // call alertContents function after we receive server response
+        httpRequest.onreadystatechange = alertContents;
+        // make the request
+        httpRequest.open('GET', url);
+        httpRequest.send();
+    }
+
+    function alertContents() {
+        if ((httpRequest.readyState === 4) && (httpRequest.status === 200)) {
+            //  returns the server response as a string of text
+            alert(httpRequest.responseText);
+        } else {
+            alert('There was a problem with the request.');
+        }
+    }
+</script>
+</body>
+</html>

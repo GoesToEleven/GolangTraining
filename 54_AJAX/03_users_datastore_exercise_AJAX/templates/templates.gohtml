@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>User Profile</title>
+
+    <style>
+        html, body {
+            padding: 0;
+            margin: 0;
+            font-size: 18px;
+        }
+
+        body {
+            background-color: #EAEAEA;
+        }
+
+        * {
+            box-sizing: border-box;
+        }
+
+        form {
+            border-radius: 8px;
+            padding: 16px;
+            border: 2px solid #AAA;
+            background: white;
+            width: 400px;
+            margin: 32px auto;
+
+        }
+    </style>
+</head>
+<body>
+<form method="POST" id="profile-form">
+    <table>
+        <tr>
+            <td><label for="email">Email</label></td>
+            <td><input type="email"
+                       readonly="readonly"
+                       id="email"
+                       name="email"></td>
+        </tr>
+        <tr>
+            <td><label for="firstname">First Name</label></td>
+            <td><input type="text"
+                       name="firstname"
+                       id="firstname"></td>
+        </tr>
+        <tr>
+            <td><label for="lastname">Last Name</label></td>
+            <td><input type="text"
+                       name="lastname"
+                       id="lastname"></td>
+        </tr>
+        <tr>
+            <td><label for="age">Age</label></td>
+            <td><input type="text"
+                       name="age"
+                       id="age"></td>
+        </tr>
+        <tr>
+            <td colspan="2">
+                <input type="submit" value="Update">
+            </td>
+        </tr>
+    </table>
+</form>
+
+<script>
+
+    function getProfile() {
+        var xhr = new XMLHttpRequest();
+        xhr.open("GET", "/api/profile");
+        xhr.send(null);
+        xhr.onreadystatechange = function () {
+            if (xhr.readyState === 4) {
+                var result = JSON.parse(xhr.responseText);
+                document.querySelector("#email").value = result.Email;
+                document.querySelector("#lastname").value = result.LastName;
+                document.querySelector("#firstname").value = result.FirstName;
+                document.querySelector("#age").value = result.Age;
+            }
+        };
+    }
+
+
+    var profileForm = document.querySelector("#profile-form");
+    profileForm.onsubmit = function (evt) {
+        evt.preventDefault();
+
+        var lastName = document.querySelector("#lastname").value;
+        var firstName = document.querySelector("#firstname").value;
+        var email = document.querySelector("#email").value;
+        var age = parseInt(document.querySelector("#age").value);
+
+        var xhr = new XMLHttpRequest();
+        xhr.open("POST", "/api/profile");
+        xhr.send(JSON.stringify({
+            LastName: lastName,
+            FirstName: firstName,
+            Email: email,
+            Age: age
+        }));
+
+        getProfile();
+    };
+
+
+    getProfile();
+
+</script>
+</body>
+</html>
