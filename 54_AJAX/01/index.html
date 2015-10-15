@@ -18,19 +18,21 @@
     var httpRequest = new XMLHttpRequest();
 
     function makeRequest(url) {
-        // call alertContents function after we receive server response
-        httpRequest.onreadystatechange = alertContents;
         // make the request
         httpRequest.open('GET', url);
         httpRequest.send();
+        // listen for the response
+        // call alertContents function after we receive server response
+        httpRequest.onreadystatechange = alertContents;
     }
-
+    
     function alertContents() {
-        if ((httpRequest.readyState === 4) && (httpRequest.status === 200)) {
-            //  returns the server response as a string of text
-            alert(httpRequest.responseText);
-        } else {
-            alert('There was a problem with the request.');
+        if (httpRequest.readyState === 4) {
+            if (httpRequest.status === 200) {
+                alert(httpRequest.responseText);
+            } else {
+                alert('There was a problem with the request.');
+            }
         }
     }
 </script>

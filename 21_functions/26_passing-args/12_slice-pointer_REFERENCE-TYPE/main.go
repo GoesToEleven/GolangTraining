@@ -10,7 +10,8 @@ func main() {
 }
 
 func changeMe(x []string) {
-	x = append(x, "Todd")
-	x = append(x, "Rio")
+	x[0] = "Todd"
+	x[1] = "Rio"
 	fmt.Println(x)
 }
+

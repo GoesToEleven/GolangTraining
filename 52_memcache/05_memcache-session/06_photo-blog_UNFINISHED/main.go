@@ -4,22 +4,27 @@ import (
 	"crypto/sha1"
 	"encoding/json"
 	"fmt"
+	"github.com/nu7hatch/gouuid"
+	"google.golang.org/appengine"
+	"google.golang.org/appengine/memcache"
 	"html/template"
 	"io"
 	"mime/multipart"
 	"net/http"
 	"os"
 	"path/filepath"
-	"github.com/nu7hatch/gouuid"
-	"google.golang.org/appengine"
-	"google.golang.org/appengine/memcache"
 )
+
+type Data struct {
+	email string
+	loggedin string
+	pictures []string
+}
 
 var tpl *template.Template
 
 func init() {
 	tpl, _ = template.ParseGlob("assets/templates/*.html")
-
 	mux := http.DefaultServeMux
 	mux.HandleFunc("/", index)
 	mux.HandleFunc("/login", login)
@@ -43,10 +48,10 @@ func index(res http.ResponseWriter, req *http.Request) {
 		return
 	}
 	// unmarshal
-	var m map[string]string
+	var m Data{}
 	json.Unmarshal(item.Value, &m)
 	// authenticate
-	if m["loggedin"] == "false" || m["loggedin"] == nil {
+	if m["loggedin"] == "false" || m["loggedin"] == "" {
 		http.Redirect(res, req, "/login", 302)
 		return
 	}
@@ -57,12 +62,12 @@ func index(res http.ResponseWriter, req *http.Request) {
 			m = uploadPhoto(m, src, hdr)
 		}
 	}
-
-
 	// save session
-	session.Save(req, res)
+	bs, _ := json.Marshal(m)
+	item.Value = bs
+	memcache.Set(ctx, item)
 	// get photos
-	data := getPhotos(session)
+	data := getPhotos(m)
 	// execute template
 	tpl.ExecuteTemplate(res, "index.html", data)
 }
@@ -76,9 +81,13 @@ func createCookie() *http.Cookie {
 }
 
 func logout(res http.ResponseWriter, req *http.Request) {
-	session, _ := store.Get(req, "session")
-	session.Values["loggedin"] = "false"
-	session.Save(req, res)
+	// get cookie UUID, or set
+	cookie, _ := req.Cookie("sessionid")
+	if cookie == nil {
+		http.Redirect(res, req, "/login", 302)
+	}
+	cookie.MaxAge = -1
+	http.SetCookie(res, cookie)
 	http.Redirect(res, req, "/login", 302)
 }
 
@@ -103,7 +112,7 @@ func setMemcache(res http.ResponseWriter, req *http.Request) {
 	m := map[string]string{
 		"username": req.FormValue("userName"),
 		"loggedin": "true",
-		"photos": []string{},
+		"photos":   []string{},
 	}
 	bs, _ := json.Marshal(m)
 	item := &memcache.Item{
@@ -135,15 +144,19 @@ func getSha(src multipart.File) string {
 func addPhoto(m map[string]string, fName string) {
 	data := getPhotos(m)
 	data = append(data, fName)
+	fmt.Println("addPhoto data: ", data) // DEBUGGING
 	bs, _ := json.Marshal(data)
+	fmt.Println("addPhoto bs: ", bs) // DEBUGGING
 	m["data"] = string(bs)
 }
 
 func getPhotos(m map[string]string) []string {
 	var data []string
 	jsonData := m["data"]
+	fmt.Println("getPhotos jsonData: ", jsonData) // DEBUGGING
 	if jsonData != nil {
 		json.Unmarshal([]byte(jsonData.(string)), &data)
 	}
+	fmt.Println("getPhotos data: ", data) // DEBUGGING
 	return data
 }

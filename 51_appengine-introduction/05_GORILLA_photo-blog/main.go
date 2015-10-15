@@ -19,7 +19,6 @@ var store = sessions.NewCookieStore([]byte("secret-password"))
 
 func init() {
 	tpl, _ = template.ParseGlob("assets/templates/*.html")
-
 	mux := http.DefaultServeMux
 	mux.HandleFunc("/", index)
 	mux.HandleFunc("/login", login)
