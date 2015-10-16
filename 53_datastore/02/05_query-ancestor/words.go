@@ -25,7 +25,6 @@ type Ate struct {
 }
 
 func handleAnimals(res http.ResponseWriter, req *http.Request) {
-	log.Println("--------- WE ARE IN HANDLEANIMALS ---------")
 	if req.URL.Path != "/" {
 		term := strings.Split(req.URL.Path, "/")[1]
 		showAnimal(res, req, term)
@@ -141,7 +140,6 @@ func saveAnimal(res http.ResponseWriter, req *http.Request) {
 
 
 func ateProcess(res http.ResponseWriter, req *http.Request) {
-	log.Println("--------- WE ARE IN ATEPROCESS ---------")
 	fooditem := req.FormValue("fooditem")
 	eater := req.FormValue("eater")
 	ctx := appengine.NewContext(req)
@@ -158,6 +156,5 @@ func ateProcess(res http.ResponseWriter, req *http.Request) {
 		http.Error(res, err.Error(), 500)
 		return
 	}
-	log.Println("--------- WE ARE IN ATEPROCESS REDIRECTING ---------")
 	http.Redirect(res, req, "/", 302)
 }

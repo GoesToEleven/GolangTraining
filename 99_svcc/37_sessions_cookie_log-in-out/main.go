@@ -58,9 +58,9 @@ func authenticate(res http.ResponseWriter, req *http.Request) {
 			<h1>LOG IN</h1>
 			<form method="post" action="http://localhost:9000/">
 				<h3>User name</h3>
-				<input type="text" name="userName" id="userName">
+				<input type="text" name="userName">
 				<h3>Password</h3>
-				<input type="text" name="password" id="password">
+				<input type="text" name="password">
 				<br>
 				<input type="submit">
 				<input type="submit" name="logout" value="logout">
