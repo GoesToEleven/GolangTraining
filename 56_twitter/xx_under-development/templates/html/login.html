@@ -1,0 +1,14 @@
+{{ template "header" . }}
+<main>
+    <section>
+        <form method="POST">
+            <label for="user-name">User Name: </label>
+            <input type="text" id="user-name" name="username" value="{{.Profile.Username}}">
+            <input type="submit" value="submit" name="submit">
+        </form>
+        {{ if .Error }}
+        <div class="error">{{.Error}}</div>
+        {{ end }}
+    </section>
+</main>
+{{ template "footer" . }}

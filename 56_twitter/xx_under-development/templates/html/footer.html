@@ -1,0 +1,13 @@
+{{ define "footer" }}
+<div id="openModal" class="modalDialog">
+    <div>	<a href="#close" title="Close" class="modal-close">X</a>
+        <form method="post" id="modal-form">
+            <textarea name="tweet" id="modal-tweet" rows="4" maxlength="140"></textarea>
+            <a href="#"><p id="modal-submit">Tweet</p></a>
+            <!--<a href="/tweet"><p id="modal-submit">Tweet</p></a>-->
+        </form>
+    </div>
+</div>
+<script src="/public/js/make-post.js"></script>
+</body>
+</html>{{ end }}
