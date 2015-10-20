@@ -26,20 +26,19 @@ import (
 	"log"
 )
 
+// tpl holds all of our templates.
 var tpl *template.Template
-var err error
 
-// Main is the entry point for our web app. Main parses our templates.
-// Main handles our routing and defines our end-points. Doc comments work
+// main is the entry point for our web app. main parses our templates.
+// main handles our routing and defines our end-points. Doc comments work
 // best as complete sentences, which allow a wide variety of automated
 // presentations. The first sentence should be a one-sentence summary
 // that starts with the name being declared.
 func main() {
-	tpl, err = template.ParseGlob("templates/html/*.html")
-	if err != nil {
-		log.Fatalln(err.Error())
-		return
-	}
+	GodocExperiment()
+	godocUnexported()
+
+	tpl = template.Must(template.ParseGlob("templates/html/*.html"))
 	http.HandleFunc("/", home)
 	http.Handle("/favicon.ico", http.NotFoundHandler())
 	http.Handle("/public/", http.StripPrefix("/public", http.FileServer(http.Dir("public/"))))
@@ -53,4 +52,16 @@ func home(res http.ResponseWriter, req *http.Request) {
 		return
 	}
 	tpl.ExecuteTemplate(res, "home.html", nil)
+}
+
+// GodocExperiment tests whether or not exported functions appear in
+// documentation when godoc is run.
+func GodocExperiment() {
+	log.Println("This is a godoc EXPORTED experiment")
+}
+
+// godocUnexported tests whether or not exported functions appear in
+// documentation when godoc is run.
+func godocUnexported() {
+	log.Println("This is a godoc UNEXPORTED experiment")
 }

@@ -1,0 +1,11 @@
+{{template "header" . }}
+
+<main>
+    {{ range .Tweets }}
+    <section>
+        <i class="fa fa-user fa-2x"> @{{ .Username}}</i>
+        <p id="post">{{ .Message }}</p>
+    </section>
+    {{ end }}
+</main>
+{{template "footer" . }}

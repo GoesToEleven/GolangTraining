@@ -11,6 +11,12 @@ import (
 	"google.golang.org/appengine/user"
 )
 
+type ToDo struct {
+	ID    int64 `datastore:"-"`
+	Email string
+	Text  string
+}
+
 func init() {
 	http.HandleFunc("/", handleIndex)
 	http.HandleFunc("/todo", handleTodos)
@@ -22,14 +28,7 @@ func handleIndex(res http.ResponseWriter, req *http.Request) {
 		http.NotFound(res, req)
 		return
 	}
-
 	http.ServeFile(res, req, "assets/templates/index.html")
-}
-
-type ToDo struct {
-	ID    int64 `datastore:"-"`
-	Email string
-	Text  string
 }
 
 func handleTodos(res http.ResponseWriter, req *http.Request) {
@@ -61,7 +60,7 @@ func handleTodos(res http.ResponseWriter, req *http.Request) {
 			return
 		}
 	case "POST":
-		// get todo from user
+		// the user is posting a new item
 		var todo ToDo
 		err := json.NewDecoder(req.Body).Decode(&todo)
 		if err != nil {
@@ -108,7 +107,6 @@ func handleTodos(res http.ResponseWriter, req *http.Request) {
 			log.Errorf(ctx, "error deleting todo: %v", err)
 			return
 		}
-
 	default:
 		http.Error(res, "Method Not Allowed", 405)
 	}

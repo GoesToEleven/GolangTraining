@@ -1,0 +1,14 @@
+{{template "header"}}
+<link rel="stylesheet" href="public/css/signup.css">
+{{template "header2"}}
+    <form method="POST">
+        <i class="fa fa-user fa-5x"></i>
+        <input id="email" name="user" type="email" placeholder="Enter your email">
+        <input id="name" name="name" placeholder="Enter your full name">
+        <input id="password" name="password" type="password" placeholder="Create your password">
+        <button>Create Account</button>
+    </form>
+<!-- TODO add javascript event listener to validate form -->
+<!-- TODO AJAX to check if username is taken -->
+<!-- TODO email is valid -->
+{{template "footer"}}

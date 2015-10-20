@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <link rel="stylesheet" href="../css/reset.css">
+    <link rel='stylesheet'
+          href='http://fonts.googleapis.com/css?family=Open+Sans|Merienda:700'>
+    <link rel="stylesheet"
+          href="http://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
+    <style>
+
+        * {
+            box-sizing: border-box;
+        }
+
+        main {
+            display: flex;
+            flex-direction: row;
+            justify-content: center;
+            align-items: center;
+            /*border: 1px solid black;*/
+            margin: 10px;
+        }
+
+        article {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            /*border: 1px solid black;*/
+            min-width: 600px;
+        }
+
+        section {
+            display: flex;
+            flex-direction: row;
+            justify-content: space-between;
+            align-items: center;
+            border: 1px solid #2ec371;
+            width: 100%;
+            padding: 7px 12px 7px 10px;
+            margin: 5px;
+            border-radius: 10px;
+        }
+
+        h1 {
+            font-family: 'Merienda', cursive;
+            font-size: 53px;
+            color: #2ec371;
+            margin: 10px;
+        }
+
+        h2 {
+            font-family: 'Open Sans', sans-serif;
+            font-size: 16px;
+            max-width: 500px;
+        }
+
+        #new-item {
+            color: gray;
+            width: 100%;
+            height: 100%;
+            border: none;
+            font-family: 'Open Sans', sans-serif;
+            font-size: 16px;
+        }
+
+        .fa-minus-circle {
+            color: red;
+        }
+
+        .fa-plus-circle {
+            color: green;
+        }
+
+    </style>
+</head>
+<body>
+
+<main>
+    <article>
+        <h1>TO-DO</h1>
+        <div id="items"></div>
+        <section>
+            <input type="text" id="new-item" placeholder="add item">
+            <a href="#"><i class="fa fa-plus-circle fa-2x" id="new"></i></a>
+            <!--<i class="fa fa-minus-circle fa-2x"></i>-->
+        </section>
+    </article>
+</main>
+
+<script>
+    // items: [{ Text: "blah", ID: 123456 }]
+    var CurrentItems = [];
+    var items = document.querySelector("#items");
+    var newItem = document.querySelector('#new-item');
+    var article = document.querySelector('article');
+
+    // get items from server, then render them
+    function getItems() {
+        var xhr = new XMLHttpRequest();
+        xhr.open("GET", "/todo");
+        xhr.send(null);
+        xhr.onreadystatechange = function () {
+            if (xhr.readyState === 4) {
+                CurrentItems = JSON.parse(xhr.responseText);
+                renderItems();
+            }
+        }
+    }
+    getItems();
+
+    function renderItems() {
+        // clear the html
+        items.innerHTML = "";
+        // create HTML structure for each item in <div id="items">
+        //     <section>
+        //         <h2>
+        //         <a href="#">
+        //             <i>
+        for (var i = 0; i < CurrentItems.length; i++) {
+            var section = document.createElement("section");
+            var h2 = document.createElement("h2");
+            var a = document.createElement("a");
+            var icon = document.createElement("i");
+            h2.textContent = CurrentItems[i].Text;
+            a.setAttribute("href", "#");
+            icon.setAttribute("class", "fa fa-minus-circle fa-2x");
+            icon.setAttribute("id", CurrentItems[i].ID);
+            section.appendChild(h2);
+            a.appendChild(icon);
+            section.appendChild(a);
+            items.appendChild(section);
+        }
+    }
+
+    // add new item
+    article.addEventListener('click', function (e) {
+        var text = newItem.value;
+        newItem.value = '';
+        if ((e.target.id === 'new') && (text === 'add item')) {
+            alert('Please enter a todo item');
+        }
+        if ((e.target.id === 'new') && (text !== 'add item')) {
+            var xhr = new XMLHttpRequest();
+            xhr.open("POST", "/todo");
+            var json = JSON.stringify({
+                Text: text
+            });
+            xhr.send(json);
+            xhr.onreadystatechange = function () {
+                if (xhr.readyState === 4) {
+                    var item = JSON.parse(xhr.responseText);
+                    CurrentItems.push(item);
+                    renderItems();
+                }
+            };
+        }
+    }, false);
+
+    // delete item from items
+    (function () {
+        items.addEventListener("click", function (evt) {
+            var id = evt.target.id;
+            var xhr = new XMLHttpRequest();
+            xhr.open("DELETE", "/todo?id=" + id);
+            xhr.send(null);
+            xhr.onreadystatechange = function () {
+                if (xhr.readyState === 4) {
+                    setTimeout(getItems, 100);
+                }
+            };
+        }, false);
+    })();
+
+</script>
+
+</body>
+</html>

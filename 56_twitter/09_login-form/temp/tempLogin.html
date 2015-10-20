@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Twitter Mock</title>
+    <link rel="stylesheet" href="../public/css/reset.css">
+    <link rel='stylesheet' href='http://fonts.googleapis.com/css?family=Lobster|Open+Sans'>
+    <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="../public/css/styles.css">
+    <style>
+        form {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            border: 1px solid #2ec371;
+            border-radius: 4px;
+            padding: 20px;
+            background-color: #f3f3f3;
+            box-shadow: 0px 2px 2px 1px rgba(0, 0, 0, 0.2);
+            margin-top: 40px;
+        }
+
+        .fa-5x {
+            color: #2ec371;
+            border: 1px solid #2ec371;
+            border-radius: 100%;
+            padding: 15px;
+            margin-bottom: 10px;;
+        }
+
+        input, button {
+            height: 40px;
+            width: 250px;
+            font-size: 16px;
+            margin: 4px 0;
+            padding: 10px;
+        }
+
+        button {
+            background-color: #2ec371;
+            border: 0px;
+            border-radius: 3px;
+            font-size: 14px;
+            color: #fff;
+        }
+
+        #create-account {
+            color: #2ec371;
+            display: flex;
+            justify-content: center;
+            margin-top: 10px;
+            text-decoration: none;
+        }
+
+    </style>
+</head>
+<body>
+<form method="POST">
+    <i class="fa fa-user fa-5x"></i>
+    <input id="email" name="user" type="email" placeholder="Enter your email">
+    <input id="password" name="password" type="password" placeholder="Enter your password">
+    <button>Submit</button>
+</form>
+<a href="signup" id="create-account">Create account</a>
+</body>
+</html>

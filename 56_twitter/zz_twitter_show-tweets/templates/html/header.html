@@ -1,0 +1,212 @@
+{{define "header"}}<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <link rel="stylesheet" href="/public/css/reset.css">
+    <link href='http://fonts.googleapis.com/css?family=Lobster|Open+Sans' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
+    <style>
+
+        * {
+            box-sizing: border-box;
+            font-family: 'Open Sans', sans-serif;
+        }
+
+        body {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            background-color: rgba(46, 195, 113, 0.11);
+        }
+
+        #top {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            background-color: #2ec371;
+            padding: 0 0 35px 0;
+            width: 100%
+        }
+
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 25px 75px;
+            width: 100%;
+
+        }
+
+        #login {
+            border: 1px solid #fff;
+            border-radius: 5px;
+            padding: 14px 28px;
+            font-size: 18px;
+            color: #fff;
+            margin: 0 0 0 15px;
+        }
+
+        #login:hover {
+            background-color: #00acc1;
+        }
+
+        .fa-heart-o {
+            color: #fff;
+        }
+
+        .fa-heart-o:hover {
+            color: #f00;
+        }
+
+        #motto {
+            font-family: 'Lobster', cursive;
+            font-size: 40px;
+            color: #f5f5f5;
+            text-align: center;
+            line-height: 47px;
+        }
+
+        main {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            padding: 4px 0 35px 0;
+            /*border: 1px solid black;*/
+            width: 100%;
+        }
+
+        section {
+            display: flex;
+            justify-content: flex-start;
+            align-items: center;
+            border: 1px solid rgba(0, 0, 0, 0.19);
+            width: 60%;
+            padding: 10px;
+            margin: 4px;
+            background-color: #f5f5f5;
+        }
+
+        #post {
+            padding: 10px;
+        }
+
+        a {
+            text-decoration: none;
+        }
+
+        form {
+            display: flex;
+            flex-direction: column;
+        }
+
+        nav {
+            display: flex;
+        }
+
+        /*
+        modal dialog box styling
+        */
+
+        .modalDialog {
+            position: fixed;
+            top: 0;
+            right: 0;
+            bottom: 0;
+            left: 0;
+            background: rgba(255, 255, 255, 0.7);
+            z-index: 99999;
+            opacity:0;
+            -webkit-transition: opacity 400ms ease-in;
+            -moz-transition: opacity 400ms ease-in;
+            transition: opacity 400ms ease-in;
+            pointer-events: none;
+        }
+        .modalDialog:target {
+            opacity:1;
+            pointer-events: auto;
+        }
+        .modalDialog > div {
+            border: 4px solid #2ec371;
+            width: 70%;
+            position: relative;
+            margin: 10% auto;
+            padding: 5px 20px 13px 20px;
+            border-radius: 10px;
+            background: rgba(46, 195, 113, 0.6);
+        }
+        .modal-close {
+            border: 1px solid #2ec371;
+            background: #2ec371;
+            color: #FFFFFF;
+            line-height: 20px;
+            position: absolute;
+            right: 0px;
+            text-align: center;
+            top: 0px;
+            width: 24px;
+            text-decoration: none;
+            border-radius: 0px 6px 0px 4px;
+        }
+        .modal-close:hover {
+            background: #2ec371;
+        }
+
+        #modal-tweet {
+            width: 100%;
+            border-radius: 10px;
+            border: 2px solid #2ec371;
+            margin: 20px 0 0 0;
+            font-size: 40px;
+            outline-width: 0;
+        }
+
+        #modal-submit {
+            border: 1px solid #fff;
+            border-radius: 5px;
+            padding: 14px 28px;
+            font-size: 18px;
+            color: #fff;
+            margin: 15px 15px 0 0;
+            font-family: 'Lobster', cursive;
+            font-size: 25px;
+            background-color: #2ec371;
+        }
+
+        #modal-submit:hover {
+            background-color: #00acc1;
+        }
+
+        #modal-form {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-end;
+        }
+
+    </style>
+</head>
+<body>
+
+<div id="top">
+    <header>
+        <a href="/" id="opens-modal"><i class="fa fa-heart-o fa-3x"></i></a>
+
+        {{ if .Profile.Email }}
+        <nav>
+            <a href="#openModal" id="opens-modal"><p id="login">Tweet</p></a>
+            <a href="/logout"><p id="login">Log Out</p></a>
+        </nav>
+        {{ else }}
+        <nav>
+            <a href="/login"><p id="login">Log In</p></a>
+        </nav>
+        {{ end }}
+    </header>
+    <p id="motto">Seven Deadly Sins</p>
+    <p id="motto">One convenient location</p>
+
+</div>
+{{end}}

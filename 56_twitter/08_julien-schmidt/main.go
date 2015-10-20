@@ -3,19 +3,21 @@ package main
 import (
 	"html/template"
 	"net/http"
+	"github.com/julienschmidt/httprouter"
 )
 
 var tpl *template.Template
 
-func main() {
-	tpl, _ = template.ParseGlob("templates/html/*.html")
-	http.HandleFunc("/", home)
+func init() {
+	r := httprouter.New()
+	http.Handle("/", r)
+	r.GET("/", Home)
 	http.Handle("/favicon.ico", http.NotFoundHandler())
 	http.Handle("/public/", http.StripPrefix("/public", http.FileServer(http.Dir("public/"))))
-	http.ListenAndServe(":8080", nil)
+	tpl = template.Must(template.ParseGlob("templates/html/*.html"))
 }
 
-func home(res http.ResponseWriter, req *http.Request) {
+func Home(res http.ResponseWriter, req *http.Request, _ httprouter.Params) {
 	if req.URL.Path != "/" {
 		http.NotFound(res, req)
 		return
