@@ -12,15 +12,15 @@ import (
 )
 
 type ToDo struct {
-	ID    int64 `datastore:"-"`
-	Email string
+	ID    int64  `datastore:"-"`
+	Email string `json:"-"`
 	Text  string
 }
 
 func init() {
 	http.HandleFunc("/", handleIndex)
 	http.HandleFunc("/todo", handleTodos)
-	http.Handle("/assets/", http.StripPrefix("/assets", http.FileServer(http.Dir("assets/"))))
+	//	http.Handle("/assets/", http.StripPrefix("/assets", http.FileServer(http.Dir("assets/"))))
 }
 
 func handleIndex(res http.ResponseWriter, req *http.Request) {

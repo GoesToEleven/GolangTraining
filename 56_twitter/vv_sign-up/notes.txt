@@ -6,6 +6,7 @@ Use Google logins and their session
 GORILLA
 Use Gorilla sessions
 store session data in cookie or memcache
+remember: clear the memory leak!
 
 HMAC / NO-HMAC
 do a regular cookie
