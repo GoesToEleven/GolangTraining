@@ -1,0 +1,13 @@
+{{template "header"}}
+<link rel="stylesheet" href="public/css/login.css">
+{{template "header2"}}
+    <form method="POST">
+        <i class="fa fa-user fa-5x"></i>
+        <input id="email" name="user" type="email" placeholder="Enter your email">
+        <p class="form-field-err">something</p>
+        <input id="password" name="password" type="password" placeholder="Enter your password">
+        <p class="form-field-err">something</p>
+        <button>Submit</button>
+    </form>
+    <a href="/signup" id="create-account">Create account</a>
+{{template "footer"}}
