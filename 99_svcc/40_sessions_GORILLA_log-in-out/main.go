@@ -40,7 +40,7 @@ func authenticate(res http.ResponseWriter, req *http.Request) {
 			</head>
 			<body>
 			<h1>LOG IN</h1>
-			<form method="post" action="http://localhost:9000/">
+			<form method="post" action="/">
 				<h3>User name</h3>
 				<input type="text" name="userName" id="userName">
 				<h3>Password</h3>
@@ -60,7 +60,7 @@ func authenticate(res http.ResponseWriter, req *http.Request) {
 				<title></title>
 			</head>
 			<body>
-			<h1><a href="http://localhost:9000/logout">LOG OUT</a></h1>
+			<h1><a href="logout">LOG OUT</a></h1>
 			</body>
 			</html>`
 	}

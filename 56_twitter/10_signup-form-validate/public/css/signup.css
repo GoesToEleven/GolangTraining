@@ -36,7 +36,7 @@ button {
 }
 
 .form-field-err {
-    width: 100%;
+    width: 250px;
     text-align: left;
     padding: 0 0 0 5px;
     color: red;
