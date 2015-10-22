@@ -57,11 +57,11 @@
     </style>
 </head>
 <body>
-<form method="POST" id="form-create-user" action="/api/createuser">
+<form method="POST" action="/api/createuser">
     <i class="fa fa-user fa-5x"></i>
     <input id="email" name="email" type="email" placeholder="Enter your email">
     <p class="form-field-err"></p>
-    <input id="userName" name="userName" placeholder="Enter your twitter handle name">
+    <input id="userName" name="userName" placeholder="Enter a twitter name">
     <p class="form-field-err" id="username-err"></p>
     <input id="password" name="password" type="password" placeholder="Create your password">
     <input id="password2" name="password2" type="password" placeholder="Retype your password">
@@ -80,14 +80,13 @@
 
     //    username must be unique
     userName.addEventListener('keyup', function(){
-        console.log(userName.textContent)
-        var json = JSON.stringify(userName.textContent);
+        var json = JSON.stringify(userName.value);
         console.log(json);
         var xhr = new XMLHttpRequest();
-        xhr.open('GET', '/api/checkUserName');
+        xhr.open('POST', '/api/checkUserName');
         xhr.send(json);
         xhr.addEventListener('readystatechange', function(){
-            var item = JSON.parse(xhr.responseText);
+            var item = xhr.responseText;
             if (item == 'true') {
                 nameErr.textContent = 'Username taken - Try another name!';
             } else {
@@ -99,23 +98,22 @@
     //    Validate passwords
     //    listen for submit button click
     btnSubmit.addEventListener('click', function(e){
-        e.preventDefault();
         var ok = validatePasswords();
-        if (ok) {
-            formUser.submit();
+        if (!ok) {
+            e.preventDefault();
         }
     });
 
     function validatePasswords() {
         pErr.textContent = '';
-        if (p1.textContent = '') {
+        if (p1.value == '') {
             pErr.textContent = 'Enter a password.';
             return false;
         }
-        if (p1.textContent != p2.textContent) {
+        if (p1.value != p2.value) {
             pErr.textContent = 'Your passwords did not match. Please re-enter your passwords.';
-            p1.textContent = '';
-            p2.textContent = '';
+            p1.value = '';
+            p2.value = '';
             return false;
         }
         return true;
