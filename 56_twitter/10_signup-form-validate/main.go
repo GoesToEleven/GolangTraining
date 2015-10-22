@@ -1,7 +1,6 @@
 package main
 
 import (
-	"encoding/json"
 	"github.com/julienschmidt/httprouter"
 	"google.golang.org/appengine"
 	"google.golang.org/cloud/datastore"
@@ -50,17 +49,16 @@ func Signup(res http.ResponseWriter, req *http.Request, _ httprouter.Params) {
 
 func checkUserName(res http.ResponseWriter, req *http.Request, _ httprouter.Params) {
 	ctx := appengine.NewContext(req)
-	var Possibility string
-	json.NewDecoder(req.Body).Decode(&Possibility)
+	Possibility := req.Body
 	q, err := datastore.NewQuery("Users").Filter("Username =", Possibility).Count(ctx)
 	if err != nil {
-		json.NewEncoder(res).Encode("false")
+		fmt.Fprint(res, "false")
 		return
 	}
 	if q >= 1 {
-		json.NewEncoder(res).Encode("true")
+		fmt.Fprint(res, "true")
 	} else {
-		json.NewEncoder(res).Encode("false")
+		fmt.Fprint(res, "false")
 	}
 }
 
