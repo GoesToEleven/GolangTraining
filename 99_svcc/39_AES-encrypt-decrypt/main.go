@@ -12,7 +12,7 @@ func main() {
 	key := "opensesame123456" // 16 bytes!
 	block, _ := aes.NewCipher([]byte(key))
 	fmt.Printf("%d bytes NewCipher key with block size of %d bytes\n", len(key), block.BlockSize)
-	str := []byte("Hello World!")
+	str := []byte("Hello World, and everyone else in the universe!")
 	// 16 bytes for AES-128, 24 bytes for AES-192, 32 bytes for AES-256
 	ciphertext := []byte("abcdef1234567890")
 	iv := ciphertext[:aes.BlockSize] // const BlockSize = 16
