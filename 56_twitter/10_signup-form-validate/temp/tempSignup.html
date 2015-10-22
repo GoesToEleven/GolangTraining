@@ -57,11 +57,11 @@
     </style>
 </head>
 <body>
-<form method="POST">
+<form method="POST" id="form-create-user" action="/api/createuser">
     <i class="fa fa-user fa-5x"></i>
-    <input id="email" name="user" type="email" placeholder="Enter your email">
+    <input id="email" name="email" type="email" placeholder="Enter your email">
     <p class="form-field-err"></p>
-    <input id="name" name="name" placeholder="Enter your twitter handle name">
+    <input id="userName" name="userName" placeholder="Enter your twitter handle name">
     <p class="form-field-err" id="username-err"></p>
     <input id="password" name="password" type="password" placeholder="Create your password">
     <input id="password2" name="password2" type="password" placeholder="Retype your password">
@@ -69,15 +69,25 @@
     <button id="btn-create-account">Create Account</button>
 </form>
 <script>
+    var formUser = document.querySelector('#form-create-user');
+    var userName = document.querySelector('#userName');
+    var p1 = document.querySelector('#password');
+    var p2 = document.querySelector('#password2');
+    var btnSubmit = document.querySelector('#btn-create-account');
+
+    var nameErr = document.querySelector('#username-err');
+    var pErr = document.querySelector('#password-err');
+
     //    username must be unique
-    name = document.querySelector('#name');
-    name.addEventListener('keyup', function(){
+    userName.addEventListener('keyup', function(){
+        console.log(userName.textContent)
+        var json = JSON.stringify(userName.textContent);
+        console.log(json);
         var xhr = new XMLHttpRequest();
         xhr.open('GET', '/api/checkUserName');
-        xhr.send(JSON.stringify(name.textContent));
+        xhr.send(json);
         xhr.addEventListener('readystatechange', function(){
             var item = JSON.parse(xhr.responseText);
-            nameErr = document.querySelector('#username-err');
             if (item == 'true') {
                 nameErr.textContent = 'Username taken - Try another name!';
             } else {
@@ -88,24 +98,27 @@
 
     //    Validate passwords
     //    listen for submit button click
-    btnSubmit = document.querySelector('#btn-create-account');
-    btnSubmit.addEventListener('click', function(){
-        validatePasswords();
+    btnSubmit.addEventListener('click', function(e){
+        e.preventDefault();
+        var ok = validatePasswords();
+        if (ok) {
+            formUser.submit();
+        }
     });
 
     function validatePasswords() {
-        p1 = document.querySelector('#password');
-        p2 = document.querySelector('#password2');
-        pErr = document.querySelector('#password-err');
         pErr.textContent = '';
-        if p1.textContent = '' {
-            pErr.textContent = 'Enter a password.'
+        if (p1.textContent = '') {
+            pErr.textContent = 'Enter a password.';
+            return false;
         }
         if (p1.textContent != p2.textContent) {
-            pErr.textContent = 'Your passwords did not match. Please re-enter your passwords.'
+            pErr.textContent = 'Your passwords did not match. Please re-enter your passwords.';
             p1.textContent = '';
             p2.textContent = '';
+            return false;
         }
+        return true;
     };
 </script>
 </body>

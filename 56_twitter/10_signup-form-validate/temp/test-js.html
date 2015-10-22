@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+
+<form action="#">
+    <label for="exampleInput">Enter five digits:</label>
+    <input id="exampleInput">
+</form>
+
+<script>
+    var exampleNode = document.querySelector('#exampleInput');
+    exampleNode.addEventListener('blur', function (e) {
+        var re5digit = /^\d{5}$/;
+        e.preventDefault();
+        if (exampleNode.value.search(re5digit) === -1) {
+            alert("Enter a 5 digit number inside form");
+        } else {
+            exampleNode.submit();
+        }
+    })
+</script>
+
+</body>
+</html>
