@@ -30,6 +30,7 @@
         xhr.send(userName.value);
         xhr.addEventListener('readystatechange', function(){
             var item = xhr.responseText;
+            console.log(item);
             if (item == 'true') {
                 nameErr.textContent = 'Username taken - Try another name!';
             } else {

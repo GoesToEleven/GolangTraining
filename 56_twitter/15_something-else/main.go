@@ -8,13 +8,12 @@ import (
 	"html/template"
 	"net/http"
 	"google.golang.org/appengine/log"
-	stdlog "log"
 	"io/ioutil"
 )
 
 type User struct {
 	Email    string
-	UserName string
+	UserName string `datastore:"-"`
 	Password string
 }
 
@@ -28,16 +27,12 @@ func init() {
 	r.GET("/form/signup", Signup)
 	r.POST("/api/checkusername", checkUserName)
 	r.POST("/api/createuser", createUser)
-	http.Handle("/favicon.ico", http.NotFoundHandler())
+	http.Handle("/favicon.ico", http.NotFoundHandler()) // maybe not needed b/c of schmidt router
 	http.Handle("/public/", http.StripPrefix("/public", http.FileServer(http.Dir("public/"))))
 	tpl = template.Must(template.ParseGlob("templates/html/*.html"))
 }
 
 func Home(res http.ResponseWriter, req *http.Request, _ httprouter.Params) {
-	if req.URL.Path != "/" {
-		http.NotFound(res, req)
-		return
-	}
 	tpl.ExecuteTemplate(res, "home.html", nil)
 }
 
@@ -53,18 +48,18 @@ func checkUserName(res http.ResponseWriter, req *http.Request, _ httprouter.Para
 	ctx := appengine.NewContext(req)
 	bs, err := ioutil.ReadAll(req.Body)
 	sbs := string(bs)
-	stdlog.Println("REQUEST BODY: ", sbs)
-	q, err := datastore.NewQuery("Users").Filter("UserName=", sbs).Count(ctx)
-	stdlog.Println("ERR: ", err)
-	stdlog.Println("QUANTITY: ", q)
+	log.Infof(ctx, "REQUEST BODY: %v", sbs)
+	var user User
+	key := datastore.NewKey(ctx, "Users", sbs, 0, nil)
+	err = datastore.Get(ctx, key, &user)
+	// if there is an err, there is NO user
+	log.Infof(ctx, "ERR: %v", err)
 	if err != nil {
+		// there is an err, there is a NO user
 		fmt.Fprint(res, "false")
 		return
-	}
-	if q >= 1 {
-		fmt.Fprint(res, "true")
 	} else {
-		fmt.Fprint(res, "false")
+		fmt.Fprint(res, "true")
 	}
 }
 
@@ -75,7 +70,7 @@ func createUser(res http.ResponseWriter, req *http.Request, _ httprouter.Params)
 		UserName: req.FormValue("userName"),
 		Password: req.FormValue("password"),
 	}
-	key := datastore.NewIncompleteKey(ctx, "Users", nil)
+	key := datastore.NewKey(ctx, "Users", NewUser.UserName, 0, nil)
 	key, err := datastore.Put(ctx, key, &NewUser)
 	// this is the only error checking I added; any others on this page needed?
 	if err != nil {
