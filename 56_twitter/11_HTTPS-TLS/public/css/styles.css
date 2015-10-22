@@ -1,0 +1,87 @@
+* {
+    box-sizing: border-box;
+    font-family: 'Open Sans', sans-serif;
+}
+
+body {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color: #f5f5f5;
+}
+
+#top {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color: #2ec371;
+    padding: 0 0 35px 0;
+    width: 100%
+}
+
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 25px 75px;
+    width: 100%;
+
+}
+
+#login {
+    border: 1px solid #fff;
+    border-radius: 5px;
+    padding: 14px 28px;
+    font-size: 18px;
+    color: #fff;
+}
+
+#login:hover {
+    background-color: #00acc1;
+}
+
+a {
+    text-decoration: none;
+}
+
+.fa-heart-o {
+    color: #fff;
+}
+
+.fa-heart-o:hover {
+    color: #f00;
+}
+
+#motto {
+    font-family: 'Lobster', cursive;
+    font-size: 40px;
+    color: #f5f5f5;
+    text-align: center;
+    line-height: 47px;
+}
+
+main {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 4px 0 35px 0;
+    width: 100%;
+}
+
+section {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    border: 1px solid rgba(0, 0, 0, 0.19);
+    width: 60%;
+    padding: 10px;
+    margin: 4px;
+    background-color: #fff;
+}
+
+#post {
+    padding: 10px;
+}

@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Twitter Mock</title>
+    <link rel="stylesheet" href="../public/css/reset.css">
+    <link rel='stylesheet' href='http://fonts.googleapis.com/css?family=Lobster|Open+Sans'>
+    <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="../public/css/styles.css">
+    <style>
+        form {
+            display: flex;
+            flex-wrap: wrap;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            border: 1px solid #2ec371;
+            border-radius: 4px;
+            padding: 20px;
+            background-color: #f3f3f3;
+            box-shadow: 0px 2px 2px 1px rgba(0, 0, 0, 0.2);
+            margin-top: 40px;
+        }
+
+        .fa-5x {
+            color: #2ec371;
+            border: 1px solid #2ec371;
+            border-radius: 100%;
+            padding: 15px;
+            margin-bottom: 10px;;
+        }
+
+        input, button {
+            height: 40px;
+            width: 250px;
+            font-size: 16px;
+            margin: 4px 0;
+            padding: 10px;
+        }
+
+        button {
+            background-color: #2ec371;
+            border: 0px;
+            border-radius: 3px;
+            font-size: 14px;
+            color: #fff;
+        }
+
+        .form-field-err {
+            width: 250px;
+            text-align: left;
+            padding: 0 0 0 5px;
+            color: red;
+            font-size: 14px;
+        }
+
+    </style>
+</head>
+<body>
+<form method="POST" action="/api/createuser">
+    <i class="fa fa-user fa-5x"></i>
+    <input id="email" name="email" type="email" placeholder="Enter your email">
+    <p class="form-field-err"></p>
+    <input id="userName" name="userName" placeholder="Enter a twitter name">
+    <p class="form-field-err" id="username-err"></p>
+    <input id="password" name="password" type="password" placeholder="Create your password">
+    <input id="password2" name="password2" type="password" placeholder="Retype your password">
+    <p class="form-field-err" id="password-err"></p>
+    <button id="btn-create-account">Create Account</button>
+</form>
+<script>
+    var formUser = document.querySelector('#form-create-user');
+    var userName = document.querySelector('#userName');
+    var p1 = document.querySelector('#password');
+    var p2 = document.querySelector('#password2');
+    var btnSubmit = document.querySelector('#btn-create-account');
+
+    var nameErr = document.querySelector('#username-err');
+    var pErr = document.querySelector('#password-err');
+
+    //    username must be unique
+    userName.addEventListener('keyup', function(){
+        var json = JSON.stringify(userName.value);
+        console.log(json);
+        var xhr = new XMLHttpRequest();
+        xhr.open('POST', '/api/checkUserName');
+        xhr.send(json);
+        xhr.addEventListener('readystatechange', function(){
+            var item = xhr.responseText;
+            if (item == 'true') {
+                nameErr.textContent = 'Username taken - Try another name!';
+            } else {
+                nameErr.textContent = '';
+            }
+        });
+    });
+
+    //    Validate passwords
+    //    listen for submit button click
+    btnSubmit.addEventListener('click', function(e){
+        var ok = validatePasswords();
+        if (!ok) {
+            e.preventDefault();
+        }
+    });
+
+    function validatePasswords() {
+        pErr.textContent = '';
+        if (p1.value == '') {
+            pErr.textContent = 'Enter a password.';
+            return false;
+        }
+        if (p1.value != p2.value) {
+            pErr.textContent = 'Your passwords did not match. Please re-enter your passwords.';
+            p1.value = '';
+            p2.value = '';
+            return false;
+        }
+        return true;
+    };
+</script>
+</body>
+</html>

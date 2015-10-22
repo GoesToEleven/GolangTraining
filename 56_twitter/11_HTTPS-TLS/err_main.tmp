@@ -1,19 +1,14 @@
 package main
 
 import (
-	"fmt"
-	"github.com/julienschmidt/httprouter"
-	"google.golang.org/appengine"
-	"google.golang.org/appengine/datastore"
 	"html/template"
 	"net/http"
+	"github.com/julienschmidt/httprouter"
+	"google.golang.org/appengine"
+	"google.golang.org/cloud/datastore"
+	"encoding/json"
+	"google.golang.org/appengine/log"
 )
-
-type User struct {
-	Email    string
-	UserName string
-	Password string
-}
 
 var tpl *template.Template
 
@@ -23,8 +18,7 @@ func init() {
 	r.GET("/", Home)
 	r.GET("/login", Login)
 	r.GET("/signup", Signup)
-	r.POST("/api/checkusername", checkUserName)
-	r.POST("/api/createuser", createUser)
+	r.GET("/api/checkUserName", checkUserName)
 	http.Handle("/favicon.ico", http.NotFoundHandler())
 	http.Handle("/public/", http.StripPrefix("/public", http.FileServer(http.Dir("public/"))))
 	tpl = template.Must(template.ParseGlob("templates/html/*.html"))
@@ -48,42 +42,28 @@ func Signup(res http.ResponseWriter, req *http.Request, _ httprouter.Params) {
 
 func checkUserName(res http.ResponseWriter, req *http.Request, _ httprouter.Params) {
 	ctx := appengine.NewContext(req)
-	Possibility := req.Body
-	q, err := datastore.NewQuery("Users").Filter("Username =", Possibility).Count(ctx)
+	var Possibility string
+	err := json.NewDecoder(req.Body).Decode(&Possibility)
 	if err != nil {
-		fmt.Fprint(res, "false")
+		log.Errorf(ctx, "error decoding name possibility", err)
 		return
 	}
-	if q >= 1 {
-		fmt.Fprint(res, "true")
+	q, err := datastore.NewQuery("Users").Filter("Username =", Possibility).Count(ctx)
+	if err != nil {
+		log.Errorf(ctx, "error running query", err, " - ", Possibility)
+		return
+	}
+	if q == 1 {
+		err := json.NewEncoder(res).Encode("true")
+		if err != nil {
+			log.Errorf(ctx, "error encoding username possibility response - one match", err, Possibility)
+		}
+	} else if q > 1 {
+		log.Errorf(ctx, "hmm, we had more than one username", Possibility)
 	} else {
-		fmt.Fprint(res, "false")
+		err := json.NewEncoder(res).Encode("false")
+		if err != nil {
+			log.Errorf(ctx, "error encoding username possibility response - no matches", err, Possibility)
+		}
 	}
 }
-
-func createUser(res http.ResponseWriter, req *http.Request, _ httprouter.Params) {
-	ctx := appengine.NewContext(req)
-	NewUser := User{
-		Email:    req.FormValue("email"),
-		UserName: req.FormValue("userName"),
-		Password: req.FormValue("password"),
-	}
-	key := datastore.NewIncompleteKey(ctx, "Users", nil)
-	key, _ = datastore.Put(ctx, key, &NewUser)
-	http.Redirect(res, req, "/", 302)
-}
-
-/*
-FYI - watch out for this error:
-
-On your imports ... you don't want this:
-
-"google.golang.org/appengine"
-"google.golang.org/cloud/datastore"
-
-You want this:
-
-"google.golang.org/appengine"
-"google.golang.org/appengine/datastore"
-
-*/

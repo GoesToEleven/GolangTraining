@@ -21,8 +21,8 @@ func init() {
 	r := httprouter.New()
 	http.Handle("/", r)
 	r.GET("/", Home)
-	r.GET("/login", Login)
-	r.GET("/signup", Signup)
+	r.GET("/form/login", Login)
+	r.GET("/form/signup", Signup)
 	r.POST("/api/checkusername", checkUserName)
 	r.POST("/api/createuser", createUser)
 	http.Handle("/favicon.ico", http.NotFoundHandler())
@@ -74,16 +74,10 @@ func createUser(res http.ResponseWriter, req *http.Request, _ httprouter.Params)
 }
 
 /*
-FYI - watch out for this error:
+FYI - good to read:
 
-On your imports ... you don't want this:
+https://cloud.google.com/appengine/docs/go/config/appconfig
 
-"google.golang.org/appengine"
-"google.golang.org/cloud/datastore"
-
-You want this:
-
-"google.golang.org/appengine"
-"google.golang.org/appengine/datastore"
+https://cloud.google.com/appengine/docs/using-custom-domains-and-ssl
 
 */
