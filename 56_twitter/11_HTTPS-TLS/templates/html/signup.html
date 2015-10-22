@@ -5,7 +5,7 @@
     <i class="fa fa-user fa-5x"></i>
     <input id="email" name="email" type="email" placeholder="Enter your email">
     <p class="form-field-err"></p>
-    <input id="userName" name="userName" placeholder="Enter a twitter name">
+    <input id="userName" name="userName" placeholder="Enter a twitter name" autocomplete="off">
     <p class="form-field-err" id="username-err"></p>
     <input id="password" name="password" type="password" placeholder="Create your password">
     <input id="password2" name="password2" type="password" placeholder="Retype your password">
@@ -24,11 +24,10 @@
 
     //    username must be unique
     userName.addEventListener('keyup', function(){
-        var json = JSON.stringify(userName.value);
-        console.log(json);
+        console.log(userName.value);
         var xhr = new XMLHttpRequest();
         xhr.open('POST', '/api/checkUserName');
-        xhr.send(json);
+        xhr.send(userName.value);
         xhr.addEventListener('readystatechange', function(){
             var item = xhr.responseText;
             if (item == 'true') {

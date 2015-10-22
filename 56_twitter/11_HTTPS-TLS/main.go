@@ -7,6 +7,8 @@ import (
 	"google.golang.org/appengine/datastore"
 	"html/template"
 	"net/http"
+	stdlog "log"
+	"io/ioutil"
 )
 
 type User struct {
@@ -48,8 +50,12 @@ func Signup(res http.ResponseWriter, req *http.Request, _ httprouter.Params) {
 
 func checkUserName(res http.ResponseWriter, req *http.Request, _ httprouter.Params) {
 	ctx := appengine.NewContext(req)
-	Possibility := req.Body
-	q, err := datastore.NewQuery("Users").Filter("Username =", Possibility).Count(ctx)
+	bs, err := ioutil.ReadAll(req.Body)
+	sbs := string(bs)
+	stdlog.Println("REQUEST BODY: ", sbs)
+	q, err := datastore.NewQuery("Users").Filter("UserName=", sbs).Count(ctx)
+	stdlog.Println("ERR: ", err)
+	stdlog.Println("QUANTITY: ", q)
 	if err != nil {
 		fmt.Fprint(res, "false")
 		return
