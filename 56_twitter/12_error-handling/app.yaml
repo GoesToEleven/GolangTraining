@@ -4,6 +4,10 @@ runtime: go
 api_version: go1
 
 handlers:
+- url: /form/.*
+  script: _go_app
+  secure: always
 - url: /.*
   script: _go_app
 
+# order matters
