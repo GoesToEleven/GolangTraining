@@ -2,8 +2,8 @@ package main
 
 import "fmt"
 
-func zero(x int) {
-	x = 0
+func zero(z int) {
+	z = 0
 }
 
 func main() {

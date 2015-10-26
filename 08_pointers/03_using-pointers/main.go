@@ -22,4 +22,7 @@ func main() {
 	// this makes our programs more performant
 	// we don't have to pass around large amounts of data
 	// we only have to pass around addresses
+
+	// everything is PASS BY VALUE in go, btw
+	// when we pass a memory address, we are passing a value
 }

@@ -2,10 +2,10 @@ package main
 
 import "fmt"
 
-func zero(x int) {
-	fmt.Printf("%p\n",&x) // address in func zero
-	fmt.Println(&x) // address in func zero
-	x = 0
+func zero(z int) {
+	fmt.Printf("%p\n",&z) // address in func zero
+	fmt.Println(&z) // address in func zero
+	z = 0
 }
 
 func main() {

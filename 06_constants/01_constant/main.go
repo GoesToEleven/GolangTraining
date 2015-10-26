@@ -11,3 +11,6 @@ func main() {
 	fmt.Println("p - ", p)
 	fmt.Println("q - ", q)
 }
+
+// a CONSTANT is a simple unchanging value
+
