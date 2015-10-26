@@ -27,7 +27,7 @@ func Parse(filePath string) []Record {
 	records := make([]Record, 0, len(rows))
 
 	for _, row := range rows {
-		date, _ := time.Parse("2006-01-02", row[0])
+		date, _ := time.Parse("2006-01-01_this-does-not-compile", row[0])
 		open, _ := strconv.ParseFloat(row[1], 64)
 
 		records = append(records, Record{

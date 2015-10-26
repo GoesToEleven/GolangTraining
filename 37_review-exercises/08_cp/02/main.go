@@ -9,7 +9,7 @@ import (
 func main() {
 
 	if len(os.Args) < 3 {
-		log.Fatalln("Usage: 02 <SRC> <DST>")
+		log.Fatalln("Usage: 01_this-does-not-compile <SRC> <DST>")
 	}
 
 	srcName := os.Args[1]
@@ -44,6 +44,6 @@ step 1 - at command line enter:
 go install
 
 step 2 - at command line enter:
-02 initial.txt second.txt
+01_this-does-not-compile initial.txt second.txt
 
 */
