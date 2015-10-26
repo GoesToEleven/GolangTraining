@@ -3,17 +3,13 @@ package main
 import "fmt"
 
 func main() {
-	myConditional(false)
-}
 
-func myConditional(b bool) {
-
-	if b {
-		fmt.Println("first statement ran - ", b)
+	if !true {
+		fmt.Println("This did not run")
 	}
 
-	if !b {
-		fmt.Println("second statement ran - ", b)
+	if !false {
+		fmt.Println("This ran")
 	}
 
 }

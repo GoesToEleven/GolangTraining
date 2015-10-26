@@ -2,13 +2,6 @@ package main
 
 import "fmt"
 
-/*
-  no default fallthrough
-  fallthrough is optional
-  -- you can specify fallthrough by explicitly stating it
-  -- break isn't needed like in other languages
- */
-
 func main() {
 	switch "Marcus" {
 	case "Tim":

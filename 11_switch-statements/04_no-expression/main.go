@@ -2,13 +2,6 @@ package main
 
 import "fmt"
 
-/*
-  expression not needed
-  -- if no expression provided, go checks for the first case that evals to true
-  -- makes the switch operate like if/if else/else
-  cases can be expressions
-*/
-
 func main() {
 
 	myFriendsName := "Mar"
@@ -30,3 +23,10 @@ func main() {
 		fmt.Println("nothing matched; this is the default")
 	}
 }
+
+/*
+  expression not needed
+  -- if no expression provided, go checks for the first case that evals to true
+  -- makes the switch operate like if/if else/else
+  cases can be expressions
+*/
