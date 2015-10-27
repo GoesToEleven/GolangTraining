@@ -38,17 +38,17 @@ func init() {
 func Home(res http.ResponseWriter, req *http.Request, _ httprouter.Params) {
 	ctx := appengine.NewContext(req)
 	i, err := memcache.Get(ctx, "Homepage")
-	if err == memcache.ErrCacheMiss {
-		buf := bytes.NewBuffer(make([]byte))
+	if err != nil {
+		buf := new(bytes.Buffer)
 		writ := io.MultiWriter(res, buf)
 		tpl.ExecuteTemplate(writ, "home.html", nil)
-		memcache.Set(ctx, memcache.Item{
-			Value: buf.String(),
+		memcache.Set(ctx, &memcache.Item{
+			Value: buf.Bytes(),
 			Key:   "Homepage",
 		})
 		return
 	}
-	io.WriteString(res, i.Value)
+	io.WriteString(res, string(i.Value))
 }
 
 func Login(res http.ResponseWriter, req *http.Request, _ httprouter.Params) {
