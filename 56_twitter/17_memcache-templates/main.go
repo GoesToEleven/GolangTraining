@@ -1,15 +1,12 @@
 package main
 
 import (
-	"bytes"
 	"fmt"
 	"github.com/julienschmidt/httprouter"
 	"google.golang.org/appengine"
 	"google.golang.org/appengine/datastore"
 	"google.golang.org/appengine/log"
-	"google.golang.org/appengine/memcache"
 	"html/template"
-	"io"
 	"io/ioutil"
 	"net/http"
 )
@@ -30,33 +27,21 @@ func init() {
 	r.GET("/form/signup", Signup)
 	r.POST("/api/checkusername", checkUserName)
 	r.POST("/api/createuser", createUser)
-	http.Handle("/favicon.ico", http.NotFoundHandler()) // maybe not needed b/c of schmidt router
+	http.Handle("/favicon.ico", http.NotFoundHandler())
 	http.Handle("/public/", http.StripPrefix("/public", http.FileServer(http.Dir("public/"))))
 	tpl = template.Must(template.ParseGlob("templates/html/*.html"))
 }
 
 func Home(res http.ResponseWriter, req *http.Request, _ httprouter.Params) {
-	ctx := appengine.NewContext(req)
-	i, err := memcache.Get(ctx, "Homepage")
-	if err != nil {
-		buf := new(bytes.Buffer)
-		writ := io.MultiWriter(res, buf)
-		tpl.ExecuteTemplate(writ, "home.html", nil)
-		memcache.Set(ctx, &memcache.Item{
-			Value: buf.Bytes(),
-			Key:   "Homepage",
-		})
-		return
-	}
-	io.WriteString(res, string(i.Value))
+	memTemplate(res, req, "Homepage", "home.html")
 }
 
 func Login(res http.ResponseWriter, req *http.Request, _ httprouter.Params) {
-	tpl.ExecuteTemplate(res, "login.html", nil)
+	memTemplate(res, req, "Loginpage", "login.html")
 }
 
 func Signup(res http.ResponseWriter, req *http.Request, _ httprouter.Params) {
-	tpl.ExecuteTemplate(res, "signup.html", nil)
+	memTemplate(res, req, "Signuppage", "signup.html")
 }
 
 func checkUserName(res http.ResponseWriter, req *http.Request, _ httprouter.Params) {

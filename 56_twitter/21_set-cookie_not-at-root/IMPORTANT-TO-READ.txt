@@ -1,0 +1,7 @@
+If set to '/', the cookie will be available within the entire domain.
+
+If set to '/foo/', the cookie will only be available within the /foo/ directory
+and all sub-directories such as /foo/bar/ of domain
+
+Cookies can be bound to a specific domain, subdomain, path, and protocol (http/https).
+You need to specify the path when setting the cookie

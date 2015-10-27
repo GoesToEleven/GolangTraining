@@ -1,0 +1,38 @@
+Go applications are organized into packages that mirror the directory structure
+of your source files. When you use an import statement in App Engine source code,
+the SDK tools interpret the relative paths in the import two ways:
+-- Relative to the directory that contains the module's app.yaml file
+-- Relative to the src subdirectory of all the directories in GOPATH
+---- (this is called a "fully-qualifed" import path)
+
+If we had this:
+
+project-dir
+  module1-dir
+    app.yaml
+    src1-1.go
+    src1-2.go
+
+And if GOPATH is defined this way:
+    export GOPATH=/home/fred/go
+
+And the file src1-1.go in the project directory example above contains this statement:
+	import "foo/bar"
+
+App Engine will look for the package "foo/bar" in these locations:
+	project-dir/module1/foo/bar
+	/home/fred/go/src/foo/bar
+
+If you include your package sources in GOPATH,
+you must be careful not to place the source code
+*** at or below any directories in your App Engine project that contain app.yaml files. ***
+If that happens, a package could be loaded twice,
+once for the path relative to a module's directory,
+and once for the fully-qualified path.
+
+
+SOURCE:
+https://cloud.google.com/appengine/docs/go/#Go_Organizing_Go_apps
+
+This all lead me to learning about MODULES:
+https://cloud.google.com/appengine/docs/go/modules/#Go_Configuration
