@@ -9,6 +9,9 @@ import (
 	"net/http"
 	"google.golang.org/appengine/log"
 	"io/ioutil"
+//	"io"
+//	"bytes"
+//	"google.golang.org/appengine/memcache"
 )
 
 type User struct {
@@ -33,6 +36,19 @@ func init() {
 }
 
 func Home(res http.ResponseWriter, req *http.Request, _ httprouter.Params) {
+//	ctx := appengine.NewContext(req)
+//	i, err := memcache.Get(ctx, "Homepage")
+//	if err == memcache.ErrCacheMiss {
+//		buf := bytes.NewBuffer(make([]byte))
+//		writ := io.MultiWriter(res, buf)
+//		tpl.ExecuteTemplate(writ, "home.html", nil)
+//		memcache.Set(ctx, memcache.Item{
+//			Value: buf.String(),
+//			Key: "Homepage",
+//		})
+//		return
+//	}
+//	io.WriteString(res, i.Value)
 	tpl.ExecuteTemplate(res, "home.html", nil)
 }
 
@@ -80,3 +96,30 @@ func createUser(res http.ResponseWriter, req *http.Request, _ httprouter.Params)
 	}
 	http.Redirect(res, req, "/", 302)
 }
+
+/*
+TODO:
+session
+- uuid in a cookie
+--- https while logged in? - depends upon security required
+- encrypt password on datastore?
+--- never store an unencrypted password, so, resoundingly, YES
+--- sha-256 fast hash value
+- user memcache?
+- datastore / memcache
+session interface change
+- change login button to logout when user logged func init() {
+post tweets
+follow people
+see tweets for everyone
+see tweets for individual user
+}
+
+
+
+
+
+
+
+
+*/

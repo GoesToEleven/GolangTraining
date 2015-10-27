@@ -36,19 +36,6 @@ func init() {
 }
 
 func Home(res http.ResponseWriter, req *http.Request, _ httprouter.Params) {
-//	ctx := appengine.NewContext(req)
-//	i, err := memcache.Get(ctx, "Homepage")
-//	if err == memcache.ErrCacheMiss {
-//		buf := bytes.NewBuffer(make([]byte))
-//		writ := io.MultiWriter(res, buf)
-//		tpl.ExecuteTemplate(writ, "home.html", nil)
-//		memcache.Set(ctx, memcache.Item{
-//			Value: buf.String(),
-//			Key: "Homepage",
-//		})
-//		return
-//	}
-//	io.WriteString(res, i.Value)
 	tpl.ExecuteTemplate(res, "home.html", nil)
 }
 
@@ -98,8 +85,9 @@ func createUser(res http.ResponseWriter, req *http.Request, _ httprouter.Params)
 }
 
 /*
-TODO:
+TO DO:
 session
+-memcache templates
 - uuid in a cookie
 --- https while logged in? - depends upon security required
 - encrypt password on datastore?
@@ -108,18 +96,9 @@ session
 - user memcache?
 - datastore / memcache
 session interface change
-- change login button to logout when user logged func init() {
+- change login button to logout when user logged in
 post tweets
 follow people
 see tweets for everyone
 see tweets for individual user
-}
-
-
-
-
-
-
-
-
 */

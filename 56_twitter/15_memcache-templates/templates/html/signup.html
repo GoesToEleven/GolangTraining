@@ -29,12 +29,14 @@
         xhr.open('POST', '/api/checkUserName');
         xhr.send(userName.value);
         xhr.addEventListener('readystatechange', function(){
-            var item = xhr.responseText;
-            console.log(item);
-            if (item == 'true') {
-                nameErr.textContent = 'Username taken - Try another name!';
-            } else {
-                nameErr.textContent = '';
+            if (xhr.readyState === 4) {
+                var item = xhr.responseText;
+                console.log(item);
+                if (item == 'true') {
+                    nameErr.textContent = 'Username taken - Try another name!';
+                } else {
+                    nameErr.textContent = '';
+                }
             }
         });
     });
