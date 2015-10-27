@@ -1,12 +1,9 @@
 package main
 
 import (
-//	"API"
-	"Memcache"
 	"github.com/julienschmidt/httprouter"
 	"html/template"
 	"net/http"
-	"github.com/goestoeleven/GolangTraining/56_twitter/18_abstract-API-Model/api"
 )
 
 var tpl *template.Template
@@ -17,23 +14,25 @@ func init() {
 	r.GET("/", Home)
 	r.GET("/form/login", Login)
 	r.GET("/form/signup", Signup)
-	r.POST("/api/checkusername", API.CheckUserName)
-	r.POST("/api/createuser", API.CreateUser)
+	r.POST("/api/checkusername", checkUserName)
+	r.POST("/api/createuser", createUser)
+	r.POST("/api/login", loginProcess)
+	r.GET("/api/logout", logout)
 	http.Handle("/favicon.ico", http.NotFoundHandler())
 	http.Handle("/public/", http.StripPrefix("/public", http.FileServer(http.Dir("public/"))))
 	tpl = template.Must(template.ParseGlob("templates/html/*.html"))
 }
 
 func Home(res http.ResponseWriter, req *http.Request, _ httprouter.Params) {
-	Memcache.Template(res, req, "Homepage", "home.html", tpl)
+	serveTemplate(res, req, "home.html")
 }
 
 func Login(res http.ResponseWriter, req *http.Request, _ httprouter.Params) {
-	Memcache.Template(res, req, "Loginpage", "login.html", tpl)
+	serveTemplate(res, req, "login.html")
 }
 
 func Signup(res http.ResponseWriter, req *http.Request, _ httprouter.Params) {
-	Memcache.Template(res, req, "Signuppage", "signup.html", tpl)
+	serveTemplate(res, req, "signup.html")
 }
 
 /*
