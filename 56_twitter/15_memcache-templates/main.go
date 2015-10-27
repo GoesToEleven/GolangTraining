@@ -1,17 +1,17 @@
 package main
 
 import (
+	"bytes"
 	"fmt"
 	"github.com/julienschmidt/httprouter"
 	"google.golang.org/appengine"
 	"google.golang.org/appengine/datastore"
 	"google.golang.org/appengine/log"
+	"google.golang.org/appengine/memcache"
 	"html/template"
+	"io"
 	"io/ioutil"
 	"net/http"
-		"io"
-		"bytes"
-		"google.golang.org/appengine/memcache"
 )
 
 type User struct {
@@ -36,19 +36,19 @@ func init() {
 }
 
 func Home(res http.ResponseWriter, req *http.Request, _ httprouter.Params) {
-		ctx := appengine.NewContext(req)
-		i, err := memcache.Get(ctx, "Homepage")
-		if err == memcache.ErrCacheMiss {
-			buf := bytes.NewBuffer(make([]byte))
-			writ := io.MultiWriter(res, buf)
-			tpl.ExecuteTemplate(writ, "home.html", nil)
-			memcache.Set(ctx, memcache.Item{
-				Value: buf.String(),
-				Key: "Homepage",
-			})
-			return
-		}
-		io.WriteString(res, i.Value)
+	ctx := appengine.NewContext(req)
+	i, err := memcache.Get(ctx, "Homepage")
+	if err == memcache.ErrCacheMiss {
+		buf := bytes.NewBuffer(make([]byte))
+		writ := io.MultiWriter(res, buf)
+		tpl.ExecuteTemplate(writ, "home.html", nil)
+		memcache.Set(ctx, memcache.Item{
+			Value: buf.String(),
+			Key:   "Homepage",
+		})
+		return
+	}
+	io.WriteString(res, i.Value)
 }
 
 func Login(res http.ResponseWriter, req *http.Request, _ httprouter.Params) {
