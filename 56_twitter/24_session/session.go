@@ -1,9 +1,9 @@
 package main
 
 import (
-	"google.golang.org/appengine/memcache"
-	"google.golang.org/appengine/log"
 	"google.golang.org/appengine"
+	"google.golang.org/appengine/log"
+	"google.golang.org/appengine/memcache"
 	"net/http"
 )
 

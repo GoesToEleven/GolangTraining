@@ -39,7 +39,6 @@ func Signup(res http.ResponseWriter, req *http.Request, _ httprouter.Params) {
 	memTemplate(res, req, "Signuppage", "signup.html")
 }
 
-
 /*
 TO DO:
 session

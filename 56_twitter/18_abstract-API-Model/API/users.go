@@ -1,8 +1,8 @@
 package API
 
 import (
-	"fmt"
 	"Model"
+	"fmt"
 	"github.com/julienschmidt/httprouter"
 	"google.golang.org/appengine"
 	"google.golang.org/appengine/datastore"

@@ -1,13 +1,13 @@
 package main
 
-import(
+import (
+	"fmt"
+	"github.com/julienschmidt/httprouter"
 	"google.golang.org/appengine"
 	"google.golang.org/appengine/datastore"
 	"google.golang.org/appengine/log"
-	"net/http"
-	"github.com/julienschmidt/httprouter"
 	"io/ioutil"
-	"fmt"
+	"net/http"
 )
 
 func checkUserName(res http.ResponseWriter, req *http.Request, _ httprouter.Params) {
@@ -52,7 +52,7 @@ func createUser(res http.ResponseWriter, req *http.Request, _ httprouter.Params)
 	})
 
 	// redirect
-//	http.Redirect(res, req, "/", 302)
+	//	http.Redirect(res, req, "/", 302)
 }
 
 /*

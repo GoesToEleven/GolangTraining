@@ -1,16 +1,16 @@
 package main
 
-import(
+import (
+	"encoding/json"
+	"fmt"
+	"github.com/julienschmidt/httprouter"
+	"github.com/nu7hatch/gouuid"
 	"google.golang.org/appengine"
 	"google.golang.org/appengine/datastore"
 	"google.golang.org/appengine/log"
-	"net/http"
-	"github.com/julienschmidt/httprouter"
-	"io/ioutil"
-	"fmt"
-	"github.com/nu7hatch/gouuid"
 	"google.golang.org/appengine/memcache"
-	"encoding/json"
+	"io/ioutil"
+	"net/http"
 )
 
 func checkUserName(res http.ResponseWriter, req *http.Request, _ httprouter.Params) {
@@ -53,10 +53,10 @@ func createUser(res http.ResponseWriter, req *http.Request, _ httprouter.Params)
 	cookie := &http.Cookie{
 		Name:  "session",
 		Value: id.String(),
-		Path: "/",
-//		UNCOMMENT WHEN DEPLOYED:
-//		Secure: true,
-//		HttpOnly: true,
+		Path:  "/",
+		//		UNCOMMENT WHEN DEPLOYED:
+		//		Secure: true,
+		//		HttpOnly: true,
 	}
 	http.SetCookie(res, cookie)
 

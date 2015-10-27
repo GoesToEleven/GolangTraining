@@ -8,5 +8,6 @@ type User struct {
 
 type sessionData struct {
 	User
-	LoggedIn bool
+	LoggedIn  bool
+	LoginFail bool
 }

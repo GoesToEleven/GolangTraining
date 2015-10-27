@@ -1,12 +1,12 @@
 package main
 
 import (
+	"encoding/json"
 	"github.com/julienschmidt/httprouter"
+	"google.golang.org/appengine"
+	"google.golang.org/appengine/log"
 	"html/template"
 	"net/http"
-	"encoding/json"
-	"google.golang.org/appengine/log"
-	"google.golang.org/appengine"
 )
 
 var tpl *template.Template
@@ -50,7 +50,6 @@ func Login(res http.ResponseWriter, req *http.Request, _ httprouter.Params) {
 func Signup(res http.ResponseWriter, req *http.Request, _ httprouter.Params) {
 	memTemplate(res, req, "Signuppage", "signup.html")
 }
-
 
 /*
 TO DO:
