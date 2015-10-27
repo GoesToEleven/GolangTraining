@@ -4,9 +4,9 @@ import (
 	"crypto/hmac"
 	"crypto/sha256"
 	"fmt"
+	"github.com/nu7hatch/gouuid"
 	"io"
 	"net/http"
-	"github.com/nu7hatch/gouuid"
 	"strings"
 )
 
@@ -21,9 +21,9 @@ func home(res http.ResponseWriter, req *http.Request) {
 	if err != nil {
 		id, _ := uuid.NewV4()
 		code := getCode(id.String())
-		val := code+"|"+id.String()
+		val := code + "|" + id.String()
 		cookie = &http.Cookie{
-			Name: "session-id",
+			Name:  "session-id",
 			Value: val,
 		}
 	}
@@ -37,8 +37,8 @@ func home(res http.ResponseWriter, req *http.Request) {
 	if code != cookieCode {
 		fmt.Fprintln(res, "Cookie monsters says: someone's had their hands in my cookies!")
 		cookie = &http.Cookie{
-			Name: "session-id",
-			Value: "0",
+			Name:   "session-id",
+			Value:  "0",
 			MaxAge: -1,
 		}
 	}

@@ -5,11 +5,11 @@ import (
 	"github.com/julienschmidt/httprouter"
 	"google.golang.org/appengine"
 	"google.golang.org/appengine/datastore"
-	"html/template"
-	"net/http"
 	"google.golang.org/appengine/log"
-	stdlog "log"
+	"html/template"
 	"io/ioutil"
+	stdlog "log"
+	"net/http"
 )
 
 type User struct {

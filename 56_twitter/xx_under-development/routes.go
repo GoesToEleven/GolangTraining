@@ -1,16 +1,16 @@
 package main
 
 import (
+	"encoding/json"
+	"github.com/dustin/go-humanize"
+	"golang.org/x/net/context"
 	"google.golang.org/appengine"
+	"google.golang.org/appengine/log"
+	"google.golang.org/appengine/mail"
 	"google.golang.org/appengine/user"
 	"net/http"
 	"strings"
-	"google.golang.org/appengine/log"
-	"encoding/json"
-	"golang.org/x/net/context"
 	"time"
-	"google.golang.org/appengine/mail"
-	"github.com/dustin/go-humanize"
 )
 
 func init() {
@@ -34,8 +34,8 @@ func home(res http.ResponseWriter, req *http.Request) {
 	log.Infof(ctx, "user: ", u)
 	// pointers can be NIL so don't use a Profile * Profile here:
 	var model struct {
-		Profile Profile
-		Tweets []Tweet
+		Profile  Profile
+		Tweets   []Tweet
 		LoggedIn bool
 	}
 
@@ -44,7 +44,7 @@ func home(res http.ResponseWriter, req *http.Request) {
 	if u != nil {
 		profile, err := getProfileByEmail(ctx, u.Email)
 		if err != nil {
-		http.Redirect(res, req, "/login", 302)
+			http.Redirect(res, req, "/login", 302)
 			return
 		}
 		model.Profile = *profile
@@ -58,8 +58,7 @@ func home(res http.ResponseWriter, req *http.Request) {
 	}
 	model.Tweets = tweets
 
-
-	renderTemplate(res, "home.html",  model)
+	renderTemplate(res, "home.html", model)
 }
 
 func login(res http.ResponseWriter, req *http.Request) {
@@ -75,8 +74,8 @@ func login(res http.ResponseWriter, req *http.Request) {
 	}
 
 	var model struct {
-		Profile *Profile
-		Error   string
+		Profile  *Profile
+		Error    string
 		LoggedIn bool
 	}
 
@@ -131,8 +130,8 @@ func profile(res http.ResponseWriter, req *http.Request) {
 
 	// Render the template
 	var model struct {
-		Profile *Profile
-		Tweets []Tweet
+		Profile  *Profile
+		Tweets   []Tweet
 		LoggedIn bool
 	}
 	model.LoggedIn = checkLoggedInStats(req)
@@ -142,13 +141,13 @@ func profile(res http.ResponseWriter, req *http.Request) {
 	renderTemplate(res, "profile.html", model)
 	/*
 
-	// Render the template
-	type Model struct {
-		Profile *Profile
-	}
-	renderTemplate(res, "user-profile", Model{
-		Profile: profile,
-	})
+		// Render the template
+		type Model struct {
+			Profile *Profile
+		}
+		renderTemplate(res, "user-profile", Model{
+			Profile: profile,
+		})
 
 	*/
 }
@@ -157,7 +156,7 @@ func handleTweet(res http.ResponseWriter, req *http.Request) {
 	ctx := appengine.NewContext(req)
 	u := user.Current(ctx)
 	var tweet *Tweet
-	tweet = decodeTweet(ctx, res, req);
+	tweet = decodeTweet(ctx, res, req)
 	tweet.Time = time.Now()
 	// add in username
 	var profile *Profile
@@ -187,7 +186,7 @@ func decodeTweet(ctx context.Context, res http.ResponseWriter, req *http.Request
 
 func logout(res http.ResponseWriter, req *http.Request) {
 	ctx := appengine.NewContext(req)
-	http.SetCookie(res, &http.Cookie{Name: "logged_in", Value: "", MaxAge:-1})
+	http.SetCookie(res, &http.Cookie{Name: "logged_in", Value: "", MaxAge: -1})
 	url, err := user.LogoutURL(ctx, "/")
 	if err != nil {
 		http.Error(res, err.Error(), 500)
@@ -210,7 +209,7 @@ func emailMentions(ctx context.Context, tweet *Tweet) {
 			}
 			msg := &mail.Message{
 				Sender:  u.Email,
-				To:      []string{profile.Username + " <" + profile.Email +">"},
+				To:      []string{profile.Username + " <" + profile.Email + ">"},
 				Subject: "You were mentioned in a tweet",
 				Body:    tweet.Message + " from " + tweet.Username + " - " + humanize.Time(tweet.Time),
 			}

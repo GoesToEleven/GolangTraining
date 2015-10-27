@@ -7,19 +7,19 @@ import (
 
 func pinger(c chan string) {
 	for i := 0; ; i++ {
-		c <- "ping"				// program waits here until channel is drained
+		c <- "ping" // program waits here until channel is drained
 	}
 }
 
 func ponger(c chan string) {
 	for i := 0; ; i++ {
-		c <- "pong"				// program waits here until channel is drained
+		c <- "pong" // program waits here until channel is drained
 	}
 }
 
 func printer(c chan string) {
 	for {
-		msg := <- c
+		msg := <-c
 		fmt.Println(msg)
 		time.Sleep(time.Second * 1)
 	}

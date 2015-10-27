@@ -81,6 +81,7 @@ func main() {
 	}
 	fmt.Println(state)
 }
+
 /*
 at terminal:
 go install

@@ -16,11 +16,10 @@ type Cat struct {
 	annoying bool
 }
 
-
 func main() {
 	fido := Dog{Animal{"woof"}, true}
 	fifi := Cat{Animal{"meow"}, true}
 	shadow := Dog{Animal{"woof"}, true}
-	critters := []interface{}{fido, fifi, shadow,}
+	critters := []interface{}{fido, fifi, shadow}
 	fmt.Println(critters)
 }

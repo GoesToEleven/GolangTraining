@@ -1,4 +1,5 @@
 package main
+
 import "fmt"
 
 func main() {
@@ -8,8 +9,8 @@ func main() {
 	intro = "Hahahaha!"
 	fmt.Println(intro)
 	fmt.Println(&intro)
-//  the below is invalid
-//	intro[0] = 70
-//	fmt.Println(intro)
-//	fmt.Println(&intro)
+	//  the below is invalid
+	//	intro[0] = 70
+	//	fmt.Println(intro)
+	//	fmt.Println(&intro)
 }

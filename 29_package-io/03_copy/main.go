@@ -1,9 +1,9 @@
 package main
 
 import (
-	"os"
-	"log"
 	"io"
+	"log"
+	"os"
 	"strings"
 )
 
@@ -19,6 +19,7 @@ func main() {
 
 	io.Copy(dst, rdr)
 }
+
 /*
 
 io.Copy
@@ -31,7 +32,6 @@ strings
 func (r *Reader) Read(b []byte) (n int, err error)
 
 */
-
 
 /*
 

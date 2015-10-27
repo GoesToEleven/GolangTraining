@@ -6,7 +6,7 @@ import (
 
 type PurchaseOrder struct {
 	Number int
-	Value float64
+	Value  float64
 }
 
 func SavePO(po *PurchaseOrder, callbackChannel chan *PurchaseOrder) {
@@ -23,8 +23,6 @@ func main() {
 
 	go SavePO(po, ch)
 
-	newPo := <- ch
+	newPo := <-ch
 	fmt.Printf("PO Number: %d\n", newPo.Number)
 }
-
-

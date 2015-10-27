@@ -1,13 +1,13 @@
 package main
 
 import (
-	"fmt"
-	"os"
-	"time"
-	"io/ioutil"
-	"strings"
 	"encoding/csv"
+	"fmt"
+	"io/ioutil"
+	"os"
 	"strconv"
+	"strings"
+	"time"
 )
 
 const watchedPath = "./source"
@@ -43,8 +43,8 @@ func main() {
 }
 
 type Invoice struct {
-	Number string
-	Amount float64
+	Number              string
+	Amount              float64
 	PurchaseOrderNumber int
-	InvoiceDate time.Time
+	InvoiceDate         time.Time
 }

@@ -19,7 +19,7 @@ func ponger(c chan string) {
 
 func printer(c chan string) {
 	for {
-		msg := <- c
+		msg := <-c
 		fmt.Println(msg)
 		time.Sleep(time.Second * 1)
 	}

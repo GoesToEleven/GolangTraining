@@ -7,5 +7,3 @@ func main() {
 		fmt.Println("I'm driving!")
 	}()
 }
-
-

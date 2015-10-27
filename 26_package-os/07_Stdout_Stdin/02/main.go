@@ -1,9 +1,9 @@
 package main
 
 import (
-	"strings"
 	"io"
 	"os"
+	"strings"
 )
 
 func main() {

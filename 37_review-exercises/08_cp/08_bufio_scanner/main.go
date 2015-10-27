@@ -1,9 +1,10 @@
 package main
+
 import (
-	"fmt"
-	"os"
 	"bufio"
+	"fmt"
 	"log"
+	"os"
 )
 
 func main() {
@@ -19,6 +20,7 @@ func main() {
 		fmt.Println(">>>", line)
 	}
 }
+
 /*
 scanners allow us to interact with files line-by-line
 */

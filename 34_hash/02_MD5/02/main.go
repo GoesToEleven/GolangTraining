@@ -1,12 +1,12 @@
 package main
 
 import (
-	"fmt"
 	"crypto/md5"
-	"os"
-	"log"
+	"fmt"
 	"io"
 	"io/ioutil"
+	"log"
+	"os"
 )
 
 func main() {
@@ -25,7 +25,7 @@ func main() {
 
 	// or this way
 	// but reads all the bytes at once, then does it
-	f.Seek(0,0)
+	f.Seek(0, 0)
 	bs, err := ioutil.ReadAll(f)
 	if err != nil {
 		log.Fatalln("readall didn't read well", err.Error())

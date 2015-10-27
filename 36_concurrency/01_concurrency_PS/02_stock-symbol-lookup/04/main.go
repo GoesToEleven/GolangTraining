@@ -5,8 +5,8 @@ import (
 	"fmt"
 	"io/ioutil"
 	"net/http"
-	"time"
 	"runtime"
+	"time"
 )
 
 func main() {
@@ -29,7 +29,7 @@ func main() {
 	numComplete := 0
 
 	for _, symbol := range stockSymbols {
-		go func(symbol string){
+		go func(symbol string) {
 			resp, _ := http.Get("http://dev.markitondemand.com/Api/v2/Quote?symbol=" + symbol)
 			defer resp.Body.Close()
 			body, _ := ioutil.ReadAll(resp.Body)

@@ -1,21 +1,20 @@
 package photos
 
 import (
+	"fmt"
 	"github.com/gorilla/sessions"
+	"github.com/rwcarlsen/goexif/exif"
+	"github.com/rwcarlsen/goexif/mknote"
 	"html/template"
 	"io"
 	"log"
 	"net/http"
 	"os"
 	"path/filepath"
-	"github.com/rwcarlsen/goexif/exif"
-	"github.com/rwcarlsen/goexif/mknote"
-	"fmt"
 )
 
 var tpl *template.Template
 var store = sessions.NewCookieStore([]byte("something-very-secret"))
-
 
 func init() {
 	var err error
@@ -35,12 +34,12 @@ func home(res http.ResponseWriter, req *http.Request) {
 
 	type Photo struct {
 		PhotoPath string
-		Lat float64
-		Long float64
+		Lat       float64
+		Long      float64
 	}
 
 	var model struct {
-		Photos []Photo
+		Photos   []Photo
 		LoggedIn bool
 	}
 
@@ -69,8 +68,8 @@ func home(res http.ResponseWriter, req *http.Request) {
 				return nil
 			}
 
-			currentPhoto.Lat , currentPhoto.Long, _ = x.LatLong()
-			fmt.Println("lat, long: ", currentPhoto.Lat , ", ", currentPhoto.Long)
+			currentPhoto.Lat, currentPhoto.Long, _ = x.LatLong()
+			fmt.Println("lat, long: ", currentPhoto.Lat, ", ", currentPhoto.Long)
 
 			model.Photos = append(model.Photos, currentPhoto)
 		}

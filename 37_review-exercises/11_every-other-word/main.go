@@ -20,7 +20,7 @@ func main() {
 	scanner.Split(bufio.ScanWords)
 	for scanner.Scan() {
 		word := scanner.Text()
-		if len(word) > 0 && i % 2 == 0 {
+		if len(word) > 0 && i%2 == 0 {
 			fmt.Print(strings.ToUpper(word), " ")
 		} else {
 			fmt.Print(word, " ")

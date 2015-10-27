@@ -1,11 +1,11 @@
 package main
 
 import (
+	"github.com/rwcarlsen/goexif/exif"
+	"html/template"
 	"log"
 	"net/http"
 	"os"
-	"github.com/rwcarlsen/goexif/exif"
-	"html/template"
 )
 
 const GoogleAPIKey = "AIzaSyDpMNCWNz2UENVGQOS6zMFvtLsXn0zMBf4"

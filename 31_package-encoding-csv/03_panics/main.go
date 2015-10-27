@@ -39,7 +39,6 @@ func main() {
 			log.Fatalln(err)
 		}
 
-
 		if rowCount == 0 {
 			for idx, column := range record {
 				columns[column] = idx

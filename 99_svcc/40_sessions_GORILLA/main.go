@@ -1,11 +1,11 @@
 package main
 
 import (
+	"fmt"
+	"github.com/gorilla/context"
 	"github.com/gorilla/sessions"
 	"io"
 	"net/http"
-	"fmt"
-	"github.com/gorilla/context"
 )
 
 var store = sessions.NewCookieStore([]byte("secret-password"))

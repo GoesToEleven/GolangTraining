@@ -30,6 +30,3 @@ func main() {
 		conn.Close()
 	}
 }
-
-
-

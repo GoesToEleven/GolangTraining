@@ -6,9 +6,9 @@ import (
 	"google.golang.org/appengine"
 	"google.golang.org/appengine/datastore"
 	"html/template"
-	"net/http"
-	stdlog "log"
 	"io/ioutil"
+	stdlog "log"
+	"net/http"
 )
 
 type User struct {

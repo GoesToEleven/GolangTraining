@@ -5,13 +5,13 @@ import (
 	"github.com/julienschmidt/httprouter"
 	"google.golang.org/appengine"
 	"google.golang.org/appengine/datastore"
-	"html/template"
-	"net/http"
 	"google.golang.org/appengine/log"
+	"html/template"
 	"io/ioutil"
-//	"io"
-//	"bytes"
-//	"google.golang.org/appengine/memcache"
+	"net/http"
+	//	"io"
+	//	"bytes"
+	//	"google.golang.org/appengine/memcache"
 )
 
 type User struct {

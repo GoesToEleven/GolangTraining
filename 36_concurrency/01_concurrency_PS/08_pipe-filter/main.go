@@ -11,7 +11,7 @@ func main() {
 	ch := make(chan int)
 	go generate(ch)
 	for {
-		prime := <-ch						// off ch
+		prime := <-ch // off ch
 		fmt.Println(prime)
 		ch1 := make(chan int)
 		go filter(ch, ch1, prime)
@@ -20,8 +20,8 @@ func main() {
 }
 
 func generate(ch chan int) {
-	for i:=2;;i++ {
-		ch <- i								// onto ch
+	for i := 2; ; i++ {
+		ch <- i // onto ch
 	}
 }
 

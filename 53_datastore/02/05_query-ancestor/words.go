@@ -16,7 +16,7 @@ func init() {
 }
 
 type Animal struct {
-	Species       string
+	Species     string
 	Description string
 }
 
@@ -111,7 +111,7 @@ func showAnimal(res http.ResponseWriter, req *http.Request, term string) {
 		<h1>This Animal Just Ate:</h1>
 		<form method="POST" action="ateprocess">
 			<textarea name="fooditem"></textarea>
-			<input type="hidden" name="eater" value="` + term + `">
+			<input type="hidden" name="eater" value="`+term+`">
 			<input type="submit">
 		</form>
 		<h1>This Animal Has Already Eaten:</h1>
@@ -125,7 +125,7 @@ func saveAnimal(res http.ResponseWriter, req *http.Request) {
 	ctx := appengine.NewContext(req)
 	key := datastore.NewKey(ctx, "Animal", term, 0, nil)
 	entity := Animal{
-		Species:       term,
+		Species:     term,
 		Description: definition,
 	}
 
@@ -137,7 +137,6 @@ func saveAnimal(res http.ResponseWriter, req *http.Request) {
 
 	http.Redirect(res, req, "/", 302)
 }
-
 
 func ateProcess(res http.ResponseWriter, req *http.Request) {
 	fooditem := req.FormValue("fooditem")

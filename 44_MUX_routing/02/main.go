@@ -37,4 +37,4 @@ if route ends in no-slash
 /dog
 it only includes that
 
- */
+*/

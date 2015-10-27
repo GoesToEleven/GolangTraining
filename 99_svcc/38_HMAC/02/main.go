@@ -4,8 +4,8 @@ import (
 	"crypto/hmac"
 	"crypto/sha256"
 	"fmt"
-	"io"
 	"github.com/nu7hatch/gouuid"
+	"io"
 )
 
 func main() {

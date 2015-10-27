@@ -14,7 +14,7 @@ type Person struct {
 func main() {
 	p1 := Person{
 		Name: "James Bond",
-		Age: 23,
+		Age:  23,
 	}
 
 	tpl, err := template.ParseFiles("tpl.gohtml")

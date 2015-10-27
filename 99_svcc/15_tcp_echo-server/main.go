@@ -1,10 +1,10 @@
 package main
 
 import (
-	"net"
-	"log"
 	"bufio"
 	"fmt"
+	"log"
+	"net"
 )
 
 func handle(conn net.Conn) {
@@ -20,7 +20,7 @@ func handle(conn net.Conn) {
 		// as a newly allocated string holding its bytes.
 		ln := scanner.Text()
 		fmt.Println(ln)
-		fmt.Printf("TYPE: %T\n",ln)
+		fmt.Printf("TYPE: %T\n", ln)
 		ln = fmt.Sprint("FROM SERVER: " + ln)
 		fmt.Fprintln(conn, ln)
 	}
@@ -28,7 +28,7 @@ func handle(conn net.Conn) {
 
 func main() {
 	li, err := net.Listen("tcp", ":9000")
-	if err != nil{
+	if err != nil {
 		log.Fatalln(err)
 	}
 	defer li.Close()

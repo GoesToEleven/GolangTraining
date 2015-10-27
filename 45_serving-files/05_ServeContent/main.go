@@ -3,8 +3,8 @@ package main
 import (
 	"io"
 	"net/http"
-	"strings"
 	"os"
+	"strings"
 )
 
 func upTown(res http.ResponseWriter, req *http.Request) {

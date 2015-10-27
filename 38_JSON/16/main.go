@@ -2,19 +2,19 @@ package main
 
 import (
 	"encoding/json"
-	"log"
 	"fmt"
+	"log"
 	"os"
 )
 
 type Article struct {
-	Name string
+	Name  string
 	draft bool
 }
 
 func main() {
-	myArticle := Article {
-		Name: "Once And Then Again",
+	myArticle := Article{
+		Name:  "Once And Then Again",
 		draft: false,
 	}
 

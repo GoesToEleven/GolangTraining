@@ -4,7 +4,7 @@ import "fmt"
 
 func main() {
 	x := 0
-	increment := func () int {
+	increment := func() int {
 		x++
 		return x
 	}

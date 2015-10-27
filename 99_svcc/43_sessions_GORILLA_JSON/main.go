@@ -1,12 +1,12 @@
 package main
 
 import (
-	"github.com/gorilla/sessions"
-	"io"
-	"net/http"
 	"encoding/json"
 	"fmt"
 	"github.com/gorilla/context"
+	"github.com/gorilla/sessions"
+	"io"
+	"net/http"
 )
 
 var store = sessions.NewCookieStore([]byte("secret-password"))
@@ -16,17 +16,16 @@ func authenticate(res http.ResponseWriter, req *http.Request) {
 
 	// check log in
 	if req.Method == "POST" &&
-	req.FormValue("password") != "" {
+		req.FormValue("password") != "" {
 		password := req.FormValue("password")
 		if password == "secret" {
 			session.Values["loggedin"] = "true"
 		}
 	}
 
-
 	// add data
 	if req.Method == "POST" &&
-	req.FormValue("data") != "" {
+		req.FormValue("data") != "" {
 		var data []string
 		jsonData := session.Values["data"]
 		fmt.Printf("Type jsonData: %T\n", jsonData)
@@ -48,7 +47,7 @@ func authenticate(res http.ResponseWriter, req *http.Request) {
 
 	// not logged in
 	if session.Values["loggedin"] == "false" ||
-	session.Values["loggedin"] == nil {
+		session.Values["loggedin"] == nil {
 		html = `
 			<!DOCTYPE html>
 			<html lang="en">
@@ -86,9 +85,9 @@ func authenticate(res http.ResponseWriter, req *http.Request) {
 				<br>
 				<input type="submit">
 				<input type="submit" name="logout" value="logout">
-			</form> <p>`+
-		fmt.Sprint("cookie data: ", session.Values["data"]) +
-		`</p>
+			</form> <p>` +
+			fmt.Sprint("cookie data: ", session.Values["data"]) +
+			`</p>
 			</body>
 			</html>`
 	}

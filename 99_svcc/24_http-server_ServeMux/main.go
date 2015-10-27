@@ -5,7 +5,6 @@ import (
 	"net/http"
 )
 
-
 func upTown(res http.ResponseWriter, req *http.Request) {
 	io.WriteString(res, "doggy doggy doggy")
 }

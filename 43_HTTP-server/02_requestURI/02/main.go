@@ -1,8 +1,8 @@
 package main
 
 import (
-	"net/http"
 	"io"
+	"net/http"
 )
 
 type myHandler int
@@ -10,7 +10,6 @@ type myHandler int
 func (h myHandler) ServeHTTP(resp http.ResponseWriter, req *http.Request) {
 	io.WriteString(resp, req.RequestURI)
 }
-
 
 func main() {
 

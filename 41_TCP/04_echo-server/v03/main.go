@@ -1,8 +1,8 @@
 package main
 
 import (
-	"net"
 	"io"
+	"net"
 )
 
 func main() {
@@ -24,6 +24,3 @@ func main() {
 		conn.Close()
 	}
 }
-
-
-

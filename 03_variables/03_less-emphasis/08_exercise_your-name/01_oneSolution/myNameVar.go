@@ -4,6 +4,6 @@ import "fmt"
 
 var name string = "Todd"
 
-func main(){
+func main() {
 	fmt.Println("Hello ", name)
 }

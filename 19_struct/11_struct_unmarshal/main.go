@@ -1,16 +1,17 @@
 package main
+
 import (
-	"fmt"
 	"encoding/json"
+	"fmt"
 )
 
 type Data struct {
-	Email string
+	Email    string
 	Loggedin string
 	Pictures []string
 }
 
-func main(){
+func main() {
 	var m Data
 	fmt.Println(m)
 	fmt.Println(m.Email)

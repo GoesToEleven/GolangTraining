@@ -1,10 +1,10 @@
 package main
 
 import (
-	"os"
-	"log"
-	"io/ioutil"
 	"fmt"
+	"io/ioutil"
+	"log"
+	"os"
 )
 
 func cp(srcName, dstName string) error {

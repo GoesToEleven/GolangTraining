@@ -2,11 +2,11 @@ package main
 
 import (
 	"bufio"
+	"fmt"
 	"io"
 	"log"
 	"net"
 	"strings"
-	"fmt"
 )
 
 var data = make(map[string]string)
@@ -52,7 +52,7 @@ func handle(conn net.Conn) {
 		default:
 			fmt.Println(ln)
 			ln = fmt.Sprint("FROM SERVER - USAGE <GET | SET | DEL> <KEY> [VAL]\n" +
-			"INVALID COMMAND: "+fs[0]+"\n\n")
+				"INVALID COMMAND: " + fs[0] + "\n\n")
 			io.WriteString(conn, ln)
 		}
 	}

@@ -7,5 +7,5 @@ import (
 
 func main() {
 	i, _ := strconv.Atoi("32")
-	fmt.Println(i+10)
+	fmt.Println(i + 10)
 }

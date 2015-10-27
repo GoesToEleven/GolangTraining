@@ -1,13 +1,13 @@
 package main
 
 import (
+	"encoding/json"
+	"golang.org/x/net/context"
 	"google.golang.org/appengine"
+	"google.golang.org/appengine/log"
 	"google.golang.org/appengine/user"
 	"net/http"
 	"strings"
-	"google.golang.org/appengine/log"
-	"encoding/json"
-	"golang.org/x/net/context"
 	"time"
 )
 
@@ -33,13 +33,13 @@ func home(res http.ResponseWriter, req *http.Request) {
 	// pointers can be NIL so don't use a Profile * Profile here:
 	var model struct {
 		Profile Profile
-		Tweets []Tweet
+		Tweets  []Tweet
 	}
 
 	if u != nil {
 		profile, err := getProfileByEmail(ctx, u.Email)
 		if err != nil {
-		http.Redirect(res, req, "/login", 302)
+			http.Redirect(res, req, "/login", 302)
 			return
 		}
 		model.Profile = *profile
@@ -53,8 +53,7 @@ func home(res http.ResponseWriter, req *http.Request) {
 	}
 	model.Tweets = tweets
 
-
-	renderTemplate(res, "home.html",  model)
+	renderTemplate(res, "home.html", model)
 }
 
 func login(res http.ResponseWriter, req *http.Request) {
@@ -124,7 +123,7 @@ func profile(res http.ResponseWriter, req *http.Request) {
 	// Render the template
 	var model struct {
 		Profile *Profile
-		Tweets []Tweet
+		Tweets  []Tweet
 	}
 
 	model.Profile = profile
@@ -133,13 +132,13 @@ func profile(res http.ResponseWriter, req *http.Request) {
 	renderTemplate(res, "profile.html", model)
 	/*
 
-	// Render the template
-	type Model struct {
-		Profile *Profile
-	}
-	renderTemplate(res, "user-profile", Model{
-		Profile: profile,
-	})
+		// Render the template
+		type Model struct {
+			Profile *Profile
+		}
+		renderTemplate(res, "user-profile", Model{
+			Profile: profile,
+		})
 
 	*/
 }
@@ -148,7 +147,7 @@ func tweet(res http.ResponseWriter, req *http.Request) {
 	ctx := appengine.NewContext(req)
 	u := user.Current(ctx)
 	var tweet *Tweet
-	tweet = receiveTweet(ctx, res, req);
+	tweet = receiveTweet(ctx, res, req)
 	tweet.Time = time.Now()
 	// add in username
 	var profile *Profile

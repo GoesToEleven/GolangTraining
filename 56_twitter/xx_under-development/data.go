@@ -1,14 +1,14 @@
 package main
 
 import (
-	"google.golang.org/appengine/user"
-	"google.golang.org/appengine/datastore"
-	"google.golang.org/appengine"
-	"net/http"
-	"time"
 	"fmt"
 	"golang.org/x/net/context"
+	"google.golang.org/appengine"
+	"google.golang.org/appengine/datastore"
 	"google.golang.org/appengine/log"
+	"google.golang.org/appengine/user"
+	"net/http"
+	"time"
 )
 
 type Profile struct {
@@ -17,8 +17,8 @@ type Profile struct {
 }
 
 type Tweet struct {
-	Message string
-	Time time.Time
+	Message  string
+	Time     time.Time
 	Username string
 }
 
@@ -35,6 +35,7 @@ func getProfileByUsername(ctx context.Context, username string) (*Profile, error
 	}
 	return &profiles[0], nil
 }
+
 // get profile by email
 func getProfileByEmail(ctx context.Context, email string) (*Profile, error) {
 	key := datastore.NewKey(ctx, "Profile", email, 0, nil)
@@ -60,6 +61,7 @@ func createProfile(req *http.Request, profile *Profile) error {
 	return err
 	// you can use memcache also to improve your consistency
 }
+
 // for eventual consistency thing
 // assumption: user will show up in 10 seconds on datastore
 func waitForProfile(req *http.Request, username string) error {
@@ -75,7 +77,6 @@ func waitForProfile(req *http.Request, username string) error {
 	return nil
 }
 
-
 //// insert tweet
 func putTweet(ctx context.Context, tweet *Tweet, email string) error {
 	userKey := datastore.NewKey(ctx, "Profile", email, 0, nil)
@@ -86,6 +87,7 @@ func putTweet(ctx context.Context, tweet *Tweet, email string) error {
 	}
 	return nil
 }
+
 // get user tweets
 func userTweets(ctx context.Context, email string) ([]Tweet, error) {
 	var tweets []Tweet
@@ -95,6 +97,7 @@ func userTweets(ctx context.Context, email string) ([]Tweet, error) {
 	return tweets, err
 
 }
+
 // get recent tweets
 func recentTweets(ctx context.Context) ([]Tweet, error) {
 	var tweets []Tweet
@@ -103,6 +106,7 @@ func recentTweets(ctx context.Context) ([]Tweet, error) {
 	return tweets, err
 
 }
+
 //// delete tweet
 //func delTweet(ctx context.Context, username string) (*Profile, error) {
 //
@@ -115,7 +119,3 @@ func checkLoggedInStats(req *http.Request) bool {
 	}
 	return false
 }
-
-
-
-

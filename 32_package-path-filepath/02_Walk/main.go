@@ -13,10 +13,7 @@ func main() {
 	})
 }
 
-
-
-
 /*
 walk is recursive
 readdir is not
- */
+*/

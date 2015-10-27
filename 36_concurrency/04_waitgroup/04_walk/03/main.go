@@ -54,5 +54,3 @@ func main() {
 	printStep(sumInfoChannel)
 
 }
-
-

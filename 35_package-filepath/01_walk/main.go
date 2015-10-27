@@ -6,7 +6,6 @@ import (
 	"path/filepath"
 )
 
-
 func walk() {
 	var counter int
 	filepath.Walk(".", func(path string, info os.FileInfo, err error) error {

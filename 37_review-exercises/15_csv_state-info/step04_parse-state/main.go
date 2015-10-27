@@ -24,9 +24,9 @@ func parseState(columns map[string]int, record []string) (*state, error) {
 		return nil, err
 	}
 	return &state{
-		id: id,
-		name: name,
-		abbreviation: abbreviation,
+		id:               id,
+		name:             name,
+		abbreviation:     abbreviation,
 		censusRegionName: censusRegionName,
 	}, nil
 }
@@ -51,7 +51,6 @@ func main() {
 		} else if err != nil {
 			log.Fatalln(err)
 		}
-
 
 		if rowCount == 0 {
 			for idx, column := range record {

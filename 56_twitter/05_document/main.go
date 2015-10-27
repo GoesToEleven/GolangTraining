@@ -22,8 +22,8 @@ package main
 
 import (
 	"html/template"
-	"net/http"
 	"log"
+	"net/http"
 )
 
 // tpl holds all of our templates.

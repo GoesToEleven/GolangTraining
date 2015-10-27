@@ -1,22 +1,21 @@
 package main
- 
-import (  
+
+import (
 	"fmt"
 	"runtime"
 )
 
 func main() {
 	runtime.GOMAXPROCS(4)
-	
+
 	mutex := make(chan bool, 1)
-	
-	
-	for i:=1; i < 10;i++ { 
-		for j:=1; j<10;j++ {
-			mutex <- true		// puts bool on channel
-			go func() { 
+
+	for i := 1; i < 10; i++ {
+		for j := 1; j < 10; j++ {
+			mutex <- true // puts bool on channel
+			go func() {
 				fmt.Printf("%d + %d = %d\n", i, j, i+j)
-				<-mutex 		// takes bool off channel
+				<-mutex // takes bool off channel
 			}()
 		}
 	}

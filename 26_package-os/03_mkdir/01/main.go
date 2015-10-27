@@ -26,6 +26,7 @@ func main() {
 		log.Fatalln("error writing to file: ", err.Error())
 	}
 }
+
 /*
 
 step 1 - at command line enter:

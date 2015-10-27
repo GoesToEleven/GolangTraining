@@ -1,9 +1,9 @@
 package main
 
 import (
+	"html/template"
 	"log"
 	"os"
-	"html/template"
 )
 
 type Page struct {

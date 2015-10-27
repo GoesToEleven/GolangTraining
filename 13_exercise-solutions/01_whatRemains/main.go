@@ -8,5 +8,5 @@ func main() {
 	fmt.Scanln(&smaller)
 	fmt.Print("Enter a second larger number: ")
 	fmt.Scanln(&larger)
-	fmt.Println(larger%smaller)
+	fmt.Println(larger % smaller)
 }

@@ -1,9 +1,9 @@
 package main
 
 import (
+	"github.com/julienschmidt/httprouter"
 	"html/template"
 	"net/http"
-	"github.com/julienschmidt/httprouter"
 )
 
 var tpl *template.Template

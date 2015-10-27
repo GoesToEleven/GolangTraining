@@ -1,10 +1,10 @@
 package main
 
 import (
+	"fmt"
 	"html/template"
 	"log"
 	"os"
-	"fmt"
 )
 
 type Page struct {

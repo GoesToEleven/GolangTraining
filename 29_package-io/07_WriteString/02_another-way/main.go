@@ -1,9 +1,9 @@
 package main
 
 import (
+	"io"
 	"log"
 	"os"
-	"io"
 )
 
 func main() {
@@ -15,7 +15,7 @@ func main() {
 	defer f.Close()
 
 	str := "Put some phrase here."
-//	bs := []byte(str)
+	//	bs := []byte(str)
 
 	_, err = io.WriteString(f, str)
 	//	_, err = f.Write(bs)

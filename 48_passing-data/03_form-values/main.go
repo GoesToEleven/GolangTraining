@@ -1,9 +1,9 @@
 package main
 
 import (
-	"net/http"
-	"io"
 	"fmt"
+	"io"
+	"net/http"
 )
 
 func main() {
@@ -17,9 +17,7 @@ func main() {
 		 <input type="text" name="q">
 		 <input type="submit">
 
-		</form>` + val)
+		</form>`+val)
 	})
 	http.ListenAndServe(":9000", nil)
 }
-
-

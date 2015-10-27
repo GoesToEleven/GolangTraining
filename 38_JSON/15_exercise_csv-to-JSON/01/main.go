@@ -2,10 +2,10 @@ package main
 
 import (
 	"encoding/csv"
-//	"fmt"
+	//	"fmt"
+	"encoding/json"
 	"log"
 	"os"
-	"encoding/json"
 )
 
 func main() {
@@ -26,7 +26,6 @@ func main() {
 		log.Fatalln("couldn't readall", err.Error())
 	}
 
-
 	// convert to JSON
 	b, err := json.Marshal(data)
 	if err != nil {
@@ -35,7 +34,6 @@ func main() {
 
 	// show
 	os.Stdout.Write(b)
-//	fmt.Println(b)
-
+	//	fmt.Println(b)
 
 }

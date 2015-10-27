@@ -1,10 +1,10 @@
 package main
 
 import (
+	"github.com/gorilla/context"
 	"github.com/gorilla/sessions"
 	"io"
 	"net/http"
-	"github.com/gorilla/context"
 )
 
 var store = sessions.NewCookieStore([]byte("secret-password"))
@@ -30,7 +30,7 @@ func authenticate(res http.ResponseWriter, req *http.Request) {
 
 	// not logged in
 	if session.Values["loggedin"] == "false" ||
-	session.Values["loggedin"] == nil {
+		session.Values["loggedin"] == nil {
 		html = `
 			<!DOCTYPE html>
 			<html lang="en">

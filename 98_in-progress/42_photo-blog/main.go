@@ -1,12 +1,12 @@
 package main
 
 import (
-	"net/http"
 	"github.com/gorilla/sessions"
 	"html/template"
-	"log"
-	"os"
 	"io"
+	"log"
+	"net/http"
+	"os"
 	"path/filepath"
 	"strings"
 )
@@ -16,7 +16,7 @@ var tpl *template.Template
 var store = sessions.NewCookieStore([]byte("something-very-secret"))
 
 type Model struct {
-	Pictures    []string
+	Pictures []string
 }
 
 // []string of picture paths
@@ -35,7 +35,6 @@ func main() {
 	http.HandleFunc("/logout", logout)
 	http.Handle("/assets/", http.StripPrefix("/assets", http.FileServer(http.Dir("./assets"))))
 	http.Handle("/favicon.ico", http.NotFoundHandler())
-
 
 	// to generate cert and key:
 	// go run $(go env GOROOT)/src/crypto/tls/generate_cert.go --host=localhost
@@ -57,13 +56,13 @@ func login(res http.ResponseWriter, req *http.Request) {
 		} else {
 			http.Error(res, "invalid credentials", 401)
 			return
-			}
+		}
 		// save session
 		session.Save(req, res)
 		// redirect to main page
 		http.Redirect(res, req, "/", 302)
 		return
-		}
+	}
 	// Execute template
 	tpl.ExecuteTemplate(res, "login.gohtml", nil)
 }

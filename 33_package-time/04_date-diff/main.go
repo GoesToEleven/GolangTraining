@@ -16,5 +16,3 @@ func main() {
 	fmt.Println("elapsed days:", int(dur/(time.Hour*24)))
 
 }
-
-

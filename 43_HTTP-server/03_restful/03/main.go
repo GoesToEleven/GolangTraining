@@ -1,8 +1,8 @@
 package main
 
 import (
-	"net/http"
 	"io"
+	"net/http"
 )
 
 type myHandler int
@@ -16,7 +16,6 @@ func (h myHandler) ServeHTTP(res http.ResponseWriter, req *http.Request) {
 		io.WriteString(res, `<img src="https://upload.wikimedia.org/wikipedia/commons/6/6e/Golde33443.jpg">`)
 	}
 }
-
 
 func main() {
 

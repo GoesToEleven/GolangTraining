@@ -1,9 +1,9 @@
 package main
 
 import (
+	"github.com/dustin/go-humanize"
 	"html/template"
 	"net/http"
-	"github.com/dustin/go-humanize"
 )
 
 var tpl *template.Template
@@ -22,7 +22,6 @@ func renderTemplate(res http.ResponseWriter, name string, data interface{}) {
 		http.Error(res, err.Error(), 500)
 	}
 }
-
 
 // 	up above, you could have done it this way:
 //		"humanize_time": func(tm time.Time) string {

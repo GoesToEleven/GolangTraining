@@ -1,12 +1,12 @@
 package main
 
 import (
-	"fmt"
-	"strings"
 	"crypto/md5"
-	"io"
 	"encoding/hex"
+	"fmt"
+	"io"
 	"os"
+	"strings"
 )
 
 func getGravatarHash(email string) string {

@@ -1,10 +1,10 @@
 package main
 
 import (
-	"os"
-	"log"
 	"fmt"
 	"io"
+	"log"
+	"os"
 )
 
 func cp(srcName, dstName string) error {

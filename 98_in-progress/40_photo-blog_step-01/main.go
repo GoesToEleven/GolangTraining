@@ -1,20 +1,20 @@
 package main
 
 import (
+	"encoding/gob"
+	"encoding/json"
+	"github.com/gorilla/context"
+	"github.com/gorilla/sessions"
 	"html/template"
 	"io"
 	"net/http"
 	"os"
 	"path/filepath"
 	"strings"
-	"github.com/gorilla/sessions"
-	"github.com/gorilla/context"
-	"encoding/gob"
-	"encoding/json"
 )
 
 type Model struct {
-	Photos []string
+	Photos   []string
 	loggedin bool
 }
 
@@ -74,7 +74,7 @@ func upload(res http.ResponseWriter, req *http.Request) {
 		defer dst.Close()
 
 		io.Copy(dst, src)
-		state.Photos = append(state.Photos, "imgs/" + fileName)
+		state.Photos = append(state.Photos, "imgs/"+fileName)
 		http.Redirect(res, req, "/", 302)
 		return
 	}

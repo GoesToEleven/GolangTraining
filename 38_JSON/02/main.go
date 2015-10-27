@@ -22,6 +22,6 @@ func main() {
 	fmt.Println(obj)
 	fmt.Println(obj["name"])
 	fmt.Println(obj["age"])
-	fmt.Printf("%T\n",obj["name"])
-	fmt.Printf("%T\n",obj["age"])
+	fmt.Printf("%T\n", obj["name"])
+	fmt.Printf("%T\n", obj["age"])
 }

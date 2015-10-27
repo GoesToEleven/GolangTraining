@@ -10,13 +10,13 @@ func main() {
 	changeMe(&name)
 
 	fmt.Println(&name) //0x82023c080
-	fmt.Println(name) //Rocky
+	fmt.Println(name)  //Rocky
 }
 
 func changeMe(z *string) {
-	fmt.Println(z) // 0x82023c080
+	fmt.Println(z)  // 0x82023c080
 	fmt.Println(*z) // Todd
 	*z = "Rocky"
-	fmt.Println(z) // 0x82023c080
+	fmt.Println(z)  // 0x82023c080
 	fmt.Println(*z) // Rocky
 }

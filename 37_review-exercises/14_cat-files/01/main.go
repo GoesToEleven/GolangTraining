@@ -1,9 +1,9 @@
 package main
 
 import (
-	"os"
-	"log"
 	"io"
+	"log"
+	"os"
 )
 
 func main() {

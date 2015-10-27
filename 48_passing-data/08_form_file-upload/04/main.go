@@ -1,12 +1,12 @@
 package main
 
-
 import (
-	"net/http"
 	"io"
+	"net/http"
 	"os"
 	"path/filepath"
 )
+
 func main() {
 	http.ListenAndServe(":9000", http.HandlerFunc(func(res http.ResponseWriter, req *http.Request) {
 		if req.Method == "POST" {
@@ -38,5 +38,3 @@ func main() {
       `)
 	}))
 }
-
-

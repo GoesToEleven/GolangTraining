@@ -2,8 +2,8 @@ package main
 
 import (
 	"fmt"
-	"net/http"
 	"github.com/nu7hatch/gouuid"
+	"net/http"
 )
 
 func init() {

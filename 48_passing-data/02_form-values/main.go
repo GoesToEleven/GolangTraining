@@ -1,9 +1,9 @@
 package main
 
 import (
-	"net/http"
-	"io"
 	"fmt"
+	"io"
+	"net/http"
 )
 
 func main() {
@@ -21,5 +21,3 @@ func main() {
 	})
 	http.ListenAndServe(":9000", nil)
 }
-
-

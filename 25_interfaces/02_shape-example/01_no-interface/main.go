@@ -27,5 +27,6 @@ func main() {
 	totalArea := c.area() + s.area()
 	fmt.Println("Total Area: ", totalArea)
 }
+
 // what if I had thousands of shapes?
 // how would I create a function to sum their areas?

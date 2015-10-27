@@ -1,13 +1,13 @@
 package main
 
-
 import (
-	"net/http"
+	"fmt"
 	"io"
+	"net/http"
 	"os"
 	"path/filepath"
-	"fmt"
 )
+
 func main() {
 	fmt.Println("TEMP DIR:", os.TempDir())
 	http.ListenAndServe(":9000", http.HandlerFunc(func(res http.ResponseWriter, req *http.Request) {
@@ -38,5 +38,3 @@ func main() {
       `)
 	}))
 }
-
-

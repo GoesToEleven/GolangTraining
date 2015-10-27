@@ -1,11 +1,11 @@
 package main
 
 import (
-	"os"
-	"log"
+	"bufio"
 	"fmt"
 	"io"
-	"bufio"
+	"log"
+	"os"
 )
 
 func cp(srcName, dstName string) error {

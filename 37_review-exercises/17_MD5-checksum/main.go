@@ -1,10 +1,10 @@
 package main
 
 import (
+	"crypto/md5"
 	"fmt"
 	"io"
 	"os"
-	"crypto/md5"
 )
 
 func main() {

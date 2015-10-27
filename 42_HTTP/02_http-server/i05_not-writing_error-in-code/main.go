@@ -6,8 +6,8 @@ import (
 	"io"
 	"log"
 	"net"
-	"strings"
 	"strconv"
+	"strings"
 )
 
 func handleConn(conn net.Conn) {

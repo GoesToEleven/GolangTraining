@@ -18,5 +18,6 @@ func main() {
 	fmt.Println(p1.fullName())
 	fmt.Printf("Inside main: %p\n", &p1)
 }
+
 // p1 is the receiver value for the call to fullName
 // fullName is operating on a copy of p1

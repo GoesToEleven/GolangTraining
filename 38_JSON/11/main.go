@@ -31,6 +31,5 @@ func main() {
 
 }
 
-
 // this code doesn't run
 // just captured in lecture

@@ -2,11 +2,11 @@ package main
 
 import (
 	"bufio"
+	"fmt"
 	"io"
 	"log"
 	"net"
 	"strings"
-	"fmt"
 )
 
 var data = make(map[string]string)

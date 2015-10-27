@@ -1,11 +1,11 @@
 package main
 
 import (
-	"os"
-	"log"
+	"fmt"
 	"github.com/rwcarlsen/goexif/exif"
 	"github.com/rwcarlsen/goexif/mknote"
-	"fmt"
+	"log"
+	"os"
 )
 
 func main() {

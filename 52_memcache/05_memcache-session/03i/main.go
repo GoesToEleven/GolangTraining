@@ -2,10 +2,10 @@ package main
 
 import (
 	"fmt"
-	"net/http"
+	"github.com/nu7hatch/gouuid"
 	"google.golang.org/appengine"
 	"google.golang.org/appengine/memcache"
-	"github.com/nu7hatch/gouuid"
+	"net/http"
 )
 
 func init() {

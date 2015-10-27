@@ -23,7 +23,7 @@ func main() {
 		strings.Index("test", "e"),
 
 		// "a-b"
-		strings.Join([]string{"a","b"}, "-"),
+		strings.Join([]string{"a", "b"}, "-"),
 
 		// == "aaaaa"
 		strings.Repeat("a", 5),
@@ -47,6 +47,6 @@ func main() {
 	arr := []byte("test")
 	fmt.Println(arr)
 
-	str := string([]byte{'t','e','s','t'})
+	str := string([]byte{'t', 'e', 's', 't'})
 	fmt.Println(str)
 }

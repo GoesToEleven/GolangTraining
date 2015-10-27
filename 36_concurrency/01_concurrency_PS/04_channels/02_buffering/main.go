@@ -1,8 +1,8 @@
 package main
 
 import (
-	"strings"
 	"fmt"
+	"strings"
 )
 
 func main() {
@@ -16,7 +16,7 @@ func main() {
 		ch <- word
 	}
 
-	for i:=0; i < len(words); i++ {
+	for i := 0; i < len(words); i++ {
 		fmt.Print(<-ch + " ")
 	}
 

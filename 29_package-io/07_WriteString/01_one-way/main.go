@@ -16,7 +16,7 @@ func main() {
 	str := "Put some phrase here."
 	bs := []byte(str)
 
-		_, err = f.Write(bs)
+	_, err = f.Write(bs)
 	if err != nil {
 		log.Fatalln("error writing to file: ", err.Error())
 	}

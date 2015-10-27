@@ -9,8 +9,8 @@ func main() {
 	a := "this is stored in the variable a"
 	b := 42
 	c, d, e, f := 44.7, true, false, 'm' // single quotes
-	g := "g" // double quotes
-	h := `h` // back ticks
+	g := "g"                             // double quotes
+	h := `h`                             // back ticks
 
 	fmt.Println("a - ", reflect.TypeOf(a), " - ", a)
 	fmt.Println("b - ", reflect.TypeOf(b), " - ", b)

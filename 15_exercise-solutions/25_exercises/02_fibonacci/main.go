@@ -14,6 +14,6 @@ func fibo(xs int) int {
 		return 0
 		fmt.Println("xs == 0, return 0")
 	}
-	fmt.Println(xs,"...so...", xs-1, xs-2)
+	fmt.Println(xs, "...so...", xs-1, xs-2)
 	return fibo(xs-1) + fibo(xs-2)
 }

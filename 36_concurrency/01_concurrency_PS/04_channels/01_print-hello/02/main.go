@@ -7,10 +7,10 @@ import (
 func main() {
 	ch := make(chan string)
 
-	ch <- "Hello"	// program waits here until channel is drained
-					// since our main thread is waiting on the above line
-					// the main thread never gets to the statement below that drains the channel
-					// our program is in a deadlock
+	ch <- "Hello" // program waits here until channel is drained
+	// since our main thread is waiting on the above line
+	// the main thread never gets to the statement below that drains the channel
+	// our program is in a deadlock
 	fmt.Println(<-ch)
 }
 

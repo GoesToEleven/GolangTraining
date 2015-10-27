@@ -15,14 +15,14 @@ func main() {
 
 	go func() {
 		for {
-			msg := <- handlerOne
+			msg := <-handlerOne
 			fmt.Println("Handler One: " + msg)
 		}
 	}()
 
 	go func() {
 		for {
-			msg := <- handlerTwo
+			msg := <-handlerTwo
 			fmt.Println("Handler Two: " + msg)
 		}
 	}()
@@ -43,7 +43,7 @@ type Button struct {
 func (this *Button) AddEventListener(event string, responseChannel chan string) {
 	if _, present := this.eventListeners[event]; present {
 		this.eventListeners[event] =
-		append(this.eventListeners[event], responseChannel)
+			append(this.eventListeners[event], responseChannel)
 	} else {
 		this.eventListeners[event] = []chan string{responseChannel}
 	}
@@ -71,7 +71,7 @@ func (this *Button) TriggerEvent(event string, response string) {
 	}
 }
 
-func MakeButton()*Button {
+func MakeButton() *Button {
 	result := new(Button)
 	result.eventListeners = make(map[string][]chan string)
 	return result

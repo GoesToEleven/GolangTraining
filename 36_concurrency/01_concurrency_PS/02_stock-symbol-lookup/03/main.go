@@ -23,18 +23,18 @@ func main() {
 		"tmus",
 		"s",
 	}
-	
+
 	numComplete := 0
 
 	for _, symbol := range stockSymbols {
-		go func(symbol string){
+		go func(symbol string) {
 			resp, _ := http.Get("http://dev.markitondemand.com/Api/v2/Quote?symbol=" + symbol)
 			defer resp.Body.Close()
 			body, _ := ioutil.ReadAll(resp.Body)
-	
+
 			quote := new(QuoteResponse)
 			xml.Unmarshal(body, &quote)
-	
+
 			fmt.Printf("%s: $%.2f\n", quote.Name, quote.LastPrice)
 			numComplete++
 		}(symbol)

@@ -38,5 +38,3 @@ go to your browser and go to localhost:9000
 in the terminal on the server
 go look at the request line & request headers
 */
-
-

@@ -1,15 +1,15 @@
 package main
 
 import (
+	"fmt"
 	"github.com/julienschmidt/httprouter"
 	"google.golang.org/appengine"
 	"google.golang.org/appengine/datastore"
 	"html/template"
-	"net/http"
-	"log"
-	"fmt"
 	"io/ioutil"
+	"log"
 	stdlog "log"
+	"net/http"
 )
 
 type User struct {
