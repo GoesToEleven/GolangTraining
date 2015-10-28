@@ -13,3 +13,5 @@ func main() {
 		fmt.Println(n)
 	})
 }
+
+// callback: passing a func as an argument
