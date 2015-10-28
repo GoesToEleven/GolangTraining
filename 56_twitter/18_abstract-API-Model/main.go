@@ -1,12 +1,12 @@
 package main
 
 import (
-//	"API"
+	//	"API"
 	"Memcache"
+	"github.com/goestoeleven/GolangTraining/56_twitter/18_abstract-API-Model/api"
 	"github.com/julienschmidt/httprouter"
 	"html/template"
 	"net/http"
-	"github.com/goestoeleven/GolangTraining/56_twitter/18_abstract-API-Model/api"
 )
 
 var tpl *template.Template

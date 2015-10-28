@@ -10,10 +10,10 @@ import (
 )
 
 func serveTemplate(res http.ResponseWriter, req *http.Request, templateName string) {
-	session := getSession(req)
-	if len(session.Value) > 0 {
-		var sd sessionData
-		json.Unmarshal(session.Value, &sd)
+	memItem := getSession(req)
+	if len(memItem.Value) > 0 {
+		var sd SessionData
+		json.Unmarshal(memItem.Value, &sd)
 		sd.LoggedIn = true
 		tpl.ExecuteTemplate(res, templateName, sd)
 	} else {
@@ -22,10 +22,10 @@ func serveTemplate(res http.ResponseWriter, req *http.Request, templateName stri
 		if err != nil {
 			buf := new(bytes.Buffer)
 			writ := io.MultiWriter(res, buf)
-			tpl.ExecuteTemplate(writ, templateName, sessionData{})
+			tpl.ExecuteTemplate(writ, templateName, SessionData{})
 			memcache.Set(ctx, &memcache.Item{
-				Value: buf.Bytes(),
 				Key:   templateName,
+				Value: buf.Bytes(),
 			})
 			return
 		}
