@@ -8,5 +8,5 @@ func main() {
 		return n / 2, n%2 == 0
 	}
 
-	fmt.Println(half(2))
+	fmt.Println(half(5))
 }

@@ -3,13 +3,12 @@ package main
 import "fmt"
 
 func main() {
-	var x [256]string
-	fmt.Println(len(x))
-	fmt.Println(x[0])
-	for i := 0; i < 256; i++ {
-		x[i] = string(i)
+	var x [58]string
+
+	for i := 65; i <= 122; i++ {
+		x[i-65] = string(i)
 	}
-	for k, v := range x {
-		fmt.Printf("%v - %v - %T - %b\n", k, v, v, k)
-	}
+
+	fmt.Println(x)
+	fmt.Println(x[42])
 }
