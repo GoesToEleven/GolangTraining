@@ -3,13 +3,13 @@ package main
 import "fmt"
 
 func main() {
-	f(1, 2)
-	f(1, 2, 3)
+	foo(1, 2)
+	foo(1, 2, 3)
 	aSlice := []int{1, 2, 3, 4}
-	f(aSlice...)
-	f()
+	foo(aSlice...)
+	foo()
 }
 
-func f(numbers ...int) {
+func foo(numbers ...int) {
 	fmt.Println(numbers)
 }
