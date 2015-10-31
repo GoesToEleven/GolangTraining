@@ -36,7 +36,7 @@ header nav {
     align-items: center;
 }
 
-#loginOut {
+.loginOut {
     border: 1px solid #fff;
     border-radius: 5px;
     padding: 14px 28px;
@@ -44,7 +44,7 @@ header nav {
     color: #fff;
 }
 
-#loginOut:hover {
+.loginOut:hover {
     background-color: #00acc1;
 }
 

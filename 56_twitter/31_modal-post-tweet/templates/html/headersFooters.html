@@ -16,10 +16,10 @@
         <a href="/"><i class="fa fa-heart-o fa-3x"></i></a>
         <nav>
             {{if .LoggedIn}}
-            <a href="#openModal" id="opens-modal"><p id="loginOut">Tweet</p></a>
-            <a href="/api/logout"><p id="loginOut">Log Out</p></a>
+            {{template "modal-tweet"}}
+            <a href="/api/logout"><p class="loginOut">Log Out</p></a>
             {{else}}
-            <a href="/form/login"><p id="loginOut">Log In</p></a>
+            <a href="/form/login"><p class="loginOut">Log In</p></a>
             {{end}}
         </nav>
     </header>
