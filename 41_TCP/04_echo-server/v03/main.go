@@ -20,7 +20,6 @@ func main() {
 
 		// handles only one connection
 		io.Copy(conn, conn)
-
 		conn.Close()
 	}
 }
