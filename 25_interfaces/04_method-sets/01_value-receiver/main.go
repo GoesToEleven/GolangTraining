@@ -27,3 +27,4 @@ func main() {
 
 // p1 is the receiver value for the call to fullName
 // fullName is operating on its own value of p1
+// page 117 MEAP
