@@ -24,11 +24,12 @@ func init() {
 	http.Handle("/favicon.ico", http.NotFoundHandler())
 	http.Handle("/public/", http.StripPrefix("/public", http.FileServer(http.Dir("public/"))))
 
+	tpl = template.New("roottemplate")
 	tpl = tpl.Funcs(template.FuncMap{
 		"humanize_time": humanize.Time,
 	})
 
-	tpl = template.Must(template.ParseGlob("templates/html/*.html"))
+	tpl = template.Must(tpl.ParseGlob("templates/html/*.html"))
 }
 
 func Home(res http.ResponseWriter, req *http.Request, _ httprouter.Params) {
@@ -39,14 +40,12 @@ func Home(res http.ResponseWriter, req *http.Request, _ httprouter.Params) {
 	}
 	memItem, err := getSession(req)
 	var sd SessionData
-	if err != nil {
-		// not logged in
-		sd.Tweets = tweets
-	} else {
+	if err == nil {
 		// logged in
 		json.Unmarshal(memItem.Value, &sd)
 		sd.LoggedIn = true
 	}
+	sd.Tweets = tweets
 	tpl.ExecuteTemplate(res, "home.html", &sd)
 }
 
