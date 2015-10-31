@@ -73,3 +73,7 @@
     flex-direction: column;
     align-items: flex-end;
 }
+
+#opens-modal {
+    margin-right: 10px;
+}

@@ -30,6 +30,12 @@ header {
 
 }
 
+header nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
 #loginOut {
     border: 1px solid #fff;
     border-radius: 5px;
