@@ -60,7 +60,7 @@ func loginProcess(res http.ResponseWriter, req *http.Request, _ httprouter.Param
 	err := datastore.Get(ctx, key, &user)
 	if err != nil || req.FormValue("password") != user.Password {
 		// failure logging in
-		var sd sessionData
+		var sd SessionData
 		sd.LoginFail = true
 		tpl.ExecuteTemplate(res, "login.html", sd)
 		return
