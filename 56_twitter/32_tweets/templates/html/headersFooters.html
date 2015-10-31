@@ -1,0 +1,36 @@
+{{define "header"}}<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Twitter Mock</title>
+    <link rel="stylesheet" href="/public/css/reset.css">
+    <link rel='stylesheet' href='https://fonts.googleapis.com/css?family=Lobster|Open+Sans'>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="/public/css/styles.css">
+{{end}}
+
+{{define "header2"}}</head>
+<body>
+<div id="top">
+    <header>
+        <a href="/"><i class="fa fa-heart-o fa-3x"></i></a>
+        <nav>
+            {{if .LoggedIn}}
+            {{template "modal-tweet"}}
+            <a href="/api/logout"><p class="loginOut">Log Out</p></a>
+            {{else}}
+            <a href="/form/login"><p class="loginOut">Log In</p></a>
+            {{end}}
+        </nav>
+    </header>
+    <p id="motto">Seven Deadly Sins</p>
+    <p id="motto">One convenient location</p>
+    <p>{{.}}</p>
+    <p>{{.Email}}</p>
+    <p>{{.UserName}}</p>
+    <p>{{.LoggedIn}}</p>
+</div>
+{{end}}
+
+    {{ define "footer" }}</body>
+</html>{{ end }}
