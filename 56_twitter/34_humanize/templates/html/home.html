@@ -8,7 +8,7 @@
         <div>
             <p class="post">{{.Msg}}</p>
             <p class="post-meta">{{.UserName}}</p>
-            <p class="post-meta">{{.Time}}</p>
+            <p class="post-meta">{{humanize_time .Time}}</p>
         </div>
     </section>
     {{end}}

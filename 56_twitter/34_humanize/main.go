@@ -5,6 +5,7 @@ import (
 	"html/template"
 	"net/http"
 	"encoding/json"
+	"github.com/dustin/go-humanize"
 )
 
 var tpl *template.Template
@@ -22,6 +23,11 @@ func init() {
 	r.GET("/api/logout", logout)
 	http.Handle("/favicon.ico", http.NotFoundHandler())
 	http.Handle("/public/", http.StripPrefix("/public", http.FileServer(http.Dir("public/"))))
+
+	tpl = tpl.Funcs(template.FuncMap{
+		"humanize_time": humanize.Time,
+	})
+
 	tpl = template.Must(template.ParseGlob("templates/html/*.html"))
 }
 
