@@ -1,0 +1,10 @@
+{
+  "name": "mustache-template",
+  "version": "0.0.1",
+  "author": "Daniel",
+  "license": "MIT",
+  "devDependencies": {
+    "gulp": "^3.9.0",
+    "gulp-webserver": "^0.9.1"
+  }
+}

@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Document</title>
+</head>
+<body>
+  <my-blink interval="1000">Testing</my-blink>
+  <my-blink interval=300>Blah blah blah</my-blink>
+
+  <script>
+    var proto = Object.create(HTMLElement.prototype);
+
+    proto.toggleBlink = function() {
+      this.style.visibility = this.style.visibility === '' ? 'hidden' : '';
+    }
+
+    proto.attachedCallback = function() {
+      var interval = this.getAttribute('interval') || 500;
+      this.intervalId = setInterval(this.toggleBlink.bind(this), interval);
+    };
+
+    proto.detachedCallback = function() {
+      clearInterval(this.intervalId);
+      this.intervalId = undefined;
+    };
+
+    proto.attributeChangedCallback = function(attr, oldVal, newVal) {
+      clearInterval(this.intervalId);
+      var interval = newVal || 500;
+      this.intervalId = setInterval(this.toggleBlink.bind(this), interval);
+    };
+
+    document.registerElement('my-blink', {prototype: proto});
+  </script>
+</body>
+</html>

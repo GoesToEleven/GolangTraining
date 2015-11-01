@@ -1,0 +1,56 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Firebase Example</title>
+</head>
+<body>
+<form name="Add data">
+    <label for="name">Name:</label>
+    <input name="name" id="name" type="text"/>
+    <label for="age">Age:</label>
+    <input name="age" id="age" type="number"/>
+    <label for="job">Job:</label>
+    <input name="job" id="job" type="text"/>
+    <input id="submit" type="submit" value="Add Item"/>
+</form>
+<section class="data"></section>
+<script src="https://cdn.firebase.com/js/client/2.2.7/firebase.js"></script>
+<script>
+    function addSection(parent, data) {
+        var newList = document.createElement('ul');
+        for (var key in data) {
+            if (typeof data[key] === 'object') {
+                newList.innerHTML += '<li>' + key + '</li>';
+                addSection(newList, data[key]);
+            }
+            else {
+                newList.innerHTML += '<li>' + key + ': ' + data[key] + '</li>';
+            }
+        }
+        parent.appendChild(newList);
+    }
+
+    var ref = new Firebase('https://dazzling-inferno-8957.firebaseio.com/');
+    ref.on('value', function(snapshot) {
+        var data = snapshot.val(),
+            section = document.querySelector('.data');
+        section.innerHTML = '';
+        addSection(section, data);
+    });
+    document.querySelector('#submit').addEventListener('click', function(e) {
+        var form = e.target.parentNode;
+        e.preventDefault();
+        ref.push({
+            name: form.name.value,
+            age: form.age.value,
+            job: form.job.value
+        });
+        form.name.value = '';
+        form.age.value = '';
+        form.job.value = '';
+        form.name.focus();
+    })
+</script>
+</body>
+</html>

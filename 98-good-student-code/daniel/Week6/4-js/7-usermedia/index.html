@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Document</title>
+</head>
+<body>
+  <video></video>
+  <script>
+    if (navigator && (navigator.getUserMedia || navigator.webkitGetUserMedia || navigator.mozGetUserMedia || navigator.msGetUserMedia)) {
+      navigator.getUserMedia = navigator.getUserMedia || navigator.webkitGetUserMedia || navigator.mozGetUserMedia || navigator.msGetUserMedia;
+      navigator.getUserMedia({video: true},
+        function(stream) {
+          console.dir(stream);
+          var video = document.querySelector('video');
+          video.src = URL.createObjectURL(stream);
+          video.play();
+        },
+        function(err) {
+          alert(err.name);
+        });
+    }
+    else {
+      alert('User media does not work.')
+    }
+  </script>
+</body>
+</html>

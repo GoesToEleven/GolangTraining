@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Upload</title>
+  <link rel="stylesheet" href="/style.css">
+</head>
+<body>
+  <nav class="right-align">
+    <a href="/" class="button">Main Page</a>
+  </nav>
+  <section class="center-content">
+    <section class="upload-container">
+      {{if .}}
+      <p>File Uploaded</p>
+      {{end}}
+      <form method="post" enctype="multipart/form-data">
+        <input type="file" name="image" accept="image/*" required>
+        <input type="submit" value="Upload">
+      </form>
+    </section>
+  </section>
+</body>
+</html>

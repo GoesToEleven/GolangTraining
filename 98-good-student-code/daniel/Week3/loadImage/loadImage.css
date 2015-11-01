@@ -1,0 +1,43 @@
+html {
+	background-color: brown;
+}
+
+.center {
+	display: -webkit-box;
+	display: -webkit-flex;
+	display: flex;
+	-webkit-box-pack: center;
+	-webkit-justify-content: center;
+	justify-content: center;
+	-webkit-box-align: center;
+	-webkit-align-items: center;
+	align-items: center;
+	width: 100vw;
+	height: 100vh;
+}
+
+.overlay {
+	position: absolute;
+	top: 0;
+	left: 0;
+	display: -webkit-box;
+	display: -webkit-flex;
+	display: flex;
+	-webkit-box-pack: center;
+	-webkit-justify-content: center;
+	justify-content: center;
+	-webkit-box-align: center;
+	-webkit-align-items: center;
+	align-items: center;
+	width: 100vw;
+	height: 100vh;
+}
+
+.overlay img {
+	max-width: 100vw;
+	max-height: 100vh;
+}
+
+i {
+	color: white;
+}

@@ -1,0 +1,30 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<div class="wrap">
+		<header class="header">
+			<h1 class="logo"><a href="#" title="My Logo">My Logo</a></h1>
+			<nav class="nav">
+				<ul>
+					<li class="nav-item"><a href=""></a></li>
+					<li class="nav-item"><a href=""></a></li>
+					<li class="nav-item"><a href=""></a></li>
+					<li class="nav-item"><a href=""></a></li>
+					<li class="nav-item"><a href=""></a></li>
+				</ul>
+			</nav>
+		</header>
+		<main class="content">
+			<div class="col-01"></div>
+			<div class="col-02"></div>
+		</main>
+		<div class="footer"><span class="copy">all rights reserved</span></div>
+	</div>
+</body>
+</html>
+
+html:5>.wrap>header.header>h1.logo>a[href='#' title='My Logo']{My Logo}^nav.nav>ul>(li.nav-item>a)*5^^^main.content>.col-01+.col-02^.footer>span.copy{all rights reserved}

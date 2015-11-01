@@ -1,0 +1,17 @@
+{{define "index"}}<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Movie</title>
+</head>
+<body>
+  {{template "header"}}
+  <h1>Movies</h1>
+  <ul>
+    {{range .Movies}}
+    <li>{{template "movieItem" .}}</li>
+    {{end}}
+  </ul>
+</body>
+</html>
+{{end}}

@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Document</title>
+</head>
+<body>
+  <audio preload="auto">
+    <source src="zelda.ogg" type="audio/ogg">
+    <source src="zelda.mp3" type="audio/mpeg">
+  </audio>
+  <button id="play">Play</button>
+  <label for="volume">Volume:</label>
+  <input id="volume" type="range" min=0 max=1 step="0.01" value="1">
+  <script>
+    document.querySelector('#play').addEventListener('click', function(e) {
+      if (e.target.classList.contains('playing')) {
+        document.querySelector('audio').pause();
+        e.target.textContent = 'Play';
+      }
+      else {
+        document.querySelector('audio').play();
+        e.target.textContent = 'Pause';
+      }
+      e.target.classList.toggle('playing');
+    });
+
+    document.querySelector('#volume').addEventListener('input', function(e) {
+      document.querySelector('audio').volume = e.target.value;
+    });
+  </script>
+</body>
+</html>

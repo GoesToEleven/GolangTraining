@@ -1,0 +1,53 @@
+<template id="template">
+    <div id="showing">
+        <content></content>
+    </div>
+</template>
+<script src="../createElement.js"></script>
+<script>
+    function toggleStyle() {
+        var interval = parseInt(this.getAttribute('interval')) || 1000;
+        this.timeoutId = setTimeout(toggleStyle.bind(this), interval);
+        var item = this.shadowRoot.querySelector('#showing');
+        var styleText = this.getAttribute('styles') || 'visibility: hidden';
+        var styleLevels = styleText.split('/');
+        item.currentSetting = (item.currentSetting + 1) % (styleLevels.length + 1);
+        var detail = {newStyle: item.currentSetting ? styleLevels[item.currentSetting - 1] : ''};
+        var e = new CustomEvent('styleChanged', {detail: detail});
+        this.dispatchEvent(e);
+        var styles = item.currentSetting ? styleLevels[item.currentSetting - 1].split(',') : [];
+        clearStyle.call(this);
+        styles.forEach(function(style) {
+            var keyVal = style.split(':');
+            item.style[keyVal[0].trim()] = keyVal[1].trim();
+        });
+    }
+
+    function loader() {
+        var item = this.shadowRoot.querySelector('#showing');
+        item.currentSetting = 0;
+        var interval = parseInt(this.getAttribute('interval')) || 1000;
+        this.timeoutId = setTimeout(toggleStyle.bind(this), interval);
+    }
+
+    function cleanUp() {
+        clearTimeout(this.timeoutId);
+    }
+
+    function clearStyle() {
+        var item = this.shadowRoot.querySelector('#showing');
+        for (var key in item.style) {
+            if (item.style.hasOwnProperty(key)) {
+                item.style[key] = '';
+            }
+        }
+    }
+
+    var proto = Object.create(HTMLElement.prototype);
+    proto.createdCallback = loader;
+    proto.detachedCallback = cleanUp;
+    proto.attributeChangedCallback = clearStyle;
+    proto.stop = cleanUp;
+    proto.start = loader;
+    window.MyBlink = createElement('my-blink', '#template', proto);
+</script>

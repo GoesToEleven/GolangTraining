@@ -1,0 +1,38 @@
+* {
+  box-sizing: border-box;
+}
+
+html {
+  background-color: #8a8;
+}
+
+a {
+  color: blue;
+}
+
+h1 {
+  font-size: 50px;
+  margin: 8px 3px;
+  text-align: center;
+}
+
+.tweet {
+  margin: 5px;
+  border: 2px solid black;
+  background-color: #bbb;
+}
+
+.tweet a {
+  font-size: 20px;
+}
+
+.tweet p {
+  font-size: 18px;
+  margin: 10px 5px;
+}
+
+.tweet .submit-time {
+  color: #eee;
+  font-size: 12px;
+  margin: 3px;
+}

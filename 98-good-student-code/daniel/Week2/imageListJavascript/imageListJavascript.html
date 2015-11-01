@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Test</title>
+</head>
+<body>
+<script>
+var container = document.createElement('div');
+container.style.display = 'flex';
+container.style.flexFlow = 'row wrap';
+
+function onEnter(event) {
+  var target = event.target;
+  target.style.width = '200px';
+  target.style.height = '200px';
+}
+
+function onLeave(event) {
+	var target = event.target; 
+	target.style.width = '100px';
+	target.style.height = '100px';
+}
+
+for (var i = 1; i < 10; i++) {
+  var image = document.createElement('img');
+  image.src = 'http://lorempixel.com/120/120/abstract/' + i;
+  image.alt = 'Sports Image ' + i;
+  image.className = 'getBig';
+  image.style.borderRadius = '50%';
+  image.style.margin = '10px';
+  image.addEventListener('mouseenter', onEnter);
+  image.addEventListener('mouseleave', onLeave);
+  image.style.width = '100px';
+  image.style.height = '100px';
+  image.style.transition = 'width 0.5s, height 0.5s';
+  container.appendChild(image);
+}
+
+var bodyNode = document.querySelector('body');
+bodyNode.appendChild(container);
+</script>
+</body>
+</html>

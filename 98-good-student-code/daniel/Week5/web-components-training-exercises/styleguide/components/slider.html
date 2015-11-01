@@ -1,0 +1,61 @@
+<template id="template">
+    <style>
+        #slider {
+            min-width: 400px;
+            min-height: 200px;
+            overflow: hidden;
+        }
+    </style>
+    <!-- Add HTML for your component here.
+    Try adding <content></content> to project from the light DOM -->
+    <section id="slider">
+        <content></content>
+    </section>
+</template>
+<script src="../createElement.js"></script>
+<script>
+    function slideNext() {
+        var shadowRoot = this.shadowRoot;
+        var nodes = shadowRoot.nodesData;
+        shadowRoot.currentNode = (shadowRoot.currentNode + 1) % nodes.length;
+        for (var i = 0; i < nodes.length; i++) {
+            nodes[i].style.display = 'none';
+        }
+        nodes[shadowRoot.currentNode].style.display = '';
+    }
+
+    function loader() {
+        var shadowRoot = this.shadowRoot;
+        var nodes = shadowRoot.querySelector('content').getDistributedNodes();
+        shadowRoot.nodesData = [];
+        shadowRoot.currentNode = 0;
+        for (var i = 0; i < nodes.length; i++) {
+            var node = nodes[i];
+            if (node.nodeType === 1) {
+                shadowRoot.nodesData.push(node);
+                node.style.display = 'none';
+            }
+        }
+        var interval = this.getAttribute('interval') || 1000;
+        this.intervalId = setInterval(slideNext.bind(this), interval);
+    }
+
+    function changeInterval(name, oldVal, newVal) {
+        if (name === 'interval') {
+            clearInterval(this.intervalId);
+            this.intervalId = setInterval(slideNext.bind(this), newVal)
+        }
+    }
+
+    function deleteItem() {
+        clearInterval(this.intervalId);
+    }
+
+
+    var proto = Object.create(HTMLElement.prototype);
+    proto.createdCallback = loader;
+    proto.attributeChangedCallback = changeInterval;
+    proto.detachedCallback = deleteItem;
+    proto.slideNext = slideNext;
+    window.MySlider = createElement('my-slider', '#template', proto);
+</script>

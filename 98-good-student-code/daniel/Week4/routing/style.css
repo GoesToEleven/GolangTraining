@@ -1,0 +1,33 @@
+.person.ng-enter,
+.person.ng-leave,
+.person.ng-move {
+    transition: all 500ms linear;
+}
+
+.person.ng-enter,
+.person.ng-move {
+    opacity: 0;
+    max-height: 0;
+    overflow: hidden;
+}
+
+.person.ng-move.ng-move-active,
+.person.ng-enter.ng-enter-active {
+    opacity: 1;
+    max-height: 500px;
+}
+
+.person.ng-leave {
+    opacity: 1;
+    overflow: hidden;
+    max-height: 500px;
+}
+
+.person.ng-leave.ng-leave-active {
+    opacity: 0;
+    max-height: 0;
+}
+
+a {
+    text-decoration: none;
+}

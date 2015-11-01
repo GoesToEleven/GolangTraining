@@ -1,0 +1,25 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+</head>
+<body>
+	<template>
+		<a href="http://www.fresnocitycollege.edu/">
+			<img src="http://devfest.gdgfresno.com/img/partners/fcc.jpg" alt="Fresno City College">
+		</a>
+	</template>
+	<my-logo></my-logo>
+
+	<script>
+	var proto = Object.create(HTMLElement.prototype);
+
+	proto.createdCallback = function() {
+		var template = document.querySelector('template').content;
+		this.appendChild(template.cloneNode(true));
+	}
+
+	document.registerElement('my-logo', {prototype: proto});
+	</script>
+</body>
+</html>

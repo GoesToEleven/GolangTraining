@@ -1,0 +1,18 @@
+{{define "addMovie"}}<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Add a movie</title>
+</head>
+<body>
+  {{template "header"}}
+  <form method="post">
+    <label for="name">Name</label>
+    <input type="text" id="name" name="name" placeholder="Movie Name">
+    <label for="summary">Summary</label>
+    <textarea id="summary" name="summary" rows="8" cols="40"></textarea>
+    <input type="submit" value="Add">
+  </form>
+</body>
+</html>
+{{end}}

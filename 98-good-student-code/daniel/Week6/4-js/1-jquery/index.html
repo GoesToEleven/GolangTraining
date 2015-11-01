@@ -1,0 +1,112 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<script src="jquery.min.js"></script>
+</head>
+<body>
+	<div id="box" class="box" width="300"></div>
+
+	<script>
+	// 1
+	$(function() {
+
+	});
+
+	document.addEventListener('DOMContentLoaded', function(e) {
+
+	});
+
+	// 2
+	$("#box");
+
+	document.querySelector('#box');
+	document.getElementById('box');
+
+	// 3
+	$(".box");
+
+	document.querySelectorAll('.box');
+
+	// 4
+	$("div");
+
+	document.querySelector('div');
+	document.getElementsByTagName('div')
+
+	// 5
+	$(".box").get(0);
+
+	document.querySelector('.box');
+	document.getElementsByClassName('box');
+
+	// 6
+	$(document).on('click', function(event) {
+		console.log(event);
+	});
+
+	document.addEventListener('click', function(event) {
+		console.log(event);
+	});
+
+	// 7
+	$("#box").text("lorem");
+
+	document.querySelector('#box').textContent = 'lorem';
+
+	// 8
+	$("#box").html("<p>lorem</p>");
+
+	document.querySelector('#box').innerHTML = '<p>lorem</p>';
+
+	// 9
+	$("#box").append("<p>lorem</p>");
+
+	document.querySelector('#box').innerHTML += '<p>lorem</p>';
+
+	// 10
+	$("#box").attr("width");
+
+	document.querySelector('#box').getAttribute('width');
+
+	// 11
+	$("#box").attr("width", "400");
+
+	document.querySelector('#box').setAttribute('width', '400');
+
+	// 12
+	$("#box").removeAttr("width");
+
+	document.querySelector('#box').removeAttribute('width');
+
+	// 13
+	$("#box").addClass("selected");
+
+	document.querySelector('#box').classList.add('selected');
+
+	// 14
+	$("#box").removeClass("selected");
+
+	document.querySelector('#box').classList.remove('selected');
+
+	// 15
+	$("#box").toggleClass("selected");
+
+	document.querySelector('#box').classList.toggle('selected');
+
+	// 16
+	$("#box").hasClass("box");
+
+	document.querySelector('#box').classList.contains('box');
+
+	// 17
+	$("#box").css({
+		"background": "#F60",
+		"height": "300"
+	});
+
+	document.querySelector('#box').style.background = '#F60';
+	document.querySelector('#box').style.height = '300px';
+	</script>
+</body>
+</html>

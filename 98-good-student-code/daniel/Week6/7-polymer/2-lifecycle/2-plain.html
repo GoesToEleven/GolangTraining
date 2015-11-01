@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+</head>
+<body>
+  <my-element blah="500"></my-element>
+
+  <script>
+    var proto = Object.create(HTMLElement.prototype);
+
+    proto.createdCallback = function() {
+      console.log('created!');
+    };
+
+    proto.attachedCallback = function() {
+      console.log('attached!');
+    };
+
+    proto.detachedCallback = function() {
+      console.log('detached!');
+    };
+
+    proto.attributeChangedCallback = function(attr, oldVal, newVal) {
+      console.log('attribute: ', attr);
+      console.log('old value: ', oldVal);
+      console.log('new value: ', newVal);
+    };
+
+    document.registerElement('my-element', {prototype: proto});
+  </script>
+</body>
+</html>

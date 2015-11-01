@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<link rel="import" href="bower_components/paper-drawer-panel/paper-drawer-panel.html">
+	<link rel="import" href="bower_components/paper-toolbar/paper-toolbar.html">
+	<link rel="import" href="bower_components/paper-menu/paper-menu.html">
+	<link rel="import" href="bower_components/iron-icons/iron-icons.html">
+	<link rel="import" href="bower_components/paper-icon-button/paper-icon-button.html">
+	<link rel="import" href="bower_components/iron-pages/iron-pages.html">
+	<link rel="import" href="bower_components/paper-material/paper-material.html">
+	<link rel="import" href="bower_components/paper-styles/paper-styles-classes.html">
+	<link rel="import" href="bower_components/paper-input/paper-input.html">
+	<link rel="import" href="bower_components/firebase-element/firebase-collection.html">
+	<link rel="import" href="style.html">
+</head>
+<body>
+	<template is="dom-bind" id="app">
+
+    <paper-drawer-panel id="paperDrawerPanel">
+      <paper-header-panel drawer mode="seam">
+
+        <!-- Drawer Toolbar -->
+        <paper-toolbar id="drawerToolbar">
+          <span class="paper-font-title">Menu</span>
+        </paper-toolbar>
+
+        <!-- Drawer Content -->
+        <paper-menu class="list">
+          <a href="/">
+            <iron-icon icon="home"></iron-icon>
+            <span>Home</span>
+          </a>
+
+          <a href="/users">
+            <iron-icon icon="info"></iron-icon>
+            <span>Users</span>
+          </a>
+
+          <a href="/contact">
+            <iron-icon icon="mail"></iron-icon>
+            <span>Contact</span>
+          </a>
+        </paper-menu>
+      </paper-header-panel>
+      <paper-header-panel main mode="waterfall-tall">
+
+        <!-- Main Toolbar -->
+        <paper-toolbar id="mainToolbar">
+          <paper-icon-button id="paperToggle" icon="menu" paper-drawer-toggle></paper-icon-button>
+          <span class="flex"></span>
+
+          <!-- Toolbar icons -->
+          <paper-icon-button icon="refresh"></paper-icon-button>
+          <paper-icon-button icon="search"></paper-icon-button>
+
+          <!-- Application name -->
+          <div class="middle paper-font-display2 app-name">Fresno City College Chat</div>
+
+          <!-- Application sub title -->
+          <div class="bottom title"></div>
+
+        </paper-toolbar>
+
+        <!-- Main Content -->
+        <div class="content">
+            <section>
+							<firebase-collection data="{{messages}}" location="https://polymer-chat-first.firebaseio.com/"></firebase-collection>
+							<template is="dom-repeat" items="[[messages]]" as="message">
+								<paper-material elevation="1" class="layout horizontal">
+	              	<img class="avatar" src="[[message.avatar]]" width="40" height="40">
+	                <p class="flex">[[message.message]]</p>
+	              </paper-material>
+							</template>
+            </section>
+        </div>
+      </paper-header-panel>
+    </paper-drawer-panel>
+		<paper-input labal="Chat"></paper-input>
+		<script>
+			var input = document.querySelector('paper-input');
+			var firebase = document.querySelector('firebase-collection');
+			input.addEventListener('keydown', function(e) {
+				if (e.keyIdentifier === 'Enter') {
+					var message = {avatar: 'http://heintendsvictory.org/wp-content/uploads/default-avatar.png', message: e.target.value};
+					firebase.add(message);
+					e.target.value = '';
+				}
+			});
+		</script>
+  </template>
+</body>
+</html>

@@ -1,0 +1,68 @@
+html {
+    background-color: #333;
+    -webkit-transition: background-color 1s linear;
+    transition: background-color 1s linear;
+}
+
+#hit {
+    width: 150px;
+    height: 150px;
+    font-size: 30px;
+    border-radius: 100%;
+    position: absolute;
+    top: 50px;
+    left: 50px;
+    z-index: 1;
+    -webkit-transition: left 1s linear, top 1s linear;
+    transition: left 1s linear, top 1s linear;
+}
+
+#abort {
+    width: 70px;
+    height: 70px;
+    border-radius: 100%;
+    position: absolute;
+    right: 10px;
+    bottom: 10px;
+}
+
+.centering {
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: flex;
+    -webkit-flex-flow: column nowrap;
+    flex-flow: column nowrap;
+    -webkit-box-align: center;
+    -webkit-align-items: center;
+    align-items: center;
+    -webkit-box-pack: justify;
+    -webkit-justify-content: space-between;
+    justify-content: space-between;
+    margin-top: 15%;
+}
+
+p {
+    text-align: center;
+}
+
+#timer {
+    font-size: 200px;
+    color: grey;
+}
+
+#message {
+    font-size: 100px;
+    color: lightcoral;
+}
+
+#failure {
+    z-index: 2;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    visibility: hidden;
+}

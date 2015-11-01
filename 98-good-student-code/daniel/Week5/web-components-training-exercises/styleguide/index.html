@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>Web Components Styleguide</title>
+    <script src="webcomponents.min.js"></script>
+    <!-- Bootstrap core CSS -->
+
+    <link href="vendor/bootstrap.min.css" rel="stylesheet">
+
+    <link href="vendor/docs.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/8.6/styles/default.min.css">
+    <link rel="import" href="components/badge.html">
+    <link rel="import" href="components/spinner.html">
+    <link rel="import" href="components/button.html">
+    <link rel="import" href="components/slider.html">
+    <link rel="import" href="components/accordion.html"/>
+    <link rel="import" href="components/blink.html"/>
+    <style>.navbar-brand {
+        font-size: 250%;
+        line-height: 1.2;
+        margin: 20px 0;
+    }</style>
+
+</head>
+<body>
+
+<!-- Docs master nav -->
+<header class="navbar navbar-static-top bs-docs-nav" id="top" role="banner">
+    <div class="container">
+        <div class="navbar-header">
+            <a href="../" class="navbar-brand">My Web Components Styleguide</a>
+        </div>
+    </div>
+</header>
+
+
+<div class="container bs-docs-container">
+
+    <div class="row">
+        <div class="col-md-9">
+            <div class="bs-docs-section">
+                <!-- Component group title -->
+                <h1 id="first-component-group" class="page-header">Component Group</h1>
+                <!-- Description of component group -->
+                <p class="lead">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusantium commodi fugit
+                    incidunt laborum magni maiores minima minus omnis quas, quis quo repellendus sapiente ut! Autem
+                    doloribus molestiae quasi saepe vel.</p>
+                <!-- Note callout about component group -->
+                <div class="bs-callout bs-callout-warning" id="callout-btn-group-tooltips">
+                    <h4>Note about component</h4>
+
+                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusantium aliquam amet culpa dolores
+                        hic itaque magni minima minus mollitia nemo nulla numquam odit provident, quidem ratione rem
+                        tempora ullam vitae.</p>
+                </div>
+
+                <!-- Component title -->
+                <h2 id="hello-badge">Hello Badge</h2>
+                <!-- Component description -->
+                <p>Lorem ipsum.</p>
+                <!-- Component code -->
+                <my-badge>Daniel</my-badge>
+                <!-- Component code example -->
+                <div class="highlight"><code class="html">
+                    <my-badge>Daniel</my-badge>
+                </code></div>
+
+                <!-- Component title -->
+                <h2 id="spinner">Spinner</h2>
+                <!-- Component description -->
+                <p>Lorem ipsum.</p>
+                <!-- Component code -->
+                <my-spinner speed="500">One</my-spinner>
+                <my-spinner reverse>Two</my-spinner>
+                <my-spinner axis="Y">Three</my-spinner>
+                <my-spinner axis="Y" reverse>Four</my-spinner>
+                <my-spinner axis="X">Five</my-spinner>
+                <my-spinner axis="X" reverse>Six</my-spinner>
+                <!-- Component code example -->
+                <div class="highlight"><code class="html">
+                    <my-spinner speed="500">One</my-spinner>
+                    <my-spinner reverse>Two</my-spinner>
+                    <my-spinner axis="Y">Three</my-spinner>
+                    <my-spinner axis="Y" reverse>Four</my-spinner>
+                    <my-spinner axis="X">Five</my-spinner>
+                    <my-spinner axis="X" reverse>Six</my-spinner>
+                </code></div>
+
+                <!-- Component title -->
+                <h2 id="button">Button</h2>
+                <!-- Component description -->
+                <p>Lorem ipsum.</p>
+                <!-- Component code -->
+                <my-button>Testing</my-button>
+                <!-- Component code example -->
+                <div class="highlight"><code class="html">
+                    <my-button>Testing</my-button>
+                </code></div>
+
+                <!-- Component title -->
+                <h2 id="slider">Slider</h2>
+                <!-- Component description -->
+                <p>Lorem ipsum.</p>
+                <!-- Component code -->
+                <my-slider interval="2000">
+                    <img src="http://lorempixel.com/200/200/abstract/1"/>
+                    <img src="http://lorempixel.com/200/200/abstract/2"/>
+                    <img src="http://lorempixel.com/200/200/abstract/3"/>
+                    <img src="http://lorempixel.com/200/200/abstract/4"/>
+                </my-slider>
+                <!-- Component code example -->
+                <div class="highlight"><code class="html">
+                    <my-slider interval="2000">
+                        <img src="http://lorempixel.com/200/200/abstract/1"/>
+                        <img src="http://lorempixel.com/200/200/abstract/2"/>
+                        <img src="http://lorempixel.com/200/200/abstract/3"/>
+                        <img src="http://lorempixel.com/200/200/abstract/4"/>
+                    </my-slider>
+                </code></div>
+
+                <!-- Component title -->
+                <h2 id="accordion">Accordion</h2>
+                <!-- Component description -->
+                <p>Lorem ipsum.</p>
+                <!-- Component code -->
+                <my-accordion>
+                    <div class="item">
+                        <p class="header">First paragraph</p>
+
+                        <p class="body">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Assumenda commodi fuga
+                            pariatur. Accusantium blanditiis dolore eius veniam, veritatis vitae voluptatibus? Atque cum
+                            eum exercitationem fuga magnam modi odit praesentium repudiandae?</p>
+                    </div>
+                    <div class="item">
+                        <p class="header">Some text</p>
+
+                        <p class="body">Laborum mollitia quas quod unde. Atque magnam magni nisi sed veritatis? Alias
+                            dolore eveniet fugit libero nesciunt nobis numquam ratione voluptatem? Expedita sequi sunt
+                            voluptatem! Consequatur est magni nihil similique!</p>
+                    </div>
+                    <div class="item">
+                        <p class="header">A body of characters</p>
+
+                        <p class="body">Animi itaque iure maxime non perferendis quos, reprehenderit sit voluptatem.
+                            Aliquid at autem consequuntur doloremque eaque eligendi, facere fugiat fugit numquam odit
+                            officia quasi, quia quisquam reprehenderit sed totam vitae!</p>
+                    </div>
+                    <div class="item">
+                        <p class="header">Fancy HTML</p>
+
+                        <p class="body">Adipisci, alias aspernatur distinctio esse fuga id nobis nulla placeat quis
+                            repudiandae, similique sunt voluptate. Amet eveniet iusto nihil sapiente unde? At
+                            consequuntur eveniet id necessitatibus neque sapiente, soluta voluptates.</p>
+                    </div>
+                </my-accordion>
+                <!-- Component code example -->
+                <div class="highlight"><code class="html">
+                    <my-accordion>
+                        <div class="item">
+                            <p class="header">...</p>
+
+                            <p class="body">...</p>
+                        </div>
+                        <div class="item">
+                            <p class="header">...</p>
+
+                            <p class="body">...</p>
+                        </div>
+                        <div class="item">
+                            <p class="header">...</p>
+
+                            <p class="body">...</p>
+                        </div>
+                        <div class="item">
+                            <p class="header">...</p>
+
+                            <p class="body">...</p>
+                        </div>
+                    </my-accordion>
+                </code></div>
+
+                <!-- Component title -->
+                <h2 id="blink">Blink</h2>
+                <!-- Component description -->
+                <p>Lorem ipsum.</p>
+                <!-- Component code -->
+                <my-blink interval="300" styles="color: red, background-color: blue / color: green, background-color: yellow">Hello World!</my-blink>
+                <!-- Component code example -->
+                <div class="highlight"><code class="html">
+                    <my-blink interval="300" styles="color: red, background-color: blue / color: green, background-color: yellow">Hello World!</my-blink>
+                </code></div>
+
+
+            </div>
+        </div>
+
+        <div class="col-md-3" role="complementary">
+            <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm">
+                <ul class="nav bs-docs-sidenav">
+
+
+                    <li>
+                        <a href="#first-component-group">Component Group</a>
+                        <ul class="nav">
+                            <li><a href="#hello-badge">Hello Badge</a></li>
+                            <li><a href="#spinner">Spinner</a></li>
+                            <li><a href="#button">Button</a></li>
+                            <li><a href="#slider">Slider</a></li>
+                            <li><a href="#accordion">Accordion</a></li>
+                            <li><a href="#blink">Blink</a></li>
+                        </ul>
+                    </li>
+                </ul>
+
+            </nav>
+        </div>
+
+    </div>
+</div>
+
+<!-- Footer
+================================================== -->
+<footer class="bs-docs-footer" role="contentinfo">
+    <div class="container">
+
+
+        <p>Styleguide documentation page is forked from <a href="https://github.com/twbs/bootstrap/tree/gh-pages">Twitter
+            Bootstrap</a>, licensed under <a rel="license" href="https://github.com/twbs/bootstrap/blob/master/LICENSE"
+                                             target="_blank">MIT</a>.</p>
+
+    </div>
+</footer>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/8.6/highlight.min.js"></script>
+<script>
+
+    function escapeHtml(str) {
+        var div = document.createElement('div');
+        div.appendChild(document.createTextNode(str));
+        return div.innerHTML;
+    }
+
+    var codeNodes = Array.prototype.slice.call(document.querySelectorAll('code'));
+    codeNodes.forEach(function (el) {
+        el.innerHTML = escapeHtml(el.innerHTML);
+    });
+    codeNodes.forEach(function (el) {
+        hljs.highlightBlock(el);
+    });
+</script>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+
+
+<script src="vendor/bootstrap.min.js"></script>
+
+
+<script src="vendor/docs.min.js"></script>
+
+
+</body>
+</html>

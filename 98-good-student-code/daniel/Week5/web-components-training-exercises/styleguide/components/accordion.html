@@ -1,0 +1,61 @@
+<template id="template">
+    <style>
+        ::content .item {
+            border: 1px solid black;
+        }
+
+        ::content .item .body {
+            height: 0;
+            transition: height 500ms;
+            overflow: hidden;
+        }
+    </style>
+    <div class="items">
+        <content></content>
+    </div>
+</template>
+<script src="../createElement.js"></script>
+<script>
+    function mouseEnter(e) {
+        expandElement(e.target.querySelector('.body'));
+    }
+
+    function mouseLeave(e) {
+        collapseElement(e.target.querySelector('.body'));
+    }
+
+    function expandParent(element) {
+        if (element.parentNode.classList.contains('item')
+                && element.parentNode.parentNode.nodeName === 'MY-ACCORDION'
+                && element.parentNode.parentNode.parentNode.classList.contains('body')) {
+            return function() {
+                expandElement(element.parentNode.parentNode.parentNode);
+            };
+        }
+        return function() {};
+    }
+
+    function expandElement(element) {
+        element.style.height = element.scrollHeight + 'px';
+    }
+
+    function collapseElement(element) {
+        element.style.height = '';
+    }
+
+    function loader() {
+        var items = this.shadowRoot.querySelector('content').getDistributedNodes();
+        for (var i = 0; i < items.length; i++) {
+            var item = items[i];
+            if (item.nodeType === 1 && item.classList.contains('item')) {
+                item.addEventListener('mouseenter', mouseEnter);
+                item.addEventListener('mouseleave', mouseLeave);
+            }
+        }
+    }
+
+    var proto = Object.create(HTMLElement.prototype);
+    proto.createdCallback = loader;
+
+    window.MyAccordion = createElement('my-accordion', '#template', proto);
+</script>

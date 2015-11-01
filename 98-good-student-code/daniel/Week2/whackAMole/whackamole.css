@@ -1,0 +1,116 @@
+* {
+    box-sizing: border-box;
+}
+
+html {
+    background-color: chocolate;
+}
+
+main {
+    margin: 0 auto;
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: flex;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+    -webkit-flex-direction: column;
+    flex-direction: column;
+    -webkit-box-align: center;
+    -webkit-align-items: center;
+    align-items: center;
+}
+
+#game {
+    width: 100vw;
+    height: 90vh;
+    background-color: brown;
+    position: relative;
+}
+
+#score p {
+    display: inline-block;
+    font-size: 5vh;
+    height: 5vh;
+    margin: 0 1em;
+}
+
+.mole {
+    background: url("whackamole.png") no-repeat center center;
+    background-size: cover;
+    display: inline-block;
+    padding: 4px;
+    opacity: 0.3;
+}
+
+.visible {
+    opacity: 1;
+}
+
+.boss {
+    background: url("whackamole.png") no-repeat center center;
+    background-size: cover;
+    position: absolute;
+    left: 0;
+    top: 0;
+    -webkit-transition: left 1s linear, top 1s linear;
+    transition: left 1s linear, top 1s linear;
+}
+
+.hit {
+    -webkit-animation: smack 250ms linear;
+    animation: smack 250ms linear;
+}
+
+@-webkit-keyframes smack {
+    0% {
+        -webkit-transform: scale(1) translate(0, 0);
+        transform: scale(1) translate(0, 0);
+    }
+    20% {
+        -webkit-transform: scale(1.2) translate(0, 0);
+        transform: scale(1.2) translate(0, 0);
+    }
+    40% {
+        -webkit-transform: scale(1.2) translate(-7%, 0);
+        transform: scale(1.2) translate(-7%, 0);
+    }
+    60% {
+        -webkit-transform: scale(1.2) translate(7%, 0);
+        transform: scale(1.2) translate(7%, 0);
+    }
+    80% {
+        -webkit-transform: scale(1.2) translate(0, 0);
+        transform: scale(1.2) translate(0, 0);
+    }
+    100% {
+        -webkit-transform: scale(1) translate(0, 0);
+        transform: scale(1) translate(0, 0);
+    }
+}
+
+@keyframes smack {
+    0% {
+        -webkit-transform: scale(1) translate(0, 0);
+        transform: scale(1) translate(0, 0);
+    }
+    20% {
+        -webkit-transform: scale(1.2) translate(0, 0);
+        transform: scale(1.2) translate(0, 0);
+    }
+    40% {
+        -webkit-transform: scale(1.2) translate(-7%, 0);
+        transform: scale(1.2) translate(-7%, 0);
+    }
+    60% {
+        -webkit-transform: scale(1.2) translate(7%, 0);
+        transform: scale(1.2) translate(7%, 0);
+    }
+    80% {
+        -webkit-transform: scale(1.2) translate(0, 0);
+        transform: scale(1.2) translate(0, 0);
+    }
+    100% {
+        -webkit-transform: scale(1) translate(0, 0);
+        transform: scale(1) translate(0, 0);
+    }
+}

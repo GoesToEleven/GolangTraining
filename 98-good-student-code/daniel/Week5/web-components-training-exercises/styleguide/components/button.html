@@ -1,0 +1,29 @@
+<template id="template">
+    <style>
+        button {
+            min-width: 100px;
+            min-height: 50px;
+            border-radius: 10px;
+            background-color: cornsilk;
+            padding: 0;
+            margin: 0;
+        }
+
+        button:focus {
+            outline: 0;
+        }
+
+        ::content {
+            font-size: 20px;
+            margin: 0;
+            padding: 0;
+        }
+    </style>
+    <!-- Add HTML for your component here.
+    Try adding <content></content> to project from the light DOM -->
+    <button><content></content></button>
+</template>
+<script src="../createElement.js"></script>
+<script>
+    var MyButton = createElement('my-button', '#template');
+</script>

@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>Intro to the Shadow DOM</title>
+    <style>p { color: red;}</style>
+</head>
+<body>
+
+<div class="light">
+    <p>Hello, World.</p>
+</div>
+<div class="shadow">
+    <p>This shouldn't be visible.</p>
+</div>
+
+<!-- Exercise instructions: This exercise will introduce the Shadow DOM
+
+     1. Select the element with class 'shadow'.  Create a instance
+     of the shadow DOM that will attach to that element with
+     `element.createShadowRoot()`
+
+     2. Add a paragraph element to that shadow root.
+     3. Add a style element to the shadow root.  Confirm that style scoping is working.
+
+ -->
+<script>
+    var shadowNodes = document.querySelectorAll('.shadow');
+    for (var i = 0; i < shadowNodes.length; i++) {
+        var shadowNode = shadowNodes[i];
+        var shadowRoot = shadowNode.createShadowRoot();
+        shadowRoot.innerHTML = '<style>p {color: lawngreen;}</style>';
+        shadowRoot.innerHTML += '<p>This is green!!</p>';
+    }
+</script>
+</body>
+</html>

@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Document</title>
+</head>
+<body>
+  <script>
+    if (navigator && navigator.geolocation) {
+      navigator.geolocation.getCurrentPosition(function(pos) {
+        var img = new Image();
+        img.alt = 'Map';
+        img.src = 'https://maps.googleapis.com/maps/api/staticmap?';
+        img.src += 'markers=' + pos.coords.latitude + ',' + pos.coords.longitude;
+        img.src += '&zoom=14&size=700x700';
+        document.body.appendChild(img);
+      });
+    }
+    else {
+      alert('Geolocation not available');
+    }
+  </script>
+</body>
+</html>

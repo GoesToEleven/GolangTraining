@@ -1,0 +1,76 @@
+* {
+  box-sizing: border-box;
+}
+
+html {
+  background-color: #77f;
+}
+
+.right-align {
+  position: absolute;
+  right: 20px;
+}
+
+.button {
+  text-decoration: none;
+  color: white;
+  background-color: blue;
+  padding: 7px;
+  border-radius: 7px;
+  box-shadow: 1px 1px 3px 1px black;
+}
+
+.image-container {
+  background-color: lightblue;
+  border-radius: 10px;
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: center;
+  align-content: center;
+  box-shadow: 1px 2px 3px 1px black
+}
+
+.image-container img {
+  border: 2px solid black
+}
+
+.center-content {
+  width: 98vw;
+  height: 97vh;
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: center;
+  align-items: center;
+}
+
+.error-message {
+  color: yellow;
+  background-color: #999;
+  padding: 2px;
+  border-radius: 5px;
+}
+
+.login {
+  display: flex;
+  flex-flow: column nowrap;
+  max-width: 300px;
+  height: 8em
+}
+
+.upload-container {
+  text-align: center;
+  background-color: lightblue;
+  padding: 20px;
+  border-radius: 3px;
+}
+
+.upload-container p {
+  margin: 5px;
+}
+
+img {
+  width: 150px;
+  height: 150px;
+  border-radius: 10px;
+  margin: 5px;
+}

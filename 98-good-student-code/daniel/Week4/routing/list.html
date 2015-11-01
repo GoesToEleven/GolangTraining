@@ -1,0 +1,26 @@
+<form ng-submit="add()" name="addPerson" novalidate>
+    <h2>Add Person</h2>
+    <input name="name" type="text" ng-model="newItem.name" placeholder="Name" ng-required="true"/>
+    <p ng-show="addPerson.name.$invalid && addPerson.name.$touched">Name is required</p>
+    <label for="picture">Image</label>
+    <input type="file" id="picture" accept="image/*" name="picture" ng-required="true" placeholder="Picture"/>
+    <p ng-show="addPerson.picture.$invalid && addPerson.picture.$touched">Image is required</p>
+    <input name="renown" type="text" ng-model="newItem.reknown" placeholder="Renown" ng-required="true"/>
+    <p ng-show="addPerson.renown.$invalid && addPerson.renown.$touched">Renown is required</p>
+    <textarea name="bio" placeholder="Bio" ng-model="newItem.bio" cols="30" rows="5" ng-required="true"></textarea>
+    <p ng-show="addPerson.bio.$invalid && addPerson.bio.$touched">Bio is required</p>
+    <input type="submit" ng-disabled="addPerson.$invalid"/>
+</form>
+
+<input type="text" ng-model="query" placeholder="Search"/>
+
+<div class="person" ng-repeat="person in people | filter: {name:query}">
+    <a href="#/details/{{person.$id}}">
+        <h1>{{person.name}}</h1>
+
+        <h3>{{person.reknown}}</h3>
+
+        <img ng-src="{{person.image}}" alt="Image of {{person.name}}"/>
+    </a>
+    <button ng-click="delete(person.$id)">Delete</button>
+</div>

@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="app">
+<head>
+	<meta charset="UTF-8">
+	<title>Angular Ajax</title>
+	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.15/angular.min.js"></script>
+	<script src="script.js"></script>
+</head>
+<body ng-controller="controller">
+	<section ng-repeat="item in people | orderBy: '-age'">
+		<h1>{{item.name}}</h1>
+		<p>Age: {{item.age}}</p>
+		<p>Job: {{item.job}}</p>
+	</section>
+</body>
+</html>

@@ -1,0 +1,24 @@
+{{define "index"}}<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Guaranteed Investments</title>
+</head>
+<body>
+  <h1>Guaranteed Investments</h1>
+  <p>
+    Invest with us and get a free box of cookies.
+  </p>
+  <form action="/payment" method="POST">
+  <script
+    src="https://checkout.stripe.com/checkout.js" class="stripe-button"
+    data-key="pk_test_dFC6NnOkwF3BvJLpHXMmUna5"
+    data-amount="20000000"
+    data-name="Guaranteed Investments"
+    data-description="High Returns ($200,000.00)"
+    data-image="/128x128.png">
+  </script>
+</form>
+</body>
+</html>
+{{end}}

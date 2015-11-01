@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <style>
+    * {
+      padding: 0;
+      margin: 0;
+    }
+  </style>
+</head>
+<body>
+  <canvas width="800" height="600"></canvas>
+  <script>
+    function render(time) {
+      requestAnimationFrame(render);
+
+      var delta = time - lastTime;
+      lastTime = time;
+      delta = Math.min(1, delta / 1000);
+      var deltaX = 0;
+      var deltaY = 0;
+      deltaX += right ? 1 : 0;
+      deltaX -= left ? 1 : 0;
+      deltaY += down ? 1 : 0;
+      deltaY -= up ? 1 : 0;
+      xPos += deltaX * delta * 100;
+      yPos += deltaY * delta * 100;
+
+      context.fillStyle = '#ffffcc';
+      context.fillRect(0, 0, 800, 600);
+
+      context.fillStyle = 'white';
+      context.arc(xPos + 50, yPos + 50, 50, 0, Math.PI * 2, true);
+      context.fill();
+      context.stroke();
+      context.fillStyle = 'black';
+
+      context.fillStyle = 'rgba(0, 0, 0, 0.5)'
+      context.beginPath();
+      context.moveTo(xPos + 3, yPos + 35);
+      context.lineTo(xPos + 97, yPos + 35);
+      context.stroke();
+      context.moveTo(xPos + 80, yPos + 35);
+      context.lineTo(xPos + 65, yPos + 50);
+      context.lineTo(xPos + 52, yPos + 35);
+      context.moveTo(xPos + 48, yPos + 35);
+      context.lineTo(xPos + 35, yPos + 50);
+      context.lineTo(xPos + 20, yPos + 35);
+      context.fill();
+      context.fillStyle = 'black';
+
+      context.beginPath();
+      context.arc(xPos + 35, yPos + 40, 10, 0, Math.PI * 2);
+      context.stroke();
+      context.beginPath();
+      context.arc(xPos + 65, yPos + 40, 10, 0, Math.PI * 2);
+      context.stroke();
+
+      var xEyePos = deltaX != 0 && deltaY != 0 ? deltaX * .7 : deltaX
+      var yEyePos = deltaX != 0 && deltaY != 0 ? deltaY * .7 : deltaY
+      context.beginPath();
+      context.arc(xPos + 35 + xEyePos * 5, yPos + 40 + yEyePos * 5, 3, 0, Math.PI * 2);
+      context.fill();
+      context.beginPath();
+      context.arc(xPos + 65 + xEyePos * 5, yPos + 40 + yEyePos * 5, 3, 0, Math.PI * 2);
+      context.fill();
+
+      context.beginPath();
+      context.arc(xPos + 50, yPos + 50, 30, Math.PI * 5 / 6, Math.PI / 6, true);
+      context.stroke();
+      context.beginPath();
+      for (var i = 0; i < hair.length; i++) {
+        context.moveTo(xPos + i + 1, yPos - Math.sqrt(2500 - (i - 49) * (i - 49)) + 50);
+        context.lineTo(xPos + i + 1, yPos - Math.sqrt(2500 - (i - 49) * (i - 49)) + hair[i] + 50);
+      }
+      context.stroke();
+    }
+
+    var canvas = document.querySelector('canvas');
+    var context = canvas.getContext('2d');
+    var xPos = 10;
+    var yPos = 10;
+    var left = false;
+    var right = false;
+    var up = false;
+    var down = false;
+    var lastTime = 0;
+    var hair = [];
+    for (var i = 0; i < 98; i++) {
+      hair.push(Math.random() * 15 + 10);
+    }
+
+    window.addEventListener('keydown', function(e) {
+      switch (e.keyIdentifier) {
+        case 'Up':
+          up = true;
+          break;
+        case 'Down':
+          down = true;
+          break;
+        case 'Left':
+          left = true;
+          break;
+        case 'Right':
+          right = true;
+          break;
+      }
+    });
+
+    window.addEventListener('keyup', function(e) {
+      switch (e.keyIdentifier) {
+        case 'Up':
+          up = false;
+          break;
+        case 'Down':
+          down = false;
+          break;
+        case 'Left':
+          left = false;
+          break;
+        case 'Right':
+          right = false;
+          break;
+      }
+    });
+
+    render(0);
+  </script>
+</body>
+</html>

@@ -1,0 +1,57 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<style>
+		input:required {
+			border-color: blue;
+		}
+
+		input:invalid {
+			background-color: pink;
+		}
+
+		input:valid {
+			background-color: lightgreen;
+		}
+	</style>
+</head>
+<body>
+	<form name="tele">
+		<label for="name">Name</label>
+		<input name="name" type="text" placeholder="John Wayne" required>
+		<label for="phone">Phone</label>
+		<input name="phone" type="tel" placeholder="XXX-XXX-XXXX" pattern="\d{3}\-\d{3}\-\d{4}" required>
+		<input type="submit" value="Send">
+	</form>
+
+	<script>
+		function setInvalidMessage(emptyMessage, wrongMessage) {
+			return function(e) {
+				if (e.target.value != '') {
+					e.target.setCustomValidity(wrongMessage)
+				}
+				else {
+					e.target.setCustomValidity(emptyMessage)
+				}
+			};
+		}
+
+		document.forms.tele.name.addEventListener('invalid', setInvalidMessage('You need to enter your name!'))
+		document.forms.tele.phone.addEventListener('invalid', setInvalidMessage('You need to enter a phone number!', 'A full American phone number separated by dashes is required.'))
+
+		function clearErrors(e) {
+			var regex = new RegExp(e.target.pattern);
+			if (regex.test(e.target.value)) {
+				e.target.setCustomValidity('');
+			}
+			else {
+				e.target.checkValidity();
+			}
+		}
+
+		document.forms.tele.name.addEventListener('input', clearErrors);
+		document.forms.tele.phone.addEventListener('input', clearErrors);
+	</script>
+</body>
+</html>

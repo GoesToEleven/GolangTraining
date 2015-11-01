@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<script src="https://cdn.firebase.com/js/client/2.2.7/firebase.js"></script>
+</head>
+<body>
+	<template>
+		<li>
+			<p>
+				<strong>✈ </strong>
+				<span id="name"></span>
+				<em>(<span id="city"></span>, <span id="state"></span>)</em>
+				<span id="delay"></span>
+			</p>
+		</li>
+	</template>
+
+	<h1>List of aiports</h1>
+	<h4>Updated on: <span id="updated"></span></h4>
+	<ol id="airportList"></ol>
+
+	<script>
+	var ref = new Firebase('https://publicdata-airports.firebaseio.com/');
+
+	ref.on('value', function(snapshot) {
+		var airportList = document.querySelector('#airportList');
+		var template = document.querySelector('template').content;
+		var airports = snapshot.val();
+		airportList.innerHTML = '';
+		for (var airportCode in airports) {
+			if (airportCode[0] !== '_') {
+				var clone = template.cloneNode(true);
+				clone.querySelector('#name').textContent = airports[airportCode].name;
+				clone.querySelector('#city').textContent = airports[airportCode].city;
+				clone.querySelector('#state').textContent = airports[airportCode].state;
+				if (airports[airportCode].delay) {
+					clone.querySelector('#delay').textContent = 'Delay: ' + airports[airportCode].status.avgDelay;
+				}
+				airportList.appendChild(clone);
+			}
+		}
+		document.querySelector('#updated').textContent = airports._updated;
+	});
+	</script>
+</body>
+</html>

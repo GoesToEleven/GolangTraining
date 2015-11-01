@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<script>
+	function Animal(name, age, brothers, sisters, sad) {
+		this.name = name;
+		this.age = age;
+		this.brothers = brothers;
+		this.sisters = sisters;
+		this.sad = sad;
+	}
+
+	Animal.prototype.isSad = function() {
+		if (this.sad) {
+			return 'Ohh :(';
+		}
+		else {
+			return 'Yay!';
+		}
+	};
+
+	function Cow(bell) {
+		this.bell = bell;
+	}
+	var cow = new Animal("Martha", 10, ["John"], null, true);
+	var frog = new Animal("Martha", 10, ["John"], null, true);
+
+	cow.hasMilk = function() {
+		return 'Yes!'
+	};
+	</script>
+</body>
+</html>

@@ -1,0 +1,40 @@
+.container {
+	display: -webkit-box;
+	display: -webkit-flex;
+	display: flex;
+	-webkit-box-pack: center;
+	-webkit-justify-content: center;
+	justify-content: center;
+	-webkit-box-align: center;
+	-webkit-align-items: center;
+	align-items: center;
+	-webkit-align-content: center;
+	align-content: center;
+	width: 100vw;
+	height: 100vh;
+}
+
+.playing {
+	color: green;
+	box-shadow: none;
+}
+
+.paused {
+	color: darkred;
+}
+
+li {
+	margin: 10px;
+	font-size: 30px;
+	background-color: #fdd;
+	text-align: center;
+	box-shadow: 0 2px 2px 1px black;
+	-webkit-user-select: none;
+	-ms-user-select: none;
+	-moz-user-select: none;
+	user-select: none;
+}
+
+html {
+	background-color: lightgreen;
+}

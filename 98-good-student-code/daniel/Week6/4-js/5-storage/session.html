@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Document</title>
+</head>
+<body>
+  <label>To-Do List</label>
+  <ol contenteditable><li></li></ol>
+  <script>
+    var area = document.querySelector('ol');
+    area.innerHTML = sessionStorage.getItem('todo') || '<li></li>';
+    area.addEventListener('input', function() {
+      sessionStorage.setItem('todo', area.innerHTML);
+    });
+  </script>
+</body>
+</html>

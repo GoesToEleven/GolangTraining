@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Document</title>
+</head>
+<body>
+  <video preload="auto">
+    <source src="rabbit.ogg" type="video/ogg">
+    <source src="rabbit.mp4" type="video/mp4">
+  </video>
+  <button id="play">Play</button>
+  <button id="replay">Replay</button>
+  <p><span id="currentPoint"></span>/<span id="duration"></span></p>
+  <script>
+    function updateDurations() {
+      var video = document.querySelector('video');
+      document.querySelector('#currentPoint').textContent = Math.round(video.currentTime);
+      document.querySelector('#duration').textContent = Math.round(video.duration);
+    }
+
+    document.querySelector('#play').addEventListener('click', function(e) {
+      if (e.target.classList.contains('playing')) {
+        e.target.textContent = 'Play';
+        document.querySelector('video').pause();
+      }
+      else {
+        e.target.textContent = 'Pause';
+        document.querySelector('video').play();
+      }
+
+      e.target.classList.toggle('playing');
+    });
+
+    window.addEventListener('load', updateDurations);
+
+    document.querySelector('video').addEventListener('timeupdate', updateDurations);
+
+    document.querySelector('#replay').addEventListener('click', function() {
+      var playButton = document.querySelector('#play');
+      playButton.textContent = 'Pause';
+      playButton.classList.add('playing');
+      var video = document.querySelector('video');
+      video.currentTime = 0;
+      video.play();
+    });
+  </script>
+</body>
+</html>

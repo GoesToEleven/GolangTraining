@@ -1,0 +1,28 @@
+{{define "browse"}}<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>File Browser: {{.Path}}</title>
+  <link rel="stylesheet" href="/public/styles.css">
+</head>
+<body>
+  <h2>Bucket: {{.Bucket}}</h2>
+  <section class="filebrowser">
+    <p class="filepath">{{.Path}}</p>
+    {{range .Subfolders}}
+    <a class="folder" href="{{.}}">{{.}}</a>
+    {{end}}
+    {{range .Files}}
+    <a class="file" href="{{.}}">{{.}}</a>
+    {{end}}
+  </section>
+  <section class="upload">
+    <h1>Upload</h1>
+    <form method="POST" enctype="multipart/form-data">
+      <input type="file" name="file">
+      <input type="submit" value="Upload">
+    </form>
+  </section>
+</body>
+</html>
+{{end}}

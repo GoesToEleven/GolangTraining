@@ -1,0 +1,31 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Live Search</title>
+    <link rel="stylesheet" href="liveSearch.css"/>
+</head>
+<body>
+<form name="search">
+    <fieldset name="searchGroup">
+        <label for="searchBox">Search:</label>
+        <input name="searchBox" id="searchBox" type="text"/>
+    </fieldset>
+</form>
+<section class="relative">
+    <section id="data-display"></section>
+</section>
+
+<script id="template" type="text/template">
+    {{#.}}
+    <section class="person">
+        <h3 class="name">{{name}}</h3>
+        <h4>{{reknown}}</h4>
+        <h6>{{bio}}</h6>
+    </section>
+    {{/.}}
+</script>
+<script src="http://cdn.jsdelivr.net/mustache.js/2.1.0/mustache.min.js"></script>
+<script src="liveSearch.js"></script>
+</body>
+</html>

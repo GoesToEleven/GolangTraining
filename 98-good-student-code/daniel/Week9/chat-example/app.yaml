@@ -1,0 +1,9 @@
+application: xenon-petal-100822
+version: chat
+runtime: go
+api_version: go1
+
+handlers:
+- url: /.*
+  login: required
+  script: _go_app

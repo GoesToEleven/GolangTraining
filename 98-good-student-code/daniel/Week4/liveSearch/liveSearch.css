@@ -1,0 +1,23 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+.relative {
+    position: relative;
+}
+
+.person {
+    width: 1080px;
+    max-height: 40px;
+    -webkit-transition: top 250ms, max-height 250ms;
+    transition: top 250ms, max-height 250ms;
+    overflow: hidden;
+    position: absolute;
+    border: 1px solid black;
+    background-color: beige;
+}
+
+.person:hover {
+    max-height: 100px;
+}

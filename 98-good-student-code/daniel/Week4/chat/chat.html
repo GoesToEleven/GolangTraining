@@ -1,0 +1,192 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Chatting</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        #rooms {
+            width: 100%;
+            height: 100%;
+        }
+
+        .chat {
+            width: 100%;
+            height: 25px;
+        }
+
+        .submit {
+            display: none;
+        }
+
+        main {
+            display: flex;
+            width: 100vw;
+            height: 100vh;
+        }
+
+        #sidebar {
+            flex-basis: 30%;
+            background: beige;
+        }
+
+        #chatArea {
+            background: bisque;
+            flex-basis: 70%;
+        }
+
+        .room {
+            border: 1px solid black;
+        }
+
+        h1 {
+            font-size: 25px;
+        }
+
+        .joined {
+            background: greenyellow;
+        }
+    </style>
+</head>
+<body>
+<main>
+    <section id="chatArea">
+        <section id="rooms">
+            <section class="room" id="test">
+                <section class="roomChat">
+                    <p>Hello World!</p>
+                </section>
+
+                <form>
+                    <input type="text" class="chat"/>
+                    <input type="submit" value="" class="submit"/>
+                </form>
+            </section>
+        </section>
+    </section>
+    <aside id="sidebar">
+        <section id="roomSelect"></section>
+    </aside>
+</main>
+<script src="https://cdn.firebase.com/js/client/2.2.7/firebase.js"></script>
+<script>
+    var ref = new Firebase('https://chattersummerweb.firebaseio.com');
+    var regex = /^(?:https?:\/\/).+/;
+    var joinedRooms = [];
+    var uid = '~';
+
+    function submitMessage(e) {
+        e.preventDefault();
+        var textArea = e.target.previousSibling;
+        var message = textArea.value;
+        textArea.value = '';
+        var room = e.target.parentNode.parentNode.id;
+        ref.child('messages/' + room).push({
+            message: message,
+            owner: uid
+        })
+    }
+
+    function inArray(key, array) {
+        return array.some(function (x) {
+            return x === key;
+        });
+    }
+
+    function updateChatArea() {
+        var roomsArea = document.querySelector('#rooms');
+        var oldRooms = document.querySelectorAll('.room');
+        for (var i = 0; i < oldRooms.length; i++) {
+            var room = oldRooms[i];
+            ref.child('messages/' + room.id).off('value', displayRoom);
+        }
+        roomsArea.innerHTML = '';
+        joinedRooms.forEach(function (room) {
+            var newRoom = document.createElement('section');
+            newRoom.className = 'room';
+            newRoom.id = room;
+            newRoom.innerHTML = '<h1>' + room + '</h1><section class="roomChat"></section>';
+            var newForm = document.createElement('form');
+            var newTextInput = document.createElement('input');
+            newTextInput.type = 'text';
+            newTextInput.className = 'chat';
+            newForm.appendChild(newTextInput);
+            var newSubmitButton = document.createElement('input');
+            newSubmitButton.type = 'submit';
+            newSubmitButton.value = '';
+            newSubmitButton.className = 'submit';
+            newSubmitButton.addEventListener('click', submitMessage);
+            newForm.appendChild(newSubmitButton);
+            newRoom.appendChild(newForm);
+//            console.log('#' + room + ' .submit');
+//            document.querySelector('#' + room + ' .submit').addEventListener(submitMessage);
+            roomsArea.appendChild(newRoom);
+            ref.child('messages/' + room).on('value', displayRoom);
+        });
+    }
+
+    function toggleRoom(e) {
+        var roomName = e.target.innerHTML;
+        var childArea = ref.child('users/' + uid + '/rooms/' + roomName);
+        var roomUser = ref.child('rooms/' + roomName + '/users/' + uid);
+        if (inArray(roomName, joinedRooms)) {
+            childArea.remove();
+            roomUser.remove();
+        }
+        else {
+            childArea.set(true);
+            roomUser.set(true);
+        }
+    }
+
+    function displayRoomsList(snapshot) {
+        var rooms = snapshot.val();
+        var roomArea = document.querySelector('#roomSelect');
+        roomArea.innerHTML = '';
+        for (var key in rooms) {
+            if (rooms.hasOwnProperty(key)) {
+                var newRoomTag = document.createElement('p');
+                newRoomTag.className = 'roomOption';
+                if (inArray(key, joinedRooms)) {
+                    newRoomTag.classList.add('joined');
+                }
+                newRoomTag.innerHTML = key;
+                newRoomTag.addEventListener('click', toggleRoom);
+                roomArea.appendChild(newRoomTag);
+            }
+        }
+    }
+
+    function displayRoom(snapshot) {
+        var messages = snapshot.val();
+        var room = document.querySelector('#' + snapshot.key() + ' .roomChat');
+        room.innerHTML = '';
+        for (var key in messages) {
+            if (messages.hasOwnProperty(key)) {
+                var newMessage = document.createElement('p');
+                newMessage.innerHTML = messages[key].message;
+                room.appendChild(newMessage);
+            }
+        }
+    }
+
+    function displayActiveRooms(snapshot) {
+        var activeRooms = snapshot.val();
+        joinedRooms = [];
+        for (var room in activeRooms) {
+            if (activeRooms.hasOwnProperty(room)) {
+                joinedRooms.push(room);
+            }
+        }
+        updateChatArea();
+    }
+
+    ref.child('users/' + uid + '/rooms').on('value', displayActiveRooms);
+    ref.child('rooms').on('value', displayRoomsList);
+</script>
+</body>
+</html>

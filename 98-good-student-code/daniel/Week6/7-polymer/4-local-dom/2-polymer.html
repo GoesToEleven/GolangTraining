@@ -1,0 +1,59 @@
+<link rel="import" href="../bower_components/polymer/polymer.html">
+<link href='http://fonts.googleapis.com/css?family=Rochester' rel='stylesheet' type='text/css'>
+
+<dom-module id='fcc-diploma'>
+  <style>
+    :host {
+      box-sizing: border-box;
+      border: 20px solid maroon;
+      background-image: url("2-diploma-bg.jpg");
+      display: inline-block;
+      text-align: center;
+      padding: 20px;
+    }
+
+    h1, h2, p {
+      font-family: 'Rochester', cursive;
+      color: maroon;
+      margin: 20px 10px;
+    }
+
+    h1 {
+      font-size : 60px;
+      margin-bottom: 30px;
+    }
+
+    h2 {
+      font-size: 50px;
+      margin-bottom: 0;
+      border-bottom: 3px solid maroon;
+    }
+
+    p {
+      font-size: 30px;
+    }
+  </style>
+
+  <template>
+    <h1>{{school}}</h1>
+    <p>Has conferred upon</p>
+    <h2>{{person}}</h2>
+    <p>having completed the prescribed studies and</p>
+    <p>satisfied the requirements for the</p>
+    <h2>{{course}}</h2>
+    <p>issued by the board of regents upon</p>
+    <p>recommendation of the faculty</p>
+  </template>
+</dom-module>
+
+<script>
+  Polymer({
+    is: 'fcc-diploma',
+
+    properties: {
+      school: String,
+      person: String,
+      course: String
+    }
+  });
+</script>

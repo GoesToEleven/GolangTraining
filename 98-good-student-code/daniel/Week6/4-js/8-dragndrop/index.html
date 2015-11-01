@@ -1,0 +1,71 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<style>
+	img {
+		border: 0;
+		width: 75px;
+		height: 75px;
+	}
+
+	.box {
+		border: 10px #CCC solid;
+		padding: 20px;
+		margin: 100px 0 0 100px;
+		float: left;
+		width: 200px;
+		height: 200px;
+	}
+	</style>
+</head>
+<body>
+	<div class="box">
+		<img src="img/clubs.png" alt="clubs" id="clubs" draggable>
+		<img src="img/hearts.png" alt="hearts" id="hearts" draggable>
+		<img src="img/spades.png" alt="spades" id="spades" draggable>
+		<img src="img/diamonds.png" alt="diamonds" id="diamonds" draggable>
+	</div>
+	<div class="box"></div>
+	<script>
+		var boxes = document.querySelectorAll('.box');
+
+		// Method 1
+		// var destination = null;
+		// for (var i = 0; i < boxes.length; i++) {
+		// 	boxes[i].addEventListener('dragend', function(e) {
+		// 		if (destination !== null) {
+		// 			var item = e.target;
+		// 			destination.appendChild(item);
+		// 			destination = null;
+		// 		}
+		// 	});
+		// 	boxes[i].addEventListener('dragenter', function(e) {
+		// 		if (e.target.classList.contains('box')) {
+		// 			destination = e.target;
+		// 		}
+		// 	});
+		// }
+
+		// Method 2
+		var draggedItem
+		for (var i = 0; i < boxes.length; i++) {
+			boxes[i].addEventListener('dragstart', function(e) {
+				draggedItem = e.target;
+			});
+			boxes[i].addEventListener('dragover', function(e) {
+				e.preventDefault();
+			});
+			boxes[i].addEventListener('drop', function(e) {
+				var item = e.target;
+				while (!item.classList.contains('box') && item !== document.body) {
+					item = item.parentNode;
+				}
+				if (item.classList.contains('box')) {
+					item.appendChild(draggedItem);
+				}
+			});
+		}
+	</script>
+</body>
+</html>

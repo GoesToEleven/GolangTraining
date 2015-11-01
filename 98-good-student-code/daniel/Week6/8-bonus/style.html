@@ -1,0 +1,159 @@
+<style is="custom-style">
+
+	:root {
+		--dark-primary-color: #303F9F;
+		--default-primary-color: #F44336;
+		--light-primary-color: #C5CAE9;
+		--text-primary-color: #ffffff;
+		--accent-color: #FF4081;
+		--primary-background-color: #c5cae9;
+		--primary-text-color: #212121;
+		--secondary-text-color: #727272;
+		--disabled-text-color: #bdbdbd;
+		--divider-color: #B6B6B6;
+		--drawer-menu-color: #ffffff;
+		--drawer-border-color: 1px solid #ccc;
+		--drawer-toolbar-border-color: none;
+		--paper-menu-background-color: #fff;
+		--menu-link-color: #111111;
+	}
+
+	#drawerToolbar {
+		color: var(--secondary-text-color);
+		background-color: var(--drawer-menu-color);
+		border-bottom: var(--drawer-toolbar-border-color);
+	}
+
+	paper-material {
+		border-radius: 2px;
+		height: 100%;
+		padding: 16px 0 16px 0;
+		width: calc(98.66% - 16px);
+		margin: 16px auto;
+		background: white;
+	}
+
+	paper-menu iron-icon {
+		margin-right: 33px;
+		opacity: 0.54;
+	}
+
+	.paper-menu > .iron-selected {
+		color: var(--default-primary-color);
+	}
+
+	paper-menu a {
+		text-decoration: none;
+		color: var(--menu-link-color);
+		display: -ms-flexbox;
+		display: -webkit-flex;
+		display: flex;
+		-ms-flex-direction: row;
+		-webkit-flex-direction: row;
+		flex-direction: row;
+		-ms-flex-align: center;
+		-webkit-align-items: center;
+		align-items: center;
+		font-family: 'Roboto', 'Noto', sans-serif;
+		-webkit-font-smoothing: antialiased;
+		text-rendering: optimizeLegibility;
+		font-size: 14px;
+		font-weight: 400;
+		line-height: 24px;
+		min-height: 48px;
+		padding: 0 16px;
+	}
+
+	#mainToolbar .middle {
+		margin-left: 48px;
+	}
+
+	#mainToolbar:not(.tall) .middle {
+		font-size: 20px;
+		padding-bottom: 0;
+		margin-left: 48px;
+	}
+
+	#mainToolbar .bottom {
+		transition: 0.18s opacity 0.18s ease-in;
+		opacity: 1;
+	}
+
+	#mainToolbar:not(.tall) .bottom {
+		transition: 0.18s opacity ease-in;
+		opacity: 0;
+	}
+
+	.content {
+		height: 900px;
+	}
+
+	@media (max-width: 600px) {
+
+		paper-material {
+			--menu-container-display: none;
+			width: calc(97.33% - 32px);
+			padding-left: 16px;
+			padding-right: 16px;
+		}
+
+		.paper-font-display1 {
+			font-size: 12px;
+		}
+
+		.app-name {
+			font-size: 26px;
+		}
+
+		#drawer .paper-toolbar {
+			margin-left: 16px;
+		}
+
+		#overlay {
+			min-width: 360px;
+		}
+
+		.bg {
+			background: white;
+		}
+
+	}
+
+	@media (min-width: 601px) {
+
+		paper-material {
+			width: calc(98% - 46px);
+			margin-bottom: 32px;
+			padding-left: 30px;
+			padding-right: 30px;
+		}
+
+		#drawer.paper-drawer-panel > [drawer] {
+			border-right: 1px solid rgba(0, 0, 0, 0.14);
+		}
+
+		iron-pages {
+			padding: 48px 62px;
+		}
+
+	}
+
+	.avatar {
+		margin-right: 20px;
+	}
+
+	p {
+		font-family: 'Roboto', 'Noto', sans-serif;
+		margin: 0;
+	}
+
+	paper-input {
+		position: fixed;
+		bottom: 0;
+		left: 0;
+		right: 0;
+		background-color: white;
+		border: 1px solid black;
+		padding: 0 5px;
+	}
+</style>

@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Twitter Clone: {{.Profile.Username}}'s Profile</title>
+  <link rel="stylesheet" href="/public/style.css">
+</head>
+<body>
+  <a href="/">Main Page</a>
+  {{if .CurrentUser}}
+    <a href="/{{.Profile.Username}}/followers">Followers</a>
+    <a href="/{{.Profile.Username}}/following">Following</a>
+  {{end}}
+  {{if eq .CurrentUser .Profile.Username}}
+  <button id="create">Create Tweet</button>
+  {{else if .CurrentUser}}
+    {{if .Following}}
+      <a href="?f=n">Unfollow</a>
+    {{else}}
+      <a href="?f=y">Follow</a>
+    {{end}}
+  {{else}}
+  <a href="/login">Login</a>
+  {{end}}
+  <h1>@{{.Profile.Username}}</h1>
+  {{range .Tweets}}
+  {{template "tweet" .}}
+  {{end}}
+  {{if eq .CurrentUser .Profile.Username}}
+  <script src="/public/makeTweet.js"></script>
+  {{end}}
+</body>
+</html>

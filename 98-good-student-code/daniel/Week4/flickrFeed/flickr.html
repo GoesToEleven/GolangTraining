@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Flickr Feed</title>
+	<link rel="stylesheet" href="flickr.css">
+</head>
+<body>
+<div id="photos"></div>
+<script id="template" type="text/template">
+{{#.}}
+{{#formatImage}}
+	<img onclick="onClick(this)" src="{{media.m}}" />
+{{/formatImage}}
+{{/.}}
+</script>
+<script src="http://cdn.jsdelivr.net/mustache.js/2.1.0/mustache.min.js"></script>
+<script src="flickr.js"></script>
+<script src="http://api.flickr.com/services/feeds/photos_public.gne?id=73845487@N00&format=json&tags=portfolio"></script>
+</body>
+</html>

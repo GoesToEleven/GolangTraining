@@ -1,0 +1,20 @@
+<template id="template">
+    <p>Child Component</p>
+</template>
+<script>
+    var createElement = function(tagName, templateId, basePrototype) {
+        var currentScript = document._currentScript || document.currentScript;
+        basePrototype = basePrototype || HTMLElement.prototype;
+        var template = currentScript.ownerDocument.getElementById(templateId).content;
+        var customElementPrototype = Object.create(basePrototype);
+        customElementPrototype.createdCallback = function() {
+            var shadowRoot = this.createShadowRoot();
+            var clone = document.importNode(template, true);
+            shadowRoot.appendChild(clone);
+        };
+        return document.registerElement(tagName, {
+            prototype: customElementPrototype
+        });
+    };
+    createElement('another-component', 'template');
+</script>

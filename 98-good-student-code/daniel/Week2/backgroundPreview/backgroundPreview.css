@@ -1,0 +1,29 @@
+* {
+  padding: 0;
+  margin: 0;
+}
+
+html {
+  background: url('') no-repeat center center fixed;
+  background-size: cover;
+  -webkit-transition: background-image 1s;
+  transition: background-image 1s;
+}
+
+ul {
+  position: fixed;
+  top: 5px;
+  left: 0;
+  right: 0;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: flex;
+  -webkit-justify-content: space-around;
+  justify-content: space-around;
+  list-style: none;
+}
+
+img {
+  max-width: 100%;
+  max-height: 100px;
+}

@@ -1,0 +1,20 @@
+#bigger {
+  -webkit-transition: -webkit-transform 1s ease 300ms;
+  transition: transform 1s ease 300ms;
+  background: none no-repeat center center;
+  background-size: cover;
+  width: 700px;
+  height: 700px;
+  -webkit-transform: scale(0);
+  transform: scale(0);
+  position: absolute;
+  border-radius: 50%;
+  box-shadow: 0 3px 6px 2px black
+}
+
+img {
+  border-radius: 50%;
+  margin: 10px;
+  width: 100px;
+  height: 100px;
+}

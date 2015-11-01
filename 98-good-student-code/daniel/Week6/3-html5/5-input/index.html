@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+	<style>
+	input { display: block; }
+
+	input:invalid {
+		border-color: pink;
+	}
+
+	input:valid {
+		border-color: lightgreen;
+	}
+	</style>
+</head>
+<body>
+	<form>
+		<label for="email">Email</label>
+		<input name="email" type="email" placeholder="your@email.com" required>
+		<label for="name">Name</label>
+		<input name="name" type="text" placeholder="John Wayne">
+		<label for="age">Age</label>
+		<input name="age" type="number" min="13" max="120" placeholder="18">
+		<label for="color">Favorite Color</label>
+		<input name="color" type="color" value="#0000ff">
+		<label for="zip">ZIP</label>
+		<input name="zip" type="number" max="99999" min="10000" placeholder="XXXXX" required>
+		<input type="submit">
+	</form>
+</body>
+</html>

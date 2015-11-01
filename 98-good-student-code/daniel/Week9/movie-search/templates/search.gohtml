@@ -1,0 +1,17 @@
+{{define "search"}}<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Search</title>
+</head>
+<body>
+  {{template "header"}}
+  <h2>Results</h2>
+  <ul>
+    {{range .}}
+    <li>{{template "movieItem" .}}</li>
+    {{end}}
+  </ul>
+</body>
+</html>
+{{end}}

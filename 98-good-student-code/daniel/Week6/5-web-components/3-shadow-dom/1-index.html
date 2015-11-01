@@ -1,0 +1,21 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<style>
+	h1 {
+		color: blue;
+	}
+	</style>
+</head>
+<body>
+	<h1>Foo</h1>
+	<div id="bar"></div>
+
+	<script>
+	var shadowRoot = bar.createShadowRoot();
+
+	shadowRoot.innerHTML = '<style>h1 {color: red;}</style><h1>Qwer</h1>';
+	</script>
+</body>
+</html>

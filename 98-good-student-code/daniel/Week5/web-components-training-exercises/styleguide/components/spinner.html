@@ -1,0 +1,59 @@
+<template id="template">
+    <style>
+        /* Add some styles here */
+        .spinner {
+            display: inline;
+            animation: spinZ 1s linear infinite;
+        }
+
+        @keyframes spinX {
+            from {
+                transform: rotateX(0deg);
+            }
+
+            to {
+                transform: rotateX(360deg);
+            }
+        }
+
+        @keyframes spinY {
+            from {
+                transform: rotateY(0deg);
+            }
+
+            to {
+                transform: rotateY(360deg);
+            }
+        }
+
+        @keyframes spinZ {
+            from {
+                transform: rotate(0deg);
+            }
+
+            to {
+                transform: rotate(360deg);
+            }
+        }
+    </style>
+    <!-- Add HTML for your component here.
+    Try adding <content></content> to project from the light DOM -->
+    <span class="spinner"><content></content></span>
+</template>
+<script src="../createElement.js"></script>
+<script>
+    function loader() {
+        var spin = this.shadowRoot.querySelector('.spinner');
+        var speed = this.getAttribute('speed') || 1000;
+        spin.style.animationDuration = speed + 'ms';
+        var orientation = this.getAttribute('axis') || 'Z';
+        spin.style.animationName = 'spin' + orientation;
+        if (this.hasAttribute('reverse')) {
+            spin.style.animationDirection = 'reverse';
+        }
+    }
+
+    var proto = Object.create(HTMLElement.prototype);
+    proto.createdCallback = loader;
+    window.MySpinner = createElement('my-spinner', '#template', proto);
+</script>

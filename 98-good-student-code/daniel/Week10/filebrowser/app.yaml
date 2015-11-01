@@ -1,0 +1,13 @@
+application: xenon-petal-100822
+version: browser
+runtime: go
+api_version: go1
+
+handlers:
+- url: /public
+  static_dir: public
+- url: /
+  secure: always
+  script: _go_app
+- url: /.*
+  script: _go_app

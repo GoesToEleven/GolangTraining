@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+</head>
+<body>
+	<template>
+		<style>
+			button {
+				position: absolute;
+				top: calc(50% - 160px);
+				left: calc(50% - 220px);
+				width: 440px;
+				height: 365px;
+				outline: none;
+				border: none;
+				border-radius: 50%;
+				background: #b3b3b3;
+				box-shadow:
+					0 10px 0 #888888,
+					0 20px 0 #888888,
+					0 30px 0  #888888,
+					-10px 40px 0 hsla(0, 0%, 0%, .2);
+			}
+
+			button:before {
+				position: absolute;
+				top: -95px;
+				left: 40px;
+				width: 360px;
+				height: 305px;
+				border-radius: inherit;
+				color: #ff6573;
+				background-color: currentColor;
+				box-shadow:
+					0 30px 0 #c54c57,
+					0 60px 0 #c54c57,
+					0 90px 0 #c54c57,
+					0 110px 0 #c54c57,
+					-25px 140px 0 hsla(0, 0%, 0%, .1);
+				content: '';
+				transition: all 250ms;
+			}
+
+			button:active:before{
+				top: 0px;
+				box-shadow:
+					0 16px #c54c57,
+					0 16px #c54c57,
+					0 16px #c54c57,
+					0 16px #c54c57,
+					-5px 20px 0 hsla(0, 0%, 0%, .1),
+					0 16px 0 #c54c57;
+			}
+		</style>
+
+		<button></button>
+	</template>
+
+	<fcc-button></fcc-button>
+
+	<script>
+	var template = document.querySelector('template').content;
+
+	var proto = Object.create(HTMLElement.prototype);
+
+	proto.createdCallback = function() {
+		var clone = template.cloneNode(true);
+		var shadow = this.createShadowRoot();
+
+		shadow.appendChild(clone);
+	};
+
+	document.registerElement('fcc-button', {prototype: proto});
+	</script>
+</body>
+</html>

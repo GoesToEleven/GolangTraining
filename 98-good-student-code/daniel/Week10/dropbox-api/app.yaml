@@ -1,0 +1,9 @@
+application: xenon-petal-100822
+version: dropbox
+runtime: go
+api_version: go1
+
+handlers:
+- url: /.*
+  secure: always
+  script: _go_app

@@ -1,0 +1,23 @@
+<template>
+  <p><a></a></p>
+</template>
+
+<script>
+  var importee = document.currentScript.ownerDocument;
+  var proto = Object.create(HTMLElement.prototype);
+  var template = importee.querySelector('template').content;
+
+  proto.attachedCallback = function() {
+    var shadow = this.createShadowRoot();
+    var headers = document.querySelectorAll('h2');
+    for (var i = 0; i < headers.length; i++) {
+      var clone = template.cloneNode(true);
+      var anchor = clone.querySelector('a');
+      anchor.textContent = headers[i].textContent;
+      anchor.href = '#' + headers[i].id;
+      shadow.appendChild(clone);
+    }
+  };
+
+  document.registerElement('fcc-toc', {prototype: proto});
+</script>

@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Twitter Clone: Login</title>
+  <link rel="stylesheet" href="/public/style.css">
+</head>
+<body>
+  {{if .ErrorMessage}}
+    <p>{{.ErrorMessage}}</p>
+  {{end}}
+  <form method="POST">
+    <input type="text" name="username" placeholder="Username" value="{{.Username}}" required>
+    <input type="submit" value="Login">
+  </form>
+</body>
+</html>

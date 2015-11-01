@@ -1,0 +1,185 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="A layout example that shows off a responsive email layout.">
+
+    <title>Zmail Beta</title>
+
+    <link rel="stylesheet" href="css/pure.css">
+    <link rel="stylesheet" href="css/email.css">
+</head>
+<body>
+
+<div id="layout" class="content pure-g">
+    <div id="nav" class="pure-u">
+        <a href="#" class="nav-menu-button">Menu</a>
+
+        <div class="nav-inner">
+            <h1 class="brand-title">Zmail</h1>
+
+            <button class="primary-button pure-button">Compose</button>
+
+            <div class="pure-menu pure-menu-open">
+                <ul>
+                    <li><a href="#">Inbox <span class="email-count">(2)</span></a></li>
+                    <li><a href="#">Important</a></li>
+                    <li><a href="#">Sent</a></li>
+                    <li><a href="#">Drafts</a></li>
+                    <li><a href="#">Trash</a></li>
+                    <li class="pure-menu-heading">Labels</li>
+                    <li><a href="#"><span class="email-label-personal"></span>Personal</a></li>
+                    <li><a href="#"><span class="email-label-work"></span>Work</a></li>
+                    <li><a href="#"><span class="email-label-travel"></span>Travel</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <div id="list" class="pure-u-1">
+        <div class="email-item email-item-selected pure-g">
+            <div class="pure-u">
+                <img class="email-avatar" alt="Zeno Rocha&#x27;s avatar" height="64" width="64" src="../common/zeno.jpg">
+            </div>
+
+            <div class="pure-u-3-4">
+                <h5 class="email-name">Zeno Rocha</h5>
+                <h4 class="email-subject">Summer Bootcamp 2015</h4>
+                <p class="email-desc">
+                    Lorem ipsum dolor sit amet, consectetur adipisicing elit. Necessitatibus, sequi.
+                </p>
+            </div>
+        </div>
+
+        <div class="email-item email-item-unread pure-g">
+            <div class="pure-u">
+                <img class="email-avatar" alt="Todd&#x27;s avatar" height="64" width="64" src="../common/todd.jpg">
+            </div>
+
+            <div class="pure-u-3-4">
+                <h5 class="email-name">Todd McLeod</h5>
+                <h4 class="email-subject">Dinner Sunday Night?</h4>
+                <p class="email-desc">
+                    Lorem ipsum dolor sit amet, consectetur adipisicing elit. Harum nihil maxime excepturi!
+                </p>
+            </div>
+        </div>
+
+        <div class="email-item email-item-unread pure-g">
+            <div class="pure-u">
+                <img class="email-avatar" alt="Todd McLeod&#x27;s avatar" height="64" width="64" src="../common/todd.jpg">
+            </div>
+
+            <div class="pure-u-3-4">
+                <h5 class="email-name">Todd McLeod</h5>
+                <h4 class="email-subject">Video recording</h4>
+                <p class="email-desc">
+                    Duis aute irure dolor in reprehenderit in voluptate velit essecillum dolore eu fugiat nulla.
+                </p>
+            </div>
+        </div>
+
+        <div class="email-item pure-g">
+            <div class="pure-u">
+                <img class="email-avatar" alt="Andrew Rota&#x27;s avatar" height="64" width="64" src="../common/andrew.jpg">
+            </div>
+
+            <div class="pure-u-3-4">
+                <h5 class="email-name">Andrew Rota</h5>
+                <h4 class="email-subject">I ♥ JS</h4>
+                <p class="email-desc">
+                    Excepteur sint occaecat cupidatat non proident, sunt in culpa.
+                </p>
+            </div>
+        </div>
+
+        <div class="email-item pure-g">
+            <div class="pure-u">
+                <img class="email-avatar" alt="Andrew Rota&#x27;s avatar" height="64" width="64" src="../common/andrew.jpg">
+            </div>
+
+            <div class="pure-u-3-4">
+                <h5 class="email-name">Andrew Rota</h5>
+                <h4 class="email-subject">Hotels with kitchens</h4>
+                <p class="email-desc">
+                    Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip.
+                </p>
+            </div>
+        </div>
+
+        <div class="email-item pure-g">
+            <div class="pure-u">
+                <img class="email-avatar" alt="Yahoo! Finance&#x27;s Avatar" height="64" width="64" src="img/yfinance-avatar.png">
+            </div>
+
+            <div class="pure-u-3-4">
+                <h5 class="email-name">Yahoo! Finance</h5>
+                <h4 class="email-subject">How to protect your finances from winter storms</h4>
+                <p class="email-desc">
+                    Mauris tempor mi vitae sem aliquet pharetra. Fusce in dui purus, nec malesuada mauris.
+                </p>
+            </div>
+        </div>
+
+        <div class="email-item pure-g">
+            <div class="pure-u">
+                <img class="email-avatar" alt="Yahoo! News&#x27; avatar" height="64" width="64" src="img/ynews-avatar.png">
+            </div>
+
+            <div class="pure-u-3-4">
+                <h5 class="email-name">Yahoo! News</h5>
+                <h4 class="email-subject">Summary for April 3rd, 2015</h4>
+                <p class="email-desc">
+                    Lorem ipsum dolor sit amet, consectetur.
+                </p>
+            </div>
+        </div>
+    </div>
+
+    <div id="main" class="pure-u-1">
+        <div class="email-content">
+            <div class="email-content-header pure-g">
+                <div class="pure-u-1-2">
+                    <h1 class="email-content-title">Summer Bootcamp 2015</h1>
+                    <p class="email-content-subtitle">
+                        From <a>Zeno Rocha</a> at <span>3:56pm, May 28, 2015</span>
+                    </p>
+                </div>
+
+                <div class="email-content-controls pure-u-1-2">
+                    <button class="secondary-button pure-button">Reply</button>
+                    <button class="secondary-button pure-button">Forward</button>
+                    <button class="secondary-button pure-button">Move to</button>
+                </div>
+            </div>
+
+            <div class="email-content-body">
+                <p>
+                    Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+                </p>
+                <p>
+                    Duis aute irure dolor in reprehenderit in voluptate velit essecillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+                </p>
+                <p>
+                    Aliquam ac feugiat dolor. Proin mattis massa sit amet enim iaculis tincidunt. Mauris tempor mi vitae sem aliquet pharetra. Fusce in dui purus, nec malesuada mauris. Curabitur ornare arcu quis mi blandit laoreet. Vivamus imperdiet fermentum mauris, ac posuere urna tempor at. Duis pellentesque justo ac sapien aliquet egestas. Morbi enim mi, porta eget ullamcorper at, pharetra id lorem.
+                </p>
+                <p>
+                    Donec sagittis dolor ut quam pharetra pretium varius in nibh. Suspendisse potenti. Donec imperdiet, velit vel adipiscing bibendum, leo eros tristique augue, eu rutrum lacus sapien vel quam. Nam orci arcu, luctus quis vestibulum ut, ullamcorper ut enim. Morbi semper erat quis orci aliquet condimentum. Nam interdum mauris sed massa dignissim rhoncus.
+                </p>
+                <p>
+                    Regards,<br>
+                    Zeno
+                </p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script src="js/menu.js"></script>
+
+<script src="js/spam.js"></script>
+<script src="js/count.js"></script>
+
+</body>
+</html>

@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>Breaking the Shadow DOM Polyfill</title>
+    <script>if (window.Platform && window.Platform.ShadowCSS) Platform.ShadowCSS.strictStyling = true;</script>
+    <link rel="import" href="my-component/index.html"/>
+    <link rel="import" href="another-component/index.html"/>
+</head>
+<body>
+<style>body p { color: red;}</style>
+<my-component></my-component>
+
+<!-- Exercise instructions: This exercise will demonstrate how the Shadow DOM polyfill
+     works...and doesn't.
+
+     1. Download webcomponents.js polyfill from http://webcomponents.org/polyfills/
+        - It's also included in this directory as webcomponents.js already!
+     2. Include polyfill on page
+     3. Demonstrate difference between upper and lower bound encapsulation
+     4. Experiment with differences with shadow DOM between supported and unsupported browsers
+ -->
+
+</body>
+</html>

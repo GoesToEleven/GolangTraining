@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Magic 8 Ball</title>
+    <link rel="stylesheet" href="../../../reset.css">
+    <link rel="stylesheet" href="magic-ball.css">
+</head>
+<body>
+<div class="magic">
+    <div class="questionEntry">
+        <label>
+            <input type="text">
+        </label>
+        <button>Ask your question</button>
+    </div>
+    <div id="magic8"></div>
+</div>
+
+<!-- Image preloading hack -->
+<script src="magic-ball.js"></script>
+<div class="hidden">
+    <script type="text/javascript">
+        var images = [];
+        function preload() {
+            for (var i = 0; i < 20; i++) {
+                images[i] = new Image();
+                images[i].src = '8ball/' + (i + 1) + '.png';
+            }
+        }
+        preload();
+    </script>
+</div>
+</body>
+</html>

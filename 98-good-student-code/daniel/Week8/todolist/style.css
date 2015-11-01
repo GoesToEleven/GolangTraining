@@ -1,0 +1,19 @@
+.center-page {
+  display: flex;
+  flex-flow: column nowrap;
+  width: 98vw;
+  height: 97vh;
+  justify-content: center;
+  align-items: center;
+}
+
+#todo-list {
+  background-color: #ddf;
+  border-radius: 5px;
+  padding: 0;
+}
+
+p {
+  padding: 0;
+  margin: 10px;
+}

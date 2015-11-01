@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>CSS Patterns</title>
+</head>
+<body>
+    <!-- Exercise instructions: This exercise will introduce you
+         to various CSS patterns.
+
+         1. Write CSS for the below label + input pair component.
+            Style the component so that label/input are on the
+            right and left of a centered axis:
+
+                    label \ input (info)
+              other label \ another input (info)
+               last label \ last input (info)
+
+            Each label should be bold.  Each (info) should be in italics.
+
+         2. For each following components, implement each with one of
+         the following CSS patterns:
+              a. OOCSS
+              b. BEM
+              c. SMACSS
+
+         4. Add a required (*) modifier to each of the components.
+         5. Compare/contrast each of these implementations.  Which one
+            do you prefer?
+     -->
+    <div class="oocss">
+        <label for="name">Name:</label>
+        <input id="name" type="text" name="textfield">
+        <span> (First and Last)</span>
+    </div>
+    <div class="bem">
+        <label for="phone">Phone:</label>
+        <input id="phone" type="text" name="textfield">
+        <span> (123-456-7890)</span>
+    </div>
+    <div class="atomic-css">
+        <label for="dob">DOB:</label>
+        <input id="dob" type="text" name="textfield">
+        <span> (01/01/1900)</span>
+    </div>
+
+</body>
+</html>

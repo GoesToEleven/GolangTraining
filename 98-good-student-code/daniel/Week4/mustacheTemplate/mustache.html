@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Mustache</title>
+	<style>
+		.person {
+			box-shadow: 1px 1px 2px 1px black;
+			background-color: lightgreen;
+			padding: 1px;
+			margin: 10px;
+		}
+	</style>
+</head>
+<body>
+<section id="data-display"></section>
+<script id="template" type="text/template">
+{{#.}}
+<section class="person">
+	<h3>{{name}}</h3>
+	<h4>{{job}}</h4>
+	<h6>{{age}}</h6>
+</section>
+{{/.}}
+</script>
+<script src="http://cdn.jsdelivr.net/mustache.js/2.1.0/mustache.min.js"></script>
+<script src="mustache.js"></script>
+</body>
+</html>

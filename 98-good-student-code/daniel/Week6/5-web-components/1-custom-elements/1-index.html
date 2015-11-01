@@ -1,0 +1,21 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+</head>
+<body>
+	<fcc-hello></fcc-hello>
+
+	<script>
+	var element = Object.create(HTMLElement.prototype);
+
+	element.attachedCallback = function() {
+		this.innerHTML = '<h1>Hello Fresno</h1>';
+	};
+
+	document.registerElement('fcc-hello', {
+		prototype: element
+	});
+	</script>
+</body>
+</html>

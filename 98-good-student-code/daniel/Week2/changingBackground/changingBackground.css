@@ -1,0 +1,6 @@
+html {
+	background: none no-repeat center center fixed;
+	background-size: cover;
+	-webkit-transition: background-image 2s;
+	transition: background-image 2s;
+}

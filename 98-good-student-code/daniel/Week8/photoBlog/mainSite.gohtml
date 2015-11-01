@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Photo Blog</title>
+  <link rel="stylesheet" href="/style.css">
+</head>
+<body>
+  <a class="button right-align" href="/admin">Upload</a>
+  <section class="image-container">
+    {{range .}}
+    <a href="{{.}}" download><img src="{{.}}" alt="{{.}}"></a>
+    {{end}}
+  </section>
+</body>
+</html>

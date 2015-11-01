@@ -1,0 +1,37 @@
+<link rel="import" href="../bower_components/polymer/polymer.html">
+
+<script>
+  Polymer({
+    is: 'my-blink',
+
+    properties: {
+      interval: {
+        type: Number,
+        value: 500,
+        reflectToAttribute: true,
+        observer: '_changeInterval'
+      }
+    },
+
+    toggleBlink: function() {
+      this.style.visibility = this.style.visibility === '' ? 'hidden' : '';
+    },
+
+    detached: function() {
+      if (this.intervalId) {
+        clearInterval(this.intervalId);
+        this.intervalId = undefined;
+      }
+    },
+
+    _changeInterval: function(newVal) {
+      if (this.intervalId) {
+        clearInterval(this.intervalId);
+      }
+      this.intervalId = setInterval(this.toggleBlink.bind(this), newVal);
+      if (newVal === 0) {
+        this.interval = this.properties.interval.value;
+      }
+    }
+  })
+</script>
