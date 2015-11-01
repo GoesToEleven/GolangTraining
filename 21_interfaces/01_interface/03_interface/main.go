@@ -5,6 +5,10 @@ import (
 	"math"
 )
 
+type Shape interface {
+	area() float64
+}
+
 type Circle struct {
 	radius float64
 }
@@ -21,12 +25,23 @@ func (s Square) area() float64 {
 	return s.side * s.side
 }
 
+func info(s Shape) {
+	fmt.Println(s)
+	fmt.Println(s.area())
+}
+
+func totalArea(shapes ...Shape) float64 {
+	var area float64
+	for _, s := range shapes {
+		area += s.area()
+	}
+	return area
+}
+
 func main() {
 	c := Circle{5}
 	s := Square{10}
-	totalArea := c.area() + s.area()
-	fmt.Println("Total Area: ", totalArea)
+	fmt.Println("Total Area: ", totalArea(c, s))
+	info(c)
+	info(s)
 }
-
-// what if I had thousands of shapes?
-// how would I create a function to sum their areas?
