@@ -4,6 +4,7 @@ import (
 	"net/http"
 	"google.golang.org/appengine"
 	"google.golang.org/appengine/datastore"
+	"google.golang.org/appengine/log"
 )
 
 func putTweet(req *http.Request, user *User, tweet *Tweet) error {
@@ -22,6 +23,7 @@ func getTweets(req *http.Request, user *User) ([]Tweet, error) {
 
 	if user != nil {
 		// show tweets of a specific user
+		log.Infof(ctx, "HERE IS THE USER INFO: %v ---", user.UserName)
 		userKey := datastore.NewKey(ctx, "Users", user.UserName, 0, nil)
 		q = q.Ancestor(userKey)
 	}

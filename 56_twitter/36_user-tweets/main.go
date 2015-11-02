@@ -14,7 +14,7 @@ func init() {
 	r := httprouter.New()
 	http.Handle("/", r)
 	r.GET("/", Home)
-	r.GET("/:user", Home)
+	r.GET("/user/:user", Home)
 	r.GET("/form/login", Login)
 	r.GET("/form/signup", Signup)
 	r.POST("/api/checkusername", checkUserName)
@@ -38,7 +38,8 @@ func Home(res http.ResponseWriter, req *http.Request, ps httprouter.Params) {
 	var err error
 	var tweets []Tweet
 	if len(ps) != 0 {
-		tweets, err = getTweets(req, ps.ByName("name"))
+		user := User{UserName: ps.ByName("user")}
+		tweets, err = getTweets(req, &user)
 	} else {
 		tweets, err = getTweets(req, nil)
 	}
