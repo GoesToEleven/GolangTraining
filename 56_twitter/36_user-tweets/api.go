@@ -165,5 +165,6 @@ func tweetProcess(res http.ResponseWriter, req *http.Request, _ httprouter.Param
 		return
 	}
 	// redirect
+	time.Sleep(time.Millisecond * 500) // This is not the best code, probably. Thoughts?
 	http.Redirect(res, req, "/", 302)
 }
