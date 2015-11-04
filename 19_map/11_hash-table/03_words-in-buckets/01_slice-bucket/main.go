@@ -45,4 +45,7 @@ func HashBucket(word string, buckets int) int {
 		sum += int(v)
 	}
 	return sum % buckets
+	// comment out the above, then uncomment the below
+	// a more uneven distribution
+	// return len(word) % buckets
 }

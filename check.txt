@@ -1,1 +1,4 @@
-here is the check
+var myGreeting map[string]string
+var myGreeting = make(map[string]string)
+myGreeting := make(map[string]string)
+myGreeting := map[string]string{}

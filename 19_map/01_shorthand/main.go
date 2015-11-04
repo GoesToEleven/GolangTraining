@@ -4,11 +4,9 @@ import "fmt"
 
 func main() {
 
-	// Maps - Shorthand Notation
-	myGreeting := map[string]string{
-		"Tim":     "Good morning!",
-		"Jenny":   "Bonjour!",
-	}
+	myGreeting := make(map[string]string)
+	myGreeting["Tim"] = "Good morning."
+	myGreeting["Jenny"] = "Bonjour."
 
-	fmt.Println(myGreeting["Jenny"])
+	fmt.Println(myGreeting)
 }
