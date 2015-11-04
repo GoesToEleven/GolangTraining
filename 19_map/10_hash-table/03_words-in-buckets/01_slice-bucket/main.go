@@ -36,7 +36,7 @@ func main() {
 		fmt.Println(i, " - ", len(buckets[i]))
 	}
 	// Print the words in one of the buckets
-	// fmt.Println(buckets[6])
+	 fmt.Println(buckets[6])
 }
 
 func HashBucket(word string, buckets int) int {
