@@ -1,0 +1,16 @@
+{{ define "modal-tweet"}}
+<a href="#openModal" id="opens-modal"><p class="loginOut">Tweet</p></a>
+
+<div id="openModal" class="modalDialog">
+    <div>	<a href="#close" title="Close" class="modal-close">X</a>
+        <form method="POST" id="modal-form" action="/api/tweet">
+            <textarea name="tweet" id="modal-tweet" rows="4" maxlength="140"></textarea>
+            <input type="submit" id="modal-submit" value="Tweet">
+        </form>
+    </div>
+</div>
+    {{end}}
+
+    {{ define "modal-tweet-css"}}
+    <link rel="stylesheet" href="/public/css/modal-tweet.css">
+    {{end}}

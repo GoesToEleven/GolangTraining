@@ -188,13 +188,47 @@ func follow(res http.ResponseWriter, req *http.Request, ps httprouter.Params) {
 	followeeKey := datastore.NewKey(ctx, "Follows", ps.ByName("user"), 0, followerKey)
 	// the follower is following the followee
 	// put this into the datastore
-	type F struct {
-		Following string
-	}
-	//
-	_, err = datastore.Put(ctx, followeeKey, &F{ps.ByName("user")})
+	_, err = datastore.Put(ctx, followeeKey, &F{ps.ByName("user"), user.UserName})
 	if err != nil {
 		log.Errorf(ctx, "error adding followee: %v", err)
+		http.Error(res, err.Error(), 500)
+		return
+	}
+	// send the "you are being followed" email
+	emailKey := datastore.NewKey(ctx, "Users", ps.ByName("user"), 0, nil)
+	var u User
+	err = datastore.Get(ctx, emailKey, &u)
+	if err != nil {
+		log.Errorf(ctx, "error getting followee's email user data: %v", err)
+		http.Error(res, err.Error(), 500)
+		return
+	}
+	followedEmail(res, req, u.Email)
+	// return to user account
+	http.Redirect(res, req, "/user/" + ps.ByName("user"), 302)
+}
+
+func unfollow(res http.ResponseWriter, req *http.Request, ps httprouter.Params) {
+	ctx := appengine.NewContext(req)
+	// get session
+	memItem, err := getSession(req)
+	if err != nil {
+		log.Infof(ctx, "Attempt to unfollow from logged out user")
+		http.Error(res, "You must be logged in", http.StatusForbidden)
+		return
+	}
+	// declare a variable of type user
+	// initialize user with values from memcache item
+	var user User
+	json.Unmarshal(memItem.Value, &user)
+	// get the datastore key for the follower
+	followerKey := datastore.NewKey(ctx, "Users", user.UserName, 0, nil)
+	// get a datastore key for the followee
+	followeeKey := datastore.NewKey(ctx, "Follows", ps.ByName("user"), 0, followerKey)
+	// delete entry in datastore
+	err = datastore.Delete(ctx, followeeKey)
+	if err != nil {
+		log.Errorf(ctx, "error deleting followee: %v", err)
 		http.Error(res, err.Error(), 500)
 		return
 	}

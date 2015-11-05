@@ -1,0 +1,14 @@
+{{template "header"}}
+{{template "modal-tweet-css"}}
+{{template "header2" .}}
+<main>
+    {{range .Following}}
+    <section>
+        <i class="fa fa-user fa-2x"></i>
+        <div>
+            <p class="post-meta">{{.Following}}</p>
+        </div>
+    </section>
+    {{end}}
+</main>
+{{template "footer"}}

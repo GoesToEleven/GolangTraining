@@ -8,6 +8,7 @@ import (
 	"github.com/dustin/go-humanize"
 	"google.golang.org/appengine"
 	"google.golang.org/appengine/log"
+	"google.golang.org/appengine/datastore"
 )
 
 var tpl *template.Template
@@ -16,6 +17,8 @@ func init() {
 	r := httprouter.New()
 	http.Handle("/", r)
 	r.GET("/", home)
+	r.GET("/following", fing)
+	r.GET("/followingme", fingme)
 	r.GET("/user/:user", user)
 	r.GET("/form/login", login)
 	r.GET("/form/signup", signup)
@@ -25,7 +28,7 @@ func init() {
 	r.POST("/api/tweet", tweetProcess)
 	r.GET("/api/logout", logout)
 	r.GET("/api/follow/:user", follow)
-//	r.GET("/api/unfollow/:user", unfollow)
+	r.GET("/api/unfollow/:user", unfollow)
 	http.Handle("/favicon.ico", http.NotFoundHandler())
 	http.Handle("/public/", http.StripPrefix("/public", http.FileServer(http.Dir("public/"))))
 
@@ -87,6 +90,72 @@ func user(res http.ResponseWriter, req *http.Request, ps httprouter.Params) {
 	tpl.ExecuteTemplate(res, "user.html", &sd)
 }
 
+func fing(res http.ResponseWriter, req *http.Request, _ httprouter.Params) {
+	ctx := appengine.NewContext(req)
+	// get session
+	memItem, err := getSession(req)
+	if err != nil {
+		log.Infof(ctx, "Attempt to see following from logged out user")
+		http.Error(res, "You must be logged in", http.StatusForbidden)
+		return
+	}
+	var sd SessionData
+	if err == nil {
+		// logged in
+		json.Unmarshal(memItem.Value, &sd)
+		sd.LoggedIn = true
+	}
+	// declare a variable of type user
+	// initialize user with values from memcache item
+	var user User
+	json.Unmarshal(memItem.Value, &user)
+	// Get followees
+	// get the datastore key for the follower
+	followerKey := datastore.NewKey(ctx, "Users", user.UserName, 0, nil)
+	var XF []F
+	_, err = datastore.NewQuery("Follows").Ancestor(followerKey).Project("Following").GetAll(ctx, &XF)
+	log.Errorf(ctx, "here is type %T \n and value %v", XF, XF)
+	if err != nil {
+		log.Errorf(ctx, "error getting followees: %v", err)
+		http.Error(res, err.Error(), 500)
+		return
+	}
+	sd.Following = XF
+	tpl.ExecuteTemplate(res, "follow.html", &sd)
+}
+
+func fingme(res http.ResponseWriter, req *http.Request, _ httprouter.Params) {
+	ctx := appengine.NewContext(req)
+	// get session
+	memItem, err := getSession(req)
+	if err != nil {
+		log.Infof(ctx, "Attempt to see followingme from logged out user")
+		http.Error(res, "You must be logged in", http.StatusForbidden)
+		return
+	}
+	var sd SessionData
+	if err == nil {
+		// logged in
+		json.Unmarshal(memItem.Value, &sd)
+		sd.LoggedIn = true
+	}
+	// declare a variable of type user
+	// initialize user with values from memcache item
+	var user User
+	json.Unmarshal(memItem.Value, &user)
+	// get those who are following this user
+	var XF []F
+	_, err = datastore.NewQuery("Follows").Filter("Following =", user.UserName).GetAll(ctx, &XF)
+	log.Errorf(ctx, "here is type %T \n and value %v", XF, XF)
+	if err != nil {
+		log.Errorf(ctx, "error getting followees: %v", err)
+		http.Error(res, err.Error(), 500)
+		return
+	}
+	sd.Following = XF
+	tpl.ExecuteTemplate(res, "followingme.html", &sd)
+}
+
 func login(res http.ResponseWriter, req *http.Request, _ httprouter.Params) {
 	serveTemplate(res, req, "login.html")
 }
@@ -94,3 +163,4 @@ func login(res http.ResponseWriter, req *http.Request, _ httprouter.Params) {
 func signup(res http.ResponseWriter, req *http.Request, _ httprouter.Params) {
 	serveTemplate(res, req, "signup.html")
 }
+
