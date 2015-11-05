@@ -8,7 +8,6 @@ func main() {
 }
 
 func HashBucket(word string, buckets int) int {
-	// letter := rune(word[0])
 	letter := int(word[0])
 	bucket := letter % buckets
 	return bucket

@@ -26,7 +26,7 @@ func main() {
 		n := HashBucket(scanner.Text())
 		buckets[n]++
 	}
-	fmt.Println(buckets[65:122])
+	fmt.Println(buckets[65:123])
 	// fmt.Println("***************")
 	// for i := 28; i <= 126; i++ {
 	// fmt.Printf("%v - %c - %v \n", i, i, buckets[i])
