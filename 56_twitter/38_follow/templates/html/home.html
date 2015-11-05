@@ -1,0 +1,16 @@
+{{template "header"}}
+{{template "modal-tweet-css"}}
+{{template "header2" .}}
+<main>
+    {{range .Tweets}}
+    <section>
+        <i class="fa fa-user fa-2x"></i>
+        <div>
+            <p class="post">{{.Msg}}</p>
+            <p class="post-meta">{{.UserName}}</p>
+            <p class="post-meta">{{humanize_time .Time}}</p>
+        </div>
+    </section>
+    {{end}}
+</main>
+{{template "footer"}}
