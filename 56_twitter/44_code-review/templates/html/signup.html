@@ -1,0 +1,69 @@
+{{template "header"}}
+<link rel="stylesheet" href="/public/css/signup.css">
+{{template "header2" .}}
+<form method="POST" action="/api/createuser" id="form-create-user">
+    <i class="fa fa-user fa-5x"></i>
+    <input id="email" name="email" type="email" placeholder="Enter your email" autofocus>
+    <p class="form-field-err"></p>
+    <input id="userName" name="userName" placeholder="Enter a twitter name" autocomplete="off">
+    <p class="form-field-err" id="username-err"></p>
+    <input id="password" name="password" type="password" placeholder="Create your password">
+    <input id="password2" name="password2" type="password" placeholder="Retype your password">
+    <p class="form-field-err" id="password-err"></p>
+    <button id="btn-create-account">Create Account</button>
+</form>
+<script>
+    var formUser = document.querySelector('#form-create-user');
+    var userName = document.querySelector('#userName');
+    var p1 = document.querySelector('#password');
+    var p2 = document.querySelector('#password2');
+    var btnSubmit = document.querySelector('#btn-create-account');
+
+    var nameErr = document.querySelector('#username-err');
+    var pErr = document.querySelector('#password-err');
+
+    //    username must be unique
+    userName.addEventListener('input', function(){
+        console.log(userName.value);
+        var xhr = new XMLHttpRequest();
+        xhr.open('POST', '/api/checkUserName');
+        xhr.send(userName.value);
+        xhr.addEventListener('readystatechange', function(){
+            if (xhr.readyState === 4) {
+                var item = xhr.responseText;
+                console.log(item);
+                if (item == 'true') {
+                    nameErr.textContent = 'Username taken - Try another name!';
+                } else {
+                    nameErr.textContent = '';
+                }
+            }
+        });
+    });
+
+    //    Validate passwords
+    //    listen for submit button click
+    formUser.addEventListener('submit', function(e){
+        var ok = validatePasswords();
+        if (!ok) {
+            e.preventDefault();
+            return;
+        }
+    });
+
+    function validatePasswords() {
+        pErr.textContent = '';
+        if (p1.value === '') {
+            pErr.textContent = 'Enter a password.';
+            return false;
+        }
+        if (p1.value !== p2.value) {
+            pErr.textContent = 'Your passwords did not match. Please re-enter your passwords.';
+            p1.value = '';
+            p2.value = '';
+            return false;
+        }
+        return true;
+    };
+</script>
+{{template "footer"}}
