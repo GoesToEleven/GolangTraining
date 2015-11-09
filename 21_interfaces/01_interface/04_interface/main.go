@@ -25,9 +25,9 @@ func (s Square) area() float64 {
 	return s.side * s.side
 }
 
-func info(s Shape) {
-	fmt.Println(s)
-	fmt.Println(s.area())
+func info(z Shape) {
+	fmt.Println(z)
+	fmt.Println(z.area())
 }
 
 // a new method which takes the INTERFACE TYPE Shape

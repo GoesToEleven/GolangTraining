@@ -1,15 +1,13 @@
 package main
 
-import (
-	"fmt"
-)
+import "fmt"
 
 type Square struct {
 	side float64
 }
 
-func (s Square) area() float64 {
-	return s.side * s.side
+func (z Square) area() float64 {
+	return z.side * z.side
 }
 
 func main() {

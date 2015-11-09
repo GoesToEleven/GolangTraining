@@ -6,12 +6,12 @@ type Square struct {
 	side float64
 }
 
-type Shape interface {
-	area() float64
+func (z Square) area() float64 {
+	return z.side * z.side
 }
 
-func (s Square) area() float64 {
-	return s.side * s.side
+type Shape interface {
+	area() float64
 }
 
 func info(z Shape) {

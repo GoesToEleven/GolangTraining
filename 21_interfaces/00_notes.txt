@@ -82,6 +82,33 @@ In our conceptual model, a set of values called TYPE DESCRIPTORS provide informa
 such as its name and methods. In an interface value, the type component is represented by the appropriate
 type descriptor.
 
+
+var w io.Writer
+w = os.Stdout
+w = new(bytes.Buffer)
+w = nil
+
+
+var w io.Writer
+w
+type: nil
+value: nil
+
+w = os.Stdout
+w
+type: *os.File
+value: the address where a value of type os.File is stored
+
+w = new(bytes.Buffer)
+w
+type: *bytes.Buffer
+value: the address where a value of type bytes.Buffer is stored
+
+w = nil
+w
+type: nil
+value: nil
+
 -------------------
 The Go Programming Language
 Donovan and Kernighan
