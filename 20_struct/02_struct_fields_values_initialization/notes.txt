@@ -10,8 +10,8 @@
  -- the type has fields
  -- the type can also have "tags"
  ----  we haven't seen this yet
- -- tye type has an underlying type
- ---- in this case, the underlying type is int
+ -- the type has an underlying type
+ ---- in this case, the underlying type is struct
  -- we declare variables of the type
  -- we initialize those variables
  ---- initialize with a specific value, or
@@ -23,7 +23,7 @@
  Struct types are declared by composing a fixed set of unique fields together.
  Each field in a struct is declared with a known type.
  This could be a built-in type or another user defined type.
- Once we have a type declared,we can create values from the type
+ Once we have a type declared, we can create values from the type
  When we declare variables, the value that the variable represents is always initialized.
  The value can be initialized with a specific value or it can be initialized to its zero value
  For numeric types, the zero value would be 0; for strings it would be empty;
