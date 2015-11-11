@@ -2,24 +2,24 @@ package main
 
 import "fmt"
 
-type Square struct {
+type square struct {
 	side float64
 }
 
-func (z Square) area() float64 {
+func (z square) area() float64 {
 	return z.side * z.side
 }
 
-type Shape interface {
+type shape interface {
 	area() float64
 }
 
-func info(z Shape) {
+func info(z shape) {
 	fmt.Println(z)
 	fmt.Println(z.area())
 }
 
 func main() {
-	s := Square{10}
+	s := square{10}
 	info(s)
 }
