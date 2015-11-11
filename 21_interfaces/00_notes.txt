@@ -16,16 +16,34 @@
  have no concrete behavior without the implementation of the stored user-defined value."
   - Bill Kennedy
 
-Values          Methods Receivers
+Receivers       Values
+-----------------------------------------------
+(t T)           T and *T
+(t *T)          *T
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Values          Receivers
 -----------------------------------------------
 T               (t T)
 *T              (t T) and (t *T)
 
-
-Methods         Receivers Values
------------------------------------------------
-(t T)           T and *T
-(t *T)          *T
 
 SOURCE:
 Go In Action
