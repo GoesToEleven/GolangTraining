@@ -21,24 +21,6 @@ Receivers       Values
 (t T)           T and *T
 (t *T)          *T
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 Values          Receivers
 -----------------------------------------------
 T               (t T)
