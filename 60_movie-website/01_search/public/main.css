@@ -1,0 +1,72 @@
+* {
+  box-sizing: border-box;
+}
+
+html, body {
+  padding: 0;
+  margin: 0;
+  height: 100%;
+}
+
+body {
+  background: #333;
+  color: #EEE;
+  height: 100%;
+  font-size: 18px;
+  font-family: Oswald;
+  line-height: 2em;
+}
+
+.outer-container {
+  max-width: 740px;
+  margin: auto;
+  min-height: 100%;
+
+  border: 3px solid #AAA;
+  border-top: none;
+  border-bottom: none;
+  background: black;
+
+}
+
+h1 {
+  margin: 0;
+}
+a, a:visited, a:active, a:hover {
+  color: white;
+  text-decoration: none;
+}
+a:hover {
+  text-decoration: underline;
+}
+header {
+  border-bottom: 3px solid #AAA;
+  line-height: 50px;
+  height: 50px;
+  padding-right: 18px;
+  padding-left: 18px;
+}
+header ul {
+  margin: 0;
+  padding: 0;
+  float: right;
+}
+header li {
+  float: left;
+  list-style: none;
+  margin-left: 9px;
+}
+.body {
+    padding: 18px;
+}
+
+input[type=text], textarea, button, input[type=submit] {
+  color: white;
+  background: #111;
+  border: 1px solid #CCC;
+}
+
+textarea {
+  height: 200px;
+  width: 100%;
+}

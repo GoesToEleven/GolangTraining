@@ -1,0 +1,18 @@
+{{define "new-movie"}}
+{{template "header"}}
+<h2>New Movie</h2>
+{{if .CreatedID}}
+<strong>Created {{.CreatedID}}</strong>
+{{end}}
+<form action="/new-movie" method="POST">
+  <label>Title:<br>
+    <input type="text" name="title" placeholder="Title">
+  </label><br>
+  <label>Summary:<br>
+    <textarea name="summary"
+              placeholder="Summary"></textarea>
+  </label><br>
+  <input type="submit">
+</form>
+{{template "footer"}}
+{{end}}
