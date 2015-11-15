@@ -2,9 +2,9 @@ package main
 
 import (
 	"fmt"
+	"runtime"
 	"sync"
 	"time"
-	"runtime"
 )
 
 var wg sync.WaitGroup

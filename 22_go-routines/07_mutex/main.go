@@ -2,9 +2,9 @@ package main
 
 import (
 	"fmt"
+	"math/rand"
 	"sync"
 	"time"
-"math/rand"
 )
 
 var wg sync.WaitGroup
@@ -21,7 +21,7 @@ func main() {
 
 func incrementor(s string) {
 	for i := 0; i < 20; i++ {
-		time.Sleep(time.Duration(rand.Intn(20))*time.Millisecond)
+		time.Sleep(time.Duration(rand.Intn(20)) * time.Millisecond)
 		mutex.Lock()
 		counter++
 		fmt.Println(s, i, "Counter:", counter)

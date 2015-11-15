@@ -11,4 +11,5 @@ func init() {
 
 func handler(w http.ResponseWriter, r *http.Request) {
 	fmt.Fprint(w, "Hello, worlddddddddxxxxxx!")
+	w.Write([]byte("Hello, world!"))
 }

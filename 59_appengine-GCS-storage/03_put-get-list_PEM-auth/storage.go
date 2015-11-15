@@ -16,7 +16,7 @@ import (
 )
 
 
-const bucketName = "serious-water-88716.appspot.com"
+const bucketName = "learning-1130-bucket-01"
 
 func init() {
 	http.HandleFunc("/put", handlePut)
@@ -52,7 +52,7 @@ func handleGet(res http.ResponseWriter, req *http.Request) {
 	ctx := appengine.NewContext(req)
 	cctx := getCloudContext(ctx)
 
-	rdr, err := storage.NewReader(cctx, bucketName, "example.txt")
+	rdr, err := storage.NewReader(cctx, bucketName, "example8777.txt")
 	if err != nil {
 		http.Error(res, err.Error(), 500)
 		return

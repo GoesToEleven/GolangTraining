@@ -20,7 +20,7 @@ func init() {
 
 func handlePut(res http.ResponseWriter, req *http.Request) {
 	ctx := appengine.NewContext(req)
-	bucket := "golang-bootcamp"
+	bucket := "learning-1130-bucket-01"
 
 	hc := &http.Client{
 		Transport: &oauth2.Transport{

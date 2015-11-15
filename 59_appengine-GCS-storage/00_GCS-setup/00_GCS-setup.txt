@@ -1,0 +1,55 @@
+THIS PRESENTATION IS HELPFUL:
+https://docs.google.com/presentation/d/14NA_G-Wv5aTrRYqti5HIt3oie-wXLBSkkAt3ljEO2y0/edit?usp=sharing
+
+
+- activate GCS API
+
+- create a bucket
+-- the bucket must have a globally unique name, so maybe prefix with your app engine project ID
+
+- create a service account
+-- API's & AUTH
+---- Credentials
+------- generate service account
+-------- create new client ID
+-------- service account
+-------- GENERATE NEW P12 KEY
+
+This is the private key's password. It will not be shown again. You must present this password to use the private key.
+notasecret
+
+we can use this private key to connect to google cloud storage
+but it's in the wrong format....
+
+app engine expects a PEM and we have a p12
+we have to convert .....
+
+https://cloud.google.com/storage/docs/authentication#converting-the-private-key
+
+# Convert the key from pkcs12 to pkcs1 (PEM).
+$ cat /path/to/xxxx-privatekey.p12 | openssl pkcs12 -nodes -nocerts -passin pass:notasecret | openssl rsa > /path/to/secret.pem
+
+for example:
+cat ~/Downloads/downloaded_file.p12 | openssl pkcs12 -nodes -nocerts -passin pass:notasecret | openssl rsa > ~/Downloads/secret.pem
+
+
+now we can look at this file
+cat ~/Downloads/secret.pem
+
+-these credentials let your local machine connect to your bucket
+-appengine doesn't need these credentials
+-we create/use them so that we can develop/test on our local machine / localhost
+
+FROM HERE:
+https://cloud.google.com/appengine/docs/go/googlecloudstorageclient/getstarted
+FOLLOW THIS STEP:
+- Make note of the Service Account Email Address for your project which will be in the form of <your_app_email_address>@developer.gserviceaccount.com.
+
+you will need to get your email address key from the
+-- API's & AUTH
+---- Credentials
+
+AT TERMINAL:
+/path/to/AppEngSDK/dev_appserver.py . --appidentity_email_address <your_app_email_address>@developer.gserviceaccount.com --appidentity_private_key_path pem_file.pem
+
+/usr/local/go_appengine/dev_appserver.py . --appidentity_email_address account-1@learning-1130.iam.gserviceaccount.com --appidentity_private_key_path ~/Downloads/secret.pem
