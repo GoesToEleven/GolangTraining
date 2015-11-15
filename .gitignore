@@ -48,4 +48,4 @@ builds/**/images/*
 
 # security / ssl
 *.pem
-*.Xjson
+*.xxjson
