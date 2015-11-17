@@ -41,3 +41,5 @@ func handleGetGif(res http.ResponseWriter, req *http.Request) {
 		fmt.Fprintf(res, `<a href="%v">%v</a><img src="%v"><br>`, img.URL, img.URL, img.Images.Original.URL)
 	}
 }
+
+// https://github.com/Giphy/GiphyAPI

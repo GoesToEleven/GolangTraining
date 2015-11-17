@@ -43,22 +43,21 @@ func handleNewMovie(res http.ResponseWriter, req *http.Request) {
 	if req.Method == "POST" {
 		title := req.FormValue("title")
 		summary := req.FormValue("summary")
-		poster, _, err := req.FormFile("poster")
-		if err != nil {
-			http.Error(res, err.Error(), 500)
-			return
+		poster, _, _ := req.FormFile("poster")
+
+		var posterID string
+		if poster != nil {
+			defer poster.Close()
+			pID, _ := uuid.NewV4()
+			posterID = pID.String()
+			err := putFile(ctx, posterID, poster)
+			if err != nil {
+				http.Error(res, err.Error(), 500)
+				return
+			}
 		}
-		defer poster.Close()
 
-		posterID, _ := uuid.NewV4()
-
-		err = putFile(ctx, posterID.String(), poster)
-		if err != nil {
-			http.Error(res, err.Error(), 500)
-			return
-		}
-
-		summary, err = renderMarkdown(ctx, summary)
+		summary, err := renderMarkdown(ctx, summary)
 		if err != nil {
 			http.Error(res, err.Error(), 500)
 			return
@@ -73,7 +72,7 @@ func handleNewMovie(res http.ResponseWriter, req *http.Request) {
 		movie := &Movie{
 			Title:    title,
 			Summary:  search.HTML(summary),
-			PosterID: posterID.String(),
+			PosterID: posterID,
 		}
 
 		id, err := index.Put(ctx, "", movie)
@@ -90,3 +89,27 @@ func handleNewMovie(res http.ResponseWriter, req *http.Request) {
 		return
 	}
 }
+
+
+
+
+
+
+/*
+// with no checking to see if a poster was uploaded:
+
+poster, _, err := req.FormFile("poster")
+		if err != nil {
+			http.Error(res, err.Error(), 500)
+			return
+		}
+		defer poster.Close()
+
+		posterID, _ := uuid.NewV4()
+
+		err = putFile(ctx, posterID.String(), poster)
+		if err != nil {
+			http.Error(res, err.Error(), 500)
+			return
+		}
+*/
