@@ -1,12 +1,13 @@
 package storage
 
 import (
+	"fmt"
 	"io"
 	"net/http"
 
+	"golang.org/x/net/context"
 	"golang.org/x/oauth2/google"
 
-	"golang.org/x/net/context"
 	"google.golang.org/appengine"
 	"google.golang.org/cloud"
 	"google.golang.org/cloud/storage"
@@ -18,6 +19,8 @@ const aeId = "learning-1130"
 
 func init() {
 	http.HandleFunc("/put", handlePut)
+	http.HandleFunc("/get", handleGet)
+	http.HandleFunc("/list", handleList)
 }
 
 func getCloudContext(req *http.Request) (context.Context, error) {
@@ -40,18 +43,52 @@ func getCloudContext(req *http.Request) (context.Context, error) {
 }
 
 func handlePut(res http.ResponseWriter, req *http.Request) {
-
 	cctx, err := getCloudContext(req)
 	if err != nil {
 		http.Error(res, "ERROR GETTING CCTX: "+err.Error(), 500)
 		return
 	}
 
-	writer := storage.NewWriter(cctx, gcsBucket, "exampleJSON2.txt")
-	io.WriteString(writer, "AGAIN WITH JSON AUTH")
+	writer := storage.NewWriter(cctx, gcsBucket, "example999.txt")
+	io.WriteString(writer, "showing the put get list")
 	err = writer.Close()
 	if err != nil {
 		http.Error(res, "ERROR WRITING TO BUCKET: "+err.Error(), 500)
 		return
+	}
+}
+
+func handleGet(res http.ResponseWriter, req *http.Request) {
+	cctx, err := getCloudContext(req)
+	if err != nil {
+		http.Error(res, "ERROR GETTING CCTX: "+err.Error(), 500)
+		return
+	}
+
+	rdr, err := storage.NewReader(cctx, gcsBucket, "example999.txt")
+	if err != nil {
+		http.Error(res, err.Error(), 500)
+		return
+	}
+	defer rdr.Close()
+
+	io.Copy(res, rdr)
+}
+
+func handleList(res http.ResponseWriter, req *http.Request) {
+	cctx, err := getCloudContext(req)
+	if err != nil {
+		http.Error(res, "ERROR GETTING CCTX: "+err.Error(), 500)
+		return
+	}
+
+	var query *storage.Query
+	objs, err := storage.ListObjects(cctx, gcsBucket, query)
+	if err != nil {
+		http.Error(res, err.Error(), 500)
+		return
+	}
+	for _, obj := range objs.Results {
+		fmt.Fprintln(res, obj.Name)
 	}
 }

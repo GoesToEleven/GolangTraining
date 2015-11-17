@@ -16,15 +16,6 @@ import (
 
 const githubAPIUrl = "https://api.github.com"
 
-// markdown
-//   === HEADERS
-//   *italic*
-//   **bold**
-//   > this is quote
-//
-//   <h3>HEADERS</h3>
-//   <em>italic</em>
-//   <strong>bold</strong>
 func renderMarkdown(ctx context.Context, text string) (string, error) {
 	client := urlfetch.Client(ctx)
 	response, err := client.Post(

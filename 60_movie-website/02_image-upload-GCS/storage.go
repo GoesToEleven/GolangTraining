@@ -2,33 +2,42 @@ package movieinfo
 
 import (
 	"io"
-	"net/http"
 
 	"golang.org/x/net/context"
-	"golang.org/x/oauth2"
 	"golang.org/x/oauth2/google"
-	"google.golang.org/appengine"
-	"google.golang.org/appengine/urlfetch"
 	"google.golang.org/cloud"
 	"google.golang.org/cloud/storage"
+	"io/ioutil"
+	"google.golang.org/appengine/log"
 )
 
-const bucketName = "golang-bootcamp"
+const gcsBucket = "learning-1130-bucket-01"
+const aeId = "learning-1130"
 
-func getCloudContext(appengineContext context.Context) context.Context {
-	hc := &http.Client{
-		Transport: &oauth2.Transport{
-			Source: google.AppEngineTokenSource(appengineContext, storage.ScopeFullControl),
-			Base:   &urlfetch.Transport{Context: appengineContext},
-		},
+func getCloudContext(ctx context.Context) context.Context {
+	jsonKey, err := ioutil.ReadFile("learning-860db08c451a.xxjson")
+	if err != nil {
+		log.Errorf(ctx, "%v", err)
+		return nil
 	}
 
-	return cloud.NewContext(appengine.AppID(appengineContext), hc)
+	conf, err := google.JWTConfigFromJSON(
+		jsonKey,
+		storage.ScopeFullControl,
+	)
+	if err != nil {
+		log.Errorf(ctx, "%v", err)
+		return nil
+	}
+
+	hc := conf.Client(ctx)
+	return cloud.NewContext(aeId, hc)
 }
 
 func putFile(ctx context.Context, name string, rdr io.Reader) error {
 	cctx := getCloudContext(ctx)
-	writer := storage.NewWriter(cctx, bucketName, name)
+
+	writer := storage.NewWriter(cctx, gcsBucket, name)
 	writer.ACL = []storage.ACLRule{
 		{storage.AllUsers, storage.RoleReader},
 	}
@@ -38,12 +47,14 @@ func putFile(ctx context.Context, name string, rdr io.Reader) error {
 
 func getFile(ctx context.Context, name string) (io.ReadCloser, error) {
 	cctx := getCloudContext(ctx)
-	return storage.NewReader(cctx, bucketName, name)
+
+	return storage.NewReader(cctx, gcsBucket, name)
 }
 
 func getFileLink(ctx context.Context, name string) (string, error) {
 	cctx := getCloudContext(ctx)
-	obj, err := storage.StatObject(cctx, bucketName, name)
+
+	obj, err := storage.StatObject(cctx, gcsBucket, name)
 	if err != nil {
 		return "", err
 	}
