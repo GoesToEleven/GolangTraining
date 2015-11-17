@@ -86,6 +86,8 @@ func handleIndex(res http.ResponseWriter, req *http.Request) {
     Here is your self-destructing secret message ID:
     <a href="/msg/`+messageKey.String()+`?secret=`+fmt.Sprintf("%x", secretKey)+`">`+messageKey.String()+`</a>
     Send it to Peter Graves.
+    <p>The encrypted message:</p>
+    <p>`+encryptedMessage+`</p>
   </body>
 </html>`)
 	} else {
