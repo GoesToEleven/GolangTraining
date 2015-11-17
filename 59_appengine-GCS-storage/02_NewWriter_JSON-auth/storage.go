@@ -47,8 +47,9 @@ func handlePut(res http.ResponseWriter, req *http.Request) {
 		return
 	}
 
-	writer := storage.NewWriter(cctx, gcsBucket, "exampleJSON2.txt")
-	io.WriteString(writer, "AGAIN WITH JSON AUTH")
+	writer := storage.NewWriter(cctx, gcsBucket, "exampleYALLSTILL.txt")
+	writer.ContentType = "text/plain"
+	io.WriteString(writer, "in class with y'all STILL")
 	err = writer.Close()
 	if err != nil {
 		http.Error(res, "ERROR WRITING TO BUCKET: "+err.Error(), 500)
