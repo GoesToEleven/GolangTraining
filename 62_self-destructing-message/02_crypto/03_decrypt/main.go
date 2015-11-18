@@ -20,7 +20,7 @@ func main() {
 	encrypted := secretbox.Seal(nil, []byte(decrypted), &nonce, &password)
 	// fmt.Printf("%T \n", encrypted)
 	enHex := fmt.Sprintf("%x:%x", nonce[:], encrypted)
-	fmt.Println("ENCRYPTED:",enHex)
+	fmt.Println("ENCRYPTED:", enHex)
 
 	// decrypt
 	var nonce2 [24]byte

@@ -24,7 +24,7 @@ func handleGetGif(res http.ResponseWriter, req *http.Request) {
 	defer result.Body.Close()
 	var obj struct {
 		Data []struct {
-			URL    string
+			URL    string `json:"url"`
 			Images struct {
 				Original struct {
 					URL string

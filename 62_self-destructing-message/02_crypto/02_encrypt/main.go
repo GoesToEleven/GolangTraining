@@ -24,5 +24,5 @@ func main() {
 	fmt.Println("string", string(encrypted))
 	fmt.Println("nonce", nonce)
 	fmt.Println("nonce", nonce[:])
-	fmt.Printf("%x:%x", nonce[:], encrypted)
+	fmt.Printf("%x:%x \n", nonce[:], encrypted)
 }
