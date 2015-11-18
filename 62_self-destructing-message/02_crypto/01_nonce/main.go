@@ -9,6 +9,6 @@ import (
 func main() {
 	var nonce [24]byte
 	fmt.Println(nonce)
-	io.ReadAtLeast(rand.Reader, nonce[:], 24)
+	io.ReadFull(rand.Reader, nonce[:])
 	fmt.Println(nonce)
 }
