@@ -15,7 +15,7 @@ import (
 )
 
 func getCloudContext(aeCtx context.Context) (context.Context, error) {
-	data, err := ioutil.ReadFile("/Users/caleb/Desktop/gcs.json")
+	data, err := ioutil.ReadFile("gcs.xxjson")
 	if err != nil {
 		return nil, err
 	}

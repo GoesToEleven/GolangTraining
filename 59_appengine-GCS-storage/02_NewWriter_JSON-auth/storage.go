@@ -21,7 +21,7 @@ func init() {
 }
 
 func getCloudContext(req *http.Request) (context.Context, error) {
-	jsonKey, err := ioutil.ReadFile("learning-860db08c451a.xxjson")
+	jsonKey, err := ioutil.ReadFile("gcs.xxjson")
 	if err != nil {
 		return nil, err
 	}

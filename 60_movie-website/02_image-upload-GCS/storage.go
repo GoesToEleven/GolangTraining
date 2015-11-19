@@ -15,7 +15,7 @@ const gcsBucket = "learning-1130-bucket-01"
 const aeId = "learning-1130"
 
 func getCloudContext(ctx context.Context) context.Context {
-	jsonKey, err := ioutil.ReadFile("learning-860db08c451a.xxjson")
+	jsonKey, err := ioutil.ReadFile("gcs.xxjson")
 	if err != nil {
 		log.Errorf(ctx, "%v", err)
 		return nil
