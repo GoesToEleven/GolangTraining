@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+   <meta charset="UTF-8">
+   <title></title>
+   <style>
+       ul
+       {
+           list-style-type: none;
+       }
+
+   </style>
+</head>
+<body>
+  <h1>Bucket: {{.Bucket}}</h1>
+
+  <div class="files">
+    <h2>Folder: {{.Folder}}</h2>
+    <ul>
+      <!-- Folders -->
+      {{range .SubFolders}}
+      <li>
+        <a href="{{.}}">{{.}}</a>
+      </li>
+      {{end}}
+      <!-- Files -->
+      {{range .Files}}
+      <li>{{.}}</li>
+      {{end}}
+    </ul>
+  </div>
+
+  <form method="POST" enctype="multipart/form-data">
+    <label>File:
+      <input type="file" name="file">
+    </label>
+    <input type="submit">
+  </form>
+
+</body>
+</html>

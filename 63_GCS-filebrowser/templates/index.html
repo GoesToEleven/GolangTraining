@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+   <meta charset="UTF-8">
+   <title></title>
+   <style>
+       form {
+           max-width: 600px;
+       }
+       label {
+           display: flex;
+           flex-direction: column;
+       }
+   </style>
+</head>
+<body>
+<form action="/" method="POST">
+   <label>
+       Bucket:
+       <input type="text" name="bucket">
+   </label>
+   <label>
+       Credentials:
+       <textarea name="credentials"
+                 id="credentials"
+                 cols="30"
+                 rows="10"></textarea>
+   </label>
+   <input type="submit">
+
+</form>
+</body>
+</html>
