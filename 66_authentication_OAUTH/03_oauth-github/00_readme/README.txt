@@ -18,6 +18,9 @@ https://developer.github.com/v3/oauth/#web-application-flow
 
 EXAMPLE:
 (customized for my registered application, which we'll do next)
+--local development---
+https://github.com/login/oauth/authorize?client_id=fbbaa8ce5c394b7c3198&redirect_uri=http://localhost:8080/oauth2callback&state=233453423232
+--deployment---
 https://github.com/login/oauth/authorize?client_id=fbbaa8ce5c394b7c3198&redirect_uri=http://learning-1130.appspot.com/oauth2callback&state=233453423232
 
 (4)

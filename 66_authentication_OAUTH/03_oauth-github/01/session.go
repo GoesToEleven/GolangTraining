@@ -14,8 +14,7 @@ import (
 type Session struct {
 	ID          string
 	State       string
-	Username    string
-	AccessToken string
+	Email    string
 }
 
 func getSession(ctx context.Context, req *http.Request) Session {
