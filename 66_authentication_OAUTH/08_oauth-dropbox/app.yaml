@@ -1,8 +1,9 @@
-application: astute-curve-100822
-version: 1
+application: learning-1130
+version: dropbox
 runtime: go
 api_version: go1
 
 handlers:
 - url: /.*
+  secure: always
   script: _go_app

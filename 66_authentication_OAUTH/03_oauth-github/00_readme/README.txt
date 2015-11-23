@@ -1,6 +1,11 @@
 OAUTH
 https://en.wikipedia.org/wiki/OAuth
 
+GOLANG DOCs
+https://godoc.org/golang.org/x/oauth2
+
+GITHUB EXAMPLE
+
 (1)
 learn about github oauth
 https://help.github.com/articles/connecting-with-third-party-applications/
@@ -31,6 +36,30 @@ see pic_01.png, pic_02.png
 (5)
 Redirect users to request GitHub access
 https://developer.github.com/v3/oauth/#web-application-flow
+
+(6)
+create a callback to receive authorization code
+
+(7)
+exchange authorization code for an access token
+***AUTHORIZATION CODE***
+- the authorization code is the AUTHORIZATION OF THE USER
+-- requires our github oauth api Client ID
+***ACCESS TOKEN***
+- the access token is the AUTHORIZATION OF THE APPLICATION
+-- requires our github oauth api Client Secret
+-- we wouldn't want to pass our Client Secret in the URL
+
+https://youtu.be/oxogqJiFVYI?t=2547
+
+(8)
+Get user information
+EMAIL EXAMPLE in code
+
+(9)
+Application flow:
+- now that you have someone's VERIFIED email (github verifies emails)
+-- you can associate that email with a user's account on your site
 
 ----
 

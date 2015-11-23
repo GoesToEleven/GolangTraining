@@ -14,6 +14,7 @@ import (
 	"google.golang.org/appengine/urlfetch"
 )
 
+// change redirectURI for deployment; eg, http://<yourAppId>.appspot.com/oauth2callback
 const redirectURI = "http://localhost:8080/oauth2callback"
 const githubAPIURL = "https://api.github.com"
 
