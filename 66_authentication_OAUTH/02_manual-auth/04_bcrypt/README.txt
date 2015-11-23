@@ -1,0 +1,1 @@
+https://godoc.org/golang.org/x/crypto/bcrypt#GenerateFromPassword

@@ -1,0 +1,12 @@
+application: learning-1130
+version: 1
+runtime: go
+api_version: go1
+
+handlers:
+- url: /admin/.*
+  script: _go_app
+  login: admin
+- url: /.*
+  script: _go_app
+  login: required
