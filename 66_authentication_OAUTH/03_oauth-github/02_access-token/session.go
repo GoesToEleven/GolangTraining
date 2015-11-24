@@ -12,9 +12,9 @@ import (
 )
 
 type Session struct {
-	ID          string
-	State       string
-	Email    string
+	ID    string
+	State string
+	Email string
 }
 
 func getSession(ctx context.Context, req *http.Request) Session {

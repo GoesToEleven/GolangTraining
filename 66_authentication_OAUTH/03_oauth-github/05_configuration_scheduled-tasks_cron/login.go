@@ -1,10 +1,10 @@
 package githubexample
 
 import (
-	"net/http"
 	"fmt"
 	"google.golang.org/appengine"
 	"google.golang.org/appengine/log"
+	"net/http"
 )
 
 func init() {

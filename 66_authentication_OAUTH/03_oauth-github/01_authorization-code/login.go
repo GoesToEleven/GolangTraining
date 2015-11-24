@@ -7,8 +7,8 @@ import (
 	"net/url"
 	"strings"
 
-	"google.golang.org/appengine"
 	"github.com/nu7hatch/gouuid"
+	"google.golang.org/appengine"
 )
 
 // change redirectURI for deployment; eg, http://<yourAppId>.appspot.com/oauth2callback

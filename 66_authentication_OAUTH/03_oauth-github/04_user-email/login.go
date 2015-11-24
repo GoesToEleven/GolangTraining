@@ -7,12 +7,12 @@ import (
 	"net/url"
 	"strings"
 
-	"google.golang.org/appengine"
+	"encoding/json"
 	"github.com/nu7hatch/gouuid"
 	"golang.org/x/net/context"
+	"google.golang.org/appengine"
 	"google.golang.org/appengine/urlfetch"
 	"io/ioutil"
-	"encoding/json"
 )
 
 // change redirectURI for deployment; eg, http://<yourAppId>.appspot.com/oauth2callback
@@ -75,22 +75,21 @@ func handleOauth2Callback(res http.ResponseWriter, req *http.Request) {
 		return
 	}
 
-	fmt.Fprintln(res, "AUTHORIZATION CODE " + code)
+	fmt.Fprintln(res, "AUTHORIZATION CODE "+code)
 
 	accessToken, err := getAccessToken(ctx, state, code)
 	if err != nil {
 		http.Error(res, err.Error(), 500)
 		return
 	}
-	fmt.Fprintln(res, "ACCESS TOKEN " + accessToken)
+	fmt.Fprintln(res, "ACCESS TOKEN "+accessToken)
 
 	email, err := getEmail(ctx, accessToken)
 	if err != nil {
 		http.Error(res, err.Error(), 500)
 		return
 	}
-	fmt.Fprintln(res, "EMAIL " + email)
-
+	fmt.Fprintln(res, "EMAIL "+email)
 
 }
 
@@ -101,7 +100,7 @@ func getAccessToken(ctx context.Context, state, code string) (string, error) {
 	values.Add("code", code)
 	values.Add("state", state)
 	client := urlfetch.Client(ctx)
-	response, err := client.PostForm("https://github.com/login/oauth/access_token",values)
+	response, err := client.PostForm("https://github.com/login/oauth/access_token", values)
 	if err != nil {
 		return "", err
 	}
@@ -120,9 +119,9 @@ func getEmail(ctx context.Context, accessToken string) (string, error) {
 	defer response.Body.Close()
 
 	var data []struct {
-		Email string
+		Email    string
 		Verified bool
-		Primary bool
+		Primary  bool
 	}
 	err = json.NewDecoder(response.Body).Decode(&data)
 	if err != nil {

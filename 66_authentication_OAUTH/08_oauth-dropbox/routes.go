@@ -103,4 +103,3 @@ func getToken(ctx context.Context, code string) (*dropboxData, error) {
 	log.Debugf(ctx, "%v", data)
 	return &data, nil
 }
-

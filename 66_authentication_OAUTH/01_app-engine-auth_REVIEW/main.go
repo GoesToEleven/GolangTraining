@@ -34,4 +34,3 @@ func admin(res http.ResponseWriter, req *http.Request) {
 	fmt.Fprintf(res, `Welcome ADMIN, %s! <br>`, u.Email)
 	fmt.Fprintf(res, `(<a href="%s">sign out</a>)`, url)
 }
-

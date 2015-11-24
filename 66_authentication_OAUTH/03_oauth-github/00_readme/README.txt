@@ -43,7 +43,7 @@ create a callback to receive authorization code
 (7)
 exchange authorization code for an access token
 ***AUTHORIZATION CODE***
-- the authorization code is the AUTHORIZATION OF THE USER
+- the authorization code is the AUTHORIZATION FROM THE USER
 -- requires our github oauth api Client ID
 ***ACCESS TOKEN***
 - the access token is the AUTHORIZATION OF THE APPLICATION

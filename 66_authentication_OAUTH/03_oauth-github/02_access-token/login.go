@@ -7,9 +7,9 @@ import (
 	"net/url"
 	"strings"
 
-	"google.golang.org/appengine"
 	"github.com/nu7hatch/gouuid"
 	"golang.org/x/net/context"
+	"google.golang.org/appengine"
 	"google.golang.org/appengine/urlfetch"
 	"io/ioutil"
 )
@@ -74,14 +74,14 @@ func handleOauth2Callback(res http.ResponseWriter, req *http.Request) {
 		return
 	}
 
-	fmt.Fprintln(res, "AUTHORIZATION CODE " + code)
+	fmt.Fprintln(res, "AUTHORIZATION CODE "+code)
 
 	accessToken, err := getAccessToken(ctx, state, code)
 	if err != nil {
 		http.Error(res, err.Error(), 500)
 		return
 	}
-	fmt.Fprintln(res, "ACCESS TOKEN " + accessToken)
+	fmt.Fprintln(res, "ACCESS TOKEN "+accessToken)
 
 }
 
@@ -92,7 +92,7 @@ func getAccessToken(ctx context.Context, state, code string) (string, error) {
 	values.Add("code", code)
 	values.Add("state", state)
 	client := urlfetch.Client(ctx)
-	response, err := client.PostForm("https://github.com/login/oauth/access_token",values)
+	response, err := client.PostForm("https://github.com/login/oauth/access_token", values)
 	if err != nil {
 		return "", err
 	}
