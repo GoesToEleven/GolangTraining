@@ -26,7 +26,7 @@ func foo(res http.ResponseWriter, req *http.Request) {
 	<html>
 	  <body>
 		<form method="POST">
-		`+fmt.Sprint(session.Values["email"])+`
+			`+fmt.Sprint(session.Values["email"])+`
 		  <input type="email" name="email">
 		  <input type="submit">
 		</form>
