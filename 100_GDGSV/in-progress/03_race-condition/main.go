@@ -7,16 +7,12 @@ import (
 	"log"
 	"os"
 	"path/filepath"
-	"time"
 	"sync"
-	"io/ioutil"
+	"time"
 )
 
 // at terminal:
 // go run -race main.go
-
-var counter int
-var wg sync.WaitGroup
 
 type pixel struct {
 	r, g, b, a uint32
@@ -24,11 +20,11 @@ type pixel struct {
 
 func main() {
 	start := time.Now()
-	dir := "../photos/"
-	files,_ := ioutil.ReadDir(dir)
-	wg.Add(len(files))
-	fmt.Println("FILES TO PROCESS:",len(files))
-	images := getImages(dir)
+
+	images, err := getImages()
+	if err != nil {
+		log.Println("Error getting images", err)
+	}
 
 	// range over the [] holding the []pixel - eg, give me each img
 	//     range over the []pixel hold the pixels - eg, give me each pixel
@@ -40,30 +36,49 @@ func main() {
 			}
 		}
 	}
-	wg.Wait()
-	fmt.Println("Holy cow:", counter)
+
 	fmt.Printf("%.2fs elapsed\n", time.Since(start).Seconds())
 }
 
-func getImages(dir string) [][]pixel {
+func getImages() ([][]pixel, error) {
+	const dir = "../../photos/"
 
-	var images [][]pixel
-
-	filepath.Walk(dir, func(path string, info os.FileInfo, err error) error {
+	var paths []string
+	f := func(path string, info os.FileInfo, err error) error {
 		if info.IsDir() {
 			return nil
 		}
+		paths = append(paths, path)
+		return nil
+	}
 
-		go (func(){
+	if err := filepath.Walk(dir, f); err != nil {
+		return nil, err
+	}
+
+	var mu sync.Mutex
+	var wg sync.WaitGroup
+	wg.Add(len(paths))
+
+	var images [][]pixel
+	for _, path := range paths {
+		go func(path string) {
 			img := loadImage(path)
 			pixels := getPixels(img)
-			images = append(images, pixels)
-			wg.Done()
-		})()
-		return nil
-	})
 
-	return images
+			mu.Lock()
+			{
+				images = append(images, pixels)
+			}
+			mu.Unlock()
+
+			wg.Done()
+		}(path)
+	}
+
+	wg.Wait()
+
+	return images, nil
 }
 
 func loadImage(filename string) image.Image {
@@ -82,7 +97,6 @@ func loadImage(filename string) image.Image {
 }
 
 func getPixels(img image.Image) []pixel {
-
 	bounds := img.Bounds()
 	fmt.Println(bounds.Dx(), " x ", bounds.Dy()) // debugging
 	pixels := make([]pixel, bounds.Dx()*bounds.Dy())
@@ -95,7 +109,6 @@ func getPixels(img image.Image) []pixel {
 		pixels[i].g = g
 		pixels[i].b = b
 		pixels[i].a = a
-		counter++
 	}
 
 	return pixels
