@@ -6,11 +6,12 @@ import "fmt"
 //  -- normally we switch on value of variable
 //  -- go allows you to switch on type of variable
 
-type Contact struct {
+type contact struct {
 	greeting string
 	name     string
 }
 
+// SwitchOnType works with interfaces
 // we'll learn more about interfaces later
 func SwitchOnType(x interface{}) {
 	switch x.(type) { // this is an assert; asserting, "x is of this type"
@@ -18,7 +19,7 @@ func SwitchOnType(x interface{}) {
 		fmt.Println("int")
 	case string:
 		fmt.Println("string")
-	case Contact:
+	case contact:
 		fmt.Println("contact")
 	default:
 		fmt.Println("unknown")
@@ -29,7 +30,7 @@ func SwitchOnType(x interface{}) {
 func main() {
 	SwitchOnType(7)
 	SwitchOnType("McLeod")
-	var t = Contact{"Good to see you,", "Tim"}
+	var t = contact{"Good to see you,", "Tim"}
 	SwitchOnType(t)
 	SwitchOnType(t.greeting)
 	SwitchOnType(t.name)

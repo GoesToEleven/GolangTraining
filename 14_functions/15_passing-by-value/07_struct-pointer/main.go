@@ -2,13 +2,13 @@ package main
 
 import "fmt"
 
-type Customer struct {
+type customer struct {
 	name string
 	age  int
 }
 
 func main() {
-	c1 := Customer{"Todd", 44}
+	c1 := customer{"Todd", 44}
 	fmt.Println(&c1.name) // 0x8201e4120
 
 	changeMe(&c1)
@@ -17,7 +17,7 @@ func main() {
 	fmt.Println(&c1.name) // 0x8201e4120
 }
 
-func changeMe(z *Customer) {
+func changeMe(z *customer) {
 	fmt.Println(z)       // &{Todd 44}
 	fmt.Println(&z.name) // 0x8201e4120
 	z.name = "Rocky"

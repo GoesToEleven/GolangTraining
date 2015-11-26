@@ -4,20 +4,20 @@ import (
 	"fmt"
 )
 
-type Person struct {
+type person struct {
 	First string
 	Last  string
 	Age   int
 }
 
-type DoubleZero struct {
-	Person
+type doubleZero struct {
+	person
 	LicenseToKill bool
 }
 
 func main() {
-	p1 := DoubleZero{
-		Person: Person{
+	p1 := doubleZero{
+		person: person{
 			First: "James",
 			Last:  "Bond",
 			Age:   20,
@@ -25,8 +25,8 @@ func main() {
 		LicenseToKill: true,
 	}
 
-	p2 := DoubleZero{
-		Person: Person{
+	p2 := doubleZero{
+		person: person{
 			First: "Miss",
 			Last:  "MoneyPenny",
 			Age:   19,

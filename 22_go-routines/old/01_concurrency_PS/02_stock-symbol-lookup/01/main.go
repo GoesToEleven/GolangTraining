@@ -13,14 +13,14 @@ func main() {
 	defer resp.Body.Close()
 	body, _ := ioutil.ReadAll(resp.Body)
 
-	quote := new(QuoteResponse)
+	quote := new(quoteResponse)
 	xml.Unmarshal(body, &quote)
 
 	fmt.Printf("%s: %.2f", quote.Name, quote.LastPrice)
 
 }
 
-type QuoteResponse struct {
+type quoteResponse struct {
 	Status           string
 	Name             string
 	LastPrice        float32

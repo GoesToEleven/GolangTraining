@@ -6,8 +6,8 @@ import (
 
 func main() {
 
-	msgCh := make(chan Message, 1)
-	errCh := make(chan FailedMessage, 1)
+	msgCh := make(chan message, 1)
+	errCh := make(chan failedMessage, 1)
 
 	select {
 	case receivedMsg := <-msgCh:
@@ -20,15 +20,15 @@ func main() {
 
 }
 
-type Message struct {
+type message struct {
 	To      []string
 	From    string
 	Content string
 }
 
-type FailedMessage struct {
+type failedMessage struct {
 	ErrorMessage    string
-	OriginalMessage Message
+	OriginalMessage message
 }
 
 /* 3.5.1 - demo setup
@@ -40,18 +40,18 @@ import (
 
 func main() {
 
-	msgCh := make(chan Message, 1)
-	errCh := make(chan FailedMessage, 1)
+	msgCh := make(chan message, 1)
+	errCh := make(chan failedMessage, 1)
 
-	msg := Message{
+	msg := message{
 		To: []string{"bilbo@underhill.me"},
 		From: "gandalf@whitecouncil.org",
 		Content: "Keep it secret, keep it safe",
 	}
 
-	failedMessage := FailedMessage{
-		ErrorMessage: "Message intercepted by black rider",
-		OriginalMessage: Message{},
+	failedMessage := failedMessage{
+		ErrorMessage: "message intercepted by black rider",
+		OriginalMessage: message{},
 	}
 
 	msgCh <- msg
@@ -62,15 +62,15 @@ func main() {
 
 }
 
-type Message struct {
+type message struct {
 	To []string
 	From string
 	Content string
 }
 
-type FailedMessage struct {
+type failedMessage struct {
 	ErrorMessage string
-	OriginalMessage Message
+	OriginalMessage message
 }
 */
 
@@ -83,10 +83,10 @@ import (
 
 func main() {
 
-	msgCh := make(chan Message, 1)
-	errCh := make(chan FailedMessage, 1)
+	msgCh := make(chan message, 1)
+	errCh := make(chan failedMessage, 1)
 
-	msg := Message{
+	msg := message{
 		To: []string{"bilbo@underhill.me"},
 		From: "gandalf@whitecouncil.org",
 		Content: "Keep it secret, keep it safe",
@@ -103,15 +103,15 @@ func main() {
 
 }
 
-type Message struct {
+type message struct {
 	To []string
 	From string
 	Content string
 }
 
-type FailedMessage struct {
+type failedMessage struct {
 	ErrorMessage string
-	OriginalMessage Message
+	OriginalMessage message
 }
 */
 
@@ -124,18 +124,18 @@ import (
 
 func main() {
 
-	msgCh := make(chan Message, 1)
-	errCh := make(chan FailedMessage, 1)
+	msgCh := make(chan message, 1)
+	errCh := make(chan failedMessage, 1)
 
-	msg := Message{
+	msg := message{
 		To: []string{"bilbo@underhill.me"},
 		From: "gandalf@whitecouncil.org",
 		Content: "Keep it secret, keep it safe",
 	}
 
-	failedMessage := FailedMessage{
-		ErrorMessage: "Message intercepted by black rider",
-		OriginalMessage: Message{},
+	failedMessage := failedMessage{
+		ErrorMessage: "message intercepted by black rider",
+		OriginalMessage: message{},
 	}
 
 	errCh <- failedMessage
@@ -149,15 +149,15 @@ func main() {
 
 }
 
-type Message struct {
+type message struct {
 	To []string
 	From string
 	Content string
 }
 
-type FailedMessage struct {
+type failedMessage struct {
 	ErrorMessage string
-	OriginalMessage Message
+	OriginalMessage message
 }
 */
 
@@ -170,18 +170,18 @@ import (
 
 func main() {
 
-	msgCh := make(chan Message, 1)
-	errCh := make(chan FailedMessage, 1)
+	msgCh := make(chan message, 1)
+	errCh := make(chan failedMessage, 1)
 
-	msg := Message{
+	msg := message{
 		To: []string{"bilbo@underhill.me"},
 		From: "gandalf@whitecouncil.org",
 		Content: "Keep it secret, keep it safe",
 	}
 
-	failedMessage := FailedMessage{
-		ErrorMessage: "Message intercepted by black rider",
-		OriginalMessage: Message{},
+	failedMessage := failedMessage{
+		ErrorMessage: "message intercepted by black rider",
+		OriginalMessage: message{},
 	}
 
 	msgCh <- msg
@@ -196,15 +196,15 @@ func main() {
 
 }
 
-type Message struct {
+type message struct {
 	To []string
 	From string
 	Content string
 }
 
-type FailedMessage struct {
+type failedMessage struct {
 	ErrorMessage string
-	OriginalMessage Message
+	OriginalMessage message
 }
 */
 
@@ -217,8 +217,8 @@ import (
 
 func main() {
 
-	msgCh := make(chan Message, 1)
-	errCh := make(chan FailedMessage, 1)
+	msgCh := make(chan message, 1)
+	errCh := make(chan failedMessage, 1)
 
 	select {
 		case receivedMsg := <- msgCh:
@@ -229,15 +229,15 @@ func main() {
 
 }
 
-type Message struct {
+type message struct {
 	To []string
 	From string
 	Content string
 }
 
-type FailedMessage struct {
+type failedMessage struct {
 	ErrorMessage string
-	OriginalMessage Message
+	OriginalMessage message
 }
 */
 
@@ -250,8 +250,8 @@ import (
 
 func main() {
 
-	msgCh := make(chan Message, 1)
-	errCh := make(chan FailedMessage, 1)
+	msgCh := make(chan message, 1)
+	errCh := make(chan failedMessage, 1)
 
 	select {
 		case receivedMsg := <- msgCh:
@@ -264,14 +264,14 @@ func main() {
 
 }
 
-type Message struct {
+type message struct {
 	To []string
 	From string
 	Content string
 }
 
-type FailedMessage struct {
+type failedMessage struct {
 	ErrorMessage string
-	OriginalMessage Message
+	OriginalMessage message
 }
 */

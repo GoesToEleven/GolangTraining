@@ -18,7 +18,7 @@ func printer(c chan int) {
 }
 
 func main() {
-	var c chan int = make(chan int)
+	var c = make(chan int)
 
 	go iterate(c)
 	go printer(c)

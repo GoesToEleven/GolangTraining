@@ -5,7 +5,7 @@ import (
 )
 
 func main() {
-	btn := MakeButton()
+	btn := makeButton()
 
 	handlerOne := make(chan string, 2)
 	handlerTwo := make(chan string, 2)
@@ -27,43 +27,43 @@ func main() {
 		}
 	}()
 
-	btn.TriggerEvent("click", "Button clicked!")
+	btn.TriggerEvent("click", "button clicked!")
 
 	btn.RemoveEventListener("click", handlerOne)
 
-	btn.TriggerEvent("click", "Button clicked again!")
+	btn.TriggerEvent("click", "button clicked again!")
 
 	fmt.Scanln()
 }
 
-type Button struct {
+type button struct {
 	eventListeners map[string][]chan string
 }
 
-func (this *Button) AddEventListener(event string, responseChannel chan string) {
-	if _, present := this.eventListeners[event]; present {
-		this.eventListeners[event] =
-			append(this.eventListeners[event], responseChannel)
+func (btn *button) AddEventListener(event string, responseChannel chan string) {
+	if _, present := btn.eventListeners[event]; present {
+		btn.eventListeners[event] =
+			append(btn.eventListeners[event], responseChannel)
 	} else {
-		this.eventListeners[event] = []chan string{responseChannel}
+		btn.eventListeners[event] = []chan string{responseChannel}
 	}
 }
 
-func (this *Button) RemoveEventListener(event string, listenerChannel chan string) {
-	if _, present := this.eventListeners[event]; present {
-		for idx, _ := range this.eventListeners[event] {
-			if this.eventListeners[event][idx] == listenerChannel {
-				this.eventListeners[event] = append(this.eventListeners[event][:idx],
-					this.eventListeners[event][idx+1:]...)
+func (btn *button) RemoveEventListener(event string, listenerChannel chan string) {
+	if _, present := btn.eventListeners[event]; present {
+		for idx := range btn.eventListeners[event] {
+			if btn.eventListeners[event][idx] == listenerChannel {
+				btn.eventListeners[event] = append(btn.eventListeners[event][:idx],
+					btn.eventListeners[event][idx+1:]...)
 				break
 			}
 		}
 	}
 }
 
-func (this *Button) TriggerEvent(event string, response string) {
-	if _, present := this.eventListeners[event]; present {
-		for _, handler := range this.eventListeners[event] {
+func (btn *button) TriggerEvent(event string, response string) {
+	if _, present := btn.eventListeners[event]; present {
+		for _, handler := range btn.eventListeners[event] {
 			go func(handler chan string) {
 				handler <- response
 			}(handler)
@@ -71,8 +71,8 @@ func (this *Button) TriggerEvent(event string, response string) {
 	}
 }
 
-func MakeButton() *Button {
-	result := new(Button)
+func makeButton() *button {
+	result := new(button)
 	result.eventListeners = make(map[string][]chan string)
 	return result
 }

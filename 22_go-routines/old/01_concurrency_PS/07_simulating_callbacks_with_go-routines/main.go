@@ -4,24 +4,24 @@ import (
 	"fmt"
 )
 
-type PurchaseOrder struct {
+type purchaseOrder struct {
 	Number int
 	Value  float64
 }
 
-func SavePO(po *PurchaseOrder, callbackChannel chan *PurchaseOrder) {
+func savePO(po *purchaseOrder, callbackChannel chan *purchaseOrder) {
 	po.Number = 1234
 
 	callbackChannel <- po
 }
 
 func main() {
-	po := new(PurchaseOrder)
+	po := new(purchaseOrder)
 	po.Value = 42.27
 
-	ch := make(chan *PurchaseOrder)
+	ch := make(chan *purchaseOrder)
 
-	go SavePO(po, ch)
+	go savePO(po, ch)
 
 	newPo := <-ch
 	fmt.Printf("PO Number: %d\n", newPo.Number)

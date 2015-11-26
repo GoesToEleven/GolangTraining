@@ -27,7 +27,7 @@ func printer(c chan string) {
 }
 
 func main() {
-	var c chan string = make(chan string)
+	var c = make(chan string)
 
 	go ping(c)
 	go pong(c)

@@ -26,14 +26,14 @@ func main() {
 				reader := csv.NewReader(strings.NewReader(data))
 				records, _ := reader.ReadAll()
 				for _, r := range records {
-					invoice := new(Invoice)
+					invoice := new(invoice)
 					invoice.Number = r[0]
 					invoice.Amount, _ = strconv.ParseFloat(r[1], 64)
 					invoice.PurchaseOrderNumber, _ = strconv.Atoi(r[2])
 					unixTime, _ := strconv.ParseInt(r[3], 10, 64)
 					invoice.InvoiceDate = time.Unix(unixTime, 0)
 
-					fmt.Printf("Received Invoice '%v' for $%.2f and submitted for processing\n", invoice.Number, invoice.Amount)
+					fmt.Printf("Received invoice '%v' for $%.2f and submitted for processing\n", invoice.Number, invoice.Amount)
 				}
 			}(string(data))
 		}
@@ -42,7 +42,7 @@ func main() {
 	}
 }
 
-type Invoice struct {
+type invoice struct {
 	Number              string
 	Amount              float64
 	PurchaseOrderNumber int

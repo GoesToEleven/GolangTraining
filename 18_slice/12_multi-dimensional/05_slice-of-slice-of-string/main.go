@@ -5,7 +5,7 @@ import (
 )
 
 func main() {
-	records := make([][]string, 0)
+	var records [][]string
 	// student 1
 	student1 := make([]string, 4)
 	student1[0] = "Foster"

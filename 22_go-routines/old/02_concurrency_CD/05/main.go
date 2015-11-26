@@ -20,7 +20,7 @@ func printer(c chan string) {
 }
 
 func main() {
-	var c chan string = make(chan string)
+	var c = make(chan string)
 
 	go pinger(c)
 	go printer(c)

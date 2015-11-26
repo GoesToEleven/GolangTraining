@@ -5,14 +5,14 @@ import (
 	"fmt"
 )
 
-type Person struct {
+type person struct {
 	First string
 	Last  string
 	Age   int
 }
 
 func main() {
-	var p1 Person
+	var p1 person
 	fmt.Println(p1.First)
 	fmt.Println(p1.Last)
 	fmt.Println(p1.Age)

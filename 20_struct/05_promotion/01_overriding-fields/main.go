@@ -4,21 +4,21 @@ import (
 	"fmt"
 )
 
-type Person struct {
+type person struct {
 	First string
 	Last  string
 	Age   int
 }
 
-type DoubleZero struct {
-	Person
+type doubleZero struct {
+	person
 	First         string
 	LicenseToKill bool
 }
 
 func main() {
-	p1 := DoubleZero{
-		Person: Person{
+	p1 := doubleZero{
+		person: person{
 			First: "James",
 			Last:  "Bond",
 			Age:   20,
@@ -27,8 +27,8 @@ func main() {
 		LicenseToKill: true,
 	}
 
-	p2 := DoubleZero{
-		Person: Person{
+	p2 := doubleZero{
+		person: person{
 			First: "Miss",
 			Last:  "MoneyPenny",
 			Age:   19,
@@ -38,6 +38,6 @@ func main() {
 	}
 
 	// fields and methods of the inner-type are promoted to the outer-type
-	fmt.Println(p1.First, p1.Person.First)
-	fmt.Println(p2.First, p2.Person.First)
+	fmt.Println(p1.First, p1.person.First)
+	fmt.Println(p2.First, p2.person.First)
 }
