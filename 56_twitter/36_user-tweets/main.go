@@ -1,11 +1,11 @@
 package main
 
 import (
+	"encoding/json"
+	"github.com/dustin/go-humanize"
 	"github.com/julienschmidt/httprouter"
 	"html/template"
 	"net/http"
-	"encoding/json"
-	"github.com/dustin/go-humanize"
 )
 
 var tpl *template.Template

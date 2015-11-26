@@ -30,7 +30,7 @@ func main() {
 }
 
 func HashBucket(word string, buckets int) int {
-		letter := int(word[0])
-		bucket := letter % buckets
-		return bucket
+	letter := int(word[0])
+	bucket := letter % buckets
+	return bucket
 }

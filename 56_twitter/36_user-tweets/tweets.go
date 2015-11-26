@@ -1,10 +1,10 @@
 package main
 
 import (
-	"net/http"
 	"google.golang.org/appengine"
 	"google.golang.org/appengine/datastore"
 	"google.golang.org/appengine/log"
+	"net/http"
 )
 
 func putTweet(req *http.Request, user *User, tweet *Tweet) error {

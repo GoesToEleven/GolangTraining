@@ -1,10 +1,10 @@
 package main
 
 import (
+	"encoding/json"
 	"github.com/julienschmidt/httprouter"
 	"html/template"
 	"net/http"
-	"encoding/json"
 )
 
 var tpl *template.Template

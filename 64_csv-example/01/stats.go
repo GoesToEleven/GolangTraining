@@ -6,10 +6,9 @@ import (
 	"google.golang.org/appengine/urlfetch"
 
 	"golang.org/x/net/context"
-	"io/ioutil"
 	"google.golang.org/appengine/log"
+	"io/ioutil"
 )
-
 
 func getData(ctx context.Context, symbol string) {
 	url := fmt.Sprintf(

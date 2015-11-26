@@ -7,15 +7,16 @@ import (
 	"golang.org/x/oauth2/google"
 
 	"golang.org/x/net/context"
+	"golang.org/x/oauth2/jwt"
 	"google.golang.org/appengine"
 	"google.golang.org/cloud"
 	"google.golang.org/cloud/storage"
 	"io/ioutil"
-	"golang.org/x/oauth2/jwt"
 )
 
 const gcsBucket = "learning-1130-bucket-01"
 const aeId = "learning-1130"
+
 var conf *jwt.Config
 
 func init() {

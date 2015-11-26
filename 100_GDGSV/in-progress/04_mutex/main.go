@@ -4,12 +4,12 @@ import (
 	"fmt"
 	"image"
 	"image/jpeg"
+	"io/ioutil"
 	"log"
 	"os"
 	"path/filepath"
-	"time"
 	"sync"
-	"io/ioutil"
+	"time"
 )
 
 var counter int
@@ -23,9 +23,9 @@ type pixel struct {
 func main() {
 	start := time.Now()
 	dir := "../photos/"
-	files,_ := ioutil.ReadDir(dir)
+	files, _ := ioutil.ReadDir(dir)
 	wg.Add(len(files))
-	fmt.Println("FILES TO PROCESS:",len(files))
+	fmt.Println("FILES TO PROCESS:", len(files))
 	images := getImages(dir)
 
 	// range over the [] holding the []pixel - eg, give me each img
@@ -52,7 +52,7 @@ func getImages(dir string) [][]pixel {
 			return nil
 		}
 
-		go (func(){
+		go (func() {
 			img := loadImage(path)
 			pixels := getPixels(img)
 			mutex.Lock()

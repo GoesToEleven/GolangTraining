@@ -3,14 +3,14 @@ package main
 import (
 	"fmt"
 	"github.com/julienschmidt/httprouter"
-	"net/http"
 	"log"
+	"net/http"
 )
 
 func Index(w http.ResponseWriter, r *http.Request, ps httprouter.Params) {
 	fmt.Printf("%T %v \n", ps, ps)
-	fmt.Println(ps == nil) // true
-	fmt.Println(ps != nil) // false
+	fmt.Println(ps == nil)    // true
+	fmt.Println(ps != nil)    // false
 	fmt.Println(len(ps) == 0) // true
 	fmt.Println(len(ps) != 0) // false
 	fmt.Fprint(w, "Welcome!\n")

@@ -4,7 +4,7 @@ import "fmt"
 
 type person struct {
 	first string
-	last string
+	last  string
 	age   int
 }
 

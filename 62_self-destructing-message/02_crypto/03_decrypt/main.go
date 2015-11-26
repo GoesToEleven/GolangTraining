@@ -2,11 +2,11 @@ package main
 
 import (
 	"crypto/rand"
-	"fmt"
-	"io"
-	"golang.org/x/crypto/nacl/secretbox"
-	"strings"
 	"encoding/hex"
+	"fmt"
+	"golang.org/x/crypto/nacl/secretbox"
+	"io"
+	"strings"
 )
 
 func main() {
@@ -44,5 +44,5 @@ func main() {
 	if !ok {
 		fmt.Errorf("invalid message")
 	}
-	fmt.Println("AFTER DECRYPTING:",string(msg))
+	fmt.Println("AFTER DECRYPTING:", string(msg))
 }

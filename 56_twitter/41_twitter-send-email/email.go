@@ -1,11 +1,11 @@
 package main
 
 import (
-	"net/http"
-	"google.golang.org/appengine"
-	"google.golang.org/appengine/mail"
 	"fmt"
+	"google.golang.org/appengine"
 	"google.golang.org/appengine/log"
+	"google.golang.org/appengine/mail"
+	"net/http"
 )
 
 func followedEmail(w http.ResponseWriter, r *http.Request, recip string) {

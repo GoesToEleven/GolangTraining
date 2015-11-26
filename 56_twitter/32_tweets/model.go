@@ -15,6 +15,6 @@ type SessionData struct {
 }
 
 type Tweet struct {
-	Msg string
+	Msg  string
 	Time time.Time
 }

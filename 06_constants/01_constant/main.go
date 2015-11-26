@@ -2,7 +2,7 @@ package main
 
 import "fmt"
 
-const p string = "death & taxes"
+const p = "death & taxes"
 
 func main() {
 

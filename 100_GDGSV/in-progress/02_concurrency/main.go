@@ -43,7 +43,7 @@ func getImages(dir string) [][]pixel {
 			return nil
 		}
 
-		go (func(){
+		go (func() {
 			img := loadImage(path)
 			pixels := getPixels(img)
 			images = append(images, pixels)

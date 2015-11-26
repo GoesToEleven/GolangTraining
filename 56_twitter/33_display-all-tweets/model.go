@@ -12,11 +12,11 @@ type SessionData struct {
 	User
 	LoggedIn  bool
 	LoginFail bool
-	Tweets []Tweet
+	Tweets    []Tweet
 }
 
 type Tweet struct {
-	Msg string
-	Time time.Time
+	Msg      string
+	Time     time.Time
 	UserName string
 }

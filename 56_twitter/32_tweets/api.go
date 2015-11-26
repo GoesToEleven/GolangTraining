@@ -136,7 +136,6 @@ func logout(res http.ResponseWriter, req *http.Request, _ httprouter.Params) {
 	http.Redirect(res, req, "/", 302)
 }
 
-
 func tweetProcess(res http.ResponseWriter, req *http.Request, _ httprouter.Params) {
 	ctx := appengine.NewContext(req)
 	memItem, err := getSession(req)
@@ -152,7 +151,7 @@ func tweetProcess(res http.ResponseWriter, req *http.Request, _ httprouter.Param
 	// declare a variable of type tweet
 	// initialize it with values
 	tweet := Tweet{
-		Msg: req.FormValue("tweet"),
+		Msg:  req.FormValue("tweet"),
 		Time: time.Now(),
 	}
 	userKey := datastore.NewKey(ctx, "Users", user.UserName, 0, nil)

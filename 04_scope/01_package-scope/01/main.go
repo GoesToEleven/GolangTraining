@@ -2,7 +2,7 @@ package main
 
 import "fmt"
 
-var x int = 42
+var x = 42
 
 func main() {
 	fmt.Println(x)

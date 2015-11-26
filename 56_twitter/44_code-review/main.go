@@ -1,14 +1,14 @@
 package main
 
 import (
-	"github.com/julienschmidt/httprouter"
-	"html/template"
-	"net/http"
 	"encoding/json"
 	"github.com/dustin/go-humanize"
+	"github.com/julienschmidt/httprouter"
 	"google.golang.org/appengine"
-	"google.golang.org/appengine/log"
 	"google.golang.org/appengine/datastore"
+	"google.golang.org/appengine/log"
+	"html/template"
+	"net/http"
 )
 
 var tpl *template.Template
@@ -155,4 +155,3 @@ func login(res http.ResponseWriter, req *http.Request, _ httprouter.Params) {
 func signup(res http.ResponseWriter, req *http.Request, _ httprouter.Params) {
 	serveTemplate(res, req, "signup.html")
 }
-

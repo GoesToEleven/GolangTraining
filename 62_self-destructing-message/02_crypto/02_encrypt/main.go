@@ -3,8 +3,8 @@ package main
 import (
 	"crypto/rand"
 	"fmt"
-	"io"
 	"golang.org/x/crypto/nacl/secretbox"
+	"io"
 )
 
 func main() {

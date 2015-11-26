@@ -4,10 +4,10 @@ import (
 	"encoding/json"
 	"net/http"
 
+	"fmt"
 	"google.golang.org/appengine"
 	"google.golang.org/appengine/channel"
 	"google.golang.org/appengine/user"
-	"fmt"
 )
 
 // API handles api calls

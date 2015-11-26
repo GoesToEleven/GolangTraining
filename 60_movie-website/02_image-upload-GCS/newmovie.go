@@ -90,11 +90,6 @@ func handleNewMovie(res http.ResponseWriter, req *http.Request) {
 	}
 }
 
-
-
-
-
-
 /*
 // with no checking to see if a poster was uploaded:
 

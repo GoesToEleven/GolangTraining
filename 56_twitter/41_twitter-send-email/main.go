@@ -1,13 +1,13 @@
 package main
 
 import (
-	"github.com/julienschmidt/httprouter"
-	"html/template"
-	"net/http"
 	"encoding/json"
 	"github.com/dustin/go-humanize"
+	"github.com/julienschmidt/httprouter"
 	"google.golang.org/appengine"
 	"google.golang.org/appengine/log"
+	"html/template"
+	"net/http"
 )
 
 var tpl *template.Template

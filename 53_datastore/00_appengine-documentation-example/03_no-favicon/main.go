@@ -21,7 +21,6 @@ func home(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 
-
 	c := appengine.NewContext(r)
 
 	k := datastore.NewKey(c, "Entity", "todd.mcleod@fresnocitycollege.edu", 0, nil)
