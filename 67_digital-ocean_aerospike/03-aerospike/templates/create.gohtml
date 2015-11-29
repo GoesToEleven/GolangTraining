@@ -1,0 +1,19 @@
+{{define "create"}}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Create user</title>
+</head>
+<body>
+	{{if .}}
+	<p style="color: red;">{{.}}</p>
+	{{end}}
+	<form method="POST">
+		<input type="text" name="username" placeholder="Username" autofocus>
+		<input type="password" name="password" placeholder="Password">
+		<input type="submit" value="Create">
+	</form>
+</body>
+</html>
+{{end}}

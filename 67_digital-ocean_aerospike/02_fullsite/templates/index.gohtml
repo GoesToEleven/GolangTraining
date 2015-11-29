@@ -1,0 +1,18 @@
+{{define "index"}}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Main Page</title>
+</head>
+<body>
+	<h1>This is a website!</h1>
+	{{if not .}}
+	<a href="/login">Login!</a>
+	{{else}}
+	<p>Welcome {{.}}!</p>
+	<a href="/logout">Log out</a>
+	{{end}}
+</body>
+</html>
+{{end}}
