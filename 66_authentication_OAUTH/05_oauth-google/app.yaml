@@ -1,0 +1,9 @@
+application: practical-scion-114602
+version: alpha-01
+runtime: go
+api_version: go1
+
+handlers:
+- url: /.*
+  secure: always
+  script: _go_app
