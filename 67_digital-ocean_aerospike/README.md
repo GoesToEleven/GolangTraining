@@ -1,7 +1,7 @@
 # How to setup Go and Aerospike in digitalocean Ubuntu 15.10
 
 ## Setup Ubuntu user account
-1. Create a shh key
+1. Create a ssh key
 	* unix users
 		* at terminal:
 			* cat ~/.ssh/id_rsa.pub
@@ -49,7 +49,6 @@
     	* Windows user should use putty.
 	* after running the `ssh root@<ip_address>` command
 		* your terminal is now ON the server
-		* root@tdtrial:~#
 1. Create a user with sudo access.
     * you're logged into the server with full admin access
     * it's better to create a user with more limited access
@@ -71,7 +70,7 @@
     * Create a file and add ssh key to it.
         * `nano .ssh/authorized_keys`
         * Paste key into file and save and exit with Ctrl-X.
-        	* cat ~/.ssh/id_rsa.pub
+        	* cat ~/.ssh/authorized_keys
             * Ctrl-Shift-V for unix users to paste.
             * Right-click in window to paste for putty.
     * Restrict the permissions of the file.
@@ -176,8 +175,8 @@
         	* Add `export PATH=$PATH:/usr/local/go/bin` to `/etc/profile` file
         * cd ~
         * nano ~/.profile
-        * Add `export GOPATH=$HOME/<workspace_name>` to `~/.profile` file
-        * Add `export PATH=$HOME/<workspace_name>/bin:$PATH` to `~/.profile`
+			* Add `export GOPATH=$HOME/<workspace_name>` to `~/.profile` file
+			* Add `export PATH=$HOME/<workspace_name>/bin:$PATH` to `~/.profile`
     * Delete the go archive file.
         * `rm <filename>`
         	* eg, `rm go1.5.1.linux-amd64.tar.gz`
