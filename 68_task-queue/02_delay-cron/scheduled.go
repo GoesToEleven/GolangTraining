@@ -18,4 +18,5 @@ func handleScheduleExample(res http.ResponseWriter, req *http.Request) {
 	}
 	ctx := appengine.NewContext(req)
 	log.Infof(ctx, "I was Scheduled!!!")
+	delayedPuppy.Call(ctx)
 }
