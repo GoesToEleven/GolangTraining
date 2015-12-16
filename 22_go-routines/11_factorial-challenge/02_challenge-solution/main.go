@@ -1,7 +1,7 @@
 package main
 
 import (
-"fmt"
+	"fmt"
 )
 
 func main() {
@@ -11,7 +11,7 @@ func main() {
 	}
 }
 
-func factorial(n int) chan int{
+func factorial(n int) chan int {
 	out := make(chan int)
 	go func() {
 		total := 1

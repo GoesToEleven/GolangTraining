@@ -46,4 +46,3 @@ func fact(n int) int {
 	}
 	return total
 }
-

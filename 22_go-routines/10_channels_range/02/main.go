@@ -6,7 +6,7 @@ import (
 
 func main() {
 	c := make(chan int)
-	go func(){
+	go func() {
 		c <- 1
 	}()
 	fmt.Println(<-c)

@@ -5,41 +5,41 @@ import (
 	"time"
 )
 
-var workerId int = 0
-var publisherId int = 0
+var workerID int
+var publisherID int
 
 func main() {
 	input := make(chan string)
-	go WorkerProcess(input)
-	go WorkerProcess(input)
-	go WorkerProcess(input)
-	go Publisher(input)
-	go Publisher(input)
-	go Publisher(input)
-	go Publisher(input)
+	go workerProcess(input)
+	go workerProcess(input)
+	go workerProcess(input)
+	go publisher(input)
+	go publisher(input)
+	go publisher(input)
+	go publisher(input)
 	time.Sleep(1 * time.Millisecond)
 }
 
-// Publishers push data into a channel
-func Publisher(out chan string) {
-	publisherId += 1
-	thisId := publisherId
-	dataId := 0
+// publisher pushes data into a channel
+func publisher(out chan string) {
+	publisherID++
+	thisID := publisherID
+	dataID := 0
 	for {
-		dataId += 1
-		fmt.Printf("Publisher %d is pushing data\n", thisId)
-		data := fmt.Sprintf("Data from publisher %d. Data %d", thisId, dataId)
+		dataID++
+		fmt.Printf("publisher %d is pushing data\n", thisID)
+		data := fmt.Sprintf("Data from publisher %d. Data %d", thisID, dataID)
 		out <- data
 	}
 }
 
-func WorkerProcess(in <-chan string) {
-	workerId += 1
-	thisId := workerId
+func workerProcess(in <-chan string) {
+	workerID++
+	thisID := workerID
 	for {
-		fmt.Printf("%d: waiting for input...\n", thisId)
+		fmt.Printf("%d: waiting for input...\n", thisID)
 		input := <-in
-		fmt.Printf("%d: input is: %s\n", thisId, input)
+		fmt.Printf("%d: input is: %s\n", thisID, input)
 	}
 }
 

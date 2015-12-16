@@ -20,9 +20,9 @@ func main() {
 
 	// TROUBLESHOOTING
 	fmt.Printf("%T \n", xc)
-	fmt.Println("*******************",len(xc))
+	fmt.Println("*******************", len(xc))
 	for _, v := range xc {
-		fmt.Println("********",<-v)
+		fmt.Println("********", <-v)
 	}
 
 	for n := range merge(xc...) {
@@ -45,7 +45,7 @@ func gen() <-chan int {
 }
 
 func fanOut(in <-chan int, n int) []<-chan int {
-	xc := make([]<-chan int, 0) // this needed to be zero
+	var xc []<-chan int // this needed to be zero
 	for i := 0; i < n; i++ {
 		xc = append(xc, factorial(in))
 	}

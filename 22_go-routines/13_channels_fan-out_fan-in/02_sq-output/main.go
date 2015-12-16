@@ -48,7 +48,7 @@ func merge(cs ...chan int) chan int {
 	wg.Add(len(cs))
 
 	for _, c := range cs {
-		go func(ch chan int){
+		go func(ch chan int) {
 			for n := range ch {
 				out <- n
 			}
@@ -56,7 +56,7 @@ func merge(cs ...chan int) chan int {
 		}(c)
 	}
 
-	go func(){
+	go func() {
 		wg.Wait()
 		close(out)
 	}()
