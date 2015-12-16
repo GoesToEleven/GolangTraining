@@ -9,20 +9,15 @@ func main() {
 
 	in := gen()
 
-	// Distribute the work across ten goroutines that all read from in.
-	c0 := factorial(in)
-	c1 := factorial(in)
-	c2 := factorial(in)
-	c3 := factorial(in)
-	c4 := factorial(in)
-	c5 := factorial(in)
-	c6 := factorial(in)
-	c7 := factorial(in)
-	c8 := factorial(in)
-	c9 := factorial(in)
+	// FAN OUT
+	// Multiple functions reading from the same channel until that channel is closed
+	// Distribute work across multiple functions (ten goroutines) that all read from in.
+	xc := fanOut(in, 10)
 
-	// Consume the merged output from c0 through c9
-	for n := range merge(c0, c1, c2, c3, c4, c5, c6, c7, c8, c9) {
+	// FAN IN
+	// multiplex multiple channels onto a single channel
+	// merge the channels from c0 through c9 onto a single channel
+	for n := range merge(xc...) {
 		fmt.Println(n)
 	}
 
@@ -39,6 +34,14 @@ func gen() <-chan int {
 		close(out)
 	}()
 	return out
+}
+
+func fanOut(in <-chan int, n int) []<-chan int {
+	xc := make([]<-chan int, n)
+	for i := 0; i < n; i++ {
+		xc = append(xc, factorial(in))
+	}
+	return xc
 }
 
 func factorial(in <-chan int) <-chan int {
@@ -64,8 +67,6 @@ func merge(cs ...<-chan int) <-chan int {
 	var wg sync.WaitGroup
 	out := make(chan int)
 
-	// Start an output goroutine for each input channel in cs.
-	// output copies values from c to out until c is closed, then calls wg.Done.
 	output := func(c <-chan int) {
 		for n := range c {
 			out <- n
@@ -86,3 +87,9 @@ func merge(cs ...<-chan int) <-chan int {
 	}()
 	return out
 }
+
+/*
+CHALLENGE #1:
+-- This code throws an error: fatal error: all goroutines are asleep - deadlock!
+-- fix this code!
+*/
