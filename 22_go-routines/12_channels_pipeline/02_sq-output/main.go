@@ -8,6 +8,7 @@ func main() {
 		fmt.Println(n) // 16 then 81
 	}
 }
+
 func gen(nums ...int) chan int {
 	out := make(chan int)
 	go func() {
