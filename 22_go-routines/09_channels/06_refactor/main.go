@@ -22,7 +22,7 @@ func incrementor() <-chan int {
 
 func puller(c <-chan int) <-chan int {
 	out := make(chan int)
-	go func(){
+	go func() {
 		var sum int
 		for n := range c {
 			sum += n
@@ -32,7 +32,3 @@ func puller(c <-chan int) <-chan int {
 	}()
 	return out
 }
-
-// go run -race main.go
-// vs
-// go run main.go

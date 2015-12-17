@@ -23,7 +23,7 @@ func main() {
 func foo() {
 	for i := 0; i < 45; i++ {
 		fmt.Println("Foo:", i)
-		time.Sleep(time.Duration(3 * time.Millisecond))
+		time.Sleep(3 * time.Millisecond)
 	}
 	wg.Done()
 }
@@ -31,7 +31,7 @@ func foo() {
 func bar() {
 	for i := 0; i < 45; i++ {
 		fmt.Println("Bar:", i)
-		time.Sleep(time.Duration(20 * time.Millisecond))
+		time.Sleep(20 * time.Millisecond)
 	}
 	wg.Done()
 }
