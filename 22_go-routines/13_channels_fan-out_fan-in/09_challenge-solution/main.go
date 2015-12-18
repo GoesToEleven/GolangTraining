@@ -95,9 +95,3 @@ func merge(cs ...<-chan int) <-chan int {
 	}()
 	return out
 }
-
-/*
-CHALLENGE #1:
--- This code throws an error: fatal error: all goroutines are asleep - deadlock!
--- fix this code!
-*/

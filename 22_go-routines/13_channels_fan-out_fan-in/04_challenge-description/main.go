@@ -50,8 +50,3 @@ Is this fan out?
 CHALLENGE #2
 Is this fan in?
 */
-
-/*
-code source:
-https://gist.github.com/atedja/bba9ee75835702e1c8bc
-*/

@@ -14,7 +14,7 @@ func main() {
 	fmt.Println("You're both boring; I'm leaving.")
 }
 
-func boring(msg string) <-chan string { // Returns receive-only channel of strings.
+func boring(msg string) <-chan string {
 	c := make(chan string)
 	go func() {
 		for i := 0; ; i++ {
@@ -22,9 +22,10 @@ func boring(msg string) <-chan string { // Returns receive-only channel of strin
 			time.Sleep(time.Duration(rand.Intn(1e3)) * time.Millisecond)
 		}
 	}()
-	return c // Return the channel to the caller.
+	return c
 }
 
+// FAN IN
 func fanIn(input1, input2 <-chan string) <-chan string {
 	c := make(chan string)
 	go func() {

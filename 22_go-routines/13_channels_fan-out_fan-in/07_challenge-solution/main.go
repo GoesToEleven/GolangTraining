@@ -26,8 +26,10 @@ func main() {
 	// FAN IN
 	// multiplex multiple channels onto a single channel
 	// merge the channels from c0 through c9 onto a single channel
+	var y int
 	for n := range merge(c0, c1, c2, c3, c4, c5, c6, c7, c8, c9) {
-		fmt.Println(n)
+		y++
+		fmt.Println(y, "\t", n)
 	}
 
 }
@@ -35,7 +37,7 @@ func main() {
 func gen() <-chan int {
 	out := make(chan int)
 	go func() {
-		for i := 0; i < 10; i++ {
+		for i := 0; i < 100; i++ {
 			for j := 3; j < 13; j++ {
 				out <- j
 			}

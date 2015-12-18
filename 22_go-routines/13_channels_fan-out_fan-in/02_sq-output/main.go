@@ -21,6 +21,8 @@ func main() {
 }
 
 func gen(nums ...int) chan int {
+	fmt.Printf("TYPE OF NUMS %T\n", nums) // just FYI
+
 	out := make(chan int)
 	go func() {
 		for _, n := range nums {
@@ -43,6 +45,8 @@ func sq(in chan int) chan int {
 }
 
 func merge(cs ...chan int) chan int {
+	fmt.Printf("TYPE OF CS: %T\n", cs) // just FYI
+
 	out := make(chan int)
 	var wg sync.WaitGroup
 	wg.Add(len(cs))
@@ -80,4 +84,10 @@ there's a pattern to our pipeline functions:
 
 source:
 https://blog.golang.org/pipelines
+*/
+
+/*
+CHALLENGE #1
+When know HOW to do fan out / fan in, but do we know WHY?
+Why would we want to do fan out / fan in?
 */

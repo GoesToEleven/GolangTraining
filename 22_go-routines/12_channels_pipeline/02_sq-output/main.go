@@ -9,6 +9,9 @@ func main() {
 	}
 }
 
+
+
+
 func gen(nums ...int) chan int {
 	out := make(chan int)
 	go func() {
