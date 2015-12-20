@@ -47,7 +47,7 @@ func workerProcess(in <-chan string) {
 CHALLENGE #1
 Is this fan out?
 My Answer:
-Yes and no.
+Yes.
 -- YES
 Are we "fanning out" work? Yes. We've launched several goroutines that are simultaneously publishing a message onto our channel. The golang blog says, "Fan out means you have multiple functions reading from the same channel until that channel is closed." Here we do have multiple functions reading from the same channel. So, okay, we're fanning out.
 
