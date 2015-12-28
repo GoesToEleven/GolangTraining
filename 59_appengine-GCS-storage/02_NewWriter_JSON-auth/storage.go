@@ -21,8 +21,7 @@ func handlePut(res http.ResponseWriter, req *http.Request) {
 		http.Error(res, "ERROR CREATING NEW CLIENT: "+err.Error(), 500)
 		return
 	}
-	bucketHandle := client.Bucket(gcsBucket)
-	writer := bucketHandle.Object("myOffice.txt").NewWriter(ctx)
+	writer := client.Bucket(gcsBucket).Object("myOffice.txt").NewWriter(ctx)
 	writer.ContentType = "text/plain"
 	io.WriteString(writer, "in my office")
 	err = writer.Close()
