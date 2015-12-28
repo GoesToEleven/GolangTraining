@@ -2,42 +2,19 @@ package movieinfo
 
 import (
 	"io"
-
 	"golang.org/x/net/context"
-	"golang.org/x/oauth2/google"
-	"google.golang.org/appengine/log"
-	"google.golang.org/cloud"
 	"google.golang.org/cloud/storage"
-	"io/ioutil"
 )
 
 const gcsBucket = "learning-1130-bucket-01"
-const aeId = "learning-1130"
-
-func getCloudContext(ctx context.Context) context.Context {
-	jsonKey, err := ioutil.ReadFile("gcs.xxjson")
-	if err != nil {
-		log.Errorf(ctx, "%v", err)
-		return nil
-	}
-
-	conf, err := google.JWTConfigFromJSON(
-		jsonKey,
-		storage.ScopeFullControl,
-	)
-	if err != nil {
-		log.Errorf(ctx, "%v", err)
-		return nil
-	}
-
-	hc := conf.Client(ctx)
-	return cloud.NewContext(aeId, hc)
-}
 
 func putFile(ctx context.Context, name string, rdr io.Reader) error {
-	cctx := getCloudContext(ctx)
-
-	writer := storage.NewWriter(cctx, gcsBucket, name)
+	client, err := storage.NewClient(ctx)
+	if err != nil {
+		return err
+	}
+	defer client.Close()
+	writer := client.Bucket(gcsBucket).Object(name).NewWriter(ctx)
 	writer.ACL = []storage.ACLRule{
 		{storage.AllUsers, storage.RoleReader},
 	}
@@ -46,17 +23,25 @@ func putFile(ctx context.Context, name string, rdr io.Reader) error {
 }
 
 func getFile(ctx context.Context, name string) (io.ReadCloser, error) {
-	cctx := getCloudContext(ctx)
+	client, err := storage.NewClient(ctx)
+	if err != nil {
+		return nil, err
+	}
+	defer client.Close()
 
-	return storage.NewReader(cctx, gcsBucket, name)
+	return client.Bucket(gcsBucket).Object(name).NewReader(ctx)
 }
 
 func getFileLink(ctx context.Context, name string) (string, error) {
-	cctx := getCloudContext(ctx)
-
-	obj, err := storage.StatObject(cctx, gcsBucket, name)
+	client, err := storage.NewClient(ctx)
 	if err != nil {
 		return "", err
 	}
-	return obj.MediaLink, nil
+	defer client.Close()
+
+	attrs, err := client.Bucket(gcsBucket).Object(name).Attrs(ctx)
+	if err != nil {
+		return "", err
+	}
+	return attrs.MediaLink, nil
 }
