@@ -14,9 +14,7 @@ func main() {
 			return nil
 		}
 
-		if strings.Contains(path, ".git") ||
-		strings.Contains(path, ".idea") ||
-		strings.Contains(path, ".DS_Store") {
+		if !strings.Contains(path, ".go") {
 			return nil
 		}
 
