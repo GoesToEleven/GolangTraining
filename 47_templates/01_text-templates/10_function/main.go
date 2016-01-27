@@ -21,7 +21,7 @@ func main() {
 			return strings.ToUpper(str)
 		},
 	})
-	tpl, err = tpl.ParseFiles("tpl.gohtml")
+	tpl, err := tpl.ParseFiles("tpl.gohtml")
 	if err != nil {
 		log.Fatalln(err)
 	}
