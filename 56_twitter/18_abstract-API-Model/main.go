@@ -3,7 +3,7 @@ package main
 import (
 	//	"API"
 	"Memcache"
-	"github.com/goestoeleven/GolangTraining/56_twitter/18_abstract-API-Model/api"
+	"github.com/GoesToEleven/GolangTraining/56_twitter/18_abstract-API-Model/api"
 	"github.com/julienschmidt/httprouter"
 	"html/template"
 	"net/http"

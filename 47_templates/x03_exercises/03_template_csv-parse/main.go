@@ -1,7 +1,7 @@
 package main
 
 import (
-	"github.com/goestoeleven/GolangTraining/47_templates/04_template_csv-parse/parse"
+	"github.com/GoesToEleven/GolangTraining/47_templates/04_template_csv-parse/parse"
 	"html/template"
 	"log"
 	"net/http"

@@ -2,7 +2,7 @@ package API
 
 import (
 	"fmt"
-	"github.com/goestoeleven/GolangTraining/56_twitter/19_abstract-API-Model_AE-fix/Model"
+	"github.com/GoesToEleven/GolangTraining/56_twitter/19_abstract-API-Model_AE-fix/Model"
 	"github.com/julienschmidt/httprouter"
 	"google.golang.org/appengine"
 	"google.golang.org/appengine/datastore"
