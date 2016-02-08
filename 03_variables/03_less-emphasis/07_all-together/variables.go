@@ -9,7 +9,7 @@ var d string                                      // package scope
 func main() {
 
 	d = "stored in d" // declaration above; assignment here; package scope
-	var e = 42    // function scope - subsequent variables have same package scope:
+	var e = 42    // function scope - subsequent variables have func scope:
 	f := 43
 	g := "stored in g"
 	h, i := "stored in h", "stored in i"
