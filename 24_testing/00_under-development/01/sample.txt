@@ -1,0 +1,29 @@
+main.go
+
+package main
+
+import "fmt"
+
+func sup(name string) string {
+    return "Sup, " + name
+}
+
+func main() {
+    fmt.Println(sup("Ewan"))
+}
+Now our tests in, main_test.go
+
+package main
+
+import "testing"
+
+func TestSup(t *testing.T) {
+    expected := "Sup, Ewan"
+    outcome := sup("Ewan")
+    if outcome != expected {
+        t.Fatalf("Expected %s, got %s", expected, outcome)
+    }
+}
+All I do now is run go test and I get...
+
+http://ewanvalentine.io/why-go-solves-so-many-problems-for-web-developers/?utm_source=golangweekly&utm_medium=email
