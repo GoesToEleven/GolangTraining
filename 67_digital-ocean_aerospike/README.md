@@ -164,7 +164,7 @@
     * Move Go to the default install location.
         * `sudo mv go /usr/local/go`
     * Change owner to root and alter permissions.
-        * `sudo chown root:root /usr/local/go`
+        * `sudo chown -R root:root /usr/local/go`
         * `sudo chmod 755 /usr/local/go`
     * Create workspace folder.
     	* cd ~
@@ -203,7 +203,7 @@
 			* `option redispatch`
 			* Add the following block to the end of the file:
 ```
-listen serv 0.0.0.0:80
+listen app 0.0.0.0:80
 	mode http
 	option http-server-close
 	timeout http-keep-alive 3000
