@@ -35,6 +35,6 @@ step 1 - at command line enter:
 go install
 
 step 2 - at command line enter:
-programName initial.txt second.txt
+programName dst.text
 
 */
