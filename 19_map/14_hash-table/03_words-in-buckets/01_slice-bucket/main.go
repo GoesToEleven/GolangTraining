@@ -85,4 +85,6 @@ You don't even need this entire chunk of code ...
 	buckets := make([][]string, 12)
 
 ... creates a slice holding a []string, but it doesn't yet have a len or cap, so later I use append which is how you add an item to a slice in a position that does not yet have an item (beyond its current len).
+
+Thank you to Lee Trent for pointing this out!
 */
