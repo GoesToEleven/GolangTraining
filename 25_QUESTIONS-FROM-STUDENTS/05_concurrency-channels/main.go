@@ -15,9 +15,9 @@ func main() {
 	}()
 
 	for i := 0; i < n; i++ {
-		go func(i int) {
+		go func(x int) {
 			for q := range c {
-				fmt.Println("i", i, "q", q)
+				fmt.Println("i", x, "q", q)
 			}
 			done <- true
 		}(i)
