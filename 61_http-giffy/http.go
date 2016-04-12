@@ -10,7 +10,7 @@ import (
 )
 
 func init() {
-	http.HandleFunc("/getgif", handleGetGif)
+	http.HandleFunc("/", handleGetGif)
 }
 
 func handleGetGif(res http.ResponseWriter, req *http.Request) {
