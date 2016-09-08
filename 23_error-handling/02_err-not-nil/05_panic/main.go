@@ -10,8 +10,6 @@ func main() {
 		//		fmt.Println("err happened", err)
 		//		log.Println("err happened", err)
 		//		log.Fatalln(err)
-        panic(err)
+		panic(err)
 	}
 }
-
-

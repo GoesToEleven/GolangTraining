@@ -2,8 +2,8 @@ package main
 
 import (
 	"errors"
-	"log"
 	"fmt"
+	"log"
 )
 
 var ErrNorgateMath = errors.New("norgate math: square root of negative number")
@@ -27,12 +27,3 @@ func Sqrt(f float64) (float64, error) {
 // see use of errors.New in standard library:
 // http://golang.org/src/pkg/bufio/bufio.go
 // http://golang.org/src/pkg/io/io.go
-
-
-
-
-
-
-
-
-

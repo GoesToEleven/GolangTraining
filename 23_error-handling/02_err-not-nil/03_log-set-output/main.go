@@ -1,9 +1,9 @@
 package main
 
 import (
-	"os"
-	"log"
 	"fmt"
+	"log"
+	"os"
 )
 
 func init() {
@@ -20,7 +20,7 @@ func main() {
 		//		fmt.Println("err happened", err)
 		log.Println("err happened", err)
 		//		log.Fatalln(err)
-        //		panic(err)
+		//		panic(err)
 	}
 }
 

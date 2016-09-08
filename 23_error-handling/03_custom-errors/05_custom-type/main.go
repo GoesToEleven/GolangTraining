@@ -1,13 +1,13 @@
 package main
 
 import (
-	"log"
 	"fmt"
+	"log"
 )
 
 type NorgateMathError struct {
-	lat, long	string
-	err 		error
+	lat, long string
+	err       error
 }
 
 func (n *NorgateMathError) Error() string {

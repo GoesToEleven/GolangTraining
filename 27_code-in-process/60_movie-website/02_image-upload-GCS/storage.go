@@ -1,9 +1,9 @@
 package movieinfo
 
 import (
-	"io"
 	"golang.org/x/net/context"
 	"google.golang.org/cloud/storage"
+	"io"
 )
 
 const gcsBucket = "learning-1130-bucket-01"

@@ -1,8 +1,8 @@
 package main
 
 import (
-	"os"
 	"fmt"
+	"os"
 )
 
 func main() {
@@ -11,10 +11,8 @@ func main() {
 		fmt.Println("err happened", err)
 		//		log.Println("err happened", err)
 		//		log.Fatalln(err)
-        //		panic(err)
+		//		panic(err)
 	}
 }
 
 // Println formats using the default formats for its operands and writes to standard output.
-
-

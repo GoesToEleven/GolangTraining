@@ -22,10 +22,8 @@ func main() {
 	// Create slice of slice of string to hold slices of words
 	buckets := make([][]string, 12)
 
-
-		// code here has been updated from the recording
-		// see below for explanation
-
+	// code here has been updated from the recording
+	// see below for explanation
 
 	// Loop over the words
 	for scanner.Scan() {
@@ -53,7 +51,6 @@ func hashBucket(word string, buckets int) int {
 	// a more uneven distribution
 	// return len(word) % buckets
 }
-
 
 /*
 UPDATED CODE

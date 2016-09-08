@@ -83,14 +83,14 @@ func fanIn(input1, input2 <-chan string) <-chan string {
 
 	go func(x <-chan string) {
 		for n := range x {
-			c <-n
+			c <- n
 		}
 		done <- true
 	}(input1)
 
 	go func(x <-chan string) {
 		for n := range x {
-			c <-n
+			c <- n
 		}
 		done <- true
 	}(input2)

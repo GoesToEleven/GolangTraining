@@ -10,7 +10,7 @@ func main() {
 	bs, _ := bcrypt.GenerateFromPassword([]byte(p), bcrypt.MinCost)
 	fmt.Println(bs)
 	//	fmt.Println(string(bs))
-	fmt.Printf("%x \n", bs)
+	fmt.Printf("%X \n", bs)
 
 	err := bcrypt.CompareHashAndPassword(bs, []byte(p))
 	if err != nil {

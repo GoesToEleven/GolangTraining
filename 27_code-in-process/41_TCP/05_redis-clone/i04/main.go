@@ -20,14 +20,14 @@ func handle(conn net.Conn) {
 		fs := strings.Fields(ln)
 
 		if len(fs) < 2 {
-			io.WriteString(conn, "This is an in-memory database \n" +
-			"Use SET, GET, DEL like this: \n" +
-			"SET key value \n" +
-			"GET key \n" +
-			"DEL key \n\n" +
-			"For example - try these commands: \n" +
-			"SET fav chocolate \n" +
-			"GET fav \n\n\n")
+			io.WriteString(conn, "This is an in-memory database \n"+
+				"Use SET, GET, DEL like this: \n"+
+				"SET key value \n"+
+				"GET key \n"+
+				"DEL key \n\n"+
+				"For example - try these commands: \n"+
+				"SET fav chocolate \n"+
+				"GET fav \n\n\n")
 			continue
 		}
 
