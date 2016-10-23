@@ -19,6 +19,7 @@ func main() {
 }
 
 func incrementor(s string) {
+	rand.Seed(time.Now().UnixNano())
 	for i := 0; i < 20; i++ {
 		x := counter
 		x++
