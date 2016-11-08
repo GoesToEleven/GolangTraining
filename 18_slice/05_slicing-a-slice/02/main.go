@@ -8,7 +8,7 @@ func main() {
 		"Good morning!",
 		"Bonjour!",
 		"dias!",
-		"Bongiorno!",
+		"Buongiorno!",
 		"Ohayo!",
 		"Selamat pagi!",
 		"Gutten morgen!",
