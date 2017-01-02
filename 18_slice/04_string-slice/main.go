@@ -11,7 +11,7 @@ func main() {
 		"Bongiorno!",
 		"Ohayo!",
 		"Selamat pagi!",
-		"Gutten morgen!",
+		"Guten Morgen!",
 	}
 
 	for i, currentEntry := range greeting {
