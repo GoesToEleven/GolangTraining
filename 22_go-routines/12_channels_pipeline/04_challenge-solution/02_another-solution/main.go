@@ -12,18 +12,18 @@ const rdLimit = 20
 func main() {
 	var w sync.WaitGroup
 	w.Add(numFactorials)
-	factorial(numFactorials, &w)
+	factorial(&w)
 	w.Wait()
 
 }
 
-func factorial(n int, wmain *sync.WaitGroup) {
+func factorial(wmain *sync.WaitGroup) {
 	var w sync.WaitGroup
 	rand.Seed(42)
 
-	w.Add(n + 1)
+	w.Add(numFactorials + 1)
 
-	for j := 1; j <= n; j++ {
+	for j := 1; j <= numFactorials; j++ {
 
 		go func() {
 			f := rand.Intn(rdLimit)
