@@ -15,7 +15,7 @@
  -- we declare variables of the type
  -- we initialize those variables
  ---- initialize with a specific value, or
- ---- or, initiliaze to the zero value
+ ---- or, initialize to the zero value
  -- a struct is a composite type
  ----------------------------------------
  Bill Kennedy:
