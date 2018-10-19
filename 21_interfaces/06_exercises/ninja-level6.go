@@ -9,6 +9,7 @@ func main() {
 	solution3()
 	solution4()
 	solution5()
+	solution6()
 }
 
 func solution3() {
@@ -94,4 +95,12 @@ func solution5() {
 	c1 := Circle{9}
 	info(s1)
 	info(c1)
+}
+
+
+func solution6() {
+
+	func(x int) {
+		fmt.Println("I am anonymous function", x)
+	}(10)
 }
