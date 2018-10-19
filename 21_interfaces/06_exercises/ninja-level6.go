@@ -10,6 +10,7 @@ func main() {
 	solution4()
 	solution5()
 	solution6()
+	solution7()
 }
 
 func solution3() {
@@ -103,4 +104,11 @@ func solution6() {
 	func(x int) {
 		fmt.Println("I am anonymous function", x)
 	}(10)
+}
+
+func solution7() {
+	f1 := func() {
+		fmt.Println("Function Assignment ")
+	}
+	f1()
 }
