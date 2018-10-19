@@ -11,6 +11,7 @@ func main() {
 	solution5()
 	solution6()
 	solution7()
+	fmt.Println(solution8()())
 }
 
 func solution3() {
@@ -111,4 +112,11 @@ func solution7() {
 		fmt.Println("Function Assignment ")
 	}
 	f1()
+}
+
+func solution8() func() int {
+
+	return func() int {
+			return 42
+	}
 }
