@@ -1,10 +1,14 @@
 package main
 
-import "fmt"
+import (
+	"fmt"
+	"math"
+)
 
 func main() {
 	solution3()
 	solution4()
+	solution5()
 }
 
 func solution3() {
@@ -56,4 +60,38 @@ func solution4() {
 		41,
 	}
 	p1.speak()
+}
+
+
+type Square struct {
+	length float64
+	width  float64
+}
+
+type Circle struct {
+	radius float64
+}
+
+type Shape interface {
+	area() float64
+}
+
+func info(s Shape) {
+	fmt.Println(s.area())
+}
+
+func (s Square) area() float64 {
+	return (s.length * s.width)
+}
+
+func (c Circle) area() float64 {
+	return (math.Pi * c.radius * c.radius)
+}
+
+func solution5() {
+
+	s1 := Square{10, 10}
+	c1 := Circle{9}
+	info(s1)
+	info(c1)
 }
