@@ -23,7 +23,7 @@ Classes
 -- classes hold both:
 ==== state / data / fields
 ==== behavior / methods
--- Public / private
+-- public / private
 
 Inheritence
 
