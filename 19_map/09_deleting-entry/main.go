@@ -8,7 +8,7 @@ func main() {
 		"zero":  "Good morning!",
 		"one":   "Bonjour!",
 		"two":   "Buenos dias!",
-		"three": "Bongiorno!",
+		"three": "Buongiorno!",
 	}
 
 	fmt.Println(myGreeting)
