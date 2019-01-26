@@ -7,9 +7,26 @@ import (
 )
 
 func TestAdder(t *testing.T) {
-	result := Adder(4, 7)
-	if result != 11 {
-		t.Fatal("4 + 7 did not equal 11")
+	type args struct {
+		xs []int
+	}
+	tests := []struct {
+		name string
+		args args
+		want int
+	}{
+		{
+			name: "Simple test case. Adding 4 and 7.",
+			args: args{xs: []int{4, 7}},
+			want: 11,
+		},
+	}
+	for _, tt := range tests {
+		t.Run(tt.name, func(t *testing.T) {
+			if got := Adder(tt.args.xs...); got != tt.want {
+				t.Errorf("Adder() = %v, want %v", got, tt.want)
+			}
+		})
 	}
 }
 
