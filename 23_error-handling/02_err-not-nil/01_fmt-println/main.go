@@ -6,8 +6,7 @@ import (
 )
 
 func main() {
-	_, err := os.Open("no-file.txt")
-	if err != nil {
+	if _, err := os.Open("no-file.txt"); err != nil {
 		fmt.Println("err happened", err)
 		//		log.Println("err happened", err)
 		//		log.Fatalln(err)
