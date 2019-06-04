@@ -3,10 +3,13 @@ package main
 import "fmt"
 
 func max(numbers ...int) int {
-	var largest int
-	for _, v := range numbers {
-		if v > largest {
-			largest = v
+	if len(numbers) == 0{
+		return 0
+	}
+	largest := numbers[0]
+	for _, number := range numbers {
+		if number > largest {
+			largest = number
 		}
 	}
 	return largest
@@ -25,7 +28,7 @@ greatest := max(-200 -700)
 
 include this as your range statement
 for i, v := range numbers {
-	if v > largest || i == 0 {
+	if v > largest || i == 0 {""
 		largest = v
 	}
 }
