@@ -22,7 +22,7 @@ func handleConn(conn net.Conn) {
 
 		if i == 0 {
 			fs := strings.Fields(ln)
-			method := fs[0]
+			method = fs[0]
 			url = fs[1]
 			fmt.Println("METHOD", method)
 			fmt.Println("URL", url)
