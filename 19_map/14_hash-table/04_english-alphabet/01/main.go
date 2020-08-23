@@ -8,7 +8,7 @@ import (
 )
 
 func main() {
-	res, err := http.Get("http://www-01.sil.org/linguistics/wordlists/english/wordlist/wordsEn.txt")
+	res, err := http.Get("https://raw.githubusercontent.com/dwyl/english-words/master/words.txt")
 	if err != nil {
 		log.Fatalln(err)
 	}
