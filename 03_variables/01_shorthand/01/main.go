@@ -4,13 +4,13 @@ import "fmt"
 
 func main() {
 
-	a := 10
-	b := "golang"
-	c := 4.17
-	d := true
-	e := "Hello"
-	f := `Do you like my hat?`
-	g := 'M'
+	a := 10                    // int
+	b := "golang"              // string
+	c := 4.17                  // float64
+	d := true                  // bool
+	e := "Hello"               // string
+	f := `Do you like my hat?` // string
+	g := 'M'                   // rune
 
 	fmt.Printf("%v \n", a)
 	fmt.Printf("%v \n", b)
