@@ -1,5 +1,1 @@
 package main
-
-import "fmt"{
-	
-}
