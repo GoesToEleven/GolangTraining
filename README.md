@@ -9,8 +9,12 @@ GolangTraining
   <a href="https://golang.org/">
     <img alt="GolangTraining" src="https://img.shields.io/badge/Golang Training-GO-blue">
   </a>
+    <a href="https://golang.org/">
+    <img alt="Golang" src="https://golang.org/lib/godoc/images/go-logo-blue.svg">
+  </a>
 <br>
 <!--
+
 ## 📚 Contexto do Problema
 A locadora de veículos MULA CAR está contratando sua equipe para construir um sistema que faça o controle das
 locações de seus veículos. Sua equipe deverá levantar todos os requisitos do sistema, documentá-los, construir o modelo de
