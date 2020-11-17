@@ -1,6 +1,10 @@
 <h1 align="center">
     < 📜 > <br>
 GolangTraining
+          </a>
+    <a href="https://golang.org/">
+    <img alt="Golang" src="https://golang.org/lib/godoc/images/go-logo-blue.svg">
+  </a>
 </h1>
     <h2 align="center">
     Training for Golang (go language)
@@ -8,10 +12,6 @@ GolangTraining
 <p align="center">
   <a href="https://golang.org/">
     <img alt="GolangTraining" src="https://img.shields.io/badge/Golang Training-GO-blue">
-  </a>
-    <a href="https://golang.org/">
-    <img alt="Golang" src="https://golang.org/lib/godoc/images/go-logo-blue.svg">
-  </a>
 <br>
 <!--
 
