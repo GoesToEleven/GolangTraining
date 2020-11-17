@@ -1,8 +1,10 @@
 <h1 align="center">
+     <br>
      </a>
     <a href="https://golang.org/">
     <img alt="Golang" src="https://golang.org/lib/godoc/images/go-logo-blue.svg">
   </a>
+  <br>
 GolangTraining
 </h1>
     <h2 align="center">
