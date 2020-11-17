@@ -16,10 +16,6 @@ GolangTraining
 <br>
       
       
-<!--
 
-## 📚 Contexto do Problema
-A locadora de veículos MULA CAR está contratando sua equipe para construir um sistema que faça o controle das
-locações de seus veículos. Sua equipe deverá levantar todos os requisitos do sistema, documentá-los, construir o modelo de
-negócio e implementar o sistema em Java para desktop.
--->
+## 📚 Contexto
+This repository seeks to centralize knowledge and codes in go for programming students.
