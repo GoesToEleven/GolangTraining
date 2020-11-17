@@ -1,10 +1,6 @@
 <h1 align="center">
-    < 📜 > <br>
+   <br> < 📜 > <br>
 GolangTraining
-          </a>
-    <a href="https://golang.org/">
-    <img alt="Golang" src="https://golang.org/lib/godoc/images/go-logo-blue.svg">
-  </a>
 </h1>
     <h2 align="center">
     Training for Golang (go language)
@@ -13,6 +9,12 @@ GolangTraining
   <a href="https://golang.org/">
     <img alt="GolangTraining" src="https://img.shields.io/badge/Golang Training-GO-blue">
 <br>
+  </a>
+    <a href="https://golang.org/">
+    <img alt="Golang" src="https://golang.org/lib/godoc/images/go-logo-blue.svg">
+  </a>
+      
+      
 <!--
 
 ## 📚 Contexto do Problema
