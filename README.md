@@ -18,7 +18,7 @@ GolangTraining
       
       
 
-## 📚 Contexto
+## 📚 Context
 This repository seeks to centralize knowledge and codes in go for programming students.
 ## Tutorial: Get started with Go
 <a href="https://golang.org/doc/tutorial/getting-started">
