@@ -13,6 +13,7 @@ GolangTraining
 <p align="center">
   <a href="https://golang.org/">
     <img alt="GolangTraining" src="https://img.shields.io/badge/Golang Training-GO-blue">
+     </a>
 <br>
       
       
