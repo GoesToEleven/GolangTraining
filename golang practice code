@@ -1,0 +1,47 @@
+package main 
+import "fmt"
+
+type node struct {
+    data int 
+    next *node
+}
+
+type linkedList struct {
+    head *node 
+    length int
+    
+}
+
+func (l *linkedList) prepend (n *node) {
+    second := l.head 
+    l.head = n
+    l.head.next = second 
+    l.length++
+}
+
+func ( l linkedList) printListData(){
+   toPrint := l.head 
+   for l. length != 0{
+     fmt.Printf("%d ", toPrint.data)
+     toPrint = toPrint.next
+     l.length--
+    }
+    fmt.Printf("\n")
+}
+
+func (l *linkedList) deleteWithValue(value int){
+   previousToDelete := l.head
+   for previousToDelete.next.data != value{
+    previousToDelete = previousToDelete.next
+   }
+   previousToDelete.next = previousToDelete.next.next
+   l.length--
+}    
+
+
+func main(){
+    mylist := linkedList{}
+    mylist.printListData()  
+    mylist.deleteWithValue(20)
+    mylist.printListData()
+}
