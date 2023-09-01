@@ -9,6 +9,7 @@ type person struct {
 }
 
 func (p person) fullName() string {
+	// p.fullName() // Uncomment this line and see the stack overflow!
 	return p.first + p.last
 }
 
