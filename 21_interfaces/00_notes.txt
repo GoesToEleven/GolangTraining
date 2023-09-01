@@ -36,10 +36,10 @@ Interface types express generalizations or abstractions about the behaviors of o
 By generalizing, interfaces let us write functions that are more flexible and adaptable
 because they are not tied to the details of one particular implementation.
 
-Many object-oriented lagnuages have some notion of interfaces, but what makes Go's interfaces
-so distinctive is that they are SATISIFIED IMPLICITLY. In other words, there's no need to declare
-all the interfaces that a given CONCRETE TYPE satisifies; simply possessing the necessary methods
-is enough. This design lets you create new interfaces that are satisifed by existing CONCRETE TYPES
+Many object-oriented languages have some notion of interfaces, but what makes Go's interfaces
+so distinctive is that they are SATISFIED IMPLICITLY. In other words, there's no need to declare
+all the interfaces that a given CONCRETE TYPE satisfies; simply possessing the necessary methods
+is enough. This design lets you create new interfaces that are satisfied by existing CONCRETE TYPES
 without changing the existing types, which is particularly useful for types defined in packages that
 you don't control.
 
@@ -113,4 +113,4 @@ value: nil
 The Go Programming Language
 Donovan and Kernighan
 
-Caplitalization and identation mine.
+Capitalization and indentation mine.
