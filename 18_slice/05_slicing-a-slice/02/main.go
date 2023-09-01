@@ -11,7 +11,7 @@ func main() {
 		"Bongiorno!",
 		"Ohayo!",
 		"Selamat pagi!",
-		"Gutten morgen!",
+		"Guten Morgen!",
 	}
 
 	fmt.Print("[1:2] ")
