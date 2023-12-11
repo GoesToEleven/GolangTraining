@@ -2,7 +2,7 @@
      <br>
      </a>
     <a href="https://golang.org/">
-    <img alt="Golang" src="https://golang.org/lib/godoc/images/go-logo-blue.svg">
+    <img alt="Golang" src="https://go.dev/images/go-logo-white.svg">
   </a>
   <br>
 GolangTraining
