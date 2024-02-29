@@ -2,6 +2,7 @@ package main
 
 import "fmt"
 
+// 这个例子说明的是形参z和传参x不是相同的变量
 func zero(z int) {
 	fmt.Printf("%p\n", &z) // address in func zero
 	fmt.Println(&z)        // address in func zero

@@ -9,6 +9,7 @@ func main() {
 		1: "Bonjour!",
 		2: "Buenos dias!",
 		3: "Bongiorno!",
+		7: "value",
 	}
 
 	fmt.Println(myGreeting)
